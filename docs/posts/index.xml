@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on </title>
+    <link>http://studymakesmehappy.club/posts/</link>
+    <description>Recent content in Posts on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 25 Jul 2017 00:50:18 +0800</lastBuildDate>
+    
+	<atom:link href="http://studymakesmehappy.club/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Yet Another Markdown Programmer</title>
+      <link>http://studymakesmehappy.club/posts/yet-another-markdown-programmer/</link>
+      <pubDate>Tue, 25 Jul 2017 00:50:18 +0800</pubDate>
+      
+      <guid>http://studymakesmehappy.club/posts/yet-another-markdown-programmer/</guid>
+      <description>是的，我正式加入了 Markdown 程序员的行列，以后会写博客分享我的所思所想，涉及编程、阅读、学习等。博客的源码开放，如有问题，欢迎提 issue🙇‍。
+ 可是，为什么呢？
+ 学习和分享能使人快乐。Coding is Social. Be a Code Ninja🐱‍👤。
+ 我能从中获得什么？
+ 我是一名平凡而快乐的程序员，我希望你也能如此。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,64 @@
+baseURL = "http://studymakesmehappy.club"
+title = ""
+copyright = ""
+
+theme = "minimo"
+
+disqusShortname = ""
+googleAnalytics = ""
+Paginate = 5
+
+publishDir = "docs"
+
+preserveTaxonomyNames = true
+
+[params]
+  description = "Study makes me happy"
+  dateFormat = "2006, Jan 2"
+  copyrightOwner = "ccccly"
+  copyrightStartYear = "2017"
+  favicon = "favicon.ico"
+  hideEntryNavigation = false
+  customCSS = ["css/custom.css"]
+  customJS = ["js/custom.js"]
+
+[params.seo]
+  # Title Separator: - – — · • * ⋆ | ~ « » < >
+  titleSeparator = "•"
+
+[params.opengraph]
+  [params.opengraph.facebook]
+    admins = ""
+    appid = ""
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[social]
+  github = "Excited-ccccly"
+
+[author]
+  name = "ccccly"
+
+[author.social]
+  github = "Excited-ccccly"
+
+[permalinks]
+  page = "/:slug/"
+
+[[menu.main]]
+  name = "Repo"
+  weight = -70
+  identifier = "repository"
+  url = "https://github.com/Excited-ccccly"
+
+# Language Configuration
+defaultContentLanguage = "en"
+
+[languages]
+  # edit this block for your own language
+  [languages.en]
+    lang = "en"
+    languageName = "English"
+    weight = 1
