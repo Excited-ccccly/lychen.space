@@ -19,8 +19,6 @@ preserveTaxonomyNames = true
   copyrightStartYear = "2017"
   favicon = "favicon.ico"
   hideEntryNavigation = false
-  customCSS = ["css/custom.css"]
-  customJS = ["js/custom.js"]
 
 [params.seo]
   # Title Separator: - – — · • * ⋆ | ~ « » < >
@@ -51,7 +49,7 @@ preserveTaxonomyNames = true
   name = "Repo"
   weight = -70
   identifier = "repository"
-  url = "https://github.com/Excited-ccccly"
+  url = "https://github.com/Excited-ccccly/studymakesmehappy.club"
 
 # Language Configuration
 defaultContentLanguage = "en"
