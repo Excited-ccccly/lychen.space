@@ -4,6 +4,8 @@ copyright = ""
 
 theme = "minimo"
 
+pygmentsstyle = "vim"
+PygmentsCodeFences = true
 disqusShortname = ""
 googleAnalytics = ""
 Paginate = 5

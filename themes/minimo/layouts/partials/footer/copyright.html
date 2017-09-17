@@ -10,3 +10,4 @@
   &copy; {{ with $.Scratch.Get "copyrightStartYear" }}{{ . }}-{{ end }}{{ now.Year }} {{ or .Site.Params.CopyrightOwner ( or .Site.Author.name .Site.Title ) }}
 {{- end -}}
 </p>
+
