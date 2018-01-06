@@ -5,10 +5,27 @@
     <link>http://excited-ccccly.github.io/studymakesmehappy.club/posts/</link>
     <description>Recent content in Posts on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 27 Nov 2017 00:01:44 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 06 Jan 2018 14:55:38 +0800</lastBuildDate>
     
 	<atom:link href="http://excited-ccccly.github.io/studymakesmehappy.club/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Kubernetes101</title>
+      <link>http://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes101/</link>
+      <pubDate>Sat, 06 Jan 2018 14:55:38 +0800</pubDate>
+      
+      <guid>http://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes101/</guid>
+      <description>这是一篇 kubernetes（简称 k8s，将中间的 8 个字母简写成“8”） 的基础教程，会使用实际例子来讲解 k8s 中的基础概念。
+在这个教程中，你将会学习到以下几点：
+ 搭建 k8s 集群 使用 kubectl 管理集群 部署一个容器化的应用到集群中 缩放容器的实例数量   安装 cli kubectl 是 k8s 的命令行工具，可以方便地管理我们的集群
+安装集群 有两种方式可以安装 k8s 集群
+云上安装 k8s 如果你有多台云服务器，使用 rancher 来搭建 k8s 集群是一个方便快捷的选择。
+一般来说，国外的解决方案在中国很可能出现水土不服的情况，需要额外参考这篇文章——原生加速中国区Kubernetes安装
+额外，还需要注意以下几点:
+ 云服务器的名字不能过长，超过 63 个字符之后，会导致该节点无法注册成功。 需要选择和 rancher 兼容的 docker 版本，参考这个列表  搭建好集群之后，点击 UI 界面上的 *kubernetes &amp;gt; cli &amp;gt; generate config*，按照说明配置 kubectl ，即可将 kubectl 连接上 rancher 搭建的 k8s 集群
+本机安装 k8s 本机使用 minikube 来安装 k8s 集群</description>
+    </item>
     
     <item>
       <title>漫谈时间(一)——时间、历法和时区</title>

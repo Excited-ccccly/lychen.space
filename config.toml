@@ -1,4 +1,5 @@
 baseURL = "http://excited-ccccly.github.io/studymakesmehappy.club/"
+canonifyURLs = true 
 title = ""
 copyright = ""
 
