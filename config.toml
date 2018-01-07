@@ -5,8 +5,9 @@ copyright = ""
 
 theme = "minimo"
 
-pygmentsstyle = "vim"
+pygmentsstyle = "native"
 PygmentsCodeFences = true
+pygmentsCodefencesGuessSyntax = true
 disqusShortname = ""
 googleAnalytics = ""
 Paginate = 5

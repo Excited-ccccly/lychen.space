@@ -64,20 +64,22 @@ Server Version: version.Info{Major:"1", Minor:"8", GitVersion:"v1.8.0", GitCommi
 
 以一个简单的 express hello world 应用为例
 
-index.js:
 ```js
+// index.js: 
 const app = require('express')()
 
 app.get('/', (req, res) => {
     res.send('hello world');
 });
 
-app.listen(3000);
+app.listen(3000, () => {
+    console.log('Server listening at port 3000');
+});
 ```
 上面的代码启动了一个 express 服务器，监听 3000 端口。
 
-Dockerfile:
 ``` dockerfile
+## Dockerfile:
 FROM node
 RUN mkdir /usr/app/
 WORKDIR /usr/app/
@@ -92,12 +94,12 @@ EXPOSE 3000
 上面的 Dockerfile 声明在 node 这个基础景象上构建，启动命令是 **node index.js**，声明对外暴露 3000 端口(这里的 EXPOSE 只是声明，不一定要和应用实际的监听的端口一样。比如一个应用可以同时监听 3000、4000、5000 端口, 虽然它只声明暴露 3000 端口，但其实 4000，5000 端口仍然是对外暴露的)
 
 构建 docker 镜像，并 push 到 docker hub 中（需要登陆 docker id）
-``` shell
+```shell
 docker build -t ccccly/express-app .
 docker push ccccly/express-app
 ```
 
-静静等待 push 好之后，我们就可以在 k8s 中通过这个镜像，创建一个 deployment
+静静等待 push 好之后，我们就可以在 k8s 中通过这个镜像，创建一个 Deployment
 ``` shell
 kubectl run express-app --image=docker.io/ccccly/express-app
 ```
@@ -107,14 +109,55 @@ kubectl run express-app --image=docker.io/ccccly/express-app
 * 配置监控 express-app，确保服务可用
 
 创建好之后
-```
+```shell
+## 获取 deployment 列表
 kubectl get deploy
 ```
-发现我们已经创建好了一个 deployment 
+发现我们已经创建好了一个 Deployment 
 ```
 NAME          DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 express-app   1         1         1            1           1h
 ```
+
+## Pod 和 Node
+
+![](images/20180106/module_03_pods.svg)
+
+一个 Deployment 会创建一个 Pod 来启动我们的应用。在 k8s 中，Pod 是一组（一个或多个）容器以及这些容器公用的存储、网络等资源。它是 k8s 的最小单元。
+一个 Pod 中可以有多个容器，这些容器共用一个 IP 和端口，一起被调度，在相同的 Node 上的同一个 Context 下运行。
+
+![](images/20180106/module_03_nodes.svg)
+
+Pod 永远在 Node 上运行。在 k8s 中，Node 是一个工作机器(Worker)，它可以是虚拟机也可以是物理机。一个 Node 上可以运行多个 Pod，k8s 里的 Master 节点自动分配 Pod 到 Node 上运行
+
+继续刚才的 express-app 里例子
+```shell
+## 获取 pod 列表
+kubectl get pod
+```
+可以看到我们的 express-app Pod 正在运行
+```
+NAME                           READY     STATUS    RESTARTS   AGE
+express-app-6b588847fc-dthlr   1/1       Running   0          1d
+```
+看一下这个 Pod 中的详细信息
+```
+kubectl describe pod express-app-6b588847fc-dthlr
+```
+查看这个 Pod 的日志
+```
+kubectl logs express-app-6b588847fc-dthlr
+```
+在 Pod 中执行 bash 
+```shell
+kubectl exec -it express-app-6b588847fc-dthlr bash
+### 在容器中 curl 一下，可以看到「hello world」的返回
+curl localhost:3000
+### 退出
+exit
+```
+
+
 
 
 

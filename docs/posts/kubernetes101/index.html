@@ -11,7 +11,7 @@
 云上安装 k8s 如果你有多台云服务器，使用 rancher 来搭建 k8s 集群是一个方便快捷的选择。
 一般来说，国外的解决方案在中国很可能出现水土不服的情况，需要额外参考这篇文章——原生加速中国区Kubernetes安装
 额外，还需要注意以下几点:
- 云服务器的名字不能过长，超过 63 个字符之后，会导致该节点无法注册成功。 需要选择和 rancher 兼容的 docker 版本，参考这个列表  搭建好集群之后，点击 UI 界面上的 *kubernetes &gt; cli &gt; generate config*，按照说明配置 kubectl ，即可将 kubectl 连接上 rancher 搭建的 k8s 集群
+ 云服务器的名字不能过长，超过 63 个字符之后，会导致该节点无法注册成功。 需要选择和 rancher 兼容的 docker 版本，参考这个列表  搭建好集群之后，点击 UI 界面上的 kubernetes &gt; cli &gt; generate config，按照说明配置 kubectl ，即可将 kubectl 连接上 rancher 搭建的 k8s 集群
 本机安装 k8s 本机使用 minikube 来安装 k8s 集群'>
 
 <meta property='og:title' content='Kubernetes101 • ccccly'>
@@ -22,7 +22,7 @@
 云上安装 k8s 如果你有多台云服务器，使用 rancher 来搭建 k8s 集群是一个方便快捷的选择。
 一般来说，国外的解决方案在中国很可能出现水土不服的情况，需要额外参考这篇文章——原生加速中国区Kubernetes安装
 额外，还需要注意以下几点:
- 云服务器的名字不能过长，超过 63 个字符之后，会导致该节点无法注册成功。 需要选择和 rancher 兼容的 docker 版本，参考这个列表  搭建好集群之后，点击 UI 界面上的 *kubernetes &gt; cli &gt; generate config*，按照说明配置 kubectl ，即可将 kubectl 连接上 rancher 搭建的 k8s 集群
+ 云服务器的名字不能过长，超过 63 个字符之后，会导致该节点无法注册成功。 需要选择和 rancher 兼容的 docker 版本，参考这个列表  搭建好集群之后，点击 UI 界面上的 kubernetes &gt; cli &gt; generate config，按照说明配置 kubectl ，即可将 kubectl 连接上 rancher 搭建的 k8s 集群
 本机安装 k8s 本机使用 minikube 来安装 k8s 集群'>
 <meta property='og:url' content='http://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes101/'>
 <meta property='og:site_name' content=''>
@@ -151,7 +151,7 @@
 <li>需要选择和 rancher 兼容的 docker 版本，参考这个<a href="http://rancher.com/docs/rancher/v1.6/en/hosts/#supported-docker-versions">列表</a></li>
 </ul>
 
-<p>搭建好集群之后，点击 UI 界面上的 *kubernetes &gt; cli &gt; generate config*，按照说明配置 kubectl ，即可将 kubectl 连接上 rancher 搭建的 k8s 集群</p>
+<p>搭建好集群之后，点击 UI 界面上的 <strong>kubernetes &gt; cli &gt; generate config</strong>，按照说明配置 kubectl ，即可将 kubectl 连接上 rancher 搭建的 k8s 集群</p>
 
 <h3 id="本机安装-k8s">本机安装 k8s</h3>
 
@@ -160,18 +160,85 @@
 <p>同样由于水土不服, 请参考这篇文章——<a href="https://yq.aliyun.com/articles/221687">Minikube - Kubernetes本地实验环境</a></p>
 
 <p>安装好之后，</p>
-<div class="highlight"><pre style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl version</code></pre></div>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl version</code></pre></div>
 <p>可以看到客户端和服务器的版本:</p>
-<div class="highlight"><pre style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Client Version: version.Info<span style="color:#39c">{</span>Major:<span style="color:#cd0000">&#34;1&#34;</span>, Minor:<span style="color:#cd0000">&#34;9&#34;</span>, GitVersion:<span style="color:#cd0000">&#34;v1.9.0&#34;</span>, GitCommit:<span style="color:#cd0000">&#34;925c127ec6b946659ad0fd596fa959be43f0cc05&#34;</span>, GitTreeState:<span style="color:#cd0000">&#34;clean&#34;</span>, BuildDate:<span style="color:#cd0000">&#34;2017-12-15T21:07:38Z&#34;</span>, GoVersion:<span style="color:#cd0000">&#34;go1.9.2&#34;</span>, Compiler:<span style="color:#cd0000">&#34;gc&#34;</span>, Platform:<span style="color:#cd0000">&#34;windows/amd64&#34;</span><span style="color:#39c">}</span>
-Server Version: version.Info<span style="color:#39c">{</span>Major:<span style="color:#cd0000">&#34;1&#34;</span>, Minor:<span style="color:#cd0000">&#34;8&#34;</span>, GitVersion:<span style="color:#cd0000">&#34;v1.8.0&#34;</span>, GitCommit:<span style="color:#cd0000">&#34;0b9efaeb34a2fc51ff8e4d34ad9bc6375459c4a4&#34;</span>, GitTreeState:<span style="color:#cd0000">&#34;clean&#34;</span>, BuildDate:<span style="color:#cd0000">&#34;2017-12-27T05:32:18Z&#34;</span>, GoVersion:<span style="color:#cd0000">&#34;go1.9.1&#34;</span>, Compiler:<span style="color:#cd0000">&#34;gc&#34;</span>, Platform:<span style="color:#cd0000">&#34;linux/amd64&#34;</span><span style="color:#39c">}</span></code></pre></div>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Client Version: version.Info{Major:<span style="color:#ed9d13">&#34;1&#34;</span>, Minor:<span style="color:#ed9d13">&#34;9&#34;</span>, GitVersion:<span style="color:#ed9d13">&#34;v1.9.0&#34;</span>, GitCommit:<span style="color:#ed9d13">&#34;925c127ec6b946659ad0fd596fa959be43f0cc05&#34;</span>, GitTreeState:<span style="color:#ed9d13">&#34;clean&#34;</span>, BuildDate:<span style="color:#ed9d13">&#34;2017-12-15T21:07:38Z&#34;</span>, GoVersion:<span style="color:#ed9d13">&#34;go1.9.2&#34;</span>, Compiler:<span style="color:#ed9d13">&#34;gc&#34;</span>, Platform:<span style="color:#ed9d13">&#34;windows/amd64&#34;</span>}
+Server Version: version.Info{Major:<span style="color:#ed9d13">&#34;1&#34;</span>, Minor:<span style="color:#ed9d13">&#34;8&#34;</span>, GitVersion:<span style="color:#ed9d13">&#34;v1.8.0&#34;</span>, GitCommit:<span style="color:#ed9d13">&#34;0b9efaeb34a2fc51ff8e4d34ad9bc6375459c4a4&#34;</span>, GitTreeState:<span style="color:#ed9d13">&#34;clean&#34;</span>, BuildDate:<span style="color:#ed9d13">&#34;2017-12-27T05:32:18Z&#34;</span>, GoVersion:<span style="color:#ed9d13">&#34;go1.9.1&#34;</span>, Compiler:<span style="color:#ed9d13">&#34;gc&#34;</span>, Platform:<span style="color:#ed9d13">&#34;linux/amd64&#34;</span>}</code></pre></div>
 <p>这说明 k8s 集群已经成功启动，并且 kubectl 已经连接至 k8s 集群</p>
 
 <h2 id="创建一个部署-deployment">创建一个部署(Deployment)</h2>
 
 <p><img src="images/20180106/module_02_first_app.png" alt="" /></p>
 
-<p>集群成功启动之后，为了让我们的容器化(containerized)的应用（比如，一个打好 docker 镜像的 node.js web server）运行在 k8s 中，我们需要创建一个部署。这个部署配置会告诉 k8s 如何去创建和更新应用的实例，k8s 会在选择节点(node)并在之上启动我们的应用，同时还有持续监控我们应用的健康状况，一旦应用挂掉了，k8s 会自动重建这个应用的实例。这个*自我修复机制(self-healing mechanism)*用来应对节点的失效和更新维护。</p>
+<p>集群成功启动之后，为了让我们的容器化(containerized)的应用（比如，一个打好 docker 镜像的 node.js web server）运行在 k8s 中，我们需要创建一个部署。这个部署配置会告诉 k8s 如何去创建和更新应用的实例，k8s 会在选择节点(node)并在之上启动我们的应用，同时还有持续监控我们应用的健康状况，一旦应用挂掉了，k8s 会自动重建这个应用的实例。这个<strong>自我修复机制(Self-healing Mechanism)</strong>用来应对节点的失效和更新维护。</p>
 
+<p>以一个简单的 express hello world 应用为例</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#999;font-style:italic">// index.js: 
+</span><span style="color:#999;font-style:italic"></span><span style="color:#6ab825;font-weight:bold">const</span> app = require(<span style="color:#ed9d13">&#39;express&#39;</span>)()
+
+app.get(<span style="color:#ed9d13">&#39;/&#39;</span>, (req, res) =&gt; {
+    res.send(<span style="color:#ed9d13">&#39;hello world&#39;</span>);
+});
+
+app.listen(<span style="color:#3677a9">3000</span>, () =&gt; {
+    console.log(<span style="color:#ed9d13">&#39;Server listening at port 3000&#39;</span>);
+});</code></pre></div>
+<p>上面的代码启动了一个 express 服务器，监听 3000 端口。</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#999;font-style:italic">## Dockerfile:</span><span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span><span style="color:#6ab825;font-weight:bold">FROM</span><span style="color:#ed9d13"> node</span><span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span><span style="color:#6ab825;font-weight:bold">RUN</span> mkdir /usr/app/<span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span><span style="color:#6ab825;font-weight:bold">WORKDIR</span><span style="color:#ed9d13"> /usr/app/</span><span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span>COPY package.json package.json<span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span>COPY package-lock.json package-lock.json<span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span><span style="color:#6ab825;font-weight:bold">RUN</span> npm install<span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span>COPY index.js index.js<span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span><span style="color:#6ab825;font-weight:bold">CMD</span><span style="color:#ed9d13"> [&#34;node&#34;, &#34;index.js&#34;]</span><span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span><span style="color:#6ab825;font-weight:bold">EXPOSE</span><span style="color:#ed9d13"> 3000</span></code></pre></div>
+<p>上面的 Dockerfile 声明在 node 这个基础景象上构建，启动命令是 <strong>node index.js</strong>，声明对外暴露 3000 端口(这里的 EXPOSE 只是声明，不一定要和应用实际的监听的端口一样。比如一个应用可以同时监听 3000、4000、5000 端口, 虽然它只声明暴露 3000 端口，但其实 4000，5000 端口仍然是对外暴露的)</p>
+
+<p>构建 docker 镜像，并 push 到 docker hub 中（需要登陆 docker id）</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker build -t ccccly/express-app .
+docker push ccccly/express-app</code></pre></div>
+<p>静静等待 push 好之后，我们就可以在 k8s 中通过这个镜像，创建一个 Deployment</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl run express-app --image=docker.io/ccccly/express-app</code></pre></div>
+<p>这条命令会做以下三件事：
+* 寻找合适的节点来运行 express-app
+* 拉取镜像，让它在节点上跑起来
+* 配置监控 express-app，确保服务可用</p>
+
+<p>创建好之后</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#999;font-style:italic">## 获取 deployment 列表
+</span><span style="color:#999;font-style:italic"></span>kubectl get deploy</code></pre></div>
+<p>发现我们已经创建好了一个 Deployment</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4">NAME          DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+express-app   1         1         1            1           1h</pre></div>
+<h2 id="pod-和-node">Pod 和 Node</h2>
+
+<p><img src="images/20180106/module_03_pods.svg" alt="" /></p>
+
+<p>一个 Deployment 会创建一个 Pod 来启动我们的应用。在 k8s 中，Pod 是一组（一个或多个）容器以及这些容器公用的存储、网络等资源。它是 k8s 的最小单元。
+一个 Pod 中可以有多个容器，这些容器共用一个 IP 和端口，一起被调度，在相同的 Node 上的同一个 Context 下运行。</p>
+
+<p><img src="images/20180106/module_03_nodes.svg" alt="" /></p>
+
+<p>Pod 永远在 Node 上运行。在 k8s 中，Node 是一个工作机器(Worker)，它可以是虚拟机也可以是物理机。一个 Node 上可以运行多个 Pod，k8s 里的 Master 节点自动分配 Pod 到 Node 上运行</p>
+
+<p>继续刚才的 express-app 里例子</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#999;font-style:italic">## 获取 pod 列表
+</span><span style="color:#999;font-style:italic"></span>kubectl get pod</code></pre></div>
+<p>可以看到我们的 express-app Pod 正在运行</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4">NAME                           READY     STATUS    RESTARTS   AGE
+express-app-6b588847fc-dthlr   1/1       Running   0          1d</pre></div>
+<p>看一下这个 Pod 中的详细信息</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4">kubectl describe pod express-app-6b588847fc-dthlr</pre></div>
+<p>查看这个 Pod 的日志</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4">kubectl logs express-app-6b588847fc-dthlr</pre></div>
+<p>在 Pod 中执行 bash</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl <span style="color:#24909d">exec</span> -it express-app-6b588847fc-dthlr bash
+<span style="color:#999;font-style:italic">### 在容器中 curl 一下，可以看到「hello world」的返回
+</span><span style="color:#999;font-style:italic"></span>curl localhost:3000
+<span style="color:#999;font-style:italic">### 退出
+</span><span style="color:#999;font-style:italic"></span>exit</code></pre></div>
 </div>
 
 
