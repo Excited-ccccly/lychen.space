@@ -191,7 +191,7 @@ $ curl http://192.168.99.100:31530
 
 ## Scaling
 
-为了保持 [SLA](https://en.wikipedia.org/wiki/Service-level_agreement)（比如其中的一种 SLA，服务访问性可达到 99.999%，内业经常说你的服务能达到多个 9，哈哈），通常会部署多份相同的服务，运行在多个 Pod 上。在 k8s 中，通过修改 Deployment 的 Replica（副本） 数量来达到 scaling 的目的。
+为了保持 [SLA](https://en.wikipedia.org/wiki/Service-level_agreement)（比如其中的一种 SLA，服务访问性可达到 99.999%，内业经常说你的服务能达到多个 9，哈哈），通常会部署多份相同的应用，运行在多个 Pod 上。在 k8s 中，通过修改 Deployment 的 Replica（副本） 数量来达到 scaling 的目的。
 
 将 express-app 从 1 个 Replica, Scale 到 4 个 Replica
 ![](images/20180106/module_05_scaling1.svg)
@@ -213,7 +213,7 @@ express-app   4         4         4            4           1d
 
 在更新应用时，Rolling Update 先创建好一个更新之后的 Pod，再替换掉老的 Pod，以此来满足服务的连续性。
 
-Rolling Update 根据 max-unavailable（一次更新中，最多有几个 Pod 不可用） 和 max-surge （一次更新中，最多可以多创建几个应用）两个参数来执行更新策略。
+Rolling Update 根据 max-unavailable（一次更新中，最多有几个 Pod 不可用） 和 max-surge （一次更新中，最多可以多创建几个 Pod）两个参数来执行更新策略。
 
 继续 express-app 的例子。
 
