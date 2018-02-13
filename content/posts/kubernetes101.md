@@ -1,6 +1,8 @@
 ---
 title: "Kubernetes101"
 date: 2018-01-07T23:31:08+08:00
+categories: ["DevOps"]
+tags: ["Kubernetes", "Docker", "Deployment"]
 ---
 
 这是一篇 kubernetes（简称 k8s，将中间的 8 个字母简写成“8”） 的基础教程，会使用实际例子来讲解 k8s 中的基础概念。
