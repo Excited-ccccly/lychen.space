@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='kubernetes101 介绍了 Kubernetes 的基本用法，通过 NodePort 的形式对外暴露 Service 来提供服务。
+NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE express-app NodePort 10.0.0.151 &lt;none&gt; 80:31530/TCP 19m kubernetes ClusterIP 10.0.0.1 &lt;none&gt; 443/TCP 1d 这时候可以使用 NodeIP:NodePort 来从外界访问这个服务，其中 192.168.99.100 是集群中任意一个 Node 节点的 IP
+$ curl http://192.168.99.100:31530 hello world 但每次使用 IP&#43;Port 访问服务的方式很不方便。在单机上，可以使用 nginx 的反向代理，实现通过域名访问服务。
+nginx.conf
+http { upstream my-api { server 127.0.0.1:8080; } server { listen 80; server_name api.domain.com; location / { proxy_pass http://my-api; } } } 启用 nginx 后，就可以通过访问 http://api.'>
+
+<meta property='og:title' content='Kubernetes Ingress • ccccly'>
+<meta property='og:description' content='kubernetes101 介绍了 Kubernetes 的基本用法，通过 NodePort 的形式对外暴露 Service 来提供服务。
+NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE express-app NodePort 10.0.0.151 &lt;none&gt; 80:31530/TCP 19m kubernetes ClusterIP 10.0.0.1 &lt;none&gt; 443/TCP 1d 这时候可以使用 NodeIP:NodePort 来从外界访问这个服务，其中 192.168.99.100 是集群中任意一个 Node 节点的 IP
+$ curl http://192.168.99.100:31530 hello world 但每次使用 IP&#43;Port 访问服务的方式很不方便。在单机上，可以使用 nginx 的反向代理，实现通过域名访问服务。
+nginx.conf
+http { upstream my-api { server 127.0.0.1:8080; } server { listen 80; server_name api.domain.com; location / { proxy_pass http://my-api; } } } 启用 nginx 后，就可以通过访问 http://api.'>
+<meta property='og:url' content='http://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes-ingress/'>
+<meta property='og:site_name' content=''>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='Kubernetes'><meta property='article:tag' content='Ingress'><meta property='article:tag' content='nginx'><meta property='article:tag' content='Loadbalancer'><meta property='article:published_time' content='2018-03-27T15:27:27&#43;08:00'/><meta property='article:modified_time' content='2018-03-27T15:27:27&#43;08:00'/>
+
+<meta name="generator" content="Hugo 0.32.2" />
+
+  <base href='http://excited-ccccly.github.io/studymakesmehappy.club/'>
+  <title>Kubernetes Ingress • ccccly</title>
+  <link rel='canonical' href='http://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes-ingress/'>
+  <link href='' rel='alternate' type='application/rss+xml' title='' />
+  <link rel='icon' href='http://excited-ccccly.github.io/studymakesmehappy.club/favicon.ico'>
+<link rel='stylesheet' href='https://fonts.lug.ustc.edu.cn/css?family=Ubuntu:400,400i,700&subset=latin'>
+<link rel='stylesheet' href='http://excited-ccccly.github.io/studymakesmehappy.club/css/main.d02777fd.css'>
+
+
+
+</head>
+
+
+<body class='page'>
+  <div class='site'>
+    <header id='header' class='header-container'>
+      <div class='site-header'>
+        <nav id='navmenu' aria-label='Main Menu'>
+  <ul class='main-menu'>
+    
+    <li>
+      <a href='http://excited-ccccly.github.io/studymakesmehappy.club/'>Home</a>
+    </li>
+    
+    <li>
+      <a href='http://excited-ccccly.github.io/studymakesmehappy.club/about/'>About</a>
+    </li>
+    
+    <li>
+      <a href='https://github.com/Excited-ccccly/studymakesmehappy.club'>Repo</a>
+    </li>
+    
+  </ul>
+</nav>
+
+        <div class='site-info'>
+          
+          <p class='site-title title'></p>
+          
+          <p class='site-description'>Study makes me happy</p>
+        </div>
+      </div>
+    </header>
+
+
+<main class='main'>
+  <article lang='en' class='entry'>
+    <header class='entry-header'>
+  <div class='entry-info'>
+    <h1 class='entry-title title'>Kubernetes Ingress</h1>
+    
+  </div>
+  
+<div class='meta'>
+  <span class='posted-on'>
+    <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+
+    <span class='screen-reader'>Posted on </span>
+    <time class='date' datetime='2018-03-27T15:27:27&#43;08:00'>2018, Mar 27</time>
+  </span>
+  
+  <span class='byline'>
+    <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M21,21V20c0-2.76-4-5-9-5s-9,2.24-9,5v1"/>
+  <path d="M16,6.37A4,4,0,1,1,12.63,3,4,4,0,0,1,16,6.37Z"/>
+  
+</svg>
+
+    <span class='screen-reader'> by </span>
+    ccccly
+  </span>
+  
+</div>
+
+
+</header>
+
+    <div class='entry-content'>
+  
+
+<p><a href="http://studymakesmehappy.club/posts/kubernetes101/">kubernetes101</a> 介绍了 Kubernetes 的基本用法，通过 NodePort 的形式对外暴露 Service 来提供服务。</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">NAME          TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
+express-app   NodePort    <span style="color:#3677a9">10</span>.0.0.151   &lt;none&gt;        <span style="color:#3677a9">80</span>:31530/TCP   19m
+kubernetes    ClusterIP   <span style="color:#3677a9">10</span>.0.0.1     &lt;none&gt;        <span style="color:#3677a9">443</span>/TCP        1d</code></pre></div>
+<p>这时候可以使用 <strong>NodeIP:NodePort</strong> 来从外界访问这个服务，其中 192.168.99.100 是集群中任意一个 Node 节点的 IP</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ curl http://192.168.99.100:31530
+hello world</code></pre></div>
+<p>但每次使用 IP+Port 访问服务的方式很不方便。在单机上，可以使用 nginx 的反向代理，实现通过域名访问服务。</p>
+
+<p>nginx.conf</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">http {
+  upstream my-api {
+    server <span style="color:#3677a9">127</span>.0.0.1:8080;
+  }
+
+  server {
+    listen <span style="color:#3677a9">80</span>;
+    server_name api.domain.com;
+    location / {
+      proxy_pass http://my-api;
+    }
+  }
+}</code></pre></div>
+<p>启用 nginx 后，就可以通过访问 <a href="http://api.domain.com">http://api.domain.com</a> 来访问这台机子上监听 8080 端口的服务。</p>
+
+<p>在 Kubernetes 集群中，Ingress 可以说是对 nginx 的抽象（接口），<a href="https://github.com/kubernetes/ingress-nginx">ingress-nginx</a> 是 Ingress 的一种实现。</p>
+
+<p>在这篇博客中，假设你学习过 <a href="http://studymakesmehappy.club/posts/kubernetes101/">kubernetes101</a>，你将会学习到以下几点：</p>
+
+<ul>
+<li>Ingress 介绍</li>
+<li>Ingress 的基础配置</li>
+<li>Ingress 的 TLS 配置</li>
+<li>Ingress 的 basic auth 配置</li>
+<li>Ingress 的局限</li>
+</ul>
+
+<h2 id="ingress-介绍">Ingress 介绍</h2>
+
+<p>在 Kubernetes 中，通过 Ingress 访问应用的流程大致上是这样子的</p>
+
+<p><img src="images/kubernetes/ingress/ingress.png" alt="求推荐好用的画图工具，Visio 好难用..." /></p>
+
+<p>除了 Ingress 暴露在公网中，其它所有的服务都是内网 IP，只允许内网访问。</p>
+
+<ul>
+<li>External LoadBalancer 是云服务厂商提供的外部负载均衡器，比如 Azure LoadBalancer, AWS ELB 等。</li>
+<li>Ingress Controller 根据定义的 Ingress 规则，来转发不同的请求到不同的 Service 上，就像 nginx 的反向代理一样。</li>
+<li>Default Backend 是默认的后端，但有一个未知的域名(ingress 中没有定义)的请求过来，将会返回 default backend 提供的内容。</li>
+</ul>
+
+<p>一个简单的 Ingress 规则长这样子</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-YAML" data-lang="YAML">apiVersion:<span style="color:#666"> </span>v<span style="color:#3677a9">1</span><span style="color:#666">
+</span><span style="color:#666"></span>items:<span style="color:#666">
+</span><span style="color:#666"></span>-<span style="color:#666"> </span>apiVersion:<span style="color:#666"> </span>extensions/v1beta<span style="color:#3677a9">1</span><span style="color:#666">
+</span><span style="color:#666">  </span>kind:<span style="color:#666"> </span>Ingress<span style="color:#666">
+</span><span style="color:#666">  </span>metadata:<span style="color:#666">
+</span><span style="color:#666">    </span>name:<span style="color:#666"> </span>kube-system.ingress<span style="color:#666">
+</span><span style="color:#666">    </span>namespace:<span style="color:#666"> </span>kube-system<span style="color:#666">
+</span><span style="color:#666">  </span>spec:<span style="color:#666">
+</span><span style="color:#666">    </span>rules:<span style="color:#666">
+</span><span style="color:#666">    </span>-<span style="color:#666"> </span>host:<span style="color:#666"> </span>website<span style="color:#3677a9">1.</span>domain.com<span style="color:#666">
+</span><span style="color:#666">      </span>http:<span style="color:#666">
+</span><span style="color:#666">        </span>paths:<span style="color:#666">
+</span><span style="color:#666">        </span>-<span style="color:#666"> </span>backend:<span style="color:#666">
+</span><span style="color:#666">            </span>serviceName:<span style="color:#666"> </span>website<span style="color:#3677a9">1</span><span style="color:#666">
+</span><span style="color:#666">            </span>servicePort:<span style="color:#666"> </span><span style="color:#3677a9">80</span><span style="color:#666">
+</span><span style="color:#666">          </span>path:<span style="color:#666"> </span>/<span style="color:#666">
+</span><span style="color:#666"></span>kind:<span style="color:#666"> </span>List</code></pre></div>
+<p>此项规则将 website1.domain.com 的请求全部转发到 website1 服务对应的 Pod 中。</p>
+
+<h2 id="ingress-的基础配置">Ingress 的基础配置</h2>
+
+<p>接下来动手配置一个 Kubernetes 集群的 Ingress</p>
+
+<p>为了方便展示，以下所有使用到的配置文件都使用网络地址，不显示实际的内容，可以单独下载文件查看，也可以前往 <a href="https://github.com/Excited-ccccly/studymakesmehappy.club/tree/master/static/files/kubernetes/ingress">ingress 配置文件夹</a> 查看所有文件</p>
+
+<ul>
+<li>为了方便管理，我们为 Ingress 单独创建一个 namespace</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f  https://raw.githubusercontent.com/Excited-ccccly/studymakesmehappy.club/master/static/files/kubernetes/ingress/01-namespace.yaml</code></pre></div>
+<ul>
+<li>创建默认的 http 后端，Ingress 接收到一个 404 的地址，交给这个后端来处理</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f  https://raw.githubusercontent.com/Excited-ccccly/studymakesmehappy.club/master/static/files/kubernetes/ingress/02-default-backend.yaml</code></pre></div>
+<ul>
+<li>创建 ingress nginx 所需的配置文件。默认的配置限制 body size 为 1m，这里稍微调大一些，方便文件上传</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f  https://raw.githubusercontent.com/Excited-ccccly/studymakesmehappy.club/master/static/files/kubernetes/ingress/03-configmap.yaml</code></pre></div>
+<ul>
+<li>创建 ingress nginx 服务</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f  https://raw.githubusercontent.com/Excited-ccccly/studymakesmehappy.club/master/static/files/kubernetes/ingress/04-ingress-nginx.yaml</code></pre></div>
+<ul>
+<li>通过 LoadBalancer 的方式对外暴露 ingress nginx 服务</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f  https://raw.githubusercontent.com/Excited-ccccly/studymakesmehappy.club/master/static/files/kubernetes/ingress/05-service.yaml</code></pre></div>
+<p>获取 ingress nginx 服务的外部 LoadBalancer 的地址</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  kubectl get svc -n ingress-nginx</code></pre></div>
+<ul>
+<li><p>将域名解析到外部的 LoadBalancer</p>
+
+<p>*.domain -&gt; ExternalLoadBalancerIP</p></li>
+
+<li><p>创建一条 Ingress 规则(暂时不带 TLS 和 Basic Auth)，将 <strong>k8s-dashboard.domain.com</strong> 转发至 kubernetes-dashboard 服务对应的 Pod 中。</p></li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f  https://raw.githubusercontent.com/Excited-ccccly/studymakesmehappy.club/master/static/files/kubernetes/ingress/06-k8s-dashboard-ingress-without-neither-tls-or-basic-auth.yaml</code></pre></div>
+<p>ingress-controller 会监听集群中所有 Ingress 规则的变动，保持更新。等待大约 10s，就可以尝试访问 <strong>k8s-dashboard.domain.com</strong> 了，看看是否是熟悉的 kubernetes dashboard.</p>
+
+<h2 id="ingress-的-tls-配置">Ingress 的 TLS 配置</h2>
+
+<p>由于 HTTP 很不安全，容易遭受中间人攻击，现在的网站流行 HTTPS 认证，在此为 <strong>k8s-dashboard.domain.com</strong> 加上 <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">TLS</a>，点亮 HTTPS 的绿灯。</p>
+
+<p>HTTPS 证书需要购买，也可以使用 Let&rsquo;s Encrypt 提供的免费 HTTPS 证书。<a href="https://github.com/jetstack/kube-lego">kube-lego</a> 可以简化从 Let&rsquo;s Encrypt 获取证书的流程。但由于 Let&rsquo;s Encrypt 每90天需要更新一次证书，还可能会出现因为获取证书错误次数过多，获取不到证书，从而只能干等的状况，所以生产环境务必使用购买的 HTTPS 证书。</p>
+
+<p>购买的 HTTPS 证书一般会有两个文件，domain.key 和 domain.pem</p>
+
+<ul>
+<li>创建 TLS secret</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl create secret tls domain-tls --cert=path/to/domain.pem --key=path/to/domain.key</code></pre></div>
+<ul>
+<li>创建好 domain-tls 的 secret 后，更新 Ingress 规则，加上 TLS 配置</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f  https://raw.githubusercontent.com/Excited-ccccly/studymakesmehappy.club/master/static/files/kubernetes/ingress/06-k8s-dashboard-ingress-with-tls.yaml</code></pre></div>
+<p>HTTPS 生效大概需要1分钟，之后访问 <strong>k8s-dashboard.domain.com</strong>，绿色的 HTTPS 认证就出现了。</p>
+
+<h2 id="ingress-的-basic-auth-配置">Ingress 的 basic auth 配置</h2>
+
+<p>加入 TLS 加密之后，保证了客户端和服务器之间的数据传输是受保护的，但是现在任何一个人都可以通过 <strong>k8s-dashboard.domain.com</strong> 访问并控制 kubernetes 集群，这是不可接受的，需要加上权限验证。</p>
+
+<p>简单起见，以 basic-auth 为例</p>
+
+<ul>
+<li>创建 basic auth 文件，这里创建了一个名为 auth，用户名是 foo，密码是输入的密码的 basic auth 文件。Windows 下没有 htpasswd，可以使用 Windows Subsystem for Linux 来生成，详情请参考 <a href="http://studymakesmehappy.club/posts/set-up-development-environment-on-windows/">Set Up Development Environment on Windows</a></li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ htpasswd -c auth foo
+New password: &lt;bar&gt;
+New password:
+Re-type new password:
+Adding password <span style="color:#6ab825;font-weight:bold">for</span> user foo</code></pre></div>
+<ul>
+<li>创建 basic auth 的 secret</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl create secret generic basic-auth --from-file=auth</code></pre></div>
+<ul>
+<li>更新 Ingress，在 annotation 中加入 basic auth 的配置</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f  https://raw.githubusercontent.com/Excited-ccccly/studymakesmehappy.club/master/static/files/kubernetes/ingress/06-k8s-dashboard-ingress-with-tls-and-basic-auth.yaml</code></pre></div>
+<p>也是大概需要等1分钟，之后访问 k8s-dashboard.ruffcorp.com 都需要输入密码。</p>
+
+<h2 id="ingress-的局限">Ingress 的局限</h2>
+
+<p>由于 nginx 是第7层(Application Layer In <a href="https://en.wikipedia.org/wiki/OSI_model">OSI network model</a>)的负载均衡器，虽说 nginx 有 TCP 插件，可以转发第3层（Network Layer）的 TCP 连接，但 Ingress-nginx 对 <a href="https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/exposing-tcp-udp-services.md">TCP 请求的转发规则的支持</a> 可能不能满足我们的需求。</p>
+
+<p>假设我们有三个环境——Production, Staging 和 Test，三个环境下都有一个 tcp 服务，在 443 端口提供服务。它们域名分别为:</p>
+
+<ul>
+<li>tcp.domain.com</li>
+<li>staging-tcp.domain.com</li>
+<li>test-tcp.domain.com</li>
+</ul>
+
+<p>由于 Ingress-nginx 只能根据端口来转发 tcp 请求，而不是 <strong>域名:端口</strong> 的形式</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#3677a9">443</span>: production/tcp-service</code></pre></div>
+<p>但是这三个环境下的 tcp 服务的端口都是一样的，就会出现这种情况</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#3677a9">443</span>: production/tcp-service
+<span style="color:#3677a9">443</span>: staging/tcp-service
+<span style="color:#3677a9">443</span>: test/tcp-service</code></pre></div>
+<p>显然 Ingress nginx 无法识别这样的规则。</p>
+
+<p>假如 tcp 的规则可以这样设置：</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#ed9d13">&#34;tcp.domain.com:443&#34;</span>: production/tcp-service
+<span style="color:#ed9d13">&#34;staging-tcp.domain.com:443&#34;</span>: staging/tcp-service
+<span style="color:#ed9d13">&#34;test-tcp.domain.com:443&#34;</span>: test/tcp-service</code></pre></div>
+<p>那么 nginx 就能满足我们3个环境的需求了，但目前这只是我的一个设想，会找时间询问 Kubernetes 社区，并发起 pull request。</p>
+
+<p>在上述想法还未实现的情况下，针对这3个环境下的 tcp 服务，类似于 ingress nginx 的方式，可以单独通过 LoadBalancer 类型的 Service 对外暴露，获取到外部 IP 之后，再手动设置 DNS 解析。</p>
+
+<p>有问题欢迎 ping😁</p>
+
+</div>
+
+
+    
+<footer class='entry-footer'>
+  
+    
+      
+      
+
+<div class='categories'>
+  <span class='category-icon'>
+    <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
+  
+</svg>
+
+  </span>
+  <span class='screen-reader'>Categories: </span><a class='category' href='http://excited-ccccly.github.io/studymakesmehappy.club/categories/devops'>DevOps</a></div>
+
+
+    
+  
+    
+      
+      
+
+<div class='tags'>
+  <span class='tag-icon'>
+    <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+  
+</svg>
+
+  </span>
+  <span class='screen-reader'>Tags: </span><a class='tag' href='http://excited-ccccly.github.io/studymakesmehappy.club/tags/kubernetes'>Kubernetes</a>, <a class='tag' href='http://excited-ccccly.github.io/studymakesmehappy.club/tags/ingress'>Ingress</a>, <a class='tag' href='http://excited-ccccly.github.io/studymakesmehappy.club/tags/nginx'>nginx</a>, <a class='tag' href='http://excited-ccccly.github.io/studymakesmehappy.club/tags/loadbalancer'>Loadbalancer</a></div>
+
+
+    
+  
+</footer>
+
+
+
+  </article>
+
+  
+    
+<nav class='entry-nav'>
+  <div class='entry-nav-links'><div class='prev-entry'>
+      <a href='http://excited-ccccly.github.io/studymakesmehappy.club/posts/set-up-development-environment-on-windows/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader'>Previous post: </span>Set Up Development Environment on Windows</a>
+    </div></div>
+</nav>
+
+
+  
+
+  
+    <div class='comments-container'>
+</div>
+
+  
+</main>
+
+    <footer id='footer' class='footer-container'>
+      <div class='footer'>
+        <div class='social'>
+  <nav aria-label='Social Menu'>
+    <ul class='social-menu'><li>
+        <a href='https://github.com/Excited-ccccly' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Github account in new tab</span>
+          <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  
+</svg>
+
+        </a>
+      </li></ul>
+  </nav>
+</div>
+
+        <div class='copyright'>
+          <p>
+    
+      
+    
+  
+  &copy; 2017-2018 ccccly</p>
+
+
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src='http://excited-ccccly.github.io/studymakesmehappy.club/js/main.af838dd5.js'></script>
+  
+
+</body>
+
+</html>
+

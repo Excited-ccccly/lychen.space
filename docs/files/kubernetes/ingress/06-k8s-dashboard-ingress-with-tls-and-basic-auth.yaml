@@ -11,10 +11,10 @@ items:
       # name of the secret that contains the user/password definitions
       ingress.kubernetes.io/auth-secret: basic-auth
       # message to display with an appropriate context why the authentication is required
-      ingress.kubernetes.io/auth-realm: "Authentication Required - nanchao"    
+      ingress.kubernetes.io/auth-realm: "Authentication Required - foo"    
   spec:
     rules:
-    - host: k8s-dashboard.ruffcorp.com
+    - host: k8s-dashboard.domain.com
       http:
         paths:
         - backend:
@@ -23,6 +23,6 @@ items:
           path: /
     tls:
     - hosts:
-      - k8s-dashboard.ruffcorp.com
-      secretName: ruffcorp-tls                                  
-kind: List          
+      - k8s-dashboard.domain.com
+      secretName: domain-tls                                  
+kind: List

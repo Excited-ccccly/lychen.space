@@ -16,7 +16,6 @@ spec:
         prometheus.io/port: '10254'
         prometheus.io/scrape: 'true'
     spec:
-      serviceAccountName: nginx-ingress-serviceaccount
       containers:
         - name: nginx-ingress-controller
           image: ibmcom/nginx-ingress-controller:0.9.0-beta.13

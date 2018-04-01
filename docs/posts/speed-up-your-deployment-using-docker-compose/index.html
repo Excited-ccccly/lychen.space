@@ -24,7 +24,7 @@ Compose Up 以一个简单的 express app 为例'>
 <meta property='og:site_name' content=''>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='Docker'><meta property='article:tag' content='Compose'><meta property='article:tag' content='Deployment'><meta property='article:published_time' content='2018-02-14T01:05:40&#43;08:00'/><meta property='article:modified_time' content='2018-02-14T01:05:40&#43;08:00'/>
 
-<meta name="generator" content="Hugo 0.37.1" />
+<meta name="generator" content="Hugo 0.32.2" />
 
   <base href='http://excited-ccccly.github.io/studymakesmehappy.club/'>
   <title>Speed Up Your Deployment Using Docker Compose • ccccly</title>
@@ -180,8 +180,7 @@ Compose 多用于单主机部署，比如在本地电脑上搭建你的开发环
   });
 });
 
-app.listen(<span style="color:#3677a9">3000</span>);
-</code></pre></div>
+app.listen(<span style="color:#3677a9">3000</span>);</code></pre></div>
 <p>有 &lsquo;/&rsquo; 的请求来时，执行 &lsquo;SELECT 1 + 1 AS solution&rsquo; 的 sql 语句，返回给客户端</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ curl localhost:3000
 {<span style="color:#ed9d13">&#34;solution&#34;</span>: <span style="color:#3677a9">2</span>}</code></pre></div>
@@ -196,8 +195,7 @@ app.listen(<span style="color:#3677a9">3000</span>);
   host: process.env.MYSQL_HOST || <span style="color:#ed9d13">&#39;localhost&#39;</span>,
   user: process.env.MYSQL_USER || <span style="color:#ed9d13">&#39;root&#39;</span>,
   password: process.env.MYSQL_PASSWORD || <span style="color:#ed9d13">&#39;123&#39;</span>
-});
-</code></pre></div>
+});</code></pre></div>
 <p>意思就是，如果环境变量 MYSQL_HOST 有值，那么就 host 就使用这个值，否则使用 localhost。MYSQL_USER 和 MYSQL_PASSWORD 同理。</p>
 
 <p>在本机开发的时候，由于本机没有配置环境变量，则默认使用 localhost。</p>
