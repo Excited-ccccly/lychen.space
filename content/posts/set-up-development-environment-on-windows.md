@@ -46,7 +46,9 @@ scoop install conemu
 [ConEmu](https://github.com/Maximus5/ConEmu)是 Windows 上一个很优秀的 Terminal Emulator，tabs, splits 等等都提供给你。
 ![ConEmu](images/set-up-development-environment-on-windows/ConEmu.png)
 
-如果你是 Electron-Fan 的话，[Hyper](https://github.com/zeit/hyper) 也是一个不错的选择。
+如果你是 **Electron-Fan** 的话，[Hyper](https://github.com/zeit/hyper) 也是一个不错的选择。
+
+如果你是 **UWP-Fan** 的话，[FluentTerminal](https://github.com/felixse/FluentTerminal) 提供给你
 ## Windows Subsystem for Linux
 有没有想象过将 Linux 原生应用跑在 Windows 上? 由于 Windows 优秀的内核架构，这个不成问题，Windows Subsystem for Linux(WSL) 就是这么一种实现，你可以在 Windows 上安装 Ubuntu, Opensuse, Centos 等等，并且随意地在它们之间切换。
 
