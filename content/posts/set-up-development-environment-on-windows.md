@@ -1,5 +1,5 @@
 ---
-title: "Set Up Development Enviroment on Windows"
+title: "Set Up Development Environment on Windows"
 date: 2018-03-04T15:43:15+08:00
 ---
 
@@ -44,7 +44,7 @@ Windows 上的终端很难用，有不少替代品可供选用。
 scoop install conemu
 ```
 [ConEmu](https://github.com/Maximus5/ConEmu)是 Windows 上一个很优秀的 Terminal Emulator，tabs, splits 等等都提供给你。
-![ConEmu](images/set-up-development-enviroment-on-windows/ConEmu.png)
+![ConEmu](images/set-up-development-environment-on-windows/ConEmu.png)
 
 如果你是 Electron-Fan 的话，[Hyper](https://github.com/zeit/hyper) 也是一个不错的选择。
 ## Windows Subsystem for Linux
@@ -87,7 +87,7 @@ bash 里直接调用 Windows 上的 ipconfig.exe
 如果你想了解 WSL 背后有趣的实现原理，可以参考这篇博客 [Windows Subsystem for Linux Overview](https://blogs.msdn.microsoft.com/wsl/2016/04/22/windows-subsystem-for-linux-overview/)。一句话来说，WSL 将 Linux System Call 翻译并转发至 Windows Kernel。
 
 ## Oh-My-Zsh
-有了 WSL，你已经可以在 Window 上跑 Linux 了。这时候，你的欲望膨胀了，你想要用 oh-my-zsh 那一套，加快你的开发效率。没问题!
+有了 WSL，你已经可以在 Windows 上跑 Linux 了。这时候，你的欲望膨胀了，你想要用 oh-my-zsh 那一套，加快你的开发效率。没问题!
 
 以 Windows 上的 Ubuntu 为例:
 
@@ -113,7 +113,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 
 你熟悉的 zsh 主题和快捷命令又回来了！
 
-![oh-my-zsh](images/set-up-development-enviroment-on-windows/oh-my-zsh.png)
+![oh-my-zsh](images/set-up-development-environment-on-windows/oh-my-zsh.png)
 ## Editor&IDE
 在此推荐两款编辑器，[VScode](https://code.visualstudio.com/) 和 [Atom](https://atom.io/)。
 

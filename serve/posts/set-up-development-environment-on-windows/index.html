@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='闲言碎语：长久以来，Windows 一直被诟病在开源领域上开发体验不好，但最近几年，微软做出了巨大的改变，全力拥抱了开源，Github 上随处可见微软开发者的 Contribution；同时，笔记本电脑领域上几乎所有的创新都来自于 Windows 阵营，Windows 电脑变得越来越酷。这两点促使我专门为 Windows 开发社区做出自己的一份贡献。希望大家保持开放与沟通，避免无意义的争吵，塑造良好的社区氛围。
+ 这篇博客会介绍一些加快开发效率的工具，会安利以下(类别的)产品:
+ Package Manager(包管理器) Linux Toolkit(Linux 工具包) Terminal Emulator(终端模拟器) Windows Subsystem for Linux(Windows 上的 Linux 子系统) Oh-My-Zsh Editor&amp;IDE(编辑器和集成开发环境) Font(字体)  Package Manager scoop 是 Windows 上一个很友好的包管理器，类似于 Ubuntu 上的 apt，macos 上的 homebrew。
+Install 打开 Powershell
+set-executionpolicy remotesigned -s currentuser iex (new-object net.webclient).downloadstring(&#39;https://get.scoop.sh&#39;) Usage scoop 可以简化 Windows 上的软件安装流程。
+scoop install nodejs scoop 的软件库很全，几乎你想要的都能找到，再也不用打开浏览器-&gt;看文档-&gt;下载-&gt;配置环境变量了。
+Windows 平台上还有另外一个知名的包管理器 chocolatey，scoop 的优势在于不需管理员权限，因为所有的软件安装在用户本地，只对该用户有效，也减少了环境变量污染等问题，提高了使用体验。
+Linux Toolkit Linux 爱好者的你一定很希望在 Windows 上也可以使用 grep, sed, awk 等等工具。'>
+
+<meta property='og:title' content='Set Up Development Environment on Windows • ccccly'>
+<meta property='og:description' content='闲言碎语：长久以来，Windows 一直被诟病在开源领域上开发体验不好，但最近几年，微软做出了巨大的改变，全力拥抱了开源，Github 上随处可见微软开发者的 Contribution；同时，笔记本电脑领域上几乎所有的创新都来自于 Windows 阵营，Windows 电脑变得越来越酷。这两点促使我专门为 Windows 开发社区做出自己的一份贡献。希望大家保持开放与沟通，避免无意义的争吵，塑造良好的社区氛围。
+ 这篇博客会介绍一些加快开发效率的工具，会安利以下(类别的)产品:
+ Package Manager(包管理器) Linux Toolkit(Linux 工具包) Terminal Emulator(终端模拟器) Windows Subsystem for Linux(Windows 上的 Linux 子系统) Oh-My-Zsh Editor&amp;IDE(编辑器和集成开发环境) Font(字体)  Package Manager scoop 是 Windows 上一个很友好的包管理器，类似于 Ubuntu 上的 apt，macos 上的 homebrew。
+Install 打开 Powershell
+set-executionpolicy remotesigned -s currentuser iex (new-object net.webclient).downloadstring(&#39;https://get.scoop.sh&#39;) Usage scoop 可以简化 Windows 上的软件安装流程。
+scoop install nodejs scoop 的软件库很全，几乎你想要的都能找到，再也不用打开浏览器-&gt;看文档-&gt;下载-&gt;配置环境变量了。
+Windows 平台上还有另外一个知名的包管理器 chocolatey，scoop 的优势在于不需管理员权限，因为所有的软件安装在用户本地，只对该用户有效，也减少了环境变量污染等问题，提高了使用体验。
+Linux Toolkit Linux 爱好者的你一定很希望在 Windows 上也可以使用 grep, sed, awk 等等工具。'>
+<meta property='og:url' content='http://excited-ccccly.github.io/studymakesmehappy.club/posts/set-up-development-environment-on-windows/'>
+<meta property='og:site_name' content=''>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:published_time' content='2018-03-04T15:43:15&#43;08:00'/><meta property='article:modified_time' content='2018-03-04T15:43:15&#43;08:00'/>
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+  <base href='http://excited-ccccly.github.io/studymakesmehappy.club/'>
+  <title>Set Up Development Environment on Windows • ccccly</title>
+  <link rel='canonical' href='http://excited-ccccly.github.io/studymakesmehappy.club/posts/set-up-development-environment-on-windows/'>
+  <link href='' rel='alternate' type='application/rss+xml' title='' />
+  <link rel='icon' href='http://excited-ccccly.github.io/studymakesmehappy.club/favicon.ico'>
+<link rel='stylesheet' href='https://fonts.lug.ustc.edu.cn/css?family=Ubuntu:400,400i,700&subset=latin'>
+<link rel='stylesheet' href='http://excited-ccccly.github.io/studymakesmehappy.club/css/main.d02777fd.css'>
+
+
+
+</head>
+
+
+<body class='page'>
+  <div class='site'>
+    <header id='header' class='header-container'>
+      <div class='site-header'>
+        <nav id='navmenu' aria-label='Main Menu'>
+  <ul class='main-menu'>
+    
+    <li>
+      <a href='http://excited-ccccly.github.io/studymakesmehappy.club/'>Home</a>
+    </li>
+    
+    <li>
+      <a href='http://excited-ccccly.github.io/studymakesmehappy.club/about/'>About</a>
+    </li>
+    
+    <li>
+      <a href='https://github.com/Excited-ccccly/studymakesmehappy.club'>Repo</a>
+    </li>
+    
+  </ul>
+</nav>
+
+        <div class='site-info'>
+          
+          <p class='site-title title'></p>
+          
+          <p class='site-description'>Study makes me happy</p>
+        </div>
+      </div>
+    </header>
+
+
+<main class='main'>
+  <article lang='en' class='entry'>
+    <header class='entry-header'>
+  <div class='entry-info'>
+    <h1 class='entry-title title'>Set Up Development Environment on Windows</h1>
+    
+  </div>
+  
+<div class='meta'>
+  <span class='posted-on'>
+    <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+
+    <span class='screen-reader'>Posted on </span>
+    <time class='date' datetime='2018-03-04T15:43:15&#43;08:00'>2018, Mar 4</time>
+  </span>
+  
+  <span class='byline'>
+    <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M21,21V20c0-2.76-4-5-9-5s-9,2.24-9,5v1"/>
+  <path d="M16,6.37A4,4,0,1,1,12.63,3,4,4,0,0,1,16,6.37Z"/>
+  
+</svg>
+
+    <span class='screen-reader'> by </span>
+    ccccly
+  </span>
+  
+</div>
+
+
+</header>
+
+    <div class='entry-content'>
+  
+
+<blockquote>
+<p>闲言碎语：长久以来，Windows 一直被诟病在开源领域上开发体验不好，但最近几年，微软做出了巨大的改变，全力拥抱了开源，Github 上随处可见微软开发者的 Contribution；同时，笔记本电脑领域上几乎所有的创新都来自于 Windows 阵营，Windows 电脑变得越来越酷。这两点促使我专门为 Windows 开发社区做出自己的一份贡献。希望大家保持开放与沟通，避免无意义的争吵，塑造良好的社区氛围。</p>
+</blockquote>
+
+<p>这篇博客会介绍一些加快开发效率的工具，会安利以下(类别的)产品:</p>
+
+<ul>
+<li>Package Manager(包管理器)</li>
+<li>Linux Toolkit(Linux 工具包)</li>
+<li>Terminal Emulator(终端模拟器)</li>
+<li>Windows Subsystem for Linux(Windows 上的 Linux 子系统)</li>
+<li>Oh-My-Zsh</li>
+<li>Editor&amp;IDE(编辑器和集成开发环境)</li>
+<li>Font(字体)</li>
+</ul>
+
+<h2 id="package-manager">Package Manager</h2>
+
+<p><a href="https://github.com/lukesampson/scoop">scoop</a> 是 Windows 上一个很友好的包管理器，类似于 Ubuntu 上的 apt，macos 上的 homebrew。</p>
+
+<h4 id="install">Install</h4>
+
+<p>打开 Powershell</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Powershell" data-lang="Powershell"><span style="color:#24909d">set-executionpolicy</span> remotesigned -s currentuser
+iex (<span style="color:#24909d">new-object</span> net.webclient).downloadstring(<span style="color:#ed9d13">&#39;https://get.scoop.sh&#39;</span>)</code></pre></div>
+<h4 id="usage">Usage</h4>
+
+<p>scoop 可以简化 Windows 上的软件安装流程。</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">scoop install nodejs</code></pre></div>
+<p>scoop 的软件库很全，几乎你想要的都能找到，再也不用打开浏览器-&gt;看文档-&gt;下载-&gt;配置环境变量了。</p>
+
+<p>Windows 平台上还有另外一个知名的包管理器 <a href="https://chocolatey.org/">chocolatey</a>，scoop 的优势在于不需管理员权限，因为所有的软件安装在用户本地，只对该用户有效，也减少了环境变量污染等问题，提高了使用体验。</p>
+
+<h2 id="linux-toolkit">Linux Toolkit</h2>
+
+<p>Linux 爱好者的你一定很希望在 Windows 上也可以使用 grep, sed, awk 等等工具。</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">scoop install busybox</code></pre></div>
+<p>一条命令就能帮你安装 130 多个工具，你熟悉的 Linux 工作体验又回来了！</p>
+
+<h2 id="terminal-emulator">Terminal Emulator</h2>
+
+<p>Windows 上的终端很难用，有不少替代品可供选用。</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">scoop install conemu</code></pre></div>
+<p><a href="https://github.com/Maximus5/ConEmu">ConEmu</a>是 Windows 上一个很优秀的 Terminal Emulator，tabs, splits 等等都提供给你。
+<img src="images/set-up-development-environment-on-windows/ConEmu.png" alt="ConEmu" /></p>
+
+<p>如果你是 Electron-Fan 的话，<a href="https://github.com/zeit/hyper">Hyper</a> 也是一个不错的选择。</p>
+
+<h2 id="windows-subsystem-for-linux">Windows Subsystem for Linux</h2>
+
+<p>有没有想象过将 Linux 原生应用跑在 Windows 上? 由于 Windows 优秀的内核架构，这个不成问题，Windows Subsystem for Linux(WSL) 就是这么一种实现，你可以在 Windows 上安装 Ubuntu, Opensuse, Centos 等等，并且随意地在它们之间切换。</p>
+
+<h4 id="install-1">Install</h4>
+
+<p>管理员身份打开 Powershell</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Powershell" data-lang="Powershell"><span style="color:#24909d">Enable-WindowsOptionalFeature</span> -Online -FeatureName Microsoft-Windows-Subsystem-Linux</code></pre></div>
+<ul>
+<li>如果是最新的 Win10 系统，到应用商店里就能直接安装 Ubuntu, Opensuse 等</li>
+<li>如果是老版本的 Win10 系统，建议升级到最新的 Win10，没理由停留在老版本的 Win10。如果暂时不想升级:
+设置-&gt; 更新和安装 -&gt; 开发者选项 -&gt; 开发者模式。命令行里运行 <strong>bash</strong></li>
+</ul>
+
+<p>详细的安装过程参考这篇文档 <a href="https://docs.microsoft.com/zh-cn/windows/wsl/install-win10">Install the Windows Subsystem for Linux</a></p>
+
+<h4 id="usage-1">Usage</h4>
+
+<p>WSL 相比于 Cygwin 的优势在于它强大的 interoperability</p>
+
+<blockquote>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">wsl ls -la | findstr <span style="color:#ed9d13">&#34;foo&#34;</span></code></pre></div>
+<p>ls 是 linux 命令, findstr 是 windows 命令, wsl 允许两者结合起来用，超酷的！</p>
+
+<p>WSL 还允许你在 Linux 下访问 Windows 上的文件，调用 Windows 上的程序。</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ipconfig.exe | grep IPv4 | cut -d: -f2
+<span style="color:#3677a9">172</span>.21.240.1
+<span style="color:#3677a9">10</span>.159.21.24</code></pre></div>
+<p>bash 里直接调用 Windows 上的 ipconfig.exe</p>
+</blockquote>
+
+<p>如果你想 hack wsl，玩一些更有意思的事情，可以看看这个项目 <a href="https://github.com/RoliSoft/WSL-Distribution-Switcher">WSL-Distribution-Switcher</a></p>
+
+<p>如果你想了解 WSL 背后有趣的实现原理，可以参考这篇博客 <a href="https://blogs.msdn.microsoft.com/wsl/2016/04/22/windows-subsystem-for-linux-overview/">Windows Subsystem for Linux Overview</a>。一句话来说，WSL 将 Linux System Call 翻译并转发至 Windows Kernel。</p>
+
+<h2 id="oh-my-zsh">Oh-My-Zsh</h2>
+
+<p>有了 WSL，你已经可以在 Windows 上跑 Linux 了。这时候，你的欲望膨胀了，你想要用 oh-my-zsh 那一套，加快你的开发效率。没问题!</p>
+
+<p>以 Windows 上的 Ubuntu 为例:</p>
+
+<ul>
+<li>安装 zsh</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  sudo apt install zsh
+  vim ~/.bashrc</code></pre></div>
+<ul>
+<li>vim 打开 .bashrc 后，在第一行加上以下代码</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#24909d">exec</span> zsh</code></pre></div>
+<ul>
+<li><p>进行 zsh 的初始化，选 2 吧。</p></li>
+
+<li><p>安装 oh-my-zsh</p></li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sh -c <span style="color:#ed9d13">&#34;</span><span style="color:#6ab825;font-weight:bold">$(</span>curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span style="color:#6ab825;font-weight:bold">)</span><span style="color:#ed9d13">&#34;</span></code></pre></div>
+<p>你熟悉的 zsh 主题和快捷命令又回来了！</p>
+
+<p><img src="images/set-up-development-environment-on-windows/oh-my-zsh.png" alt="oh-my-zsh" /></p>
+
+<h2 id="editor-ide">Editor&amp;IDE</h2>
+
+<p>在此推荐两款编辑器，<a href="https://code.visualstudio.com/">VScode</a> 和 <a href="https://atom.io/">Atom</a>。</p>
+
+<p>它们都是用 Electron 打造。VScode 适合喜欢开箱即用的人，非常方便；Atom 适合喜欢对编辑器进行 Hack 的人。你可以在官网上安装，也可以用 scoop 安装。</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">scoop bucket add extras
+scoop install vscode
+scoop install atom</code></pre></div>
+<p>IDE 的话，也就 Visual Studio 和 Jetbrains 家族了吧，看你开发的语言平台了。讲真，有了 VScode，我可以很方便地获得类 IDE 的 js, ts, go, c#, python, rust 开发体验。IDE 都很少打开了。</p>
+
+<h2 id="font">Font</h2>
+
+<p>最新的 Win10 系统对高分辨率的屏幕支持已经很好了。但一些第三方软件由于历史原因，还没有很好地适配。在使用这些第三方软件的时候，如果字体让你感到不舒服，请带上护目镜——使用额外的字体</p>
+
+<p>我对字体没有额外的研究，在此就分享给大家一款对开发者友好的字体——<a href="https://github.com/andreberg/Meslo-Font">Meslo-Font</a></p>
+
+<p>下载安装之后，第三方软件里配置一下字体即可。</p>
+
+<h2 id="最后">最后</h2>
+
+<p>希望这篇博客可以帮助到 Windows 上的开发者，希望大家喜欢。所有的荣誉归于以上对 Windows 开发者社区做出巨大贡献的开发者们，对他们报以崇高的敬意。并以此为动力，为 Windows 社区做出更多的贡献。</p>
+
+<p>这篇博客会保持更新，分享我在 Windows 上开发时使用的工具，力在提升 Windows 上的开发体验。谢谢大家。</p>
+
+</div>
+
+
+    
+<footer class='entry-footer'>
+  
+    
+  
+    
+  
+</footer>
+
+
+
+  </article>
+
+  
+    
+<nav class='entry-nav'>
+  <div class='entry-nav-links'><div class='prev-entry'>
+      <a href='http://excited-ccccly.github.io/studymakesmehappy.club/posts/speed-up-your-deployment-using-docker-compose/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader'>Previous post: </span>Speed Up Your Deployment Using Docker Compose</a>
+    </div></div>
+</nav>
+
+
+  
+
+  
+    <div class='comments-container'>
+</div>
+
+  
+</main>
+
+    <footer id='footer' class='footer-container'>
+      <div class='footer'>
+        <div class='social'>
+  <nav aria-label='Social Menu'>
+    <ul class='social-menu'><li>
+        <a href='https://github.com/Excited-ccccly' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Github account in new tab</span>
+          <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  
+</svg>
+
+        </a>
+      </li></ul>
+  </nav>
+</div>
+
+        <div class='copyright'>
+          <p>
+    
+      
+    
+  
+  &copy; 2017-2018 ccccly</p>
+
+
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src='http://excited-ccccly.github.io/studymakesmehappy.club/js/main.af838dd5.js'></script>
+  
+
+</body>
+
+</html>
+

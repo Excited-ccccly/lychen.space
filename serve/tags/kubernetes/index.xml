@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kubernetes on </title>
+    <link>http://excited-ccccly.github.io/studymakesmehappy.club/tags/kubernetes/</link>
+    <description>Recent content in Kubernetes on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 07 Jan 2018 23:31:08 +0800</lastBuildDate>
+    
+	<atom:link href="http://excited-ccccly.github.io/studymakesmehappy.club/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Kubernetes101</title>
+      <link>http://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes101/</link>
+      <pubDate>Sun, 07 Jan 2018 23:31:08 +0800</pubDate>
+      
+      <guid>http://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes101/</guid>
+      <description>这是一篇 kubernetes（简称 k8s，将中间的 8 个字母简写成“8”） 的基础教程，会使用实际例子来讲解 k8s 中的基础概念。
+在这个教程中，假设你有基本的 Docker 使用基础，你将会学习到以下几点：
+ 搭建 k8s 集群 部署一个容器化的应用到集群中 通过 Service 暴露服务 通过 Replica 来伸缩服务实例 通过 Rolling Update 更新服务 Deployment, Pod, Node, Service 等相关的概念  安装 cli kubectl 是 k8s 的命令行工具，可以方便地管理集群
+安装集群 有两种方式可以安装 k8s 集群
+云上安装 k8s 如果你有多台云服务器，使用 rancher 来搭建 k8s 集群是一个方便快捷的选择。
+一般来说，国外的解决方案在中国很可能出现水土不服的情况，需要额外参考这篇文章————原生加速中国区Kubernetes安装
+额外，还需要注意以下几点:
+ 云服务器的名字不能过长，超过 63 个字符之后，会导致该节点无法注册成功。 需要使用和 rancher 兼容的 docker 版本，参考这个列表  搭建好集群之后，点击 UI 界面上的 kubernetes &amp;gt; cli &amp;gt; generate config，按照说明配置 kubectl ，即可将 kubectl 连接上 rancher 搭建的 k8s 集群</description>
+    </item>
+    
+  </channel>
+</rss>
