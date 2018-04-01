@@ -1,6 +1,8 @@
 ---
 title: "Set Up Development Environment on Windows"
 date: 2018-03-04T15:43:15+08:00
+categories: ["DevOps", "Tools"]
+tags: ["Windows", "Package Manager", "Linux", "WSL", "Terminal Emulator", "Editor", "Font"]
 ---
 
 > 闲言碎语：长久以来，Windows 一直被诟病在开源领域上开发体验不好，但最近几年，微软做出了巨大的改变，全力拥抱了开源，Github 上随处可见微软开发者的 Contribution；同时，笔记本电脑领域上几乎所有的创新都来自于 Windows 阵营，Windows 电脑变得越来越酷。这两点促使我专门为 Windows 开发社区做出自己的一份贡献。希望大家保持开放与沟通，避免无意义的争吵，塑造良好的社区氛围。

@@ -83,6 +83,18 @@
   </url>
   
   <url>
+    <loc>http://excited-ccccly.github.io/studymakesmehappy.club/tags/editor/</loc>
+    <lastmod>2018-03-04T15:43:15+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://excited-ccccly.github.io/studymakesmehappy.club/tags/font/</loc>
+    <lastmod>2018-03-04T15:43:15+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://excited-ccccly.github.io/studymakesmehappy.club/tags/iso-8061/</loc>
     <lastmod>2017-11-27T00:01:44+08:00</lastmod>
     <priority>0</priority>
@@ -103,6 +115,12 @@
   <url>
     <loc>http://excited-ccccly.github.io/studymakesmehappy.club/tags/kubernetes/</loc>
     <lastmod>2018-03-27T15:27:27+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://excited-ccccly.github.io/studymakesmehappy.club/tags/linux/</loc>
+    <lastmod>2018-03-04T15:43:15+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -131,6 +149,12 @@
   </url>
   
   <url>
+    <loc>http://excited-ccccly.github.io/studymakesmehappy.club/tags/package-manager/</loc>
+    <lastmod>2018-03-04T15:43:15+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://excited-ccccly.github.io/studymakesmehappy.club/page/</loc>
     <priority>0</priority>
   </url>
@@ -148,6 +172,12 @@
   </url>
   
   <url>
+    <loc>http://excited-ccccly.github.io/studymakesmehappy.club/tags/terminal-emulator/</loc>
+    <lastmod>2018-03-04T15:43:15+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://excited-ccccly.github.io/studymakesmehappy.club/tags/time/</loc>
     <lastmod>2017-11-27T00:01:44+08:00</lastmod>
     <priority>0</priority>
@@ -160,8 +190,26 @@
   </url>
   
   <url>
+    <loc>http://excited-ccccly.github.io/studymakesmehappy.club/categories/tools/</loc>
+    <lastmod>2018-03-04T15:43:15+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://excited-ccccly.github.io/studymakesmehappy.club/tags/wsl/</loc>
+    <lastmod>2018-03-04T15:43:15+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://excited-ccccly.github.io/studymakesmehappy.club/tags/why/</loc>
     <lastmod>2017-07-25T00:50:18+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://excited-ccccly.github.io/studymakesmehappy.club/tags/windows/</loc>
+    <lastmod>2018-03-04T15:43:15+08:00</lastmod>
     <priority>0</priority>
   </url>
   
