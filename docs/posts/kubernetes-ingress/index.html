@@ -20,7 +20,7 @@ http { upstream my-api { server 127.0.0.1:8080; } server { listen 80; server_nam
 <meta property='og:site_name' content=''>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='Kubernetes'><meta property='article:tag' content='Ingress'><meta property='article:tag' content='nginx'><meta property='article:tag' content='Loadbalancer'><meta property='article:published_time' content='2018-03-27T15:27:27&#43;08:00'/><meta property='article:modified_time' content='2018-03-27T15:27:27&#43;08:00'/>
 
-<meta name="generator" content="Hugo 0.32.2" />
+<meta name="generator" content="Hugo 0.40.2" />
 
   <base href='http://excited-ccccly.github.io/studymakesmehappy.club/'>
   <title>Kubernetes Ingress • ccccly</title>
@@ -162,20 +162,20 @@ hello world</code></pre></div>
 </ul>
 
 <p>一个简单的 Ingress 规则长这样子</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-YAML" data-lang="YAML">apiVersion:<span style="color:#666"> </span>v<span style="color:#3677a9">1</span><span style="color:#666">
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-YAML" data-lang="YAML">apiVersion:<span style="color:#666"> </span>v1<span style="color:#666">
 </span><span style="color:#666"></span>items:<span style="color:#666">
-</span><span style="color:#666"></span>-<span style="color:#666"> </span>apiVersion:<span style="color:#666"> </span>extensions/v1beta<span style="color:#3677a9">1</span><span style="color:#666">
+</span><span style="color:#666"></span>-<span style="color:#666"> </span>apiVersion:<span style="color:#666"> </span>extensions/v1beta1<span style="color:#666">
 </span><span style="color:#666">  </span>kind:<span style="color:#666"> </span>Ingress<span style="color:#666">
 </span><span style="color:#666">  </span>metadata:<span style="color:#666">
 </span><span style="color:#666">    </span>name:<span style="color:#666"> </span>kube-system.ingress<span style="color:#666">
 </span><span style="color:#666">    </span>namespace:<span style="color:#666"> </span>kube-system<span style="color:#666">
 </span><span style="color:#666">  </span>spec:<span style="color:#666">
 </span><span style="color:#666">    </span>rules:<span style="color:#666">
-</span><span style="color:#666">    </span>-<span style="color:#666"> </span>host:<span style="color:#666"> </span>website<span style="color:#3677a9">1.</span>domain.com<span style="color:#666">
+</span><span style="color:#666">    </span>-<span style="color:#666"> </span>host:<span style="color:#666"> </span>website1.domain.com<span style="color:#666">
 </span><span style="color:#666">      </span>http:<span style="color:#666">
 </span><span style="color:#666">        </span>paths:<span style="color:#666">
 </span><span style="color:#666">        </span>-<span style="color:#666"> </span>backend:<span style="color:#666">
-</span><span style="color:#666">            </span>serviceName:<span style="color:#666"> </span>website<span style="color:#3677a9">1</span><span style="color:#666">
+</span><span style="color:#666">            </span>serviceName:<span style="color:#666"> </span>website1<span style="color:#666">
 </span><span style="color:#666">            </span>servicePort:<span style="color:#666"> </span><span style="color:#3677a9">80</span><span style="color:#666">
 </span><span style="color:#666">          </span>path:<span style="color:#666"> </span>/<span style="color:#666">
 </span><span style="color:#666"></span>kind:<span style="color:#666"> </span>List</code></pre></div>
