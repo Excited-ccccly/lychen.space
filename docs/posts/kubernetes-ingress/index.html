@@ -183,7 +183,11 @@ hello world</code></pre></div>
 
 <h2 id="ingress-的基础配置">Ingress 的基础配置</h2>
 
-<p>接下来动手配置一个 Kubernetes 集群的 Ingress</p>
+<p>接下来动手配置一个 Kubernetes 集群的 Ingress。</p>
+
+<blockquote>
+<p>由于以下的步骤要求部署的 Kubernetes 支持云厂商提供的外部 LoadBalancer，类似于 minikube 之类的环境是不支持外部 LoadBalancer 的，请知晓。</p>
+</blockquote>
 
 <p>为了方便展示，以下所有使用到的配置文件都使用网络地址，不显示实际的内容，可以单独下载文件查看，也可以前往 <a href="https://github.com/Excited-ccccly/studymakesmehappy.club/tree/master/static/files/kubernetes/ingress">ingress 配置文件夹</a> 查看所有文件</p>
 
@@ -208,11 +212,11 @@ hello world</code></pre></div>
 </ul>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f  https://raw.githubusercontent.com/Excited-ccccly/studymakesmehappy.club/master/static/files/kubernetes/ingress/05-service.yaml</code></pre></div>
 <p>获取 ingress nginx 服务的外部 LoadBalancer 的地址</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  kubectl get svc -n ingress-nginx</code></pre></div>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  kubectl get svc --namespace ingress-nginx</code></pre></div>
 <ul>
 <li><p>将域名解析到外部的 LoadBalancer</p>
 
-<p>*.domain -&gt; ExternalLoadBalancerIP</p></li>
+<p>*.domain.com -&gt; IngressNginxExternalLoadBalancerIP</p></li>
 
 <li><p>创建一条 Ingress 规则(暂时不带 TLS 和 Basic Auth)，将 <strong>k8s-dashboard.domain.com</strong> 转发至 kubernetes-dashboard 服务对应的 Pod 中。</p></li>
 </ul>
@@ -263,9 +267,9 @@ Adding password <span style="color:#6ab825;font-weight:bold">for</span> user foo
 
 <h2 id="ingress-的局限">Ingress 的局限</h2>
 
-<p>由于 nginx 是第7层(Application Layer In <a href="https://en.wikipedia.org/wiki/OSI_model">OSI network model</a>)的负载均衡器，虽说 nginx 有 TCP 插件，可以转发第3层（Network Layer）的 TCP 连接，但 Ingress-nginx 对 <a href="https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/exposing-tcp-udp-services.md">TCP 请求的转发规则的支持</a> 可能不能满足我们的需求。</p>
+<p>通常来说，nginx 是第7层(Application Layer In <a href="https://en.wikipedia.org/wiki/OSI_model">OSI network model</a>)的负载均衡器，虽说 nginx 有 TCP 插件，可以转发第4层（Transport Layer Layer）的 TCP 连接，但 Ingress-nginx 对 <a href="https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/exposing-tcp-udp-services.md">TCP 请求的转发规则的支持</a> 可能不能满足我们的需求。</p>
 
-<p>假设我们有三个环境——Production, Staging 和 Test，三个环境下都有一个 tcp 服务，在 443 端口提供服务。它们域名分别为:</p>
+<p>假设我们有三个环境——Production, Staging 和 Test，三个环境对应3个命名空间(namespace)，三个环境下都有一个 tcp 服务，在443端口提供服务。它们域名分别为:</p>
 
 <ul>
 <li>tcp.domain.com</li>
@@ -285,9 +289,15 @@ Adding password <span style="color:#6ab825;font-weight:bold">for</span> user foo
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#ed9d13">&#34;tcp.domain.com:443&#34;</span>: production/tcp-service
 <span style="color:#ed9d13">&#34;staging-tcp.domain.com:443&#34;</span>: staging/tcp-service
 <span style="color:#ed9d13">&#34;test-tcp.domain.com:443&#34;</span>: test/tcp-service</code></pre></div>
-<p>那么 nginx 就能满足我们3个环境的需求了，但目前这只是我的一个设想，会找时间询问 Kubernetes 社区，并发起 pull request。</p>
+<p>那么 nginx 就能满足我们3个环境的需求了。但这是无法实现的，在 TCP 层没有 host 域名信息，所以这个设想是无法做到的。</p>
 
-<p>在上述想法还未实现的情况下，针对这3个环境下的 tcp 服务，类似于 ingress nginx 的方式，可以单独通过 LoadBalancer 类型的 Service 对外暴露，获取到外部 IP 之后，再手动设置 DNS 解析。</p>
+<p>针对这3个环境下的 tcp 服务，类似于 ingress nginx 的方式，可以单独通过 LoadBalancer 类型的 Service 对外暴露，获取到外部 IP 之后，再手动设置 DNS 解析。</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl --namespace=production expose deploy tcp-service --type=LoadBalancer --port=<span style="color:#3677a9">80</span> --target-port=<span style="color:#3677a9">80</span> </code></pre></div>
+<p>获取 tcp-service 服务的外部 LoadBalancer 的地址</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl get svc --namespace ingress-nginx</code></pre></div>
+<p>将域名解析到外部的 LoadBalancer</p>
+
+<p>tcp.domain.com -&gt; TcpServiceExternalLoadBalancerIP</p>
 
 <p>有问题欢迎 ping😁</p>
 
