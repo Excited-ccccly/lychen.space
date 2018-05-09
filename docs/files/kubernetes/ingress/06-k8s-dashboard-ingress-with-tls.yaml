@@ -4,7 +4,14 @@ items:
   kind: Ingress
   metadata:
     name: kube-system.ingress
-    namespace: kube-system   
+    namespace: kube-system
+    annotations:
+      # 有一点值得注意，新旧版本的 nginx ingres 对 ingress annotation 格式的支持是不一样的
+      # 新版本: nginx.ingress.kubernetes.io/auth-type: basic
+      # 旧版本: ingress.kubernetes.io/auth-type: basic
+
+      # 由于最新的 k8s 中的 kubernetes-dashboard 强制要求 https，而 ingress nginx 默认是走 http 的，所以需要开启这项。
+      ingress.kubernetes.io/secure-backends: "true"      
   spec:
     rules:
     - host: k8s-dashboard.domain.com
