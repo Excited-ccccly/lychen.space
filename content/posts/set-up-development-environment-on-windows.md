@@ -43,6 +43,7 @@ scoop install busybox
 ## Terminal Emulator
 Windows 上的终端很难用，有不少替代品可供选用。
 ```shell
+scoop bucket add extras # conemu 在 extras 库中，关于 scoop 中的 bucket 概念，参考: https://github.com/lukesampson/scoop/wiki/Buckets
 scoop install conemu
 ```
 [ConEmu](https://github.com/Maximus5/ConEmu)是 Windows 上一个很优秀的 Terminal Emulator，tabs, splits 等等都提供给你。
@@ -101,7 +102,7 @@ bash 里直接调用 Windows 上的 ipconfig.exe
   sudo apt install zsh
   vim ~/.bashrc
   ```
-* vim 打开 .bashrc 后，在第一行加上以下代码
+* vim 打开 .bashrc 后，在最后一行加上以下代码
 
 ```shell
 exec zsh
@@ -123,7 +124,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 
 它们都是用 Electron 打造。VScode 适合喜欢开箱即用的人，非常方便；Atom 适合喜欢对编辑器进行 Hack 的人。你可以在官网上安装，也可以用 scoop 安装。
 ```shell
-scoop bucket add extras
+scoop bucket add extras # vscode 和 atom 都在 extras 库中，关于 scoop 中的 bucket 概念，参考: https://github.com/lukesampson/scoop/wiki/Buckets
 scoop install vscode
 scoop install atom
 ```
@@ -135,6 +136,16 @@ IDE 的话，也就 Visual Studio 和 Jetbrains 家族了吧，看你开发的�
 我对字体没有额外的研究，在此就分享给大家一款对开发者友好的字体——[Meslo-Font](https://github.com/andreberg/Meslo-Font)
 
 下载安装之后，第三方软件里配置一下字体即可。
+
+最近发现 scoop 也可以安装字体！
+
+```shell
+scoop bucket add nerd-fonts # 字体在 nerd-fonts 库中，关于 scoop 中的 bucket 概念，参考: https://github.com/lukesampson/scoop/wiki/Buckets
+scoop install sudo # 字体安装需要管理员权限
+sudo scoop install hack-nf
+```
+
+重启你的电脑💻
 
 ## 最后
 希望这篇博客可以帮助到 Windows 上的开发者，希望大家喜欢。所有的荣誉归于以上对 Windows 开发者社区做出巨大贡献的开发者们，对他们报以崇高的敬意。并以此为动力，为 Windows 社区做出更多的贡献。
