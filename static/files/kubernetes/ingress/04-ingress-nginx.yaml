@@ -18,6 +18,11 @@ spec:
     spec:
       containers:
         - name: nginx-ingress-controller
+          # 新版本的 nginx ingress 里的 nginx 和安卓手机上常用的 okhttp 在 http/2 上不兼容，主要是旧版本(2.x)的 okhttp 对 Dynamic Table Size 支持不好
+          # 解决方案：更新安卓上使用的 okhttp 库，使用最新版本的 nginx ingress，方便日后演进; 为了兼容性，保持这个旧版本的 nginx ingress
+          # 另外有一点值得注意，新旧版本的 nginx ingres 对 ingress annotation 格式的支持是不一样的
+          # 新版本: nginx.ingress.kubernetes.io/auth-type: basic
+          # 旧版本: ingress.kubernetes.io/auth-type: basic
           image: ibmcom/nginx-ingress-controller:0.9.0-beta.13
           args:
             - /nginx-ingress-controller
