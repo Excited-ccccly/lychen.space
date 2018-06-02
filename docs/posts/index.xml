@@ -5,10 +5,29 @@
     <link>http://excited-ccccly.github.io/studymakesmehappy.club/posts/</link>
     <description>Recent content in Posts on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 27 Mar 2018 15:27:27 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 02 Jun 2018 13:42:07 +0800</lastBuildDate>
     
 	<atom:link href="http://excited-ccccly.github.io/studymakesmehappy.club/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>聊一聊古老的 x-www-form-urlencoded</title>
+      <link>http://excited-ccccly.github.io/studymakesmehappy.club/posts/%E8%81%8A%E4%B8%80%E8%81%8A%E5%8F%A4%E8%80%81%E7%9A%84-x-www-form-urlencoded/</link>
+      <pubDate>Sat, 02 Jun 2018 13:42:07 +0800</pubDate>
+      
+      <guid>http://excited-ccccly.github.io/studymakesmehappy.club/posts/%E8%81%8A%E4%B8%80%E8%81%8A%E5%8F%A4%E8%80%81%E7%9A%84-x-www-form-urlencoded/</guid>
+      <description>在为一个服务写 API 接口, 它是这样子发数据的
+ HTTP发布接口以POST表单的方式将数据发送到用户服务器，Content-Type 为application/x-www-form-urlencoded; HTTP request body 格式形如 a=b&amp;amp;c=d
+ 第一反应, &amp;ldquo;这是啥, 为什么不用 json?&amp;ldquo;。抱怨归抱怨，事情还是要做的。举个例子：
+针对这样的数据
+{ &amp;#34;title&amp;#34;: &amp;#34;t&amp;#34;, &amp;#34;author&amp;#34;: &amp;#34;a&amp;#34; } 会以这样的形式发送到服务器:
+https://host/path/to/api?title=t&amp;amp;author=a 看上去没什么问题，so easy.
+但如果数据是这样子呢? 里面含有 list
+{ &amp;#34;title&amp;#34;: &amp;#34;t&amp;#34;, &amp;#34;author&amp;#34;: &amp;#34;a&amp;#34;, &amp;#34;categories&amp;#34;: [&amp;#34;c1&amp;#34;, &amp;#34;c2&amp;#34;] } 怎么处理 categories 这种 list 类型?
+这样？
+# percent-conding 之前 https://host/path/to/api?title=t&amp;amp;author=a&amp;amp;categories=[&amp;#34;c1&amp;#34;, &amp;#34;c2&amp;#34;] 注意， 其实在 url 中，一些字符会进行 Percent-encoding 处理，再发送给服务端。
+   原始 [&amp;ldquo; 空格]   Percent encoding 后 %5B%22 %205D</description>
+    </item>
     
     <item>
       <title>Kubernetes Ingress</title>
