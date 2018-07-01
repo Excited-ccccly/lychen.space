@@ -1,6 +1,8 @@
 ---
 title: "聊一聊古老的 x-www-form-urlencoded"
 date: 2018-06-02T13:42:07+08:00
+categories: ["Web"]
+tags: ["Python", "Flask", "x-www-form-urlencoded", "Research"]
 ---
 
 在为一个服务写 API 接口, 它是这样子发数据的
