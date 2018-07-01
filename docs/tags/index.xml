@@ -5,10 +5,19 @@
     <link>http://excited-ccccly.github.io/studymakesmehappy.club/tags/</link>
     <description>Recent content in Tags on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 25 Jul 2017 00:50:18 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 01 Jul 2018 12:21:44 +0800</lastBuildDate>
     
 	<atom:link href="http://excited-ccccly.github.io/studymakesmehappy.club/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Arch</title>
+      <link>http://excited-ccccly.github.io/studymakesmehappy.club/tags/arch/</link>
+      <pubDate>Sun, 01 Jul 2018 12:21:44 +0800</pubDate>
+      
+      <guid>http://excited-ccccly.github.io/studymakesmehappy.club/tags/arch/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Be Social</title>
@@ -16,6 +25,15 @@
       <pubDate>Tue, 25 Jul 2017 00:50:18 +0800</pubDate>
       
       <guid>http://excited-ccccly.github.io/studymakesmehappy.club/tags/be-social/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bootloader</title>
+      <link>http://excited-ccccly.github.io/studymakesmehappy.club/tags/bootloader/</link>
+      <pubDate>Sun, 01 Jul 2018 12:21:44 +0800</pubDate>
+      
+      <guid>http://excited-ccccly.github.io/studymakesmehappy.club/tags/bootloader/</guid>
       <description></description>
     </item>
     
@@ -65,6 +83,15 @@
     </item>
     
     <item>
+      <title>Flask</title>
+      <link>http://excited-ccccly.github.io/studymakesmehappy.club/tags/flask/</link>
+      <pubDate>Sat, 02 Jun 2018 13:42:07 +0800</pubDate>
+      
+      <guid>http://excited-ccccly.github.io/studymakesmehappy.club/tags/flask/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Font</title>
       <link>http://excited-ccccly.github.io/studymakesmehappy.club/tags/font/</link>
       <pubDate>Sun, 04 Mar 2018 15:43:15 +0800</pubDate>
@@ -103,7 +130,7 @@
     <item>
       <title>Linux</title>
       <link>http://excited-ccccly.github.io/studymakesmehappy.club/tags/linux/</link>
-      <pubDate>Sun, 04 Mar 2018 15:43:15 +0800</pubDate>
+      <pubDate>Sun, 01 Jul 2018 12:21:44 +0800</pubDate>
       
       <guid>http://excited-ccccly.github.io/studymakesmehappy.club/tags/linux/</guid>
       <description></description>
@@ -146,6 +173,33 @@
     </item>
     
     <item>
+      <title>Python</title>
+      <link>http://excited-ccccly.github.io/studymakesmehappy.club/tags/python/</link>
+      <pubDate>Sat, 02 Jun 2018 13:42:07 +0800</pubDate>
+      
+      <guid>http://excited-ccccly.github.io/studymakesmehappy.club/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Research</title>
+      <link>http://excited-ccccly.github.io/studymakesmehappy.club/tags/research/</link>
+      <pubDate>Sat, 02 Jun 2018 13:42:07 +0800</pubDate>
+      
+      <guid>http://excited-ccccly.github.io/studymakesmehappy.club/tags/research/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Systemd</title>
+      <link>http://excited-ccccly.github.io/studymakesmehappy.club/tags/systemd/</link>
+      <pubDate>Sun, 01 Jul 2018 12:21:44 +0800</pubDate>
+      
+      <guid>http://excited-ccccly.github.io/studymakesmehappy.club/tags/systemd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Terminal Emulator</title>
       <link>http://excited-ccccly.github.io/studymakesmehappy.club/tags/terminal-emulator/</link>
       <pubDate>Sun, 04 Mar 2018 15:43:15 +0800</pubDate>
@@ -173,6 +227,15 @@
     </item>
     
     <item>
+      <title>UEFI</title>
+      <link>http://excited-ccccly.github.io/studymakesmehappy.club/tags/uefi/</link>
+      <pubDate>Sun, 01 Jul 2018 12:21:44 +0800</pubDate>
+      
+      <guid>http://excited-ccccly.github.io/studymakesmehappy.club/tags/uefi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>WSL</title>
       <link>http://excited-ccccly.github.io/studymakesmehappy.club/tags/wsl/</link>
       <pubDate>Sun, 04 Mar 2018 15:43:15 +0800</pubDate>
@@ -196,6 +259,15 @@
       <pubDate>Sun, 04 Mar 2018 15:43:15 +0800</pubDate>
       
       <guid>http://excited-ccccly.github.io/studymakesmehappy.club/tags/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>X-www-form-urlencoded</title>
+      <link>http://excited-ccccly.github.io/studymakesmehappy.club/tags/x-www-form-urlencoded/</link>
+      <pubDate>Sat, 02 Jun 2018 13:42:07 +0800</pubDate>
+      
+      <guid>http://excited-ccccly.github.io/studymakesmehappy.club/tags/x-www-form-urlencoded/</guid>
       <description></description>
     </item>
     
