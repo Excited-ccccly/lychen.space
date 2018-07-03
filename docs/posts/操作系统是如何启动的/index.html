@@ -16,19 +16,19 @@ Bootloader Bootloader, 顾名思义，就是启动加载器。你电脑有多个
 UEFI UEFI 全称是 Unified Extensible Firmware Interface, 一个统一的、可扩展的、硬件和操作系统之间的固件接口。大家都喜欢统一， 统一意味着只需要实现一套标准；大家也都喜欢接口，接口抽象程度高；大家更喜欢可扩展，可以自己扩展功能。UEFI 是 BIOS 的继任者，近几年的电脑都是使用 UEFI 的。因为 BIOS 必须从硬盘（BIOS 设置里的第一块）的前 512 Bytes(称为 Master Boot Record) 开始加载。并且只有前 440 Bytes 是提供给 Bootloader 修改定义的。由于空间太小了，能做的事情很有限，做 Bootloader 的表示心里苦。
 但 UEFI 就不一样了，UEFI 能识别文件系统，意味着你可以把 Bootloader 的可执行文件放在硬盘中的任何一个地方。存放 Bootloader 可执行文件的地方叫做 EFI System Partition, 一般为 FAT32 分区。
 Bootloader Bootloader, 顾名思义，就是启动加载器。你电脑有多个操作系统，你告诉 Bootloader 去启动哪个，它就去启动那个系统，加载它的 Kernel. Linux 下有名的 Bootloader 是 grub, Windows 下是 winload.'>
-<meta property='og:url' content='http://excited-ccccly.github.io/studymakesmehappy.club/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%98%AF%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8%E7%9A%84/'>
+<meta property='og:url' content='https://excited-ccccly.github.io/studymakesmehappy.club/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%98%AF%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8%E7%9A%84/'>
 <meta property='og:site_name' content=''>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='Linux'><meta property='article:tag' content='Bootloader'><meta property='article:tag' content='UEFI'><meta property='article:tag' content='Systemd'><meta property='article:tag' content='Arch'><meta property='article:published_time' content='2018-07-01T12:21:44&#43;08:00'/><meta property='article:modified_time' content='2018-07-01T12:21:44&#43;08:00'/>
 
 <meta name="generator" content="Hugo 0.40.1" />
 
-  <base href='http://excited-ccccly.github.io/studymakesmehappy.club/'>
+  <base href='https://excited-ccccly.github.io/studymakesmehappy.club/'>
   <title>操作系统是如何启动的 • ccccly</title>
-  <link rel='canonical' href='http://excited-ccccly.github.io/studymakesmehappy.club/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%98%AF%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8%E7%9A%84/'>
+  <link rel='canonical' href='https://excited-ccccly.github.io/studymakesmehappy.club/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%98%AF%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8%E7%9A%84/'>
   <link href='' rel='alternate' type='application/rss+xml' title='' />
-  <link rel='icon' href='http://excited-ccccly.github.io/studymakesmehappy.club/favicon.ico'>
+  <link rel='icon' href='https://excited-ccccly.github.io/studymakesmehappy.club/favicon.ico'>
 <link rel='stylesheet' href='https://fonts.lug.ustc.edu.cn/css?family=Ubuntu:400,400i,700&subset=latin'>
-<link rel='stylesheet' href='http://excited-ccccly.github.io/studymakesmehappy.club/css/main.d02777fd.css'>
+<link rel='stylesheet' href='https://excited-ccccly.github.io/studymakesmehappy.club/css/main.d02777fd.css'>
 
 
 
@@ -43,11 +43,11 @@ Bootloader Bootloader, 顾名思义，就是启动加载器。你电脑有多个
   <ul class='main-menu'>
     
     <li>
-      <a href='http://excited-ccccly.github.io/studymakesmehappy.club/'>Home</a>
+      <a href='https://excited-ccccly.github.io/studymakesmehappy.club/'>Home</a>
     </li>
     
     <li>
-      <a href='http://excited-ccccly.github.io/studymakesmehappy.club/about/'>About</a>
+      <a href='https://excited-ccccly.github.io/studymakesmehappy.club/about/'>About</a>
     </li>
     
     <li>
@@ -291,7 +291,7 @@ mount /dev/sda1 /mnt/boot</code></pre></div>
 </svg>
 
   </span>
-  <span class='screen-reader'>Categories: </span><a class='category' href='http://excited-ccccly.github.io/studymakesmehappy.club/categories/operating-system'>Operating System</a></div>
+  <span class='screen-reader'>Categories: </span><a class='category' href='https://excited-ccccly.github.io/studymakesmehappy.club/categories/operating-system'>Operating System</a></div>
 
 
     
@@ -310,7 +310,7 @@ mount /dev/sda1 /mnt/boot</code></pre></div>
 </svg>
 
   </span>
-  <span class='screen-reader'>Tags: </span><a class='tag' href='http://excited-ccccly.github.io/studymakesmehappy.club/tags/linux'>Linux</a>, <a class='tag' href='http://excited-ccccly.github.io/studymakesmehappy.club/tags/bootloader'>Bootloader</a>, <a class='tag' href='http://excited-ccccly.github.io/studymakesmehappy.club/tags/uefi'>UEFI</a>, <a class='tag' href='http://excited-ccccly.github.io/studymakesmehappy.club/tags/systemd'>Systemd</a>, <a class='tag' href='http://excited-ccccly.github.io/studymakesmehappy.club/tags/arch'>Arch</a></div>
+  <span class='screen-reader'>Tags: </span><a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/linux'>Linux</a>, <a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/bootloader'>Bootloader</a>, <a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/uefi'>UEFI</a>, <a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/systemd'>Systemd</a>, <a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/arch'>Arch</a></div>
 
 
     
@@ -325,7 +325,7 @@ mount /dev/sda1 /mnt/boot</code></pre></div>
     
 <nav class='entry-nav'>
   <div class='entry-nav-links'><div class='prev-entry'>
-      <a href='http://excited-ccccly.github.io/studymakesmehappy.club/posts/%E8%81%8A%E4%B8%80%E8%81%8A%E5%8F%A4%E8%80%81%E7%9A%84-x-www-form-urlencoded/'>
+      <a href='https://excited-ccccly.github.io/studymakesmehappy.club/posts/%E8%81%8A%E4%B8%80%E8%81%8A%E5%8F%A4%E8%80%81%E7%9A%84-x-www-form-urlencoded/'>
         <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <line x1="20" y1="12" x2="4" y2="12"/>
@@ -380,7 +380,7 @@ mount /dev/sda1 /mnt/boot</code></pre></div>
 
   </div>
 
-  <script src='http://excited-ccccly.github.io/studymakesmehappy.club/js/main.af838dd5.js'></script>
+  <script src='https://excited-ccccly.github.io/studymakesmehappy.club/js/main.af838dd5.js'></script>
   
 
 </body>

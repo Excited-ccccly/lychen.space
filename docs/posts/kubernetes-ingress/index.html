@@ -16,19 +16,19 @@ NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE express-app NodePort 10.0.0.151 &lt
 $ curl http://192.168.99.100:31530 hello world 但每次使用 IP&#43;Port 访问服务的方式很不方便。在单机上，可以使用 nginx 的反向代理，实现通过域名访问服务。
 nginx.conf
 http { upstream my-api { server 127.0.0.1:8080; } server { listen 80; server_name api.domain.com; location / { proxy_pass http://my-api; } } } 启用 nginx 后，就可以通过访问 http://api.'>
-<meta property='og:url' content='http://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes-ingress/'>
+<meta property='og:url' content='https://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes-ingress/'>
 <meta property='og:site_name' content=''>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='Kubernetes'><meta property='article:tag' content='Ingress'><meta property='article:tag' content='nginx'><meta property='article:tag' content='Loadbalancer'><meta property='article:published_time' content='2018-03-27T15:27:27&#43;08:00'/><meta property='article:modified_time' content='2018-03-27T15:27:27&#43;08:00'/>
 
 <meta name="generator" content="Hugo 0.40.1" />
 
-  <base href='http://excited-ccccly.github.io/studymakesmehappy.club/'>
+  <base href='https://excited-ccccly.github.io/studymakesmehappy.club/'>
   <title>Kubernetes Ingress • ccccly</title>
-  <link rel='canonical' href='http://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes-ingress/'>
+  <link rel='canonical' href='https://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes-ingress/'>
   <link href='' rel='alternate' type='application/rss+xml' title='' />
-  <link rel='icon' href='http://excited-ccccly.github.io/studymakesmehappy.club/favicon.ico'>
+  <link rel='icon' href='https://excited-ccccly.github.io/studymakesmehappy.club/favicon.ico'>
 <link rel='stylesheet' href='https://fonts.lug.ustc.edu.cn/css?family=Ubuntu:400,400i,700&subset=latin'>
-<link rel='stylesheet' href='http://excited-ccccly.github.io/studymakesmehappy.club/css/main.d02777fd.css'>
+<link rel='stylesheet' href='https://excited-ccccly.github.io/studymakesmehappy.club/css/main.d02777fd.css'>
 
 
 
@@ -43,11 +43,11 @@ http { upstream my-api { server 127.0.0.1:8080; } server { listen 80; server_nam
   <ul class='main-menu'>
     
     <li>
-      <a href='http://excited-ccccly.github.io/studymakesmehappy.club/'>Home</a>
+      <a href='https://excited-ccccly.github.io/studymakesmehappy.club/'>Home</a>
     </li>
     
     <li>
-      <a href='http://excited-ccccly.github.io/studymakesmehappy.club/about/'>About</a>
+      <a href='https://excited-ccccly.github.io/studymakesmehappy.club/about/'>About</a>
     </li>
     
     <li>
@@ -110,7 +110,7 @@ http { upstream my-api { server 127.0.0.1:8080; } server { listen 80; server_nam
     <div class='entry-content'>
   
 
-<p><a href="http://studymakesmehappy.club/posts/kubernetes101/">kubernetes101</a> 介绍了 Kubernetes 的基本用法，通过 NodePort 的形式对外暴露 Service 来提供服务。</p>
+<p><a href="https://studymakesmehappy.club/posts/kubernetes101/">kubernetes101</a> 介绍了 Kubernetes 的基本用法，通过 NodePort 的形式对外暴露 Service 来提供服务。</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">NAME          TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 express-app   NodePort    <span style="color:#3677a9">10</span>.0.0.151   &lt;none&gt;        <span style="color:#3677a9">80</span>:31530/TCP   19m
 kubernetes    ClusterIP   <span style="color:#3677a9">10</span>.0.0.1     &lt;none&gt;        <span style="color:#3677a9">443</span>/TCP        1d</code></pre></div>
@@ -137,7 +137,7 @@ hello world</code></pre></div>
 
 <p>在 Kubernetes 集群中，Ingress 可以说是对 nginx 的抽象（接口），<a href="https://github.com/kubernetes/ingress-nginx">ingress-nginx</a> 是 Ingress 的一种实现。</p>
 
-<p>在这篇博客中，假设你学习过 <a href="http://studymakesmehappy.club/posts/kubernetes101/">kubernetes101</a>，你将会学习到以下几点：</p>
+<p>在这篇博客中，假设你学习过 <a href="https://studymakesmehappy.club/posts/kubernetes101/">kubernetes101</a>，你将会学习到以下几点：</p>
 
 <ul>
 <li>Ingress 介绍</li>
@@ -248,7 +248,7 @@ hello world</code></pre></div>
 <p>简单起见，以 basic-auth 为例</p>
 
 <ul>
-<li>创建 basic auth 文件，这里创建了一个名为 auth，用户名是 foo，密码是输入的密码的 basic auth 文件。Windows 下没有 htpasswd，可以使用 Windows Subsystem for Linux 来生成，详情请参考 <a href="http://studymakesmehappy.club/posts/set-up-development-environment-on-windows/">Set Up Development Environment on Windows</a></li>
+<li>创建 basic auth 文件，这里创建了一个名为 auth，用户名是 foo，密码是输入的密码的 basic auth 文件。Windows 下没有 htpasswd，可以使用 Windows Subsystem for Linux 来生成，详情请参考 <a href="https://studymakesmehappy.club/posts/set-up-development-environment-on-windows/">Set Up Development Environment on Windows</a></li>
 </ul>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ htpasswd -c auth foo
 New password: &lt;bar&gt;
@@ -320,7 +320,7 @@ Adding password <span style="color:#6ab825;font-weight:bold">for</span> user foo
 </svg>
 
   </span>
-  <span class='screen-reader'>Categories: </span><a class='category' href='http://excited-ccccly.github.io/studymakesmehappy.club/categories/devops'>DevOps</a></div>
+  <span class='screen-reader'>Categories: </span><a class='category' href='https://excited-ccccly.github.io/studymakesmehappy.club/categories/devops'>DevOps</a></div>
 
 
     
@@ -339,7 +339,7 @@ Adding password <span style="color:#6ab825;font-weight:bold">for</span> user foo
 </svg>
 
   </span>
-  <span class='screen-reader'>Tags: </span><a class='tag' href='http://excited-ccccly.github.io/studymakesmehappy.club/tags/kubernetes'>Kubernetes</a>, <a class='tag' href='http://excited-ccccly.github.io/studymakesmehappy.club/tags/ingress'>Ingress</a>, <a class='tag' href='http://excited-ccccly.github.io/studymakesmehappy.club/tags/nginx'>nginx</a>, <a class='tag' href='http://excited-ccccly.github.io/studymakesmehappy.club/tags/loadbalancer'>Loadbalancer</a></div>
+  <span class='screen-reader'>Tags: </span><a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/kubernetes'>Kubernetes</a>, <a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/ingress'>Ingress</a>, <a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/nginx'>nginx</a>, <a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/loadbalancer'>Loadbalancer</a></div>
 
 
     
@@ -354,7 +354,7 @@ Adding password <span style="color:#6ab825;font-weight:bold">for</span> user foo
     
 <nav class='entry-nav'>
   <div class='entry-nav-links'><div class='prev-entry'>
-      <a href='http://excited-ccccly.github.io/studymakesmehappy.club/posts/set-up-development-environment-on-windows/'>
+      <a href='https://excited-ccccly.github.io/studymakesmehappy.club/posts/set-up-development-environment-on-windows/'>
         <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <line x1="20" y1="12" x2="4" y2="12"/>
@@ -364,7 +364,7 @@ Adding password <span style="color:#6ab825;font-weight:bold">for</span> user foo
  Previous</span>
         <span class='screen-reader'>Previous post: </span>Set Up Development Environment on Windows</a>
     </div><div class='next-entry'>
-      <a href='http://excited-ccccly.github.io/studymakesmehappy.club/posts/%E8%81%8A%E4%B8%80%E8%81%8A%E5%8F%A4%E8%80%81%E7%9A%84-x-www-form-urlencoded/'>
+      <a href='https://excited-ccccly.github.io/studymakesmehappy.club/posts/%E8%81%8A%E4%B8%80%E8%81%8A%E5%8F%A4%E8%80%81%E7%9A%84-x-www-form-urlencoded/'>
         <span class='screen-reader'>Next post: </span>聊一聊古老的 x-www-form-urlencoded<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <line x1="4" y1="12" x2="20" y2="12"/>
@@ -419,7 +419,7 @@ Adding password <span style="color:#6ab825;font-weight:bold">for</span> user foo
 
   </div>
 
-  <script src='http://excited-ccccly.github.io/studymakesmehappy.club/js/main.af838dd5.js'></script>
+  <script src='https://excited-ccccly.github.io/studymakesmehappy.club/js/main.af838dd5.js'></script>
   
 
 </body>

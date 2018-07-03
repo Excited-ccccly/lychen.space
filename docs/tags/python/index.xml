@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python on </title>
-    <link>http://excited-ccccly.github.io/studymakesmehappy.club/tags/python/</link>
+    <link>https://excited-ccccly.github.io/studymakesmehappy.club/tags/python/</link>
     <description>Recent content in Python on </description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 02 Jun 2018 13:42:07 +0800</lastBuildDate>
     
-	<atom:link href="http://excited-ccccly.github.io/studymakesmehappy.club/tags/python/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://excited-ccccly.github.io/studymakesmehappy.club/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>聊一聊古老的 x-www-form-urlencoded</title>
-      <link>http://excited-ccccly.github.io/studymakesmehappy.club/posts/%E8%81%8A%E4%B8%80%E8%81%8A%E5%8F%A4%E8%80%81%E7%9A%84-x-www-form-urlencoded/</link>
+      <link>https://excited-ccccly.github.io/studymakesmehappy.club/posts/%E8%81%8A%E4%B8%80%E8%81%8A%E5%8F%A4%E8%80%81%E7%9A%84-x-www-form-urlencoded/</link>
       <pubDate>Sat, 02 Jun 2018 13:42:07 +0800</pubDate>
       
-      <guid>http://excited-ccccly.github.io/studymakesmehappy.club/posts/%E8%81%8A%E4%B8%80%E8%81%8A%E5%8F%A4%E8%80%81%E7%9A%84-x-www-form-urlencoded/</guid>
+      <guid>https://excited-ccccly.github.io/studymakesmehappy.club/posts/%E8%81%8A%E4%B8%80%E8%81%8A%E5%8F%A4%E8%80%81%E7%9A%84-x-www-form-urlencoded/</guid>
       <description>在为一个服务写 API 接口, 它是这样子发数据的
  HTTP发布接口以POST表单的方式将数据发送到用户服务器，Content-Type 为application/x-www-form-urlencoded; HTTP request body 格式形如 a=b&amp;amp;c=d
  第一反应, &amp;ldquo;这是啥, 为什么不用 json?&amp;ldquo;。抱怨归抱怨，事情还是要做的。举个例子：

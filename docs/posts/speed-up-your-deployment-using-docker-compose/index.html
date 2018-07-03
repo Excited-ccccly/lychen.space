@@ -20,19 +20,19 @@ Compose Up 以一个简单的 express app 为例'>
 Setup Windows 和 Mac 下的 Docker 客户端自带 Docker Compose， Ubuntu 下直接apt install docker-compose即可
 详情参考Install Docker Compose
 Compose Up 以一个简单的 express app 为例'>
-<meta property='og:url' content='http://excited-ccccly.github.io/studymakesmehappy.club/posts/speed-up-your-deployment-using-docker-compose/'>
+<meta property='og:url' content='https://excited-ccccly.github.io/studymakesmehappy.club/posts/speed-up-your-deployment-using-docker-compose/'>
 <meta property='og:site_name' content=''>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='Docker'><meta property='article:tag' content='Compose'><meta property='article:tag' content='Deployment'><meta property='article:published_time' content='2018-02-14T01:05:40&#43;08:00'/><meta property='article:modified_time' content='2018-02-14T01:05:40&#43;08:00'/>
 
 <meta name="generator" content="Hugo 0.40.1" />
 
-  <base href='http://excited-ccccly.github.io/studymakesmehappy.club/'>
+  <base href='https://excited-ccccly.github.io/studymakesmehappy.club/'>
   <title>Speed Up Your Deployment Using Docker Compose • ccccly</title>
-  <link rel='canonical' href='http://excited-ccccly.github.io/studymakesmehappy.club/posts/speed-up-your-deployment-using-docker-compose/'>
+  <link rel='canonical' href='https://excited-ccccly.github.io/studymakesmehappy.club/posts/speed-up-your-deployment-using-docker-compose/'>
   <link href='' rel='alternate' type='application/rss+xml' title='' />
-  <link rel='icon' href='http://excited-ccccly.github.io/studymakesmehappy.club/favicon.ico'>
+  <link rel='icon' href='https://excited-ccccly.github.io/studymakesmehappy.club/favicon.ico'>
 <link rel='stylesheet' href='https://fonts.lug.ustc.edu.cn/css?family=Ubuntu:400,400i,700&subset=latin'>
-<link rel='stylesheet' href='http://excited-ccccly.github.io/studymakesmehappy.club/css/main.d02777fd.css'>
+<link rel='stylesheet' href='https://excited-ccccly.github.io/studymakesmehappy.club/css/main.d02777fd.css'>
 
 
 
@@ -47,11 +47,11 @@ Compose Up 以一个简单的 express app 为例'>
   <ul class='main-menu'>
     
     <li>
-      <a href='http://excited-ccccly.github.io/studymakesmehappy.club/'>Home</a>
+      <a href='https://excited-ccccly.github.io/studymakesmehappy.club/'>Home</a>
     </li>
     
     <li>
-      <a href='http://excited-ccccly.github.io/studymakesmehappy.club/about/'>About</a>
+      <a href='https://excited-ccccly.github.io/studymakesmehappy.club/about/'>About</a>
     </li>
     
     <li>
@@ -128,7 +128,7 @@ Compose Up 以一个简单的 express app 为例'>
 <h2 id="overview">Overview</h2>
 
 <p>Docker Compose 用于定义和运行多容器应用，它使用 YAML 文件来描述服务之间的依赖关系，一条简单的<strong>docker compose up</strong>命令便能启动你的整个应用。
-Compose 多用于单主机部署，比如在本地电脑上搭建你的开发环境，CI／CD 服务器上搭建集成测试环境等简单场景。当然 Docker 官方说 Compose 也可以用于生产环境，只要你用 Swarm 就好了。但目前的情况是，Kubernetes 大行其道，Swarm 日渐式微，就连 Docker 官方也都迫不得已拥抱了 Kubernetes。现在生产环境多用 Kubernetes 来部署管理多容器应用，如果你对 Kubernetes 感兴趣，可以参考我之前的入门文章<a href="http://studymakesmehappy.club/posts/kubernetes101/">Kubernetes101</a>。</p>
+Compose 多用于单主机部署，比如在本地电脑上搭建你的开发环境，CI／CD 服务器上搭建集成测试环境等简单场景。当然 Docker 官方说 Compose 也可以用于生产环境，只要你用 Swarm 就好了。但目前的情况是，Kubernetes 大行其道，Swarm 日渐式微，就连 Docker 官方也都迫不得已拥抱了 Kubernetes。现在生产环境多用 Kubernetes 来部署管理多容器应用，如果你对 Kubernetes 感兴趣，可以参考我之前的入门文章<a href="https://studymakesmehappy.club/posts/kubernetes101/">Kubernetes101</a>。</p>
 
 <p>我个人不是任何技术的信徒，每种技术都有它存在的道理。Docker Compose 简单方便，不需要花费精力部署调试 Kubernetes，适用于开发、测试以及个人的小应用场景；Kubernetes 成熟、自由、社区资源丰富，适用生产环境。建议大家可以亲自动手实践一下这两项技术，说实话，也花不了一晚上的时间。亲身体验之后，才能给技术恰如其分地归类，知道它们适用的场景，需要的时候顺手就用好了。</p>
 
@@ -304,7 +304,7 @@ app.listen(<span style="color:#3677a9">3000</span>);
 </svg>
 
   </span>
-  <span class='screen-reader'>Categories: </span><a class='category' href='http://excited-ccccly.github.io/studymakesmehappy.club/categories/devops'>DevOps</a></div>
+  <span class='screen-reader'>Categories: </span><a class='category' href='https://excited-ccccly.github.io/studymakesmehappy.club/categories/devops'>DevOps</a></div>
 
 
     
@@ -323,7 +323,7 @@ app.listen(<span style="color:#3677a9">3000</span>);
 </svg>
 
   </span>
-  <span class='screen-reader'>Tags: </span><a class='tag' href='http://excited-ccccly.github.io/studymakesmehappy.club/tags/docker'>Docker</a>, <a class='tag' href='http://excited-ccccly.github.io/studymakesmehappy.club/tags/compose'>Compose</a>, <a class='tag' href='http://excited-ccccly.github.io/studymakesmehappy.club/tags/deployment'>Deployment</a></div>
+  <span class='screen-reader'>Tags: </span><a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/docker'>Docker</a>, <a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/compose'>Compose</a>, <a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/deployment'>Deployment</a></div>
 
 
     
@@ -338,7 +338,7 @@ app.listen(<span style="color:#3677a9">3000</span>);
     
 <nav class='entry-nav'>
   <div class='entry-nav-links'><div class='prev-entry'>
-      <a href='http://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes101/'>
+      <a href='https://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes101/'>
         <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <line x1="20" y1="12" x2="4" y2="12"/>
@@ -348,7 +348,7 @@ app.listen(<span style="color:#3677a9">3000</span>);
  Previous</span>
         <span class='screen-reader'>Previous post: </span>Kubernetes101</a>
     </div><div class='next-entry'>
-      <a href='http://excited-ccccly.github.io/studymakesmehappy.club/posts/set-up-development-environment-on-windows/'>
+      <a href='https://excited-ccccly.github.io/studymakesmehappy.club/posts/set-up-development-environment-on-windows/'>
         <span class='screen-reader'>Next post: </span>Set Up Development Environment on Windows<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <line x1="4" y1="12" x2="20" y2="12"/>
@@ -403,7 +403,7 @@ app.listen(<span style="color:#3677a9">3000</span>);
 
   </div>
 
-  <script src='http://excited-ccccly.github.io/studymakesmehappy.club/js/main.af838dd5.js'></script>
+  <script src='https://excited-ccccly.github.io/studymakesmehappy.club/js/main.af838dd5.js'></script>
   
 
 </body>

@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Home on </title>
-    <link>http://excited-ccccly.github.io/studymakesmehappy.club/</link>
+    <link>https://excited-ccccly.github.io/studymakesmehappy.club/</link>
     <description>Recent content in Home on </description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 01 Jul 2018 12:21:44 +0800</lastBuildDate>
     
-	<atom:link href="http://excited-ccccly.github.io/studymakesmehappy.club/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://excited-ccccly.github.io/studymakesmehappy.club/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>About</title>
-      <link>http://excited-ccccly.github.io/studymakesmehappy.club/about/</link>
+      <link>https://excited-ccccly.github.io/studymakesmehappy.club/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://excited-ccccly.github.io/studymakesmehappy.club/about/</guid>
+      <guid>https://excited-ccccly.github.io/studymakesmehappy.club/about/</guid>
       <description>2017 年毕业于华东师范大学软件学院，热爱技术与分享，研究实战过 Kubernetes, Java 和 Javascript，在 DevOps 和后端开发有着较丰富的经验。同时对区块链技术和 System Programming 有着极大的兴趣。
 简历</description>
     </item>
     
     <item>
       <title>操作系统是如何启动的</title>
-      <link>http://excited-ccccly.github.io/studymakesmehappy.club/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%98%AF%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8%E7%9A%84/</link>
+      <link>https://excited-ccccly.github.io/studymakesmehappy.club/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%98%AF%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8%E7%9A%84/</link>
       <pubDate>Sun, 01 Jul 2018 12:21:44 +0800</pubDate>
       
-      <guid>http://excited-ccccly.github.io/studymakesmehappy.club/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%98%AF%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8%E7%9A%84/</guid>
+      <guid>https://excited-ccccly.github.io/studymakesmehappy.club/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%98%AF%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8%E7%9A%84/</guid>
       <description>花了一下午时间，成功安装了 Arch Linux, 收获颇丰。在此以 Arch Linux 的安装为例来聊一聊&amp;rdquo;操作系统是如何启动的&amp;rdquo;。虽然是以 Arch 为例，但其实所有的操作系统（手机和电脑操作系统）都大同小异，我也不想列出所有系统的详细启动流程。先上图为敬
 首先，你的电脑有一堆硬件，CPU、内存、硬盘都与主板相连，主板上有 UEFI 固件。
 UEFI UEFI 全称是 Unified Extensible Firmware Interface, 一个统一的、可扩展的、硬件和操作系统之间的固件接口。大家都喜欢统一， 统一意味着只需要实现一套标准；大家也都喜欢接口，接口抽象程度高；大家更喜欢可扩展，可以自己扩展功能。UEFI 是 BIOS 的继任者，近几年的电脑都是使用 UEFI 的。因为 BIOS 必须从硬盘（BIOS 设置里的第一块）的前 512 Bytes(称为 Master Boot Record) 开始加载。并且只有前 440 Bytes 是提供给 Bootloader 修改定义的。由于空间太小了，能做的事情很有限，做 Bootloader 的表示心里苦。
@@ -35,10 +35,10 @@ Bootloader Bootloader, 顾名思义，就是启动加载器。你电脑有多个
     
     <item>
       <title>聊一聊古老的 x-www-form-urlencoded</title>
-      <link>http://excited-ccccly.github.io/studymakesmehappy.club/posts/%E8%81%8A%E4%B8%80%E8%81%8A%E5%8F%A4%E8%80%81%E7%9A%84-x-www-form-urlencoded/</link>
+      <link>https://excited-ccccly.github.io/studymakesmehappy.club/posts/%E8%81%8A%E4%B8%80%E8%81%8A%E5%8F%A4%E8%80%81%E7%9A%84-x-www-form-urlencoded/</link>
       <pubDate>Sat, 02 Jun 2018 13:42:07 +0800</pubDate>
       
-      <guid>http://excited-ccccly.github.io/studymakesmehappy.club/posts/%E8%81%8A%E4%B8%80%E8%81%8A%E5%8F%A4%E8%80%81%E7%9A%84-x-www-form-urlencoded/</guid>
+      <guid>https://excited-ccccly.github.io/studymakesmehappy.club/posts/%E8%81%8A%E4%B8%80%E8%81%8A%E5%8F%A4%E8%80%81%E7%9A%84-x-www-form-urlencoded/</guid>
       <description>在为一个服务写 API 接口, 它是这样子发数据的
  HTTP发布接口以POST表单的方式将数据发送到用户服务器，Content-Type 为application/x-www-form-urlencoded; HTTP request body 格式形如 a=b&amp;amp;c=d
  第一反应, &amp;ldquo;这是啥, 为什么不用 json?&amp;ldquo;。抱怨归抱怨，事情还是要做的。举个例子：
@@ -54,10 +54,10 @@ https://host/path/to/api?title=t&amp;amp;author=a 看上去没什么问题，so 
     
     <item>
       <title>Kubernetes Ingress</title>
-      <link>http://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes-ingress/</link>
+      <link>https://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes-ingress/</link>
       <pubDate>Tue, 27 Mar 2018 15:27:27 +0800</pubDate>
       
-      <guid>http://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes-ingress/</guid>
+      <guid>https://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes-ingress/</guid>
       <description>kubernetes101 介绍了 Kubernetes 的基本用法，通过 NodePort 的形式对外暴露 Service 来提供服务。
 NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE express-app NodePort 10.0.0.151 &amp;lt;none&amp;gt; 80:31530/TCP 19m kubernetes ClusterIP 10.0.0.1 &amp;lt;none&amp;gt; 443/TCP 1d 这时候可以使用 NodeIP:NodePort 来从外界访问这个服务，其中 192.168.99.100 是集群中任意一个 Node 节点的 IP
 $ curl http://192.168.99.100:31530 hello world 但每次使用 IP+Port 访问服务的方式很不方便。在单机上，可以使用 nginx 的反向代理，实现通过域名访问服务。
@@ -67,10 +67,10 @@ http { upstream my-api { server 127.0.0.1:8080; } server { listen 80; server_nam
     
     <item>
       <title>Set Up Development Environment on Windows</title>
-      <link>http://excited-ccccly.github.io/studymakesmehappy.club/posts/set-up-development-environment-on-windows/</link>
+      <link>https://excited-ccccly.github.io/studymakesmehappy.club/posts/set-up-development-environment-on-windows/</link>
       <pubDate>Sun, 04 Mar 2018 15:43:15 +0800</pubDate>
       
-      <guid>http://excited-ccccly.github.io/studymakesmehappy.club/posts/set-up-development-environment-on-windows/</guid>
+      <guid>https://excited-ccccly.github.io/studymakesmehappy.club/posts/set-up-development-environment-on-windows/</guid>
       <description>闲言碎语：长久以来，Windows 一直被诟病在开源领域上开发体验不好，但最近几年，微软做出了巨大的改变，全力拥抱了开源，Github 上随处可见微软开发者的 Contribution；同时，笔记本电脑领域上几乎所有的创新都来自于 Windows 阵营，Windows 电脑变得越来越酷。这两点促使我专门为 Windows 开发社区做出自己的一份贡献。希望大家保持开放与沟通，避免无意义的争吵，塑造良好的社区氛围。
  这篇博客会介绍一些加快开发效率的工具，会安利以下(类别的)产品:
  Package Manager(包管理器) Linux Toolkit(Linux 工具包) Terminal Emulator(终端模拟器) Windows Subsystem for Linux(Windows 上的 Linux 子系统) Oh-My-Zsh Editor&amp;amp;IDE(编辑器和集成开发环境) Font(字体)  Package Manager scoop 是 Windows 上一个很友好的包管理器，类似于 Ubuntu 上的 apt，macos 上的 homebrew。
@@ -83,10 +83,10 @@ Linux Toolkit Linux 爱好者的你一定很希望在 Windows 上也可以使用
     
     <item>
       <title>Speed Up Your Deployment Using Docker Compose</title>
-      <link>http://excited-ccccly.github.io/studymakesmehappy.club/posts/speed-up-your-deployment-using-docker-compose/</link>
+      <link>https://excited-ccccly.github.io/studymakesmehappy.club/posts/speed-up-your-deployment-using-docker-compose/</link>
       <pubDate>Wed, 14 Feb 2018 01:05:40 +0800</pubDate>
       
-      <guid>http://excited-ccccly.github.io/studymakesmehappy.club/posts/speed-up-your-deployment-using-docker-compose/</guid>
+      <guid>https://excited-ccccly.github.io/studymakesmehappy.club/posts/speed-up-your-deployment-using-docker-compose/</guid>
       <description>Docker 的出现，优秀的隔离性让我们可以将任何应用部署到任何服务器上面，不再需要关注服务器的环境配置，简化了单个应用的部署流程。但在更多的情况下，应用往往会依赖于其他服务，比如前端网页依赖于后端服务，后端服务依赖于数据库。我们可以依次部署每个服务，但每次重复的手工操作让人厌烦。我们需要一个工具，只要描述好整个应用之间的服务依赖关系，将这个描述文件交给这个工具，一条命令便能启动整个系统。这种类型的工具有很多，这篇博客里聊的是Docker Compose。
 本文假设你有基本的 Docker 使用基础，你将会学习到以下几点：
  Docker Compose 是什么？它适用于哪些场景？ 安装和使用 Docker Compose 注入环境变量来配置你的程序 挂载磁盘来持久化你的容器数据  Overview Docker Compose 用于定义和运行多容器应用，它使用 YAML 文件来描述服务之间的依赖关系，一条简单的docker compose up命令便能启动你的整个应用。 Compose 多用于单主机部署，比如在本地电脑上搭建你的开发环境，CI／CD 服务器上搭建集成测试环境等简单场景。当然 Docker 官方说 Compose 也可以用于生产环境，只要你用 Swarm 就好了。但目前的情况是，Kubernetes 大行其道，Swarm 日渐式微，就连 Docker 官方也都迫不得已拥抱了 Kubernetes。现在生产环境多用 Kubernetes 来部署管理多容器应用，如果你对 Kubernetes 感兴趣，可以参考我之前的入门文章Kubernetes101。
@@ -98,10 +98,10 @@ Compose Up 以一个简单的 express app 为例</description>
     
     <item>
       <title>Kubernetes101</title>
-      <link>http://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes101/</link>
+      <link>https://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes101/</link>
       <pubDate>Sun, 07 Jan 2018 23:31:08 +0800</pubDate>
       
-      <guid>http://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes101/</guid>
+      <guid>https://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes101/</guid>
       <description>这是一篇 kubernetes（简称 k8s，将中间的 8 个字母简写成“8”） 的基础教程，会使用实际例子来讲解 k8s 中的基础概念。
 在这个教程中，假设你有基本的 Docker 使用基础，你将会学习到以下几点：
  搭建 k8s 集群 部署一个容器化的应用到集群中 通过 Service 暴露服务 通过 Replica 来伸缩服务实例 通过 Rolling Update 更新服务 Deployment, Pod, Node, Service 等相关的概念  安装 cli kubectl 是 k8s 的命令行工具，可以方便地管理集群
@@ -114,10 +114,10 @@ Compose Up 以一个简单的 express app 为例</description>
     
     <item>
       <title>漫谈时间(一)——时间、历法和时区</title>
-      <link>http://excited-ccccly.github.io/studymakesmehappy.club/posts/%E6%BC%AB%E8%B0%88%E6%97%B6%E9%97%B4%E4%B8%80%E6%97%B6%E9%97%B4%E5%8E%86%E6%B3%95%E5%92%8C%E6%97%B6%E5%8C%BA/</link>
+      <link>https://excited-ccccly.github.io/studymakesmehappy.club/posts/%E6%BC%AB%E8%B0%88%E6%97%B6%E9%97%B4%E4%B8%80%E6%97%B6%E9%97%B4%E5%8E%86%E6%B3%95%E5%92%8C%E6%97%B6%E5%8C%BA/</link>
       <pubDate>Mon, 27 Nov 2017 00:01:44 +0800</pubDate>
       
-      <guid>http://excited-ccccly.github.io/studymakesmehappy.club/posts/%E6%BC%AB%E8%B0%88%E6%97%B6%E9%97%B4%E4%B8%80%E6%97%B6%E9%97%B4%E5%8E%86%E6%B3%95%E5%92%8C%E6%97%B6%E5%8C%BA/</guid>
+      <guid>https://excited-ccccly.github.io/studymakesmehappy.club/posts/%E6%BC%AB%E8%B0%88%E6%97%B6%E9%97%B4%E4%B8%80%E6%97%B6%E9%97%B4%E5%8E%86%E6%B3%95%E5%92%8C%E6%97%B6%E5%8C%BA/</guid>
       <description>由于做的项目经常要和“时间”打交道，零零碎碎地了解了一些相关知识，今天整理一下，分享给大家😁本篇文章主要介绍时间、历法、时区等背景知识，不会有代码。后续的文章我会使用 Java, Javascript, C# 来说明在编程活动中如何处理时间， comming soon&amp;hellip;
 背景 古代人们为了可以对事件排先后顺序及进行比较，需要一种度量方式来描述，以便更好地思考宇宙。俗话说，当一无所知时，观察、探索是最好的方式。于是人们发现头顶上的太阳有规律地从东边升起，西边落下；月亮有阴晴圆缺的周期变化；季节有节奏地变化。人们记录每个事物变化的周期，相应地有了“日”，“月”，“年”的概念。
 历法(Calendar) 有了概念，就需要给出这些概念的基本定义以及相应的操作（是不是很 OOP 啊，哈哈哈），于是就有了历法。历法是用年、月、日等时间单位计算时间的方法。
@@ -138,10 +138,10 @@ ISO 8601 好了，现在我们有了公历这一套通用的历法，又有了�
     
     <item>
       <title>Yet Another Markdown Programmer</title>
-      <link>http://excited-ccccly.github.io/studymakesmehappy.club/posts/yet-another-markdown-programmer/</link>
+      <link>https://excited-ccccly.github.io/studymakesmehappy.club/posts/yet-another-markdown-programmer/</link>
       <pubDate>Tue, 25 Jul 2017 00:50:18 +0800</pubDate>
       
-      <guid>http://excited-ccccly.github.io/studymakesmehappy.club/posts/yet-another-markdown-programmer/</guid>
+      <guid>https://excited-ccccly.github.io/studymakesmehappy.club/posts/yet-another-markdown-programmer/</guid>
       <description>是的，我正式加入了 Markdown 程序员的行列，以后会写博客分享我的所思所想，涉及编程、阅读、学习等。博客的源码开放，如有问题，欢迎提 issue🙇‍。
  可是，为什么呢？
  学习和分享能使人快乐。Coding is Social. Be a Code Ninja🐱‍👤。

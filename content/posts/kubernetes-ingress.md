@@ -5,7 +5,7 @@ categories: ["DevOps"]
 tags: ["Kubernetes", "Ingress", "nginx", "Loadbalancer"]
 ---
 
-[kubernetes101](http://studymakesmehappy.club/posts/kubernetes101/) 介绍了 Kubernetes 的基本用法，通过 NodePort 的形式对外暴露 Service 来提供服务。
+[kubernetes101](https://studymakesmehappy.club/posts/kubernetes101/) 介绍了 Kubernetes 的基本用法，通过 NodePort 的形式对外暴露 Service 来提供服务。
 
 ```shell
 NAME          TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
@@ -44,7 +44,7 @@ http {
 
 在 Kubernetes 集群中，Ingress 可以说是对 nginx 的抽象（接口），[ingress-nginx](https://github.com/kubernetes/ingress-nginx) 是 Ingress 的一种实现。
 
-在这篇博客中，假设你学习过 [kubernetes101](http://studymakesmehappy.club/posts/kubernetes101/)，你将会学习到以下几点：
+在这篇博客中，假设你学习过 [kubernetes101](https://studymakesmehappy.club/posts/kubernetes101/)，你将会学习到以下几点：
 
 * Ingress 介绍
 * Ingress 的基础配置
@@ -172,7 +172,7 @@ HTTPS 生效大概需要1分钟，之后访问 **k8s-dashboard.domain.com**，�
 
 简单起见，以 basic-auth 为例
 
-* 创建 basic auth 文件，这里创建了一个名为 auth，用户名是 foo，密码是输入的密码的 basic auth 文件。Windows 下没有 htpasswd，可以使用 Windows Subsystem for Linux 来生成，详情请参考 [Set Up Development Environment on Windows](http://studymakesmehappy.club/posts/set-up-development-environment-on-windows/)
+* 创建 basic auth 文件，这里创建了一个名为 auth，用户名是 foo，密码是输入的密码的 basic auth 文件。Windows 下没有 htpasswd，可以使用 Windows Subsystem for Linux 来生成，详情请参考 [Set Up Development Environment on Windows](https://studymakesmehappy.club/posts/set-up-development-environment-on-windows/)
 
 ```shell
 $ htpasswd -c auth foo

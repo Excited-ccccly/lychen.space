@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Kubernetes on </title>
-    <link>http://excited-ccccly.github.io/studymakesmehappy.club/tags/kubernetes/</link>
+    <link>https://excited-ccccly.github.io/studymakesmehappy.club/tags/kubernetes/</link>
     <description>Recent content in Kubernetes on </description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 27 Mar 2018 15:27:27 +0800</lastBuildDate>
     
-	<atom:link href="http://excited-ccccly.github.io/studymakesmehappy.club/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://excited-ccccly.github.io/studymakesmehappy.club/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Kubernetes Ingress</title>
-      <link>http://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes-ingress/</link>
+      <link>https://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes-ingress/</link>
       <pubDate>Tue, 27 Mar 2018 15:27:27 +0800</pubDate>
       
-      <guid>http://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes-ingress/</guid>
+      <guid>https://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes-ingress/</guid>
       <description>kubernetes101 介绍了 Kubernetes 的基本用法，通过 NodePort 的形式对外暴露 Service 来提供服务。
 NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE express-app NodePort 10.0.0.151 &amp;lt;none&amp;gt; 80:31530/TCP 19m kubernetes ClusterIP 10.0.0.1 &amp;lt;none&amp;gt; 443/TCP 1d 这时候可以使用 NodeIP:NodePort 来从外界访问这个服务，其中 192.168.99.100 是集群中任意一个 Node 节点的 IP
 $ curl http://192.168.99.100:31530 hello world 但每次使用 IP+Port 访问服务的方式很不方便。在单机上，可以使用 nginx 的反向代理，实现通过域名访问服务。
@@ -25,10 +25,10 @@ http { upstream my-api { server 127.0.0.1:8080; } server { listen 80; server_nam
     
     <item>
       <title>Kubernetes101</title>
-      <link>http://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes101/</link>
+      <link>https://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes101/</link>
       <pubDate>Sun, 07 Jan 2018 23:31:08 +0800</pubDate>
       
-      <guid>http://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes101/</guid>
+      <guid>https://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes101/</guid>
       <description>这是一篇 kubernetes（简称 k8s，将中间的 8 个字母简写成“8”） 的基础教程，会使用实际例子来讲解 k8s 中的基础概念。
 在这个教程中，假设你有基本的 Docker 使用基础，你将会学习到以下几点：
  搭建 k8s 集群 部署一个容器化的应用到集群中 通过 Service 暴露服务 通过 Replica 来伸缩服务实例 通过 Rolling Update 更新服务 Deployment, Pod, Node, Service 等相关的概念  安装 cli kubectl 是 k8s 的命令行工具，可以方便地管理集群
