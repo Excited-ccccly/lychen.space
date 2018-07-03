@@ -13,7 +13,7 @@ https://host/path/to/api?title=t&amp;author=a 看上去没什么问题，so easy
 但如果数据是这样子呢? 里面含有 list
 { &#34;title&#34;: &#34;t&#34;, &#34;author&#34;: &#34;a&#34;, &#34;categories&#34;: [&#34;c1&#34;, &#34;c2&#34;] } 怎么处理 categories 这种 list 类型?
 这样？
-# percent-conding 之前 https://host/path/to/api?title=t&amp;author=a&amp;categories=[&#34;c1&#34;, &#34;c2&#34;] 注意， 其实在 url 中，一些字符会进行 Percent-encoding 处理，再发送给服务端。
+# Percent-encoding 之前 https://host/path/to/api?title=t&amp;author=a&amp;categories=[&#34;c1&#34;, &#34;c2&#34;] 注意， 其实在 url 中，一些字符会进行 Percent-encoding 处理，再发送给服务端。
    原始 [&ldquo; 空格]   Percent encoding 后 %5B%22 %205D'>
 
 <meta property='og:title' content='聊一聊古老的 x-www-form-urlencoded • ccccly'>
@@ -26,7 +26,7 @@ https://host/path/to/api?title=t&amp;author=a 看上去没什么问题，so easy
 但如果数据是这样子呢? 里面含有 list
 { &#34;title&#34;: &#34;t&#34;, &#34;author&#34;: &#34;a&#34;, &#34;categories&#34;: [&#34;c1&#34;, &#34;c2&#34;] } 怎么处理 categories 这种 list 类型?
 这样？
-# percent-conding 之前 https://host/path/to/api?title=t&amp;author=a&amp;categories=[&#34;c1&#34;, &#34;c2&#34;] 注意， 其实在 url 中，一些字符会进行 Percent-encoding 处理，再发送给服务端。
+# Percent-encoding 之前 https://host/path/to/api?title=t&amp;author=a&amp;categories=[&#34;c1&#34;, &#34;c2&#34;] 注意， 其实在 url 中，一些字符会进行 Percent-encoding 处理，再发送给服务端。
    原始 [&ldquo; 空格]   Percent encoding 后 %5B%22 %205D'>
 <meta property='og:url' content='http://excited-ccccly.github.io/studymakesmehappy.club/posts/%E8%81%8A%E4%B8%80%E8%81%8A%E5%8F%A4%E8%80%81%E7%9A%84-x-www-form-urlencoded/'>
 <meta property='og:site_name' content=''>
@@ -148,7 +148,7 @@ https://host/path/to/api?title=t&amp;author=a 看上去没什么问题，so easy
 <p>怎么处理 categories 这种 list 类型?</p>
 
 <p>这样？</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># percent-conding 之前
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># Percent-encoding 之前
 https://host/path/to/api?title=t&amp;author=a&amp;categories=[&#34;c1&#34;, &#34;c2&#34;]</pre></div>
 <p>注意， 其实在 url 中，一些字符会进行 <a href="https://en.wikipedia.org/wiki/Percent-encoding">Percent-encoding</a> 处理，再发送给服务端。</p>
 

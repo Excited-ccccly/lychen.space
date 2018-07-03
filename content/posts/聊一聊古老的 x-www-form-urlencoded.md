@@ -43,7 +43,7 @@ https://host/path/to/api?title=t&author=a
 这样？
 
 ```
-# percent-conding 之前
+# Percent-encoding 之前
 https://host/path/to/api?title=t&author=a&categories=["c1", "c2"]
 ```
 
