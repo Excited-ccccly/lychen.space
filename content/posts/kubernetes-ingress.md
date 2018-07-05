@@ -56,7 +56,7 @@ http {
 
 在 Kubernetes 中，通过 Ingress 访问应用的流程大致上是这样子的
 
-![求推荐好用的画图工具，Visio 好难用...](images/kubernetes/ingress/ingress.png)
+![求推荐好用的画图工具，Visio 好难用...](/images/kubernetes/ingress/ingress.png)
 
 除了 Ingress 暴露在公网中，其它所有的服务都是内网 IP，只允许内网访问。
 

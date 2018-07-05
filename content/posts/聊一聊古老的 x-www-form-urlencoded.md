@@ -61,7 +61,7 @@ https://host/path/to/api?title=t&author=a&categories=["c1", "c2"]
 </center>
 
 ```
-# percent-conding 之后
+# percent-encoding 之后
 https://host/path/to/api?title=t&author=a&categories=%5B%22c1%22,%20%22c2%22%5D
 ```
 
@@ -160,7 +160,7 @@ https://host/path/to/api?title=t&author=a&categories=c1&categories=c2
 
 使用 Postman 等模拟 API 请求的工具时，就会是这样:
 
-![](images/聊一聊古老的 x-www-form-urlencoded/Postman x-www-form-urlencoded.png)
+![](/images/聊一聊古老的 x-www-form-urlencoded/Postman x-www-form-urlencoded.png)
 
 
 等等，这个只是 python 中的 Flask 实现，万一其它的 web frameworks 不是这样处理的，怎么办？万一 Flask 的作者放飞了自我，写了一个不一样的烟火, 怎么办?

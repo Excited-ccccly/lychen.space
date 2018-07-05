@@ -60,7 +60,7 @@ Server Version: version.Info{Major:"1", Minor:"8", GitVersion:"v1.8.0", GitCommi
 
 ##  Deployment
 
-![Deployment](images/20180106/module_02_first_app.png)
+![Deployment](/images/20180106/module_02_first_app.png)
 
 集群成功启动之后，为了让容器化(containerized)的应用（比如，一个打好 docker 镜像的 node.js web server）运行在 k8s 中，我们需要创建一个 Deployment。这个 Deployment 会告诉 k8s 如何去创建和更新应用的实例，k8s 会选择节点(Node)并在之上启动应用，同时还有持续监控我们应用的健康状况，一旦应用挂掉了，k8s 会自动重建这个应用的实例。这个**自我修复机制(Self-healing Mechanism)**用来应对节点的失效以及更新维护。
 
@@ -125,12 +125,12 @@ express-app   1         1         1            1           1h
 
 ## Pod 和 Node
 
-![Pod](images/20180106/module_03_pods.svg)
+![Pod](/images/20180106/module_03_pods.svg)
 
 一个 Deployment 会创建 Pod 来启动应用。在 k8s 中，Pod 是一组（一个或多个）容器以及这些容器公用的存储、网络等资源。它是 k8s 的最小单元。
 一个 Pod 中可以有多个容器，这些容器共用一个 IP 和端口，一起被调度，在相同的 Node 上的同一个 Context 下运行。
 
-![Node](images/20180106/module_03_nodes.svg)
+![Node](/images/20180106/module_03_nodes.svg)
 
 Pod 永远在 Node 上运行。在 k8s 中，Node 是一个工作机器(Worker)，它可以是虚拟机也可以是物理机。一个 Node 上可以运行多个 Pod，k8s 里的 Master 节点自动分配 Pod 到 Node 上运行
 
@@ -164,7 +164,7 @@ $ exit
 
 ## Service
 
-![Service](images/20180106/module_04_services.svg)
+![Service](/images/20180106/module_04_services.svg)
 
 Pod 有自己的生命周期，当一个 Node 死亡之后，Node 上的 Pod 也就消失了。为了容灾和负载均衡，通常会在 k8s 中运行多个应用的实例，也就有了多个 Pod。
 每一个 Pod 都有自己的唯一的 IP 地址，一个 Pod 死亡重建之后就有了一个新的 IP 地址，所以 Pod 的 IP 地址是不确定的。然而服务的消费者只会使用固定的 IP 地址，所以需要有一种机制，来掩盖掉这些底层 IP 地址的变化，消除消费者和 Pod 的耦合。
@@ -199,13 +199,13 @@ hello world
 为了保持 [SLA](https://en.wikipedia.org/wiki/Service-level_agreement)（比如其中的一种 SLA，服务可用性达到 99.999%，内业经常说你的服务能达到几个 9，哈哈），通常会部署多份相同的应用，运行在多个 Pod 上。在 k8s 中，通过修改 Deployment 的 Replica（副本） 数量来达到 Scaling 的目的。
 
 将 express-app 从 1 个 Replica, scale 到 4 个 Replicas
-![Befor Scaling](images/20180106/module_05_scaling1.svg)
+![Befor Scaling](/images/20180106/module_05_scaling1.svg)
 ```shell
 $ kubectl scale deployment express-app --replicas 4
 ```
 
 查看 scale 后的 Deployment
-![After Scaling](images/20180106/module_05_scaling2.svg)
+![After Scaling](/images/20180106/module_05_scaling2.svg)
 ```
 $ kubectl get deployment
 NAME          DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE

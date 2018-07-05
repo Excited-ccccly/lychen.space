@@ -47,7 +47,7 @@ scoop bucket add extras # conemu 在 extras 库中，关于 scoop 中的 bucket 
 scoop install conemu
 ```
 [ConEmu](https://github.com/Maximus5/ConEmu)是 Windows 上一个很优秀的 Terminal Emulator，tabs, splits 等等都提供给你。
-![ConEmu](images/set-up-development-environment-on-windows/ConEmu.png)
+![ConEmu](/images/set-up-development-environment-on-windows/ConEmu.png)
 
 如果你是 **Electron-Fan** 的话，[Hyper](https://github.com/zeit/hyper) 也是一个不错的选择。
 
@@ -118,7 +118,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 
 你熟悉的 zsh 主题和快捷命令又回来了！
 
-![oh-my-zsh](images/set-up-development-environment-on-windows/oh-my-zsh.png)
+![oh-my-zsh](/images/set-up-development-environment-on-windows/oh-my-zsh.png)
 ## Editor&IDE
 在此推荐两款编辑器，[VScode](https://code.visualstudio.com/) 和 [Atom](https://atom.io/)。
 
