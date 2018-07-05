@@ -1,5 +1,5 @@
 baseURL = "https://studymakesmehappy.club/"
-title = ""
+title = "Home"
 # for smart copyright line, leave this blank and check [params.copyright]
 copyright = ""
 
@@ -8,7 +8,7 @@ theme = "minimo"
 disqusShortname = ""
 googleAnalytics = ""
 
-Paginate = 5
+Paginate = 10
 preserveTaxonomyNames = true
 
 enableRobotsTXT = true # generate robots.txt

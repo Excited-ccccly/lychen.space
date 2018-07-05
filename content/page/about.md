@@ -1,5 +1,6 @@
 ---
 title: About
+description: Study makes me happy
 comments: false
 menu: main
 weight: -170
