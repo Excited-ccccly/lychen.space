@@ -12,6 +12,7 @@ set-executionpolicy remotesigned -s currentuser iex (new-object net.webclient).d
 scoop install nodejs scoop 的软件库很全，几乎你想要的都能找到，再也不用打开浏览器-&gt;看文档-&gt;下载-&gt;配置环境变量了。
 Windows 平台上还有另外一个知名的包管理器 chocolatey，scoop 的优势在于不需管理员权限，因为所有的软件安装在用户本地，只对该用户有效，也减少了环境变量污染等问题，提高了使用体验。
 Linux Toolkit Linux 爱好者的你一定很希望在 Windows 上也可以使用 grep, sed, awk 等等工具。'>
+<meta name='theme-color' content='#ffcd00'>
 
 <meta property='og:title' content='Set Up Development Environment on Windows • ccccly'>
 <meta property='og:description' content='闲言碎语：长久以来，Windows 一直被诟病在开源领域上开发体验不好，但最近几年，微软做出了巨大的改变，全力拥抱了开源，Github 上随处可见微软开发者的 Contribution；同时，笔记本电脑领域上几乎所有的创新都来自于 Windows 阵营，Windows 电脑变得越来越酷。这两点促使我专门为 Windows 开发社区做出自己的一份贡献。希望大家保持开放与沟通，避免无意义的争吵，塑造良好的社区氛围。
@@ -22,68 +23,68 @@ set-executionpolicy remotesigned -s currentuser iex (new-object net.webclient).d
 scoop install nodejs scoop 的软件库很全，几乎你想要的都能找到，再也不用打开浏览器-&gt;看文档-&gt;下载-&gt;配置环境变量了。
 Windows 平台上还有另外一个知名的包管理器 chocolatey，scoop 的优势在于不需管理员权限，因为所有的软件安装在用户本地，只对该用户有效，也减少了环境变量污染等问题，提高了使用体验。
 Linux Toolkit Linux 爱好者的你一定很希望在 Windows 上也可以使用 grep, sed, awk 等等工具。'>
-<meta property='og:url' content='https://excited-ccccly.github.io/studymakesmehappy.club/posts/set-up-development-environment-on-windows/'>
-<meta property='og:site_name' content=''>
-<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='Windows'><meta property='article:tag' content='Package Manager'><meta property='article:tag' content='Linux'><meta property='article:tag' content='WSL'><meta property='article:tag' content='Terminal Emulator'><meta property='article:tag' content='Editor'><meta property='article:tag' content='Font'><meta property='article:published_time' content='2018-03-04T15:43:15&#43;08:00'/><meta property='article:modified_time' content='2018-03-04T15:43:15&#43;08:00'/>
+<meta property='og:url' content='https://studymakesmehappy.club/posts/set-up-development-environment-on-windows/'>
+<meta property='og:site_name' content='Home'>
+<meta property='og:type' content='article'><meta property='og:image' content='https://www.gravatar.com/avatar/374150c4ee619dfed2491b9bb5bcd476?s=256'><meta property='article:section' content='Posts'><meta property='article:tag' content='Windows'><meta property='article:tag' content='Package Manager'><meta property='article:tag' content='Linux'><meta property='article:tag' content='WSL'><meta property='article:tag' content='Terminal Emulator'><meta property='article:tag' content='Editor'><meta property='article:tag' content='Font'><meta property='article:published_time' content='2018-03-04T15:43:15&#43;08:00'/><meta property='article:modified_time' content='2018-03-04T15:43:15&#43;08:00'/><meta name='twitter:card' content='summary'>
 
 <meta name="generator" content="Hugo 0.40.1" />
 
-  <base href='https://excited-ccccly.github.io/studymakesmehappy.club/'>
   <title>Set Up Development Environment on Windows • ccccly</title>
-  <link rel='canonical' href='https://excited-ccccly.github.io/studymakesmehappy.club/posts/set-up-development-environment-on-windows/'>
-  <link href='' rel='alternate' type='application/rss+xml' title='' />
-  <link rel='icon' href='https://excited-ccccly.github.io/studymakesmehappy.club/favicon.ico'>
-<link rel='stylesheet' href='https://fonts.lug.ustc.edu.cn/css?family=Ubuntu:400,400i,700&subset=latin'>
-<link rel='stylesheet' href='https://excited-ccccly.github.io/studymakesmehappy.club/css/main.d02777fd.css'>
-
-
+  <link rel='canonical' href='https://studymakesmehappy.club/posts/set-up-development-environment-on-windows/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.cb99c271.css'><link rel='stylesheet' href='/css/custom.css'><style>
+:root{--color-accent:#ffcd00;}
+</style>
 
 </head>
 
 
-<body class='page'>
+<body class='page type-posts'>
+
   <div class='site'>
-    <header id='header' class='header-container'>
-      <div class='site-header'>
-        <nav id='navmenu' aria-label='Main Menu'>
-  <ul class='main-menu'>
+
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+    <div class='main'>
+
+      <nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
     
-    <li>
-      <a href='https://excited-ccccly.github.io/studymakesmehappy.club/'>Home</a>
-    </li>
-    
-    <li>
-      <a href='https://excited-ccccly.github.io/studymakesmehappy.club/about/'>About</a>
-    </li>
-    
-    <li>
-      <a href='https://github.com/Excited-ccccly/studymakesmehappy.club'>Repo</a>
-    </li>
-    
-  </ul>
+    <ul><li class='item'>
+        <a href='/'>Home</a>
+      </li><li class='item'>
+        <a href='/posts/'>Posts</a>
+      </li><li class='item'>
+        <a href='/about/'>About</a>
+      </li><li class='item'>
+        <a href='https://github.com/Excited-ccccly/studymakesmehappy.club'>Repo</a>
+      </li></ul>
+  </div>
 </nav>
 
-        <div class='site-info'>
-          
-          <p class='site-title title'></p>
-          
-          <p class='site-description'>Study makes me happy</p>
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>Home</p><p class='desc site-desc'>Study makes me happy</p>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+
+      <main id='content'>
 
 
-<main class='main'>
-  <article lang='en' class='entry'>
-    <header class='entry-header'>
-  <div class='entry-info'>
-    <h1 class='entry-title title'>Set Up Development Environment on Windows</h1>
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>Set Up Development Environment on Windows</h1>
+      
+
+    </div>
     
-  </div>
-  
-<div class='meta'>
-  <span class='posted-on'>
-    <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+<div class='entry-meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
   <line x1="16" y1="2" x2="16" y2="6"/>
@@ -91,29 +92,38 @@ Linux Toolkit Linux 爱好者的你一定很希望在 Windows 上也可以使用
   <line x1="3" y1="10" x2="21" y2="10"/>
   
 </svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2018-03-04T15:43:15&#43;08:00'>2018, Mar 04</time>
+</span>
 
-    <span class='screen-reader'>Posted on </span>
-    <time class='date' datetime='2018-03-04T15:43:15&#43;08:00'>2018, Mar 4</time>
-  </span>
-  
-  <span class='byline'>
-    <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  <span class='byline'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M21,21V20c0-2.76-4-5-9-5s-9,2.24-9,5v1"/>
   <path d="M16,6.37A4,4,0,1,1,12.63,3,4,4,0,0,1,16,6.37Z"/>
   
 </svg>
-
-    <span class='screen-reader'> by </span>
-    ccccly
-  </span>
+<span class='screen-reader-text'> by </span><a href='/authors/ccccly'>ccccly</a></span>
   
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+2 mins read
+</span>
+
+
 </div>
 
 
+  </div>
 </header>
 
-    <div class='entry-content'>
+  
+  
+
+  <div class='container entry-content'>
   
 
 <blockquote>
@@ -134,7 +144,7 @@ Linux Toolkit Linux 爱好者的你一定很希望在 Windows 上也可以使用
 
 <h2 id="package-manager">Package Manager</h2>
 
-<p><a href="https://github.com/lukesampson/scoop">scoop</a> 是 Windows 上一个很友好的包管理器，类似于 Ubuntu 上的 apt，macos 上的 homebrew。</p>
+<p><a href="https://github.com/lukesampson/scoop" target="_blank">scoop</a> 是 Windows 上一个很友好的包管理器，类似于 Ubuntu 上的 apt，macos 上的 homebrew。</p>
 
 <h4 id="install">Install</h4>
 
@@ -147,7 +157,7 @@ iex (<span style="color:#24909d">new-object</span> net.webclient).downloadstring
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">scoop install nodejs</code></pre></div>
 <p>scoop 的软件库很全，几乎你想要的都能找到，再也不用打开浏览器-&gt;看文档-&gt;下载-&gt;配置环境变量了。</p>
 
-<p>Windows 平台上还有另外一个知名的包管理器 <a href="https://chocolatey.org/">chocolatey</a>，scoop 的优势在于不需管理员权限，因为所有的软件安装在用户本地，只对该用户有效，也减少了环境变量污染等问题，提高了使用体验。</p>
+<p>Windows 平台上还有另外一个知名的包管理器 <a href="https://chocolatey.org/" target="_blank">chocolatey</a>，scoop 的优势在于不需管理员权限，因为所有的软件安装在用户本地，只对该用户有效，也减少了环境变量污染等问题，提高了使用体验。</p>
 
 <h2 id="linux-toolkit">Linux Toolkit</h2>
 
@@ -160,12 +170,12 @@ iex (<span style="color:#24909d">new-object</span> net.webclient).downloadstring
 <p>Windows 上的终端很难用，有不少替代品可供选用。</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">scoop bucket add extras <span style="color:#999;font-style:italic"># conemu 在 extras 库中，关于 scoop 中的 bucket 概念，参考: https://github.com/lukesampson/scoop/wiki/Buckets
 </span><span style="color:#999;font-style:italic"></span>scoop install conemu</code></pre></div>
-<p><a href="https://github.com/Maximus5/ConEmu">ConEmu</a>是 Windows 上一个很优秀的 Terminal Emulator，tabs, splits 等等都提供给你。
-<img src="images/set-up-development-environment-on-windows/ConEmu.png" alt="ConEmu" /></p>
+<p><a href="https://github.com/Maximus5/ConEmu" target="_blank">ConEmu</a>是 Windows 上一个很优秀的 Terminal Emulator，tabs, splits 等等都提供给你。
+<img src="/images/set-up-development-environment-on-windows/ConEmu.png" alt="ConEmu" /></p>
 
-<p>如果你是 <strong>Electron-Fan</strong> 的话，<a href="https://github.com/zeit/hyper">Hyper</a> 也是一个不错的选择。</p>
+<p>如果你是 <strong>Electron-Fan</strong> 的话，<a href="https://github.com/zeit/hyper" target="_blank">Hyper</a> 也是一个不错的选择。</p>
 
-<p>如果你是 <strong>UWP-Fan</strong> 的话，<a href="https://github.com/felixse/FluentTerminal">FluentTerminal</a> 提供给你</p>
+<p>如果你是 <strong>UWP-Fan</strong> 的话，<a href="https://github.com/felixse/FluentTerminal" target="_blank">FluentTerminal</a> 提供给你</p>
 
 <h2 id="windows-subsystem-for-linux">Windows Subsystem for Linux</h2>
 
@@ -181,7 +191,7 @@ iex (<span style="color:#24909d">new-object</span> net.webclient).downloadstring
 设置-&gt; 更新和安装 -&gt; 开发者选项 -&gt; 开发者模式。命令行里运行 <strong>bash</strong></li>
 </ul>
 
-<p>详细的安装过程参考这篇文档 <a href="https://docs.microsoft.com/zh-cn/windows/wsl/install-win10">Install the Windows Subsystem for Linux</a></p>
+<p>详细的安装过程参考这篇文档 <a href="https://docs.microsoft.com/zh-cn/windows/wsl/install-win10" target="_blank">Install the Windows Subsystem for Linux</a></p>
 
 <h4 id="usage-1">Usage</h4>
 
@@ -198,9 +208,9 @@ iex (<span style="color:#24909d">new-object</span> net.webclient).downloadstring
 <p>bash 里直接调用 Windows 上的 ipconfig.exe</p>
 </blockquote>
 
-<p>如果你想 hack wsl，玩一些更有意思的事情，可以看看这个项目 <a href="https://github.com/RoliSoft/WSL-Distribution-Switcher">WSL-Distribution-Switcher</a></p>
+<p>如果你想 hack wsl，玩一些更有意思的事情，可以看看这个项目 <a href="https://github.com/RoliSoft/WSL-Distribution-Switcher" target="_blank">WSL-Distribution-Switcher</a></p>
 
-<p>如果你想了解 WSL 背后有趣的实现原理，可以参考这篇博客 <a href="https://blogs.msdn.microsoft.com/wsl/2016/04/22/windows-subsystem-for-linux-overview/">Windows Subsystem for Linux Overview</a>。一句话来说，WSL 将 Linux System Call 翻译并转发至 Windows Kernel。</p>
+<p>如果你想了解 WSL 背后有趣的实现原理，可以参考这篇博客 <a href="https://blogs.msdn.microsoft.com/wsl/2016/04/22/windows-subsystem-for-linux-overview/" target="_blank">Windows Subsystem for Linux Overview</a>。一句话来说，WSL 将 Linux System Call 翻译并转发至 Windows Kernel。</p>
 
 <h2 id="oh-my-zsh">Oh-My-Zsh</h2>
 
@@ -225,11 +235,11 @@ iex (<span style="color:#24909d">new-object</span> net.webclient).downloadstring
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sh -c <span style="color:#ed9d13">&#34;</span><span style="color:#6ab825;font-weight:bold">$(</span>curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span style="color:#6ab825;font-weight:bold">)</span><span style="color:#ed9d13">&#34;</span></code></pre></div>
 <p>你熟悉的 zsh 主题和快捷命令又回来了！</p>
 
-<p><img src="images/set-up-development-environment-on-windows/oh-my-zsh.png" alt="oh-my-zsh" /></p>
+<p><img src="/images/set-up-development-environment-on-windows/oh-my-zsh.png" alt="oh-my-zsh" /></p>
 
 <h2 id="editor-ide">Editor&amp;IDE</h2>
 
-<p>在此推荐两款编辑器，<a href="https://code.visualstudio.com/">VScode</a> 和 <a href="https://atom.io/">Atom</a>。</p>
+<p>在此推荐两款编辑器，<a href="https://code.visualstudio.com/" target="_blank">VScode</a> 和 <a href="https://atom.io/" target="_blank">Atom</a>。</p>
 
 <p>它们都是用 Electron 打造。VScode 适合喜欢开箱即用的人，非常方便；Atom 适合喜欢对编辑器进行 Hack 的人。你可以在官网上安装，也可以用 scoop 安装。</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">scoop bucket add extras <span style="color:#999;font-style:italic"># vscode 和 atom 都在 extras 库中，关于 scoop 中的 bucket 概念，参考: https://github.com/lukesampson/scoop/wiki/Buckets
@@ -241,7 +251,7 @@ scoop install atom</code></pre></div>
 
 <p>最新的 Win10 系统对高分辨率的屏幕支持已经很好了。但一些第三方软件由于历史原因，还没有很好地适配。在使用这些第三方软件的时候，如果字体让你感到不舒服，请带上护目镜——使用额外的字体</p>
 
-<p>我对字体没有额外的研究，在此就分享给大家一款对开发者友好的字体——<a href="https://github.com/andreberg/Meslo-Font">Meslo-Font</a></p>
+<p>我对字体没有额外的研究，在此就分享给大家一款对开发者友好的字体——<a href="https://github.com/andreberg/Meslo-Font" target="_blank">Meslo-Font</a></p>
 
 <p>下载安装之后，第三方软件里配置一下字体即可。</p>
 
@@ -259,58 +269,36 @@ scoop install atom</code></pre></div>
 
 </div>
 
-
-    
-<footer class='entry-footer'>
   
-    
-      
-      
-
-<div class='categories'>
-  <span class='category-icon'>
-    <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+<footer class='entry-footer'>
+  <div class='container sep-before'>
+  <div class='categories'>
+  <span class='taxonomy-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
   
 </svg>
-
-  </span>
-  <span class='screen-reader'>Categories: </span><a class='category' href='https://excited-ccccly.github.io/studymakesmehappy.club/categories/devops'>DevOps</a>, <a class='category' href='https://excited-ccccly.github.io/studymakesmehappy.club/categories/tools'>Tools</a></div>
-
-
-    
-  
-    
-      
-      
-
+</span>
+  <span class='screen-reader-text'>Categories: </span><a class='category' href='/categories/devops'>DevOps</a>, <a class='category' href='/categories/tools'>Tools</a></div>
 <div class='tags'>
-  <span class='tag-icon'>
-    <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  <span class='taxonomy-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
   <line x1="7" y1="7" x2="7" y2="7"/>
   
 </svg>
+</span>
+  <span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/windows'>Windows</a>, <a class='tag' href='/tags/package-manager'>Package Manager</a>, <a class='tag' href='/tags/linux'>Linux</a>, <a class='tag' href='/tags/wsl'>WSL</a>, <a class='tag' href='/tags/terminal-emulator'>Terminal Emulator</a>, <a class='tag' href='/tags/editor'>Editor</a>, <a class='tag' href='/tags/font'>Font</a></div>
 
-  </span>
-  <span class='screen-reader'>Tags: </span><a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/windows'>Windows</a>, <a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/package-manager'>Package Manager</a>, <a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/linux'>Linux</a>, <a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/wsl'>WSL</a>, <a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/terminal-emulator'>Terminal Emulator</a>, <a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/editor'>Editor</a>, <a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/font'>Font</a></div>
-
-
-    
-  
+  </div>
 </footer>
 
 
+</article>
 
-  </article>
-
-  
-    
 <nav class='entry-nav'>
-  <div class='entry-nav-links'><div class='prev-entry'>
-      <a href='https://excited-ccccly.github.io/studymakesmehappy.club/posts/speed-up-your-deployment-using-docker-compose/'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/posts/speed-up-your-deployment-using-docker-compose/'>
         <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <line x1="20" y1="12" x2="4" y2="12"/>
@@ -318,10 +306,10 @@ scoop install atom</code></pre></div>
   
 </svg>
  Previous</span>
-        <span class='screen-reader'>Previous post: </span>Speed Up Your Deployment Using Docker Compose</a>
-    </div><div class='next-entry'>
-      <a href='https://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes-ingress/'>
-        <span class='screen-reader'>Next post: </span>Kubernetes Ingress<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+        <span class='screen-reader-text'>Previous post: </span>Speed Up Your Deployment Using Docker Compose</a>
+    </div><div class='next-entry sep-before'>
+      <a href='/posts/kubernetes-ingress/'>
+        <span class='screen-reader-text'>Next post: </span>Kubernetes Ingress<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <line x1="4" y1="12" x2="20" y2="12"/>
   <polyline points="14 6 20 12 14 18"/>
@@ -333,51 +321,42 @@ scoop install atom</code></pre></div>
 </nav>
 
 
-  
 
-  
-    <div class='comments-container'>
-</div>
 
-  
-</main>
+      </main>
 
-    <footer id='footer' class='footer-container'>
-      <div class='footer'>
-        <div class='social'>
-  <nav aria-label='Social Menu'>
-    <ul class='social-menu'><li>
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
         <a href='https://github.com/Excited-ccccly' target='_blank' rel='noopener'>
-          <span class='screen-reader'>Open Github account in new tab</span>
-          <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
   
 </svg>
-
-        </a>
+</a>
+      </li><li>
+        <a href='mailto:geekchenlingyun@outlook.com' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Contact via Email</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+  <polyline points="22,6 12,13 2,6"/>
+  
+</svg>
+</a>
       </li></ul>
   </nav>
+</section><div class='copyright'>
+  <p> &copy; 2017-2018 ccccly </p>
 </div>
 
-        <div class='copyright'>
-          <p>
-    
-      
-    
-  
-  &copy; 2017-2018 ccccly</p>
-
-
         </div>
-      </div>
-    </footer>
+      </footer>
 
-  </div>
+    </div>
+  </div><script>window.__public_path__='\/assets\/js\/'</script>
 
-  <script src='https://excited-ccccly.github.io/studymakesmehappy.club/js/main.af838dd5.js'></script>
-  
-
+<script src='/assets/js/main.9daad1e6.js'></script><script src='/js/custom.js'></script>
 </body>
 
 </html>

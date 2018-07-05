@@ -4,6 +4,7 @@ title = "Home"
 copyright = ""
 
 theme = "minimo"
+publishDir = "docs"
 
 disqusShortname = ""
 googleAnalytics = ""

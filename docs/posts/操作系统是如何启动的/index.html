@@ -9,6 +9,7 @@
 UEFI UEFI 全称是 Unified Extensible Firmware Interface, 一个统一的、可扩展的、硬件和操作系统之间的固件接口。大家都喜欢统一， 统一意味着只需要实现一套标准；大家也都喜欢接口，接口抽象程度高；大家更喜欢可扩展，可以自己扩展功能。UEFI 是 BIOS 的继任者，近几年的电脑都是使用 UEFI 的。因为 BIOS 必须从硬盘（BIOS 设置里的第一块）的前 512 Bytes(称为 Master Boot Record) 开始加载。并且只有前 440 Bytes 是提供给 Bootloader 修改定义的。由于空间太小了，能做的事情很有限，做 Bootloader 的表示心里苦。
 但 UEFI 就不一样了，UEFI 能识别文件系统，意味着你可以把 Bootloader 的可执行文件放在硬盘中的任何一个地方。存放 Bootloader 可执行文件的地方叫做 EFI System Partition, 一般为 FAT32 分区。
 Bootloader Bootloader, 顾名思义，就是启动加载器。你电脑有多个操作系统，你告诉 Bootloader 去启动哪个，它就去启动那个系统，加载它的 Kernel. Linux 下有名的 Bootloader 是 grub, Windows 下是 winload.'>
+<meta name='theme-color' content='#ffcd00'>
 
 <meta property='og:title' content='操作系统是如何启动的 • ccccly'>
 <meta property='og:description' content='花了一下午时间，成功安装了 Arch Linux, 收获颇丰。在此以 Arch Linux 的安装为例来聊一聊&rdquo;操作系统是如何启动的&rdquo;。虽然是以 Arch 为例，但其实所有的操作系统（手机和电脑操作系统）都大同小异，我也不想列出所有系统的详细启动流程。先上图为敬
@@ -16,68 +17,68 @@ Bootloader Bootloader, 顾名思义，就是启动加载器。你电脑有多个
 UEFI UEFI 全称是 Unified Extensible Firmware Interface, 一个统一的、可扩展的、硬件和操作系统之间的固件接口。大家都喜欢统一， 统一意味着只需要实现一套标准；大家也都喜欢接口，接口抽象程度高；大家更喜欢可扩展，可以自己扩展功能。UEFI 是 BIOS 的继任者，近几年的电脑都是使用 UEFI 的。因为 BIOS 必须从硬盘（BIOS 设置里的第一块）的前 512 Bytes(称为 Master Boot Record) 开始加载。并且只有前 440 Bytes 是提供给 Bootloader 修改定义的。由于空间太小了，能做的事情很有限，做 Bootloader 的表示心里苦。
 但 UEFI 就不一样了，UEFI 能识别文件系统，意味着你可以把 Bootloader 的可执行文件放在硬盘中的任何一个地方。存放 Bootloader 可执行文件的地方叫做 EFI System Partition, 一般为 FAT32 分区。
 Bootloader Bootloader, 顾名思义，就是启动加载器。你电脑有多个操作系统，你告诉 Bootloader 去启动哪个，它就去启动那个系统，加载它的 Kernel. Linux 下有名的 Bootloader 是 grub, Windows 下是 winload.'>
-<meta property='og:url' content='https://excited-ccccly.github.io/studymakesmehappy.club/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%98%AF%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8%E7%9A%84/'>
-<meta property='og:site_name' content=''>
-<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='Linux'><meta property='article:tag' content='Bootloader'><meta property='article:tag' content='UEFI'><meta property='article:tag' content='Systemd'><meta property='article:tag' content='Arch'><meta property='article:published_time' content='2018-07-01T12:21:44&#43;08:00'/><meta property='article:modified_time' content='2018-07-01T12:21:44&#43;08:00'/>
+<meta property='og:url' content='https://studymakesmehappy.club/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%98%AF%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8%E7%9A%84/'>
+<meta property='og:site_name' content='Home'>
+<meta property='og:type' content='article'><meta property='og:image' content='https://www.gravatar.com/avatar/374150c4ee619dfed2491b9bb5bcd476?s=256'><meta property='article:section' content='Posts'><meta property='article:tag' content='Linux'><meta property='article:tag' content='Bootloader'><meta property='article:tag' content='UEFI'><meta property='article:tag' content='Systemd'><meta property='article:tag' content='Arch'><meta property='article:published_time' content='2018-07-01T12:21:44&#43;08:00'/><meta property='article:modified_time' content='2018-07-01T12:21:44&#43;08:00'/><meta name='twitter:card' content='summary'>
 
 <meta name="generator" content="Hugo 0.40.1" />
 
-  <base href='https://excited-ccccly.github.io/studymakesmehappy.club/'>
   <title>操作系统是如何启动的 • ccccly</title>
-  <link rel='canonical' href='https://excited-ccccly.github.io/studymakesmehappy.club/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%98%AF%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8%E7%9A%84/'>
-  <link href='' rel='alternate' type='application/rss+xml' title='' />
-  <link rel='icon' href='https://excited-ccccly.github.io/studymakesmehappy.club/favicon.ico'>
-<link rel='stylesheet' href='https://fonts.lug.ustc.edu.cn/css?family=Ubuntu:400,400i,700&subset=latin'>
-<link rel='stylesheet' href='https://excited-ccccly.github.io/studymakesmehappy.club/css/main.d02777fd.css'>
-
-
+  <link rel='canonical' href='https://studymakesmehappy.club/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%98%AF%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8%E7%9A%84/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.cb99c271.css'><link rel='stylesheet' href='/css/custom.css'><style>
+:root{--color-accent:#ffcd00;}
+</style>
 
 </head>
 
 
-<body class='page'>
+<body class='page type-posts'>
+
   <div class='site'>
-    <header id='header' class='header-container'>
-      <div class='site-header'>
-        <nav id='navmenu' aria-label='Main Menu'>
-  <ul class='main-menu'>
+
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+    <div class='main'>
+
+      <nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
     
-    <li>
-      <a href='https://excited-ccccly.github.io/studymakesmehappy.club/'>Home</a>
-    </li>
-    
-    <li>
-      <a href='https://excited-ccccly.github.io/studymakesmehappy.club/about/'>About</a>
-    </li>
-    
-    <li>
-      <a href='https://github.com/Excited-ccccly/studymakesmehappy.club'>Repo</a>
-    </li>
-    
-  </ul>
+    <ul><li class='item'>
+        <a href='/'>Home</a>
+      </li><li class='item'>
+        <a href='/posts/'>Posts</a>
+      </li><li class='item'>
+        <a href='/about/'>About</a>
+      </li><li class='item'>
+        <a href='https://github.com/Excited-ccccly/studymakesmehappy.club'>Repo</a>
+      </li></ul>
+  </div>
 </nav>
 
-        <div class='site-info'>
-          
-          <p class='site-title title'></p>
-          
-          <p class='site-description'>Study makes me happy</p>
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>Home</p><p class='desc site-desc'>Study makes me happy</p>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+
+      <main id='content'>
 
 
-<main class='main'>
-  <article lang='en' class='entry'>
-    <header class='entry-header'>
-  <div class='entry-info'>
-    <h1 class='entry-title title'>操作系统是如何启动的</h1>
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>操作系统是如何启动的</h1>
+      
+
+    </div>
     
-  </div>
-  
-<div class='meta'>
-  <span class='posted-on'>
-    <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+<div class='entry-meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
   <line x1="16" y1="2" x2="16" y2="6"/>
@@ -85,79 +86,88 @@ Bootloader Bootloader, 顾名思义，就是启动加载器。你电脑有多个
   <line x1="3" y1="10" x2="21" y2="10"/>
   
 </svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2018-07-01T12:21:44&#43;08:00'>2018, Jul 01</time>
+</span>
 
-    <span class='screen-reader'>Posted on </span>
-    <time class='date' datetime='2018-07-01T12:21:44&#43;08:00'>2018, Jul 1</time>
-  </span>
-  
-  <span class='byline'>
-    <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  <span class='byline'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M21,21V20c0-2.76-4-5-9-5s-9,2.24-9,5v1"/>
   <path d="M16,6.37A4,4,0,1,1,12.63,3,4,4,0,0,1,16,6.37Z"/>
   
 </svg>
-
-    <span class='screen-reader'> by </span>
-    ccccly
-  </span>
+<span class='screen-reader-text'> by </span><a href='/authors/ccccly'>ccccly</a></span>
   
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+3 mins read
+</span>
+
+
 </div>
 
 
+  </div>
 </header>
 
-    <div class='entry-content'>
+  
   
 
-<p>花了一下午时间，成功安装了 <a href="https://www.archlinux.org/">Arch Linux</a>, 收获颇丰。在此以 Arch Linux 的安装为例来聊一聊&rdquo;操作系统是如何启动的&rdquo;。虽然是以 Arch 为例，但其实所有的操作系统（手机和电脑操作系统）都大同小异，我也不想列出所有系统的详细启动流程。先上图为敬</p>
+  <div class='container entry-content'>
+  
 
-<p><img src="images/操作系统是如何启动的/OS startup process.png" alt="" /></p>
+<p>花了一下午时间，成功安装了 <a href="https://www.archlinux.org/" target="_blank">Arch Linux</a>, 收获颇丰。在此以 Arch Linux 的安装为例来聊一聊&rdquo;操作系统是如何启动的&rdquo;。虽然是以 Arch 为例，但其实所有的操作系统（手机和电脑操作系统）都大同小异，我也不想列出所有系统的详细启动流程。先上图为敬</p>
 
-<p>首先，你的电脑有一堆硬件，CPU、内存、硬盘都与主板相连，主板上有 <a href="https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface">UEFI</a> 固件。</p>
+<p><img src="/images/操作系统是如何启动的/OS startup process.png" alt="" /></p>
+
+<p>首先，你的电脑有一堆硬件，CPU、内存、硬盘都与主板相连，主板上有 <a href="https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface" target="_blank">UEFI</a> 固件。</p>
 
 <h2 id="uefi">UEFI</h2>
 
-<p>UEFI 全称是 Unified Extensible Firmware Interface, 一个统一的、可扩展的、硬件和操作系统之间的固件接口。大家都喜欢统一， 统一意味着只需要实现一套标准；大家也都喜欢接口，接口抽象程度高；大家更喜欢可扩展，可以自己扩展功能。UEFI 是 <a href="https://en.wikipedia.org/wiki/BIOS">BIOS</a> 的继任者，近几年的电脑都是使用 UEFI 的。因为 BIOS 必须从硬盘（BIOS 设置里的第一块）的前 512 Bytes(称为 Master Boot Record) 开始加载。并且只有前 440 Bytes 是提供给 Bootloader 修改定义的。由于空间太小了，能做的事情很有限，做 Bootloader 的表示心里苦。</p>
+<p>UEFI 全称是 Unified Extensible Firmware Interface, 一个统一的、可扩展的、硬件和操作系统之间的固件接口。大家都喜欢统一， 统一意味着只需要实现一套标准；大家也都喜欢接口，接口抽象程度高；大家更喜欢可扩展，可以自己扩展功能。UEFI 是 <a href="https://en.wikipedia.org/wiki/BIOS" target="_blank">BIOS</a> 的继任者，近几年的电脑都是使用 UEFI 的。因为 BIOS 必须从硬盘（BIOS 设置里的第一块）的前 512 Bytes(称为 Master Boot Record) 开始加载。并且只有前 440 Bytes 是提供给 Bootloader 修改定义的。由于空间太小了，能做的事情很有限，做 Bootloader 的表示心里苦。</p>
 
-<p>但 UEFI 就不一样了，UEFI 能识别文件系统，意味着你可以把 Bootloader 的可执行文件放在硬盘中的任何一个地方。存放 Bootloader 可执行文件的地方叫做 <a href="https://wiki.archlinux.org/index.php/Unified_Extensible_Firmware_Interface/System_partition">EFI System Partition</a>, 一般为 FAT32 分区。</p>
+<p>但 UEFI 就不一样了，UEFI 能识别文件系统，意味着你可以把 Bootloader 的可执行文件放在硬盘中的任何一个地方。存放 Bootloader 可执行文件的地方叫做 <a href="https://wiki.archlinux.org/index.php/Unified_Extensible_Firmware_Interface/System_partition" target="_blank">EFI System Partition</a>, 一般为 FAT32 分区。</p>
 
 <h2 id="bootloader">Bootloader</h2>
 
-<p><a href="https://wiki.archlinux.org/index.php/Category:Boot_loaders">Bootloader</a>, 顾名思义，就是启动加载器。你电脑有多个操作系统，你告诉 Bootloader 去启动哪个，它就去启动那个系统，加载它的 Kernel. Linux 下有名的 Bootloader 是 <a href="https://wiki.archlinux.org/index.php/GRUB">grub</a>, Windows 下是 <a href="https://en.wikipedia.org/wiki/Windows_Vista_startup_process">winload</a>. Android 刷机的第一步就是要解锁 Bootloader, 解锁之后才能启动第三方系统和 Recovery. 其实，Bootloader 并不是必需的， Linux 支持通过 <a href="https://wiki.archlinux.org/index.php/EFISTUB">EFISTUB</a> 直接从 UEFI 启动，但这样就不支持多系统了。</p>
+<p><a href="https://wiki.archlinux.org/index.php/Category:Boot_loaders" target="_blank">Bootloader</a>, 顾名思义，就是启动加载器。你电脑有多个操作系统，你告诉 Bootloader 去启动哪个，它就去启动那个系统，加载它的 Kernel. Linux 下有名的 Bootloader 是 <a href="https://wiki.archlinux.org/index.php/GRUB" target="_blank">grub</a>, Windows 下是 <a href="https://en.wikipedia.org/wiki/Windows_Vista_startup_process" target="_blank">winload</a>. Android 刷机的第一步就是要解锁 Bootloader, 解锁之后才能启动第三方系统和 Recovery. 其实，Bootloader 并不是必需的， Linux 支持通过 <a href="https://wiki.archlinux.org/index.php/EFISTUB" target="_blank">EFISTUB</a> 直接从 UEFI 启动，但这样就不支持多系统了。</p>
 
-<p><img src="images/操作系统是如何启动的/grub.png" alt="" /></p>
+<p><img src="/images/操作系统是如何启动的/grub.png" alt="" /></p>
 
-<p>上图就是 grub 的界面，可以让你选择操作系统来启动（目前只有一个 <a href="https://manjaro.org/">Manjaro</a>）。</p>
+<p>上图就是 grub 的界面，可以让你选择操作系统来启动（目前只有一个 <a href="https://manjaro.org/" target="_blank">Manjaro</a>）。</p>
 
 <h2 id="安装-arch">安装 Arch</h2>
 
 <p>大致了解了 UEFI 和 Bootloader 后，就可以开始安装 Arch 了。安裝操作系統本质上就是把操作系统的文件放在某个位置（可以是硬盘，也可以是网络位置，一般是硬盘）上，在告诉 Bootloader 如何启动这个操作系统。所以多系统也很简单，把不同操作系统的文件放在不同的分区，然后告诉 Bootloader 这些系统应该如何启动。我们只要在 grub 里选择，就能加载不同的操作系统。为了方便，这里在虚拟机里安装 Arch.</p>
 
-<p>装个 <a href="https://www.virtualbox.org/">VirtualBox</a>, 下载 archlinux 的<a href="https://mirrors.ustc.edu.cn/archlinux/iso/2018.07.01/">镜像</a>。配置一下虚拟机，记得勾选 <strong>Settings-&gt;System-&gt;Enable EFI</strong>, 不然会启动不了的。</p>
+<p>装个 <a href="https://www.virtualbox.org/" target="_blank">VirtualBox</a>, 下载 archlinux 的<a href="https://mirrors.ustc.edu.cn/archlinux/iso/2018.07.01/" target="_blank">镜像</a>。配置一下虚拟机，记得勾选 <strong>Settings-&gt;System-&gt;Enable EFI</strong>, 不然会启动不了的。</p>
 
 <blockquote>
-<p>说在前面：值得注意的是，下载的 arch iso 镜像只是给你一个预安装环境，类似于 <a href="https://en.wikipedia.org/wiki/Live_CD">Live CD</a> 模式。我们需要在这个 Pre-install 的环境下把 Arch 安装到硬盘上。</p>
+<p>说在前面：值得注意的是，下载的 arch iso 镜像只是给你一个预安装环境，类似于 <a href="https://en.wikipedia.org/wiki/Live_CD" target="_blank">Live CD</a> 模式。我们需要在这个 Pre-install 的环境下把 Arch 安装到硬盘上。</p>
 </blockquote>
 
 <h3 id="分区">分区</h3>
 
 <p>之前提到， UEFI 会去 EFI System Partition(简称 ESP) 里加载 Bootloader(或者直接加载 Linux Kernel). 那首先，我们要准备这样一个分区。首先看看有没有现成的</p>
 
-<p><img src="images/操作系统是如何启动的/df.png" alt="" /></p>
+<p><img src="/images/操作系统是如何启动的/df.png" alt="" /></p>
 
 <p>可以看出，虚拟机添加的硬盘还没有被挂载。使用 fdisk 列出虚拟机连接的硬盘。</p>
 
-<p><img src="images/操作系统是如何启动的/fdisk list.png" alt="" /></p>
+<p><img src="/images/操作系统是如何启动的/fdisk list.png" alt="" /></p>
 
 <p><strong>/dev/sda</strong> 就是我们为虚拟机添加的硬盘，但可以发现，它还没有初始化。使用 fdisk 来为 <strong>/dev/sda</strong> 这块硬盘分区</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">fdisk /dev/sda</code></pre></div>
 <p>按照下图操作</p>
 
-<p><img src="images/操作系统是如何启动的/fdisk partition.png" alt="" /></p>
+<p><img src="/images/操作系统是如何启动的/fdisk partition.png" alt="" /></p>
 
 <ul>
-<li>命令 <code>g</code> 将分区表类型改为 <a href="https://en.wikipedia.org/wiki/GUID_Partition_Table">GPT</a></li>
+<li>命令 <code>g</code> 将分区表类型改为 <a href="https://en.wikipedia.org/wiki/GUID_Partition_Table" target="_blank">GPT</a></li>
 <li>命令 <code>n</code> 创建一个新分区。这里创建了两次，第一个大小 550M, 记为 <strong>/dev/sda1</strong>，第二个大小为剩下所有的空间， 记为 <strong>/dev/sda2</strong>. 可以发现后面的数字代表分区号</li>
 <li>命令 <code>t</code> 更改分区类型。这里将 <strong>/dev/sda1</strong> 改成了我们要的 ESP 分区，550MB 是 ESP 分区的推荐大小</li>
 <li>命令 <code>w</code> 保存修改并退出</li>
@@ -183,7 +193,7 @@ mount /dev/sda1 /mnt/boot</code></pre></div>
 
 <h3 id="安装-base-packages">安装 base packages</h3>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pacstrap /mnt base</code></pre></div>
-<p><a href="https://www.archlinux.org/groups/x86_64/base/">base</a> 里含有 Linux Kernel, bash, gcc-libs 等基础包。这条命令就是往 <strong>sda2</strong> 上安装操作系统所需的文件。可以 <strong>ls /mnt</strong> 看一看，发现它就是一个 <a href="https://en.wikipedia.org/wiki/Root_directory">Root directory</a>.</p>
+<p><a href="https://www.archlinux.org/groups/x86_64/base/" target="_blank">base</a> 里含有 Linux Kernel, bash, gcc-libs 等基础包。这条命令就是往 <strong>sda2</strong> 上安装操作系统所需的文件。可以 <strong>ls /mnt</strong> 看一看，发现它就是一个 <a href="https://en.wikipedia.org/wiki/Root_directory" target="_blank">Root directory</a>.</p>
 
 <h3 id="生成-fstab-配置文件">生成 fstab 配置文件</h3>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</code></pre></div>
@@ -191,7 +201,7 @@ mount /dev/sda1 /mnt/boot</code></pre></div>
 
 <h3 id="change-root">Change root</h3>
 
-<p>目前我们所有的操作都是在 Pre-install 环境下的，目前的 Root directory 也是 Pre-install 环境的。现在，我们已经把操作系统所需的文件安装到了 /mnt 目录下，它也是一个完整的 Root directory, 而我们现在需要在新的操作系统的环境下继续配置，而不是 Pre-install 环境。因此，我们需要更换 Root directory, 用的命令就是 <a href="https://wiki.archlinux.org/index.php/Change_root">chroot</a>. Arch 为我们准备了 arch-chroot 命令。</p>
+<p>目前我们所有的操作都是在 Pre-install 环境下的，目前的 Root directory 也是 Pre-install 环境的。现在，我们已经把操作系统所需的文件安装到了 /mnt 目录下，它也是一个完整的 Root directory, 而我们现在需要在新的操作系统的环境下继续配置，而不是 Pre-install 环境。因此，我们需要更换 Root directory, 用的命令就是 <a href="https://wiki.archlinux.org/index.php/Change_root" target="_blank">chroot</a>. Arch 为我们准备了 arch-chroot 命令。</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">arch-chroot /mnt</code></pre></div>
 <p>顺利切换到新的 Root Directory, <strong>之前 /mnt 变成了现在的 Root directory</strong>. 比如，之前的 /mnt/boot, change root 之后，就变成了 /boot. 所有的命令也是来自新的 Root directory.</p>
 
@@ -210,38 +220,38 @@ mount /dev/sda1 /mnt/boot</code></pre></div>
 </span><span style="color:#999;font-style:italic"></span>grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB</code></pre></div>
 <p>看一下生成的文件</p>
 
-<p><img src="images/操作系统是如何启动的/boot.png" alt="" /></p>
+<p><img src="/images/操作系统是如何启动的/boot.png" alt="" /></p>
 
 <p>其中:</p>
 
 <ul>
 <li>EFI 文件夹里有 grub 的 EFI 可执行文件，UEFI 会在这个文件夹查找并执行 grubx64.efi 来加载 grub</li>
 <li>grub 文件夹里有 grub 的配置文件 grub.cfg</li>
-<li><strong>vmlinuz-linux</strong> 就是 linux Kernel, 只不过它是被 <a href="https://en.wikipedia.org/wiki/Zlib">zlib</a> 压缩过的，所以是 vmlinuz, 笑</li>
-<li>initramfs-linux.img 就是启动流程中的 <a href="https://en.wikipedia.org/wiki/Initial_ramdisk">Early User Space</a>(initrd) 里用到的镜像</li>
+<li><strong>vmlinuz-linux</strong> 就是 linux Kernel, 只不过它是被 <a href="https://en.wikipedia.org/wiki/Zlib" target="_blank">zlib</a> 压缩过的，所以是 vmlinuz, 笑</li>
+<li>initramfs-linux.img 就是启动流程中的 <a href="https://en.wikipedia.org/wiki/Initial_ramdisk" target="_blank">Early User Space</a>(initrd) 里用到的镜像</li>
 </ul>
 
 <h3 id="bootloader-1">Bootloader</h3>
 
 <p>看一看 grub 的配置文件</p>
 
-<p><img src="images/操作系统是如何启动的/grub entry.png" alt="" /></p>
+<p><img src="/images/操作系统是如何启动的/grub entry.png" alt="" /></p>
 
 <p>可以看到 grub 先加载 Kernel，然后再加载 initramfs-linux.</p>
 
 <ul>
-<li>Kernel 首先初始化内存（分页），CPU, <a href="https://en.wikipedia.org/wiki/Interrupt">Interrupt</a></li>
-<li>initrd 动态加载驱动模块。因为驱动种类繁杂，把这些驱动分离到 initrd 中的 initramfs-linux.img 可以有效减少 Kernel 的大小。这一步会创建一个临时的 Root directory 来执行命令，完成之后，会切换到真正的 Root directory. 详见 <a href="https://en.wikipedia.org/wiki/Initial_ramdisk">Initial ramdisk</a></li>
+<li>Kernel 首先初始化内存（分页），CPU, <a href="https://en.wikipedia.org/wiki/Interrupt" target="_blank">Interrupt</a></li>
+<li>initrd 动态加载驱动模块。因为驱动种类繁杂，把这些驱动分离到 initrd 中的 initramfs-linux.img 可以有效减少 Kernel 的大小。这一步会创建一个临时的 Root directory 来执行命令，完成之后，会切换到真正的 Root directory. 详见 <a href="https://en.wikipedia.org/wiki/Initial_ramdisk" target="_blank">Initial ramdisk</a></li>
 <li>Kernel 初始化设备，开始 Init Process, 进入 User Space</li>
-<li>Init Process 是操作系统执行的第一个进程，PID 为1。它负责启动所有的进程，因此它是所有进程的直接或间接父进程。<a href="https://en.wikipedia.org/wiki/Init">SysV init</a> 和 <a href="https://en.wikipedia.org/wiki/Systemd">Systemd</a> 是常见的两种 Init Process. SysV init 是基于 Shell Script 的(想必大家有往 /etc/rc 中添加脚本来设置应用自启的经历)，而且是顺序执行的，可想而知启动速度会很慢，因此现在很多发行版已经不把 SysV init 作为 Init Process 了。Systemd 是为了解决 init 的问题而生的，它使用声明式的配置文件，提高了可读性和可维护性；它采用并行执行，极大地提升了启动速度。现在，主流的 Linux 发行版都采用了 systemd 作为 Init Process. 感兴趣的可以看看这篇文章 <a href="http://0pointer.de/blog/projects/systemd.html">Rethinking PID 1</a> 来了解 systemd 的起源。</li>
+<li>Init Process 是操作系统执行的第一个进程，PID 为1。它负责启动所有的进程，因此它是所有进程的直接或间接父进程。<a href="https://en.wikipedia.org/wiki/Init" target="_blank">SysV init</a> 和 <a href="https://en.wikipedia.org/wiki/Systemd" target="_blank">Systemd</a> 是常见的两种 Init Process. SysV init 是基于 Shell Script 的(想必大家有往 /etc/rc 中添加脚本来设置应用自启的经历)，而且是顺序执行的，可想而知启动速度会很慢，因此现在很多发行版已经不把 SysV init 作为 Init Process 了。Systemd 是为了解决 init 的问题而生的，它使用声明式的配置文件，提高了可读性和可维护性；它采用并行执行，极大地提升了启动速度。现在，主流的 Linux 发行版都采用了 systemd 作为 Init Process. 感兴趣的可以看看这篇文章 <a href="http://0pointer.de/blog/projects/systemd.html" target="_blank">Rethinking PID 1</a> 来了解 systemd 的起源。</li>
 </ul>
 
-<p><img src="images/操作系统是如何启动的/Systemd_components.png" alt="" /></p>
+<p><img src="/images/操作系统是如何启动的/Systemd_components.png" alt="" /></p>
 
 <p>上图是 Tizen 系统中的 systemd, 可以发现 systemd 不仅只做 Init 初始化，还提供日志、网络、cgroup 资源控制等。</p>
 
 <ul>
-<li>Systemd 启动 <a href="https://en.wikipedia.org/wiki/Getty_(Unix)">getty</a>, 用户输入 username 和 password, 调用 <strong>login</strong>, 验证通过之后，根据 <strong>/etc/passwd</strong> 来为该用户启动相应的 <strong>shell</strong>(e.g. bash and zsh), shell 加载用户的配置文件（e.g. bashrc and zshrc）为用户初始化环境。</li>
+<li>Systemd 启动 <a href="https://en.wikipedia.org/wiki/Getty_(Unix)" target="_blank">getty</a>, 用户输入 username 和 password, 调用 <strong>login</strong>, 验证通过之后，根据 <strong>/etc/passwd</strong> 来为该用户启动相应的 <strong>shell</strong>(e.g. bash and zsh), shell 加载用户的配置文件（e.g. bashrc and zshrc）为用户初始化环境。</li>
 </ul>
 
 <h3 id="完成安装">完成安装</h3>
@@ -265,67 +275,45 @@ mount /dev/sda1 /mnt/boot</code></pre></div>
 <h2 id="参考">参考</h2>
 
 <ul>
-<li><a href="https://wiki.archlinux.org/index.php/Installation_guide">ArchLinux Installation guide</a></li>
-<li><a href="https://wiki.archlinux.org/index.php/Arch_boot_process">Arch boot process</a></li>
-<li><a href="https://wiki.archlinux.org/index.php/GRUB#UEFI_systems">GRUB</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Linux_startup_process">Linux startup process</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Initial_ramdisk">Initial ramdisk</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/Installation_guide" target="_blank">ArchLinux Installation guide</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/Arch_boot_process" target="_blank">Arch boot process</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/GRUB#UEFI_systems" target="_blank">GRUB</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Linux_startup_process" target="_blank">Linux startup process</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Initial_ramdisk" target="_blank">Initial ramdisk</a></li>
 </ul>
 
 </div>
 
-
-    
-<footer class='entry-footer'>
   
-    
-      
-      
-
-<div class='categories'>
-  <span class='category-icon'>
-    <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+<footer class='entry-footer'>
+  <div class='container sep-before'>
+  <div class='categories'>
+  <span class='taxonomy-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
   
 </svg>
-
-  </span>
-  <span class='screen-reader'>Categories: </span><a class='category' href='https://excited-ccccly.github.io/studymakesmehappy.club/categories/operating-system'>Operating System</a></div>
-
-
-    
-  
-    
-      
-      
-
+</span>
+  <span class='screen-reader-text'>Categories: </span><a class='category' href='/categories/operating-system'>Operating System</a></div>
 <div class='tags'>
-  <span class='tag-icon'>
-    <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  <span class='taxonomy-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
   <line x1="7" y1="7" x2="7" y2="7"/>
   
 </svg>
+</span>
+  <span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/linux'>Linux</a>, <a class='tag' href='/tags/bootloader'>Bootloader</a>, <a class='tag' href='/tags/uefi'>UEFI</a>, <a class='tag' href='/tags/systemd'>Systemd</a>, <a class='tag' href='/tags/arch'>Arch</a></div>
 
-  </span>
-  <span class='screen-reader'>Tags: </span><a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/linux'>Linux</a>, <a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/bootloader'>Bootloader</a>, <a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/uefi'>UEFI</a>, <a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/systemd'>Systemd</a>, <a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/arch'>Arch</a></div>
-
-
-    
-  
+  </div>
 </footer>
 
 
+</article>
 
-  </article>
-
-  
-    
 <nav class='entry-nav'>
-  <div class='entry-nav-links'><div class='prev-entry'>
-      <a href='https://excited-ccccly.github.io/studymakesmehappy.club/posts/%E8%81%8A%E4%B8%80%E8%81%8A%E5%8F%A4%E8%80%81%E7%9A%84-x-www-form-urlencoded/'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/posts/%E8%81%8A%E4%B8%80%E8%81%8A%E5%8F%A4%E8%80%81%E7%9A%84-x-www-form-urlencoded/'>
         <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <line x1="20" y1="12" x2="4" y2="12"/>
@@ -333,56 +321,47 @@ mount /dev/sda1 /mnt/boot</code></pre></div>
   
 </svg>
  Previous</span>
-        <span class='screen-reader'>Previous post: </span>聊一聊古老的 x-www-form-urlencoded</a>
+        <span class='screen-reader-text'>Previous post: </span>聊一聊古老的 x-www-form-urlencoded</a>
     </div></div>
 </nav>
 
 
-  
 
-  
-    <div class='comments-container'>
-</div>
 
-  
-</main>
+      </main>
 
-    <footer id='footer' class='footer-container'>
-      <div class='footer'>
-        <div class='social'>
-  <nav aria-label='Social Menu'>
-    <ul class='social-menu'><li>
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
         <a href='https://github.com/Excited-ccccly' target='_blank' rel='noopener'>
-          <span class='screen-reader'>Open Github account in new tab</span>
-          <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
   
 </svg>
-
-        </a>
+</a>
+      </li><li>
+        <a href='mailto:geekchenlingyun@outlook.com' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Contact via Email</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+  <polyline points="22,6 12,13 2,6"/>
+  
+</svg>
+</a>
       </li></ul>
   </nav>
+</section><div class='copyright'>
+  <p> &copy; 2017-2018 ccccly </p>
 </div>
 
-        <div class='copyright'>
-          <p>
-    
-      
-    
-  
-  &copy; 2017-2018 ccccly</p>
-
-
         </div>
-      </div>
-    </footer>
+      </footer>
 
-  </div>
+    </div>
+  </div><script>window.__public_path__='\/assets\/js\/'</script>
 
-  <script src='https://excited-ccccly.github.io/studymakesmehappy.club/js/main.af838dd5.js'></script>
-  
-
+<script src='/assets/js/main.9daad1e6.js'></script><script src='/js/custom.js'></script>
 </body>
 
 </html>

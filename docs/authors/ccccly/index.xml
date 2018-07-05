@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ccccly on Home</title>
+    <link>https://studymakesmehappy.club/authors/ccccly/</link>
+    <description>Recent content in Ccccly on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 01 Jul 2018 12:21:44 +0800</lastBuildDate>
+    
+	<atom:link href="https://studymakesmehappy.club/authors/ccccly/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>操作系统是如何启动的</title>
+      <link>https://studymakesmehappy.club/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%98%AF%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8%E7%9A%84/</link>
+      <pubDate>Sun, 01 Jul 2018 12:21:44 +0800</pubDate>
+      
+      <guid>https://studymakesmehappy.club/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%98%AF%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8%E7%9A%84/</guid>
+      <description>花了一下午时间，成功安装了 Arch Linux, 收获颇丰。在此以 Arch Linux 的安装为例来聊一聊&amp;rdquo;操作系统是如何启动的&amp;rdquo;。虽然是以 Arch 为例，但其实所有的操作系统（手机和电脑操作系统）都大同小异，我也不想列出所有系统的详细启动流程。先上图为敬
+首先，你的电脑有一堆硬件，CPU、内存、硬盘都与主板相连，主板上有 UEFI 固件。
+UEFI UEFI 全称是 Unified Extensible Firmware Interface, 一个统一的、可扩展的、硬件和操作系统之间的固件接口。大家都喜欢统一， 统一意味着只需要实现一套标准；大家也都喜欢接口，接口抽象程度高；大家更喜欢可扩展，可以自己扩展功能。UEFI 是 BIOS 的继任者，近几年的电脑都是使用 UEFI 的。因为 BIOS 必须从硬盘（BIOS 设置里的第一块）的前 512 Bytes(称为 Master Boot Record) 开始加载。并且只有前 440 Bytes 是提供给 Bootloader 修改定义的。由于空间太小了，能做的事情很有限，做 Bootloader 的表示心里苦。
+但 UEFI 就不一样了，UEFI 能识别文件系统，意味着你可以把 Bootloader 的可执行文件放在硬盘中的任何一个地方。存放 Bootloader 可执行文件的地方叫做 EFI System Partition, 一般为 FAT32 分区。
+Bootloader Bootloader, 顾名思义，就是启动加载器。你电脑有多个操作系统，你告诉 Bootloader 去启动哪个，它就去启动那个系统，加载它的 Kernel. Linux 下有名的 Bootloader 是 grub, Windows 下是 winload.</description>
+    </item>
+    
+    <item>
+      <title>聊一聊古老的 x-www-form-urlencoded</title>
+      <link>https://studymakesmehappy.club/posts/%E8%81%8A%E4%B8%80%E8%81%8A%E5%8F%A4%E8%80%81%E7%9A%84-x-www-form-urlencoded/</link>
+      <pubDate>Sat, 02 Jun 2018 13:42:07 +0800</pubDate>
+      
+      <guid>https://studymakesmehappy.club/posts/%E8%81%8A%E4%B8%80%E8%81%8A%E5%8F%A4%E8%80%81%E7%9A%84-x-www-form-urlencoded/</guid>
+      <description>在为一个服务写 API 接口, 它是这样子发数据的
+ HTTP发布接口以POST表单的方式将数据发送到用户服务器，Content-Type 为application/x-www-form-urlencoded; HTTP request body 格式形如 a=b&amp;amp;c=d
+ 第一反应, &amp;ldquo;这是啥, 为什么不用 json?&amp;ldquo;。抱怨归抱怨，事情还是要做的。举个例子：
+针对这样的数据
+{ &amp;#34;title&amp;#34;: &amp;#34;t&amp;#34;, &amp;#34;author&amp;#34;: &amp;#34;a&amp;#34; } 会以这样的形式发送到服务器:
+https://host/path/to/api?title=t&amp;amp;author=a 看上去没什么问题，so easy.
+但如果数据是这样子呢? 里面含有 list
+{ &amp;#34;title&amp;#34;: &amp;#34;t&amp;#34;, &amp;#34;author&amp;#34;: &amp;#34;a&amp;#34;, &amp;#34;categories&amp;#34;: [&amp;#34;c1&amp;#34;, &amp;#34;c2&amp;#34;] } 怎么处理 categories 这种 list 类型?
+这样？
+# Percent-encoding 之前 https://host/path/to/api?title=t&amp;amp;author=a&amp;amp;categories=[&amp;#34;c1&amp;#34;, &amp;#34;c2&amp;#34;] 注意， 其实在 url 中，一些字符会进行 Percent-encoding 处理，再发送给服务端。
+   原始 [&amp;ldquo; 空格]   Percent encoding 后 %5B%22 %205D</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes Ingress</title>
+      <link>https://studymakesmehappy.club/posts/kubernetes-ingress/</link>
+      <pubDate>Tue, 27 Mar 2018 15:27:27 +0800</pubDate>
+      
+      <guid>https://studymakesmehappy.club/posts/kubernetes-ingress/</guid>
+      <description>kubernetes101 介绍了 Kubernetes 的基本用法，通过 NodePort 的形式对外暴露 Service 来提供服务。
+NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE express-app NodePort 10.0.0.151 &amp;lt;none&amp;gt; 80:31530/TCP 19m kubernetes ClusterIP 10.0.0.1 &amp;lt;none&amp;gt; 443/TCP 1d 这时候可以使用 NodeIP:NodePort 来从外界访问这个服务，其中 192.168.99.100 是集群中任意一个 Node 节点的 IP
+$ curl http://192.168.99.100:31530 hello world 但每次使用 IP+Port 访问服务的方式很不方便。在单机上，可以使用 nginx 的反向代理，实现通过域名访问服务。
+nginx.conf
+http { upstream my-api { server 127.0.0.1:8080; } server { listen 80; server_name api.domain.com; location / { proxy_pass http://my-api; } } } 启用 nginx 后，就可以通过访问 http://api.</description>
+    </item>
+    
+    <item>
+      <title>Set Up Development Environment on Windows</title>
+      <link>https://studymakesmehappy.club/posts/set-up-development-environment-on-windows/</link>
+      <pubDate>Sun, 04 Mar 2018 15:43:15 +0800</pubDate>
+      
+      <guid>https://studymakesmehappy.club/posts/set-up-development-environment-on-windows/</guid>
+      <description>闲言碎语：长久以来，Windows 一直被诟病在开源领域上开发体验不好，但最近几年，微软做出了巨大的改变，全力拥抱了开源，Github 上随处可见微软开发者的 Contribution；同时，笔记本电脑领域上几乎所有的创新都来自于 Windows 阵营，Windows 电脑变得越来越酷。这两点促使我专门为 Windows 开发社区做出自己的一份贡献。希望大家保持开放与沟通，避免无意义的争吵，塑造良好的社区氛围。
+ 这篇博客会介绍一些加快开发效率的工具，会安利以下(类别的)产品:
+ Package Manager(包管理器) Linux Toolkit(Linux 工具包) Terminal Emulator(终端模拟器) Windows Subsystem for Linux(Windows 上的 Linux 子系统) Oh-My-Zsh Editor&amp;amp;IDE(编辑器和集成开发环境) Font(字体)  Package Manager scoop 是 Windows 上一个很友好的包管理器，类似于 Ubuntu 上的 apt，macos 上的 homebrew。
+Install 打开 Powershell
+set-executionpolicy remotesigned -s currentuser iex (new-object net.webclient).downloadstring(&amp;#39;https://get.scoop.sh&amp;#39;) Usage scoop 可以简化 Windows 上的软件安装流程。
+scoop install nodejs scoop 的软件库很全，几乎你想要的都能找到，再也不用打开浏览器-&amp;gt;看文档-&amp;gt;下载-&amp;gt;配置环境变量了。
+Windows 平台上还有另外一个知名的包管理器 chocolatey，scoop 的优势在于不需管理员权限，因为所有的软件安装在用户本地，只对该用户有效，也减少了环境变量污染等问题，提高了使用体验。
+Linux Toolkit Linux 爱好者的你一定很希望在 Windows 上也可以使用 grep, sed, awk 等等工具。</description>
+    </item>
+    
+    <item>
+      <title>Speed Up Your Deployment Using Docker Compose</title>
+      <link>https://studymakesmehappy.club/posts/speed-up-your-deployment-using-docker-compose/</link>
+      <pubDate>Wed, 14 Feb 2018 01:05:40 +0800</pubDate>
+      
+      <guid>https://studymakesmehappy.club/posts/speed-up-your-deployment-using-docker-compose/</guid>
+      <description>Docker 的出现，优秀的隔离性让我们可以将任何应用部署到任何服务器上面，不再需要关注服务器的环境配置，简化了单个应用的部署流程。但在更多的情况下，应用往往会依赖于其他服务，比如前端网页依赖于后端服务，后端服务依赖于数据库。我们可以依次部署每个服务，但每次重复的手工操作让人厌烦。我们需要一个工具，只要描述好整个应用之间的服务依赖关系，将这个描述文件交给这个工具，一条命令便能启动整个系统。这种类型的工具有很多，这篇博客里聊的是Docker Compose。
+本文假设你有基本的 Docker 使用基础，你将会学习到以下几点：
+ Docker Compose 是什么？它适用于哪些场景？ 安装和使用 Docker Compose 注入环境变量来配置你的程序 挂载磁盘来持久化你的容器数据  Overview Docker Compose 用于定义和运行多容器应用，它使用 YAML 文件来描述服务之间的依赖关系，一条简单的docker compose up命令便能启动你的整个应用。 Compose 多用于单主机部署，比如在本地电脑上搭建你的开发环境，CI／CD 服务器上搭建集成测试环境等简单场景。当然 Docker 官方说 Compose 也可以用于生产环境，只要你用 Swarm 就好了。但目前的情况是，Kubernetes 大行其道，Swarm 日渐式微，就连 Docker 官方也都迫不得已拥抱了 Kubernetes。现在生产环境多用 Kubernetes 来部署管理多容器应用，如果你对 Kubernetes 感兴趣，可以参考我之前的入门文章Kubernetes101。
+我个人不是任何技术的信徒，每种技术都有它存在的道理。Docker Compose 简单方便，不需要花费精力部署调试 Kubernetes，适用于开发、测试以及个人的小应用场景；Kubernetes 成熟、自由、社区资源丰富，适用生产环境。建议大家可以亲自动手实践一下这两项技术，说实话，也花不了一晚上的时间。亲身体验之后，才能给技术恰如其分地归类，知道它们适用的场景，需要的时候顺手就用好了。
+Setup Windows 和 Mac 下的 Docker 客户端自带 Docker Compose， Ubuntu 下直接apt install docker-compose即可
+详情参考Install Docker Compose
+Compose Up 以一个简单的 express app 为例</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes101</title>
+      <link>https://studymakesmehappy.club/posts/kubernetes101/</link>
+      <pubDate>Sun, 07 Jan 2018 23:31:08 +0800</pubDate>
+      
+      <guid>https://studymakesmehappy.club/posts/kubernetes101/</guid>
+      <description>这是一篇 kubernetes（简称 k8s，将中间的 8 个字母简写成“8”） 的基础教程，会使用实际例子来讲解 k8s 中的基础概念。
+在这个教程中，假设你有基本的 Docker 使用基础，你将会学习到以下几点：
+ 搭建 k8s 集群 部署一个容器化的应用到集群中 通过 Service 暴露服务 通过 Replica 来伸缩服务实例 通过 Rolling Update 更新服务 Deployment, Pod, Node, Service 等相关的概念  安装 cli kubectl 是 k8s 的命令行工具，可以方便地管理集群
+安装集群 有两种方式可以安装 k8s 集群
+云上安装 k8s 如果你有多台云服务器，使用 rancher 来搭建 k8s 集群是一个方便快捷的选择。
+一般来说，国外的解决方案在中国很可能出现水土不服的情况，需要额外参考这篇文章————原生加速中国区Kubernetes安装
+额外，还需要注意以下几点:
+ 云服务器的名字不能过长，超过 63 个字符之后，会导致该节点无法注册成功。 需要使用和 rancher 兼容的 docker 版本，参考这个列表  搭建好集群之后，点击 UI 界面上的 kubernetes &amp;gt; cli &amp;gt; generate config，按照说明配置 kubectl ，即可将 kubectl 连接上 rancher 搭建的 k8s 集群</description>
+    </item>
+    
+    <item>
+      <title>漫谈时间(一)——时间、历法和时区</title>
+      <link>https://studymakesmehappy.club/posts/%E6%BC%AB%E8%B0%88%E6%97%B6%E9%97%B4%E4%B8%80%E6%97%B6%E9%97%B4%E5%8E%86%E6%B3%95%E5%92%8C%E6%97%B6%E5%8C%BA/</link>
+      <pubDate>Mon, 27 Nov 2017 00:01:44 +0800</pubDate>
+      
+      <guid>https://studymakesmehappy.club/posts/%E6%BC%AB%E8%B0%88%E6%97%B6%E9%97%B4%E4%B8%80%E6%97%B6%E9%97%B4%E5%8E%86%E6%B3%95%E5%92%8C%E6%97%B6%E5%8C%BA/</guid>
+      <description>由于做的项目经常要和“时间”打交道，零零碎碎地了解了一些相关知识，今天整理一下，分享给大家😁本篇文章主要介绍时间、历法、时区等背景知识，不会有代码。后续的文章我会使用 Java, Javascript, C# 来说明在编程活动中如何处理时间， comming soon&amp;hellip;
+背景 古代人们为了可以对事件排先后顺序及进行比较，需要一种度量方式来描述，以便更好地思考宇宙。俗话说，当一无所知时，观察、探索是最好的方式。于是人们发现头顶上的太阳有规律地从东边升起，西边落下；月亮有阴晴圆缺的周期变化；季节有节奏地变化。人们记录每个事物变化的周期，相应地有了“日”，“月”，“年”的概念。
+历法(Calendar) 有了概念，就需要给出这些概念的基本定义以及相应的操作（是不是很 OOP 啊，哈哈哈），于是就有了历法。历法是用年、月、日等时间单位计算时间的方法。
+历法主要分为阳历(Solar Calendar)、阴历(Lunar Calendar)和阴阳历(Lunisolar Calendar)三种。
+ 阳历是根据地球上所呈现出太阳直射点的周期性变化，所制定的历法，这个周期为365.2422日，称为回归年。阳历有多种，比如我们熟知的公历(Gregorian Calendar)，公历把一年定为365日，划分成12个月，每个月从28日到31日不等。由于一个回归年比公历中的历年多出了0.2422日，这剩下的时间每4年累计一天，所以我们就有了闰年的概念。还记得我们小学时都做过的算数吗？“1700年是不是闰年？那2000年呢？”，答案是1700年不是闰年，2000年是闰年。那时候我的数学老师只是简单地和我解释，“像1700年这种能被100整除的年份，还需要被400整除才是闰年。”那时候我懂得少，也就默默接受了，并没有进一步深入了解。不过，现在看到这篇文章的读者只要进行一个简单的计算(0.2422*400=96.88)，应该就能明白为什么1700不是闰年了。
+ 阴历与阳历相对，主要根据月亮绕地球运行一周时间为一个月，称为朔望月（朔，新月，定为每月的初一；望，满月，定为每月的十五），大约29.5306日，分为大月30日、小月29日。一年有12个朔望月，约354或355日。值得注意的是，我们国家传统上使用的农历并不是阴历，实际上农历是一种阴阳历。
+ 阴阳历综合了阳历和阴历，是兼顾月相周期和太阳周期运动所安排的历法。阴阳历既保证“年”与地球绕日周期的一致，又保证“月”与月亮周期的一致。比如我国的农历，在阴历的基础上，引入二十四节气，作为农历的阳历部分。农历广泛应用于生日标记、各种民俗活动等方面。比如中秋节(农历八月十五)就是八月的“望”，是阴历的体现；而清明节(每年4月5号左右)就是二十四节气之一，是阳历的体现。农历是我们中华文化的象征之一。
+  取法自然与人为规定 一开始古代人们使用日落日出的周期来作为一日的时长，古埃及发明了24小时制，古巴比伦发明了60分和60秒的用法。现在人们发现地球自转并不够稳定，而且在逐渐变慢。于是，我们不再以日为作为标准计时单位，转为定义更小更精确的单位，即是“秒”。“秒”使用原子钟来定义，稳定性、精确性毋庸置疑。将一天定为24小时，1440分，86400秒。
+年、月、日取法自然，时、分、秒人为规定。
+时区(Time Zone) 我们作为太阳的子民，“日出而作，日落而息。”但不同经度的地方的日出、日落时间必定有所偏差，为了照顾大家的生活习惯，出现了时区的概念。世界按统一标准划分时区，每个地区有着自己的时间（地方时）。
+一开始时区以格林威治时间为基准，往东增加，往西减少，中间有一条国际日期变更线。后来由原子钟报时的、更精确的 UTC (协调世界时)时间出现了，UTC 尽量接近格林威治时间。由于 GMT 时间不够准确，GMT 现在已经不被科学界所确定。所以，说到北京时间的时区，现在我们更多说的是 “UTC+8” ，而不是 “GMT+8” 。
+ISO 8601 好了，现在我们有了公历这一套通用的历法，又有了时区，那么如何准确地表示时间呢？国际标准 ISO 8601 应运而生。
+标准说明起来比较麻烦，举例说明一下，详情参考ISO 8601
+ 2017-11-26T14:00:02Z  表示UTC时间2017年11月26号14点0分2秒，其中 &amp;ldquo;T&amp;rdquo; 是日期和时间的分界，&amp;rdquo;Z&amp;rdquo; 代表时间是 UTC 时间。也可以表示成&amp;rdquo;2017-11-26T14:00:02+00:00&amp;rdquo;
+ 2004-05-03T17:30:08+08:00  表示 &amp;ldquo;UTC+8&amp;rdquo; 时区的2004年5月3号17点30分8秒。
+ P1Y3M5DT6H7M30S  时间间隔的表示法，这里表示间隔为1年3月5天6小时7分30秒。时间间隔有正负之分，如果为负，则在前面加负号表示。例如 -P1Y3M5DT6H7M30S</description>
+    </item>
+    
+  </channel>
+</rss>

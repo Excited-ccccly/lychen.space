@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>ISO 8061 on </title>
-    <link>https://excited-ccccly.github.io/studymakesmehappy.club/tags/iso-8061/</link>
-    <description>Recent content in ISO 8061 on </description>
+    <title>ISO 8061 on Home</title>
+    <link>https://studymakesmehappy.club/tags/iso-8061/</link>
+    <description>Recent content in ISO 8061 on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 27 Nov 2017 00:01:44 +0800</lastBuildDate>
     
-	<atom:link href="https://excited-ccccly.github.io/studymakesmehappy.club/tags/iso-8061/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://studymakesmehappy.club/tags/iso-8061/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>漫谈时间(一)——时间、历法和时区</title>
-      <link>https://excited-ccccly.github.io/studymakesmehappy.club/posts/%E6%BC%AB%E8%B0%88%E6%97%B6%E9%97%B4%E4%B8%80%E6%97%B6%E9%97%B4%E5%8E%86%E6%B3%95%E5%92%8C%E6%97%B6%E5%8C%BA/</link>
+      <link>https://studymakesmehappy.club/posts/%E6%BC%AB%E8%B0%88%E6%97%B6%E9%97%B4%E4%B8%80%E6%97%B6%E9%97%B4%E5%8E%86%E6%B3%95%E5%92%8C%E6%97%B6%E5%8C%BA/</link>
       <pubDate>Mon, 27 Nov 2017 00:01:44 +0800</pubDate>
       
-      <guid>https://excited-ccccly.github.io/studymakesmehappy.club/posts/%E6%BC%AB%E8%B0%88%E6%97%B6%E9%97%B4%E4%B8%80%E6%97%B6%E9%97%B4%E5%8E%86%E6%B3%95%E5%92%8C%E6%97%B6%E5%8C%BA/</guid>
+      <guid>https://studymakesmehappy.club/posts/%E6%BC%AB%E8%B0%88%E6%97%B6%E9%97%B4%E4%B8%80%E6%97%B6%E9%97%B4%E5%8E%86%E6%B3%95%E5%92%8C%E6%97%B6%E5%8C%BA/</guid>
       <description>由于做的项目经常要和“时间”打交道，零零碎碎地了解了一些相关知识，今天整理一下，分享给大家😁本篇文章主要介绍时间、历法、时区等背景知识，不会有代码。后续的文章我会使用 Java, Javascript, C# 来说明在编程活动中如何处理时间， comming soon&amp;hellip;
 背景 古代人们为了可以对事件排先后顺序及进行比较，需要一种度量方式来描述，以便更好地思考宇宙。俗话说，当一无所知时，观察、探索是最好的方式。于是人们发现头顶上的太阳有规律地从东边升起，西边落下；月亮有阴晴圆缺的周期变化；季节有节奏地变化。人们记录每个事物变化的周期，相应地有了“日”，“月”，“年”的概念。
 历法(Calendar) 有了概念，就需要给出这些概念的基本定义以及相应的操作（是不是很 OOP 啊，哈哈哈），于是就有了历法。历法是用年、月、日等时间单位计算时间的方法。

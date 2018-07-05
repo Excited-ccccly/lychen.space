@@ -9,6 +9,7 @@ NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE express-app NodePort 10.0.0.151 &lt
 $ curl http://192.168.99.100:31530 hello world 但每次使用 IP&#43;Port 访问服务的方式很不方便。在单机上，可以使用 nginx 的反向代理，实现通过域名访问服务。
 nginx.conf
 http { upstream my-api { server 127.0.0.1:8080; } server { listen 80; server_name api.domain.com; location / { proxy_pass http://my-api; } } } 启用 nginx 后，就可以通过访问 http://api.'>
+<meta name='theme-color' content='#ffcd00'>
 
 <meta property='og:title' content='Kubernetes Ingress • ccccly'>
 <meta property='og:description' content='kubernetes101 介绍了 Kubernetes 的基本用法，通过 NodePort 的形式对外暴露 Service 来提供服务。
@@ -16,68 +17,68 @@ NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE express-app NodePort 10.0.0.151 &lt
 $ curl http://192.168.99.100:31530 hello world 但每次使用 IP&#43;Port 访问服务的方式很不方便。在单机上，可以使用 nginx 的反向代理，实现通过域名访问服务。
 nginx.conf
 http { upstream my-api { server 127.0.0.1:8080; } server { listen 80; server_name api.domain.com; location / { proxy_pass http://my-api; } } } 启用 nginx 后，就可以通过访问 http://api.'>
-<meta property='og:url' content='https://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes-ingress/'>
-<meta property='og:site_name' content=''>
-<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='Kubernetes'><meta property='article:tag' content='Ingress'><meta property='article:tag' content='nginx'><meta property='article:tag' content='Loadbalancer'><meta property='article:published_time' content='2018-03-27T15:27:27&#43;08:00'/><meta property='article:modified_time' content='2018-03-27T15:27:27&#43;08:00'/>
+<meta property='og:url' content='https://studymakesmehappy.club/posts/kubernetes-ingress/'>
+<meta property='og:site_name' content='Home'>
+<meta property='og:type' content='article'><meta property='og:image' content='https://www.gravatar.com/avatar/374150c4ee619dfed2491b9bb5bcd476?s=256'><meta property='article:section' content='Posts'><meta property='article:tag' content='Kubernetes'><meta property='article:tag' content='Ingress'><meta property='article:tag' content='nginx'><meta property='article:tag' content='Loadbalancer'><meta property='article:published_time' content='2018-03-27T15:27:27&#43;08:00'/><meta property='article:modified_time' content='2018-03-27T15:27:27&#43;08:00'/><meta name='twitter:card' content='summary'>
 
 <meta name="generator" content="Hugo 0.40.1" />
 
-  <base href='https://excited-ccccly.github.io/studymakesmehappy.club/'>
   <title>Kubernetes Ingress • ccccly</title>
-  <link rel='canonical' href='https://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes-ingress/'>
-  <link href='' rel='alternate' type='application/rss+xml' title='' />
-  <link rel='icon' href='https://excited-ccccly.github.io/studymakesmehappy.club/favicon.ico'>
-<link rel='stylesheet' href='https://fonts.lug.ustc.edu.cn/css?family=Ubuntu:400,400i,700&subset=latin'>
-<link rel='stylesheet' href='https://excited-ccccly.github.io/studymakesmehappy.club/css/main.d02777fd.css'>
-
-
+  <link rel='canonical' href='https://studymakesmehappy.club/posts/kubernetes-ingress/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.cb99c271.css'><link rel='stylesheet' href='/css/custom.css'><style>
+:root{--color-accent:#ffcd00;}
+</style>
 
 </head>
 
 
-<body class='page'>
+<body class='page type-posts'>
+
   <div class='site'>
-    <header id='header' class='header-container'>
-      <div class='site-header'>
-        <nav id='navmenu' aria-label='Main Menu'>
-  <ul class='main-menu'>
+
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+    <div class='main'>
+
+      <nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
     
-    <li>
-      <a href='https://excited-ccccly.github.io/studymakesmehappy.club/'>Home</a>
-    </li>
-    
-    <li>
-      <a href='https://excited-ccccly.github.io/studymakesmehappy.club/about/'>About</a>
-    </li>
-    
-    <li>
-      <a href='https://github.com/Excited-ccccly/studymakesmehappy.club'>Repo</a>
-    </li>
-    
-  </ul>
+    <ul><li class='item'>
+        <a href='/'>Home</a>
+      </li><li class='item'>
+        <a href='/posts/'>Posts</a>
+      </li><li class='item'>
+        <a href='/about/'>About</a>
+      </li><li class='item'>
+        <a href='https://github.com/Excited-ccccly/studymakesmehappy.club'>Repo</a>
+      </li></ul>
+  </div>
 </nav>
 
-        <div class='site-info'>
-          
-          <p class='site-title title'></p>
-          
-          <p class='site-description'>Study makes me happy</p>
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>Home</p><p class='desc site-desc'>Study makes me happy</p>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+
+      <main id='content'>
 
 
-<main class='main'>
-  <article lang='en' class='entry'>
-    <header class='entry-header'>
-  <div class='entry-info'>
-    <h1 class='entry-title title'>Kubernetes Ingress</h1>
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>Kubernetes Ingress</h1>
+      
+
+    </div>
     
-  </div>
-  
-<div class='meta'>
-  <span class='posted-on'>
-    <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+<div class='entry-meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
   <line x1="16" y1="2" x2="16" y2="6"/>
@@ -85,32 +86,41 @@ http { upstream my-api { server 127.0.0.1:8080; } server { listen 80; server_nam
   <line x1="3" y1="10" x2="21" y2="10"/>
   
 </svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2018-03-27T15:27:27&#43;08:00'>2018, Mar 27</time>
+</span>
 
-    <span class='screen-reader'>Posted on </span>
-    <time class='date' datetime='2018-03-27T15:27:27&#43;08:00'>2018, Mar 27</time>
-  </span>
-  
-  <span class='byline'>
-    <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  <span class='byline'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M21,21V20c0-2.76-4-5-9-5s-9,2.24-9,5v1"/>
   <path d="M16,6.37A4,4,0,1,1,12.63,3,4,4,0,0,1,16,6.37Z"/>
   
 </svg>
-
-    <span class='screen-reader'> by </span>
-    ccccly
-  </span>
+<span class='screen-reader-text'> by </span><a href='/authors/ccccly'>ccccly</a></span>
   
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+3 mins read
+</span>
+
+
 </div>
 
 
+  </div>
 </header>
 
-    <div class='entry-content'>
+  
   
 
-<p><a href="https://studymakesmehappy.club/posts/kubernetes101/">kubernetes101</a> 介绍了 Kubernetes 的基本用法，通过 NodePort 的形式对外暴露 Service 来提供服务。</p>
+  <div class='container entry-content'>
+  
+
+<p><a href="https://studymakesmehappy.club/posts/kubernetes101/" target="_blank">kubernetes101</a> 介绍了 Kubernetes 的基本用法，通过 NodePort 的形式对外暴露 Service 来提供服务。</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">NAME          TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 express-app   NodePort    <span style="color:#3677a9">10</span>.0.0.151   &lt;none&gt;        <span style="color:#3677a9">80</span>:31530/TCP   19m
 kubernetes    ClusterIP   <span style="color:#3677a9">10</span>.0.0.1     &lt;none&gt;        <span style="color:#3677a9">443</span>/TCP        1d</code></pre></div>
@@ -133,11 +143,11 @@ hello world</code></pre></div>
     }
   }
 }</code></pre></div>
-<p>启用 nginx 后，就可以通过访问 <a href="http://api.domain.com">http://api.domain.com</a> 来访问这台机子上监听 8080 端口的服务。</p>
+<p>启用 nginx 后，就可以通过访问 <a href="http://api.domain.com" target="_blank">http://api.domain.com</a> 来访问这台机子上监听 8080 端口的服务。</p>
 
-<p>在 Kubernetes 集群中，Ingress 可以说是对 nginx 的抽象（接口），<a href="https://github.com/kubernetes/ingress-nginx">ingress-nginx</a> 是 Ingress 的一种实现。</p>
+<p>在 Kubernetes 集群中，Ingress 可以说是对 nginx 的抽象（接口），<a href="https://github.com/kubernetes/ingress-nginx" target="_blank">ingress-nginx</a> 是 Ingress 的一种实现。</p>
 
-<p>在这篇博客中，假设你学习过 <a href="https://studymakesmehappy.club/posts/kubernetes101/">kubernetes101</a>，你将会学习到以下几点：</p>
+<p>在这篇博客中，假设你学习过 <a href="https://studymakesmehappy.club/posts/kubernetes101/" target="_blank">kubernetes101</a>，你将会学习到以下几点：</p>
 
 <ul>
 <li>Ingress 介绍</li>
@@ -151,7 +161,7 @@ hello world</code></pre></div>
 
 <p>在 Kubernetes 中，通过 Ingress 访问应用的流程大致上是这样子的</p>
 
-<p><img src="images/kubernetes/ingress/ingress.png" alt="求推荐好用的画图工具，Visio 好难用..." /></p>
+<p><img src="/images/kubernetes/ingress/ingress.png" alt="求推荐好用的画图工具，Visio 好难用..." /></p>
 
 <p>除了 Ingress 暴露在公网中，其它所有的服务都是内网 IP，只允许内网访问。</p>
 
@@ -189,7 +199,7 @@ hello world</code></pre></div>
 <p>由于以下的步骤要求部署的 Kubernetes 支持云厂商提供的外部 LoadBalancer，类似于 minikube 之类的环境是不支持外部 LoadBalancer 的，请知晓。</p>
 </blockquote>
 
-<p>为了方便展示，以下所有使用到的配置文件都使用网络地址，不显示实际的内容，可以单独下载文件查看，也可以前往 <a href="https://github.com/Excited-ccccly/studymakesmehappy.club/tree/master/static/files/kubernetes/ingress">ingress 配置文件夹</a> 查看所有文件</p>
+<p>为了方便展示，以下所有使用到的配置文件都使用网络地址，不显示实际的内容，可以单独下载文件查看，也可以前往 <a href="https://github.com/Excited-ccccly/studymakesmehappy.club/tree/master/static/files/kubernetes/ingress" target="_blank">ingress 配置文件夹</a> 查看所有文件</p>
 
 <ul>
 <li>为了方便管理，我们为 Ingress 单独创建一个 namespace</li>
@@ -225,9 +235,9 @@ hello world</code></pre></div>
 
 <h2 id="ingress-的-tls-配置">Ingress 的 TLS 配置</h2>
 
-<p>由于 HTTP 很不安全，容易遭受中间人攻击，现在的网站流行 HTTPS 认证，在此为 <strong>k8s-dashboard.domain.com</strong> 加上 <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">TLS</a>，点亮 HTTPS 的绿灯。</p>
+<p>由于 HTTP 很不安全，容易遭受中间人攻击，现在的网站流行 HTTPS 认证，在此为 <strong>k8s-dashboard.domain.com</strong> 加上 <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security" target="_blank">TLS</a>，点亮 HTTPS 的绿灯。</p>
 
-<p>HTTPS 证书需要购买，也可以使用 Let&rsquo;s Encrypt 提供的免费 HTTPS 证书。<a href="https://github.com/jetstack/kube-lego">kube-lego</a> 可以简化从 Let&rsquo;s Encrypt 获取证书的流程。但由于 Let&rsquo;s Encrypt 每90天需要更新一次证书，还可能会出现因为获取证书错误次数过多，获取不到证书，从而只能干等的状况，所以生产环境务必使用购买的 HTTPS 证书。</p>
+<p>HTTPS 证书需要购买，也可以使用 Let&rsquo;s Encrypt 提供的免费 HTTPS 证书。<a href="https://github.com/jetstack/kube-lego" target="_blank">kube-lego</a> 可以简化从 Let&rsquo;s Encrypt 获取证书的流程。但由于 Let&rsquo;s Encrypt 每90天需要更新一次证书，还可能会出现因为获取证书错误次数过多，获取不到证书，从而只能干等的状况，所以生产环境务必使用购买的 HTTPS 证书。</p>
 
 <p>购买的 HTTPS 证书一般会有两个文件，domain.key 和 domain.pem</p>
 
@@ -248,7 +258,7 @@ hello world</code></pre></div>
 <p>简单起见，以 basic-auth 为例</p>
 
 <ul>
-<li>创建 basic auth 文件，这里创建了一个名为 auth，用户名是 foo，密码是输入的密码的 basic auth 文件。Windows 下没有 htpasswd，可以使用 Windows Subsystem for Linux 来生成，详情请参考 <a href="https://studymakesmehappy.club/posts/set-up-development-environment-on-windows/">Set Up Development Environment on Windows</a></li>
+<li>创建 basic auth 文件，这里创建了一个名为 auth，用户名是 foo，密码是输入的密码的 basic auth 文件。Windows 下没有 htpasswd，可以使用 Windows Subsystem for Linux 来生成，详情请参考 <a href="https://studymakesmehappy.club/posts/set-up-development-environment-on-windows/" target="_blank">Set Up Development Environment on Windows</a></li>
 </ul>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ htpasswd -c auth foo
 New password: &lt;bar&gt;
@@ -267,7 +277,7 @@ Adding password <span style="color:#6ab825;font-weight:bold">for</span> user foo
 
 <h2 id="ingress-的局限">Ingress 的局限</h2>
 
-<p>通常来说，nginx 是第7层(Application Layer In <a href="https://en.wikipedia.org/wiki/OSI_model">OSI network model</a>)的负载均衡器，虽说 nginx 有 TCP 插件，可以转发第4层（Transport Layer Layer）的 TCP 连接，但 Ingress-nginx 对 <a href="https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/exposing-tcp-udp-services.md">TCP 请求的转发规则的支持</a> 可能不能满足我们的需求。</p>
+<p>通常来说，nginx 是第7层(Application Layer In <a href="https://en.wikipedia.org/wiki/OSI_model" target="_blank">OSI network model</a>)的负载均衡器，虽说 nginx 有 TCP 插件，可以转发第4层（Transport Layer Layer）的 TCP 连接，但 Ingress-nginx 对 <a href="https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/exposing-tcp-udp-services.md" target="_blank">TCP 请求的转发规则的支持</a> 可能不能满足我们的需求。</p>
 
 <p>假设我们有三个环境——Production, Staging 和 Test，三个环境对应3个命名空间(namespace)，三个环境下都有一个 tcp 服务，在443端口提供服务。它们域名分别为:</p>
 
@@ -303,58 +313,36 @@ Adding password <span style="color:#6ab825;font-weight:bold">for</span> user foo
 
 </div>
 
-
-    
-<footer class='entry-footer'>
   
-    
-      
-      
-
-<div class='categories'>
-  <span class='category-icon'>
-    <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+<footer class='entry-footer'>
+  <div class='container sep-before'>
+  <div class='categories'>
+  <span class='taxonomy-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
   
 </svg>
-
-  </span>
-  <span class='screen-reader'>Categories: </span><a class='category' href='https://excited-ccccly.github.io/studymakesmehappy.club/categories/devops'>DevOps</a></div>
-
-
-    
-  
-    
-      
-      
-
+</span>
+  <span class='screen-reader-text'>Categories: </span><a class='category' href='/categories/devops'>DevOps</a></div>
 <div class='tags'>
-  <span class='tag-icon'>
-    <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  <span class='taxonomy-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
   <line x1="7" y1="7" x2="7" y2="7"/>
   
 </svg>
+</span>
+  <span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/kubernetes'>Kubernetes</a>, <a class='tag' href='/tags/ingress'>Ingress</a>, <a class='tag' href='/tags/nginx'>Nginx</a>, <a class='tag' href='/tags/loadbalancer'>Loadbalancer</a></div>
 
-  </span>
-  <span class='screen-reader'>Tags: </span><a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/kubernetes'>Kubernetes</a>, <a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/ingress'>Ingress</a>, <a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/nginx'>nginx</a>, <a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/loadbalancer'>Loadbalancer</a></div>
-
-
-    
-  
+  </div>
 </footer>
 
 
+</article>
 
-  </article>
-
-  
-    
 <nav class='entry-nav'>
-  <div class='entry-nav-links'><div class='prev-entry'>
-      <a href='https://excited-ccccly.github.io/studymakesmehappy.club/posts/set-up-development-environment-on-windows/'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/posts/set-up-development-environment-on-windows/'>
         <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <line x1="20" y1="12" x2="4" y2="12"/>
@@ -362,10 +350,10 @@ Adding password <span style="color:#6ab825;font-weight:bold">for</span> user foo
   
 </svg>
  Previous</span>
-        <span class='screen-reader'>Previous post: </span>Set Up Development Environment on Windows</a>
-    </div><div class='next-entry'>
-      <a href='https://excited-ccccly.github.io/studymakesmehappy.club/posts/%E8%81%8A%E4%B8%80%E8%81%8A%E5%8F%A4%E8%80%81%E7%9A%84-x-www-form-urlencoded/'>
-        <span class='screen-reader'>Next post: </span>聊一聊古老的 x-www-form-urlencoded<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+        <span class='screen-reader-text'>Previous post: </span>Set Up Development Environment on Windows</a>
+    </div><div class='next-entry sep-before'>
+      <a href='/posts/%E8%81%8A%E4%B8%80%E8%81%8A%E5%8F%A4%E8%80%81%E7%9A%84-x-www-form-urlencoded/'>
+        <span class='screen-reader-text'>Next post: </span>聊一聊古老的 x-www-form-urlencoded<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <line x1="4" y1="12" x2="20" y2="12"/>
   <polyline points="14 6 20 12 14 18"/>
@@ -377,51 +365,42 @@ Adding password <span style="color:#6ab825;font-weight:bold">for</span> user foo
 </nav>
 
 
-  
 
-  
-    <div class='comments-container'>
-</div>
 
-  
-</main>
+      </main>
 
-    <footer id='footer' class='footer-container'>
-      <div class='footer'>
-        <div class='social'>
-  <nav aria-label='Social Menu'>
-    <ul class='social-menu'><li>
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
         <a href='https://github.com/Excited-ccccly' target='_blank' rel='noopener'>
-          <span class='screen-reader'>Open Github account in new tab</span>
-          <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
   
 </svg>
-
-        </a>
+</a>
+      </li><li>
+        <a href='mailto:geekchenlingyun@outlook.com' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Contact via Email</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+  <polyline points="22,6 12,13 2,6"/>
+  
+</svg>
+</a>
       </li></ul>
   </nav>
+</section><div class='copyright'>
+  <p> &copy; 2017-2018 ccccly </p>
 </div>
 
-        <div class='copyright'>
-          <p>
-    
-      
-    
-  
-  &copy; 2017-2018 ccccly</p>
-
-
         </div>
-      </div>
-    </footer>
+      </footer>
 
-  </div>
+    </div>
+  </div><script>window.__public_path__='\/assets\/js\/'</script>
 
-  <script src='https://excited-ccccly.github.io/studymakesmehappy.club/js/main.af838dd5.js'></script>
-  
-
+<script src='/assets/js/main.9daad1e6.js'></script><script src='/js/custom.js'></script>
 </body>
 
 </html>

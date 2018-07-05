@@ -11,6 +11,7 @@
 Setup Windows 和 Mac 下的 Docker 客户端自带 Docker Compose， Ubuntu 下直接apt install docker-compose即可
 详情参考Install Docker Compose
 Compose Up 以一个简单的 express app 为例'>
+<meta name='theme-color' content='#ffcd00'>
 
 <meta property='og:title' content='Speed Up Your Deployment Using Docker Compose • ccccly'>
 <meta property='og:description' content='Docker 的出现，优秀的隔离性让我们可以将任何应用部署到任何服务器上面，不再需要关注服务器的环境配置，简化了单个应用的部署流程。但在更多的情况下，应用往往会依赖于其他服务，比如前端网页依赖于后端服务，后端服务依赖于数据库。我们可以依次部署每个服务，但每次重复的手工操作让人厌烦。我们需要一个工具，只要描述好整个应用之间的服务依赖关系，将这个描述文件交给这个工具，一条命令便能启动整个系统。这种类型的工具有很多，这篇博客里聊的是Docker Compose。
@@ -20,68 +21,68 @@ Compose Up 以一个简单的 express app 为例'>
 Setup Windows 和 Mac 下的 Docker 客户端自带 Docker Compose， Ubuntu 下直接apt install docker-compose即可
 详情参考Install Docker Compose
 Compose Up 以一个简单的 express app 为例'>
-<meta property='og:url' content='https://excited-ccccly.github.io/studymakesmehappy.club/posts/speed-up-your-deployment-using-docker-compose/'>
-<meta property='og:site_name' content=''>
-<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='Docker'><meta property='article:tag' content='Compose'><meta property='article:tag' content='Deployment'><meta property='article:published_time' content='2018-02-14T01:05:40&#43;08:00'/><meta property='article:modified_time' content='2018-02-14T01:05:40&#43;08:00'/>
+<meta property='og:url' content='https://studymakesmehappy.club/posts/speed-up-your-deployment-using-docker-compose/'>
+<meta property='og:site_name' content='Home'>
+<meta property='og:type' content='article'><meta property='og:image' content='https://www.gravatar.com/avatar/374150c4ee619dfed2491b9bb5bcd476?s=256'><meta property='article:section' content='Posts'><meta property='article:tag' content='Docker'><meta property='article:tag' content='Compose'><meta property='article:tag' content='Deployment'><meta property='article:published_time' content='2018-02-14T01:05:40&#43;08:00'/><meta property='article:modified_time' content='2018-02-14T01:05:40&#43;08:00'/><meta name='twitter:card' content='summary'>
 
 <meta name="generator" content="Hugo 0.40.1" />
 
-  <base href='https://excited-ccccly.github.io/studymakesmehappy.club/'>
   <title>Speed Up Your Deployment Using Docker Compose • ccccly</title>
-  <link rel='canonical' href='https://excited-ccccly.github.io/studymakesmehappy.club/posts/speed-up-your-deployment-using-docker-compose/'>
-  <link href='' rel='alternate' type='application/rss+xml' title='' />
-  <link rel='icon' href='https://excited-ccccly.github.io/studymakesmehappy.club/favicon.ico'>
-<link rel='stylesheet' href='https://fonts.lug.ustc.edu.cn/css?family=Ubuntu:400,400i,700&subset=latin'>
-<link rel='stylesheet' href='https://excited-ccccly.github.io/studymakesmehappy.club/css/main.d02777fd.css'>
-
-
+  <link rel='canonical' href='https://studymakesmehappy.club/posts/speed-up-your-deployment-using-docker-compose/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.cb99c271.css'><link rel='stylesheet' href='/css/custom.css'><style>
+:root{--color-accent:#ffcd00;}
+</style>
 
 </head>
 
 
-<body class='page'>
+<body class='page type-posts'>
+
   <div class='site'>
-    <header id='header' class='header-container'>
-      <div class='site-header'>
-        <nav id='navmenu' aria-label='Main Menu'>
-  <ul class='main-menu'>
+
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+    <div class='main'>
+
+      <nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
     
-    <li>
-      <a href='https://excited-ccccly.github.io/studymakesmehappy.club/'>Home</a>
-    </li>
-    
-    <li>
-      <a href='https://excited-ccccly.github.io/studymakesmehappy.club/about/'>About</a>
-    </li>
-    
-    <li>
-      <a href='https://github.com/Excited-ccccly/studymakesmehappy.club'>Repo</a>
-    </li>
-    
-  </ul>
+    <ul><li class='item'>
+        <a href='/'>Home</a>
+      </li><li class='item'>
+        <a href='/posts/'>Posts</a>
+      </li><li class='item'>
+        <a href='/about/'>About</a>
+      </li><li class='item'>
+        <a href='https://github.com/Excited-ccccly/studymakesmehappy.club'>Repo</a>
+      </li></ul>
+  </div>
 </nav>
 
-        <div class='site-info'>
-          
-          <p class='site-title title'></p>
-          
-          <p class='site-description'>Study makes me happy</p>
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>Home</p><p class='desc site-desc'>Study makes me happy</p>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+
+      <main id='content'>
 
 
-<main class='main'>
-  <article lang='en' class='entry'>
-    <header class='entry-header'>
-  <div class='entry-info'>
-    <h1 class='entry-title title'>Speed Up Your Deployment Using Docker Compose</h1>
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>Speed Up Your Deployment Using Docker Compose</h1>
+      
+
+    </div>
     
-  </div>
-  
-<div class='meta'>
-  <span class='posted-on'>
-    <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+<div class='entry-meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
   <line x1="16" y1="2" x2="16" y2="6"/>
@@ -89,29 +90,38 @@ Compose Up 以一个简单的 express app 为例'>
   <line x1="3" y1="10" x2="21" y2="10"/>
   
 </svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2018-02-14T01:05:40&#43;08:00'>2018, Feb 14</time>
+</span>
 
-    <span class='screen-reader'>Posted on </span>
-    <time class='date' datetime='2018-02-14T01:05:40&#43;08:00'>2018, Feb 14</time>
-  </span>
-  
-  <span class='byline'>
-    <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  <span class='byline'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M21,21V20c0-2.76-4-5-9-5s-9,2.24-9,5v1"/>
   <path d="M16,6.37A4,4,0,1,1,12.63,3,4,4,0,0,1,16,6.37Z"/>
   
 </svg>
-
-    <span class='screen-reader'> by </span>
-    ccccly
-  </span>
+<span class='screen-reader-text'> by </span><a href='/authors/ccccly'>ccccly</a></span>
   
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+2 mins read
+</span>
+
+
 </div>
 
 
+  </div>
 </header>
 
-    <div class='entry-content'>
+  
+  
+
+  <div class='container entry-content'>
   
 
 <p>Docker 的出现，优秀的隔离性让我们可以将任何应用部署到任何服务器上面，不再需要关注服务器的环境配置，简化了单个应用的部署流程。但在更多的情况下，应用往往会依赖于其他服务，比如前端网页依赖于后端服务，后端服务依赖于数据库。我们可以依次部署每个服务，但每次重复的手工操作让人厌烦。我们需要一个工具，只要描述好整个应用之间的服务依赖关系，将这个描述文件交给这个工具，一条命令便能启动整个系统。这种类型的工具有很多，这篇博客里聊的是<strong>Docker Compose</strong>。</p>
@@ -128,7 +138,7 @@ Compose Up 以一个简单的 express app 为例'>
 <h2 id="overview">Overview</h2>
 
 <p>Docker Compose 用于定义和运行多容器应用，它使用 YAML 文件来描述服务之间的依赖关系，一条简单的<strong>docker compose up</strong>命令便能启动你的整个应用。
-Compose 多用于单主机部署，比如在本地电脑上搭建你的开发环境，CI／CD 服务器上搭建集成测试环境等简单场景。当然 Docker 官方说 Compose 也可以用于生产环境，只要你用 Swarm 就好了。但目前的情况是，Kubernetes 大行其道，Swarm 日渐式微，就连 Docker 官方也都迫不得已拥抱了 Kubernetes。现在生产环境多用 Kubernetes 来部署管理多容器应用，如果你对 Kubernetes 感兴趣，可以参考我之前的入门文章<a href="https://studymakesmehappy.club/posts/kubernetes101/">Kubernetes101</a>。</p>
+Compose 多用于单主机部署，比如在本地电脑上搭建你的开发环境，CI／CD 服务器上搭建集成测试环境等简单场景。当然 Docker 官方说 Compose 也可以用于生产环境，只要你用 Swarm 就好了。但目前的情况是，Kubernetes 大行其道，Swarm 日渐式微，就连 Docker 官方也都迫不得已拥抱了 Kubernetes。现在生产环境多用 Kubernetes 来部署管理多容器应用，如果你对 Kubernetes 感兴趣，可以参考我之前的入门文章<a href="https://studymakesmehappy.club/posts/kubernetes101/" target="_blank">Kubernetes101</a>。</p>
 
 <p>我个人不是任何技术的信徒，每种技术都有它存在的道理。Docker Compose 简单方便，不需要花费精力部署调试 Kubernetes，适用于开发、测试以及个人的小应用场景；Kubernetes 成熟、自由、社区资源丰富，适用生产环境。建议大家可以亲自动手实践一下这两项技术，说实话，也花不了一晚上的时间。亲身体验之后，才能给技术恰如其分地归类，知道它们适用的场景，需要的时候顺手就用好了。</p>
 
@@ -136,7 +146,7 @@ Compose 多用于单主机部署，比如在本地电脑上搭建你的开发环
 
 <p>Windows 和 Mac 下的 Docker 客户端自带 Docker Compose， Ubuntu 下直接<strong>apt install docker-compose</strong>即可</p>
 
-<p>详情参考<a href="https://docs.docker.com/compose/install/">Install Docker Compose</a></p>
+<p>详情参考<a href="https://docs.docker.com/compose/install/" target="_blank">Install Docker Compose</a></p>
 
 <h2 id="compose-up">Compose Up</h2>
 
@@ -287,58 +297,36 @@ app.listen(<span style="color:#3677a9">3000</span>);
 </span><span style="color:#666">      </span>GF_SECURITY_ADMIN_PASSWORD:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;grafana-passowrd&#34;</span></code></pre></div>
 </div>
 
-
-    
-<footer class='entry-footer'>
   
-    
-      
-      
-
-<div class='categories'>
-  <span class='category-icon'>
-    <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+<footer class='entry-footer'>
+  <div class='container sep-before'>
+  <div class='categories'>
+  <span class='taxonomy-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
   
 </svg>
-
-  </span>
-  <span class='screen-reader'>Categories: </span><a class='category' href='https://excited-ccccly.github.io/studymakesmehappy.club/categories/devops'>DevOps</a></div>
-
-
-    
-  
-    
-      
-      
-
+</span>
+  <span class='screen-reader-text'>Categories: </span><a class='category' href='/categories/devops'>DevOps</a></div>
 <div class='tags'>
-  <span class='tag-icon'>
-    <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  <span class='taxonomy-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
   <line x1="7" y1="7" x2="7" y2="7"/>
   
 </svg>
+</span>
+  <span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/docker'>Docker</a>, <a class='tag' href='/tags/compose'>Compose</a>, <a class='tag' href='/tags/deployment'>Deployment</a></div>
 
-  </span>
-  <span class='screen-reader'>Tags: </span><a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/docker'>Docker</a>, <a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/compose'>Compose</a>, <a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/deployment'>Deployment</a></div>
-
-
-    
-  
+  </div>
 </footer>
 
 
+</article>
 
-  </article>
-
-  
-    
 <nav class='entry-nav'>
-  <div class='entry-nav-links'><div class='prev-entry'>
-      <a href='https://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes101/'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/posts/kubernetes101/'>
         <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <line x1="20" y1="12" x2="4" y2="12"/>
@@ -346,10 +334,10 @@ app.listen(<span style="color:#3677a9">3000</span>);
   
 </svg>
  Previous</span>
-        <span class='screen-reader'>Previous post: </span>Kubernetes101</a>
-    </div><div class='next-entry'>
-      <a href='https://excited-ccccly.github.io/studymakesmehappy.club/posts/set-up-development-environment-on-windows/'>
-        <span class='screen-reader'>Next post: </span>Set Up Development Environment on Windows<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+        <span class='screen-reader-text'>Previous post: </span>Kubernetes101</a>
+    </div><div class='next-entry sep-before'>
+      <a href='/posts/set-up-development-environment-on-windows/'>
+        <span class='screen-reader-text'>Next post: </span>Set Up Development Environment on Windows<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <line x1="4" y1="12" x2="20" y2="12"/>
   <polyline points="14 6 20 12 14 18"/>
@@ -361,51 +349,42 @@ app.listen(<span style="color:#3677a9">3000</span>);
 </nav>
 
 
-  
 
-  
-    <div class='comments-container'>
-</div>
 
-  
-</main>
+      </main>
 
-    <footer id='footer' class='footer-container'>
-      <div class='footer'>
-        <div class='social'>
-  <nav aria-label='Social Menu'>
-    <ul class='social-menu'><li>
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
         <a href='https://github.com/Excited-ccccly' target='_blank' rel='noopener'>
-          <span class='screen-reader'>Open Github account in new tab</span>
-          <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
   
 </svg>
-
-        </a>
+</a>
+      </li><li>
+        <a href='mailto:geekchenlingyun@outlook.com' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Contact via Email</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+  <polyline points="22,6 12,13 2,6"/>
+  
+</svg>
+</a>
       </li></ul>
   </nav>
+</section><div class='copyright'>
+  <p> &copy; 2017-2018 ccccly </p>
 </div>
 
-        <div class='copyright'>
-          <p>
-    
-      
-    
-  
-  &copy; 2017-2018 ccccly</p>
-
-
         </div>
-      </div>
-    </footer>
+      </footer>
 
-  </div>
+    </div>
+  </div><script>window.__public_path__='\/assets\/js\/'</script>
 
-  <script src='https://excited-ccccly.github.io/studymakesmehappy.club/js/main.af838dd5.js'></script>
-  
-
+<script src='/assets/js/main.9daad1e6.js'></script><script src='/js/custom.js'></script>
 </body>
 
 </html>

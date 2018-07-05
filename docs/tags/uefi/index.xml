@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>UEFI on </title>
-    <link>https://excited-ccccly.github.io/studymakesmehappy.club/tags/uefi/</link>
-    <description>Recent content in UEFI on </description>
+    <title>UEFI on Home</title>
+    <link>https://studymakesmehappy.club/tags/uefi/</link>
+    <description>Recent content in UEFI on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 01 Jul 2018 12:21:44 +0800</lastBuildDate>
     
-	<atom:link href="https://excited-ccccly.github.io/studymakesmehappy.club/tags/uefi/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://studymakesmehappy.club/tags/uefi/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>操作系统是如何启动的</title>
-      <link>https://excited-ccccly.github.io/studymakesmehappy.club/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%98%AF%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8%E7%9A%84/</link>
+      <link>https://studymakesmehappy.club/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%98%AF%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8%E7%9A%84/</link>
       <pubDate>Sun, 01 Jul 2018 12:21:44 +0800</pubDate>
       
-      <guid>https://excited-ccccly.github.io/studymakesmehappy.club/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%98%AF%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8%E7%9A%84/</guid>
+      <guid>https://studymakesmehappy.club/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%98%AF%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8%E7%9A%84/</guid>
       <description>花了一下午时间，成功安装了 Arch Linux, 收获颇丰。在此以 Arch Linux 的安装为例来聊一聊&amp;rdquo;操作系统是如何启动的&amp;rdquo;。虽然是以 Arch 为例，但其实所有的操作系统（手机和电脑操作系统）都大同小异，我也不想列出所有系统的详细启动流程。先上图为敬
 首先，你的电脑有一堆硬件，CPU、内存、硬盘都与主板相连，主板上有 UEFI 固件。
 UEFI UEFI 全称是 Unified Extensible Firmware Interface, 一个统一的、可扩展的、硬件和操作系统之间的固件接口。大家都喜欢统一， 统一意味着只需要实现一套标准；大家也都喜欢接口，接口抽象程度高；大家更喜欢可扩展，可以自己扩展功能。UEFI 是 BIOS 的继任者，近几年的电脑都是使用 UEFI 的。因为 BIOS 必须从硬盘（BIOS 设置里的第一块）的前 512 Bytes(称为 Master Boot Record) 开始加载。并且只有前 440 Bytes 是提供给 Bootloader 修改定义的。由于空间太小了，能做的事情很有限，做 Bootloader 的表示心里苦。

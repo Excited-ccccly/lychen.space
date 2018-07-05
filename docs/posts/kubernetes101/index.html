@@ -12,6 +12,7 @@
 一般来说，国外的解决方案在中国很可能出现水土不服的情况，需要额外参考这篇文章————原生加速中国区Kubernetes安装
 额外，还需要注意以下几点:
  云服务器的名字不能过长，超过 63 个字符之后，会导致该节点无法注册成功。 需要使用和 rancher 兼容的 docker 版本，参考这个列表  搭建好集群之后，点击 UI 界面上的 kubernetes &gt; cli &gt; generate config，按照说明配置 kubectl ，即可将 kubectl 连接上 rancher 搭建的 k8s 集群'>
+<meta name='theme-color' content='#ffcd00'>
 
 <meta property='og:title' content='Kubernetes101 • ccccly'>
 <meta property='og:description' content='这是一篇 kubernetes（简称 k8s，将中间的 8 个字母简写成“8”） 的基础教程，会使用实际例子来讲解 k8s 中的基础概念。
@@ -22,68 +23,68 @@
 一般来说，国外的解决方案在中国很可能出现水土不服的情况，需要额外参考这篇文章————原生加速中国区Kubernetes安装
 额外，还需要注意以下几点:
  云服务器的名字不能过长，超过 63 个字符之后，会导致该节点无法注册成功。 需要使用和 rancher 兼容的 docker 版本，参考这个列表  搭建好集群之后，点击 UI 界面上的 kubernetes &gt; cli &gt; generate config，按照说明配置 kubectl ，即可将 kubectl 连接上 rancher 搭建的 k8s 集群'>
-<meta property='og:url' content='https://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes101/'>
-<meta property='og:site_name' content=''>
-<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='Kubernetes'><meta property='article:tag' content='Docker'><meta property='article:tag' content='Deployment'><meta property='article:published_time' content='2018-01-07T23:31:08&#43;08:00'/><meta property='article:modified_time' content='2018-01-07T23:31:08&#43;08:00'/>
+<meta property='og:url' content='https://studymakesmehappy.club/posts/kubernetes101/'>
+<meta property='og:site_name' content='Home'>
+<meta property='og:type' content='article'><meta property='og:image' content='https://www.gravatar.com/avatar/374150c4ee619dfed2491b9bb5bcd476?s=256'><meta property='article:section' content='Posts'><meta property='article:tag' content='Kubernetes'><meta property='article:tag' content='Docker'><meta property='article:tag' content='Deployment'><meta property='article:published_time' content='2018-01-07T23:31:08&#43;08:00'/><meta property='article:modified_time' content='2018-01-07T23:31:08&#43;08:00'/><meta name='twitter:card' content='summary'>
 
 <meta name="generator" content="Hugo 0.40.1" />
 
-  <base href='https://excited-ccccly.github.io/studymakesmehappy.club/'>
   <title>Kubernetes101 • ccccly</title>
-  <link rel='canonical' href='https://excited-ccccly.github.io/studymakesmehappy.club/posts/kubernetes101/'>
-  <link href='' rel='alternate' type='application/rss+xml' title='' />
-  <link rel='icon' href='https://excited-ccccly.github.io/studymakesmehappy.club/favicon.ico'>
-<link rel='stylesheet' href='https://fonts.lug.ustc.edu.cn/css?family=Ubuntu:400,400i,700&subset=latin'>
-<link rel='stylesheet' href='https://excited-ccccly.github.io/studymakesmehappy.club/css/main.d02777fd.css'>
-
-
+  <link rel='canonical' href='https://studymakesmehappy.club/posts/kubernetes101/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.cb99c271.css'><link rel='stylesheet' href='/css/custom.css'><style>
+:root{--color-accent:#ffcd00;}
+</style>
 
 </head>
 
 
-<body class='page'>
+<body class='page type-posts'>
+
   <div class='site'>
-    <header id='header' class='header-container'>
-      <div class='site-header'>
-        <nav id='navmenu' aria-label='Main Menu'>
-  <ul class='main-menu'>
+
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+    <div class='main'>
+
+      <nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
     
-    <li>
-      <a href='https://excited-ccccly.github.io/studymakesmehappy.club/'>Home</a>
-    </li>
-    
-    <li>
-      <a href='https://excited-ccccly.github.io/studymakesmehappy.club/about/'>About</a>
-    </li>
-    
-    <li>
-      <a href='https://github.com/Excited-ccccly/studymakesmehappy.club'>Repo</a>
-    </li>
-    
-  </ul>
+    <ul><li class='item'>
+        <a href='/'>Home</a>
+      </li><li class='item'>
+        <a href='/posts/'>Posts</a>
+      </li><li class='item'>
+        <a href='/about/'>About</a>
+      </li><li class='item'>
+        <a href='https://github.com/Excited-ccccly/studymakesmehappy.club'>Repo</a>
+      </li></ul>
+  </div>
 </nav>
 
-        <div class='site-info'>
-          
-          <p class='site-title title'></p>
-          
-          <p class='site-description'>Study makes me happy</p>
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>Home</p><p class='desc site-desc'>Study makes me happy</p>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+
+      <main id='content'>
 
 
-<main class='main'>
-  <article lang='en' class='entry'>
-    <header class='entry-header'>
-  <div class='entry-info'>
-    <h1 class='entry-title title'>Kubernetes101</h1>
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>Kubernetes101</h1>
+      
+
+    </div>
     
-  </div>
-  
-<div class='meta'>
-  <span class='posted-on'>
-    <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+<div class='entry-meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
   <line x1="16" y1="2" x2="16" y2="6"/>
@@ -91,29 +92,38 @@
   <line x1="3" y1="10" x2="21" y2="10"/>
   
 </svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2018-01-07T23:31:08&#43;08:00'>2018, Jan 07</time>
+</span>
 
-    <span class='screen-reader'>Posted on </span>
-    <time class='date' datetime='2018-01-07T23:31:08&#43;08:00'>2018, Jan 7</time>
-  </span>
-  
-  <span class='byline'>
-    <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  <span class='byline'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M21,21V20c0-2.76-4-5-9-5s-9,2.24-9,5v1"/>
   <path d="M16,6.37A4,4,0,1,1,12.63,3,4,4,0,0,1,16,6.37Z"/>
   
 </svg>
-
-    <span class='screen-reader'> by </span>
-    ccccly
-  </span>
+<span class='screen-reader-text'> by </span><a href='/authors/ccccly'>ccccly</a></span>
   
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+4 mins read
+</span>
+
+
 </div>
 
 
+  </div>
 </header>
 
-    <div class='entry-content'>
+  
+  
+
+  <div class='container entry-content'>
   
 
 <p>这是一篇 kubernetes（简称 k8s，将中间的 8 个字母简写成“8”） 的基础教程，会使用实际例子来讲解 k8s 中的基础概念。</p>
@@ -131,7 +141,7 @@
 
 <h2 id="安装-cli">安装 cli</h2>
 
-<p><a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">kubectl</a> 是 k8s 的命令行工具，可以方便地管理集群</p>
+<p><a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/" target="_blank">kubectl</a> 是 k8s 的命令行工具，可以方便地管理集群</p>
 
 <h2 id="安装集群">安装集群</h2>
 
@@ -139,24 +149,24 @@
 
 <h3 id="云上安装-k8s">云上安装 k8s</h3>
 
-<p>如果你有多台云服务器，使用 <a href="http://rancher.com/">rancher</a> 来搭建 k8s 集群是一个方便快捷的选择。</p>
+<p>如果你有多台云服务器，使用 <a href="http://rancher.com/" target="_blank">rancher</a> 来搭建 k8s 集群是一个方便快捷的选择。</p>
 
-<p>一般来说，国外的解决方案在中国很可能出现水土不服的情况，需要额外参考这篇文章————<a href="https://www.cnrancher.com/kubernetes-installation/">原生加速中国区Kubernetes安装</a></p>
+<p>一般来说，国外的解决方案在中国很可能出现水土不服的情况，需要额外参考这篇文章————<a href="https://www.cnrancher.com/kubernetes-installation/" target="_blank">原生加速中国区Kubernetes安装</a></p>
 
 <p>额外，还需要注意以下几点:</p>
 
 <ul>
 <li>云服务器的名字不能过长，超过 63 个字符之后，会导致该节点无法注册成功。</li>
-<li>需要使用和 rancher 兼容的 docker 版本，参考这个<a href="http://rancher.com/docs/rancher/v1.6/en/hosts/#supported-docker-versions">列表</a></li>
+<li>需要使用和 rancher 兼容的 docker 版本，参考这个<a href="http://rancher.com/docs/rancher/v1.6/en/hosts/#supported-docker-versions" target="_blank">列表</a></li>
 </ul>
 
 <p>搭建好集群之后，点击 UI 界面上的 <strong>kubernetes &gt; cli &gt; generate config</strong>，按照说明配置 kubectl ，即可将 kubectl 连接上 rancher 搭建的 k8s 集群</p>
 
 <h3 id="本机安装-k8s">本机安装 k8s</h3>
 
-<p>本机使用 <a href="https://github.com/kubernetes/minikube">minikube</a> 来安装 k8s 集群</p>
+<p>本机使用 <a href="https://github.com/kubernetes/minikube" target="_blank">minikube</a> 来安装 k8s 集群</p>
 
-<p>同样由于水土不服, 请参考这篇文章————<a href="https://yq.aliyun.com/articles/221687">Minikube - Kubernetes本地实验环境</a></p>
+<p>同样由于水土不服, 请参考这篇文章————<a href="https://yq.aliyun.com/articles/221687" target="_blank">Minikube - Kubernetes本地实验环境</a></p>
 
 <p>安装好之后，</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ kubectl version</code></pre></div>
@@ -167,7 +177,7 @@ Server Version: version.Info{Major:<span style="color:#ed9d13">&#34;1&#34;</span
 
 <h2 id="deployment">Deployment</h2>
 
-<p><img src="images/20180106/module_02_first_app.png" alt="Deployment" /></p>
+<p><img src="/images/20180106/module_02_first_app.png" alt="Deployment" /></p>
 
 <p>集群成功启动之后，为了让容器化(containerized)的应用（比如，一个打好 docker 镜像的 node.js web server）运行在 k8s 中，我们需要创建一个 Deployment。这个 Deployment 会告诉 k8s 如何去创建和更新应用的实例，k8s 会选择节点(Node)并在之上启动应用，同时还有持续监控我们应用的健康状况，一旦应用挂掉了，k8s 会自动重建这个应用的实例。这个<strong>自我修复机制(Self-healing Mechanism)</strong>用来应对节点的失效以及更新维护。</p>
 
@@ -218,12 +228,12 @@ $ docker push ccccly/express-app:v1</code></pre></div>
 express-app   1         1         1            1           1h</pre></div>
 <h2 id="pod-和-node">Pod 和 Node</h2>
 
-<p><img src="images/20180106/module_03_pods.svg" alt="Pod" /></p>
+<p><img src="/images/20180106/module_03_pods.svg" alt="Pod" /></p>
 
 <p>一个 Deployment 会创建 Pod 来启动应用。在 k8s 中，Pod 是一组（一个或多个）容器以及这些容器公用的存储、网络等资源。它是 k8s 的最小单元。
 一个 Pod 中可以有多个容器，这些容器共用一个 IP 和端口，一起被调度，在相同的 Node 上的同一个 Context 下运行。</p>
 
-<p><img src="images/20180106/module_03_nodes.svg" alt="Node" /></p>
+<p><img src="/images/20180106/module_03_nodes.svg" alt="Node" /></p>
 
 <p>Pod 永远在 Node 上运行。在 k8s 中，Node 是一个工作机器(Worker)，它可以是虚拟机也可以是物理机。一个 Node 上可以运行多个 Pod，k8s 里的 Master 节点自动分配 Pod 到 Node 上运行</p>
 
@@ -246,7 +256,7 @@ hello world
 </span><span style="color:#999;font-style:italic"></span>$ exit</code></pre></div>
 <h2 id="service">Service</h2>
 
-<p><img src="images/20180106/module_04_services.svg" alt="Service" /></p>
+<p><img src="/images/20180106/module_04_services.svg" alt="Service" /></p>
 
 <p>Pod 有自己的生命周期，当一个 Node 死亡之后，Node 上的 Pod 也就消失了。为了容灾和负载均衡，通常会在 k8s 中运行多个应用的实例，也就有了多个 Pod。
 每一个 Pod 都有自己的唯一的 IP 地址，一个 Pod 死亡重建之后就有了一个新的 IP 地址，所以 Pod 的 IP 地址是不确定的。然而服务的消费者只会使用固定的 IP 地址，所以需要有一种机制，来掩盖掉这些底层 IP 地址的变化，消除消费者和 Pod 的耦合。</p>
@@ -257,9 +267,9 @@ hello world
 
 <ul>
 <li>ClusterIP（默认）：通过集群的内部 IP （例如，10.0.0.151）暴露 Service，只能被集群内部的消费者访问</li>
-<li>NodePort：使用 <a href="https://en.wikipedia.org/wiki/Network_address_translation">NAT</a> 机制在 Node 上开启相同的 Port 来暴露服务，可以用 <strong>NodeIP:NodePort</strong> （例如，<a href="http://192.168.99.100:31530">http://192.168.99.100:31530</a> ）来访问</li>
+<li>NodePort：使用 <a href="https://en.wikipedia.org/wiki/Network_address_translation" target="_blank">NAT</a> 机制在 Node 上开启相同的 Port 来暴露服务，可以用 <strong>NodeIP:NodePort</strong> （例如，<a href="http://192.168.99.100:31530" target="_blank">http://192.168.99.100:31530</a> ）来访问</li>
 <li>LoadBalancer：使用云服务厂商提供的外部负载均衡器来暴露服务，会是一个固定的外部 IP</li>
-<li>ExternalName：通过 <a href="https://en.wikipedia.org/wiki/CNAME_record">CNAME</a> 来暴露服务</li>
+<li>ExternalName：通过 <a href="https://en.wikipedia.org/wiki/CNAME_record" target="_blank">CNAME</a> 来暴露服务</li>
 </ul>
 
 <p>继续刚才的 express-app 的例子</p>
@@ -275,13 +285,13 @@ kubernetes    ClusterIP   <span style="color:#3677a9">10</span>.0.0.1     &lt;no
 hello world</code></pre></div>
 <h2 id="scaling">Scaling</h2>
 
-<p>为了保持 <a href="https://en.wikipedia.org/wiki/Service-level_agreement">SLA</a>（比如其中的一种 SLA，服务可用性达到 99.999%，内业经常说你的服务能达到几个 9，哈哈），通常会部署多份相同的应用，运行在多个 Pod 上。在 k8s 中，通过修改 Deployment 的 Replica（副本） 数量来达到 Scaling 的目的。</p>
+<p>为了保持 <a href="https://en.wikipedia.org/wiki/Service-level_agreement" target="_blank">SLA</a>（比如其中的一种 SLA，服务可用性达到 99.999%，内业经常说你的服务能达到几个 9，哈哈），通常会部署多份相同的应用，运行在多个 Pod 上。在 k8s 中，通过修改 Deployment 的 Replica（副本） 数量来达到 Scaling 的目的。</p>
 
 <p>将 express-app 从 1 个 Replica, scale 到 4 个 Replicas
-<img src="images/20180106/module_05_scaling1.svg" alt="Befor Scaling" /></p>
+<img src="/images/20180106/module_05_scaling1.svg" alt="Befor Scaling" /></p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ kubectl scale deployment express-app --replicas <span style="color:#3677a9">4</span></code></pre></div>
 <p>查看 scale 后的 Deployment
-<img src="images/20180106/module_05_scaling2.svg" alt="After Scaling" /></p>
+<img src="/images/20180106/module_05_scaling2.svg" alt="After Scaling" /></p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ kubectl get deployment
 NAME          DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 express-app   4         4         4            4           1d</pre></div>
@@ -326,58 +336,36 @@ hello world v2</code></pre></div>
 
 </div>
 
-
-    
-<footer class='entry-footer'>
   
-    
-      
-      
-
-<div class='categories'>
-  <span class='category-icon'>
-    <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+<footer class='entry-footer'>
+  <div class='container sep-before'>
+  <div class='categories'>
+  <span class='taxonomy-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
   
 </svg>
-
-  </span>
-  <span class='screen-reader'>Categories: </span><a class='category' href='https://excited-ccccly.github.io/studymakesmehappy.club/categories/devops'>DevOps</a></div>
-
-
-    
-  
-    
-      
-      
-
+</span>
+  <span class='screen-reader-text'>Categories: </span><a class='category' href='/categories/devops'>DevOps</a></div>
 <div class='tags'>
-  <span class='tag-icon'>
-    <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  <span class='taxonomy-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
   <line x1="7" y1="7" x2="7" y2="7"/>
   
 </svg>
+</span>
+  <span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/kubernetes'>Kubernetes</a>, <a class='tag' href='/tags/docker'>Docker</a>, <a class='tag' href='/tags/deployment'>Deployment</a></div>
 
-  </span>
-  <span class='screen-reader'>Tags: </span><a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/kubernetes'>Kubernetes</a>, <a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/docker'>Docker</a>, <a class='tag' href='https://excited-ccccly.github.io/studymakesmehappy.club/tags/deployment'>Deployment</a></div>
-
-
-    
-  
+  </div>
 </footer>
 
 
+</article>
 
-  </article>
-
-  
-    
 <nav class='entry-nav'>
-  <div class='entry-nav-links'><div class='prev-entry'>
-      <a href='https://excited-ccccly.github.io/studymakesmehappy.club/posts/%E6%BC%AB%E8%B0%88%E6%97%B6%E9%97%B4%E4%B8%80%E6%97%B6%E9%97%B4%E5%8E%86%E6%B3%95%E5%92%8C%E6%97%B6%E5%8C%BA/'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/posts/%E6%BC%AB%E8%B0%88%E6%97%B6%E9%97%B4%E4%B8%80%E6%97%B6%E9%97%B4%E5%8E%86%E6%B3%95%E5%92%8C%E6%97%B6%E5%8C%BA/'>
         <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <line x1="20" y1="12" x2="4" y2="12"/>
@@ -385,10 +373,10 @@ hello world v2</code></pre></div>
   
 </svg>
  Previous</span>
-        <span class='screen-reader'>Previous post: </span>漫谈时间(一)——时间、历法和时区</a>
-    </div><div class='next-entry'>
-      <a href='https://excited-ccccly.github.io/studymakesmehappy.club/posts/speed-up-your-deployment-using-docker-compose/'>
-        <span class='screen-reader'>Next post: </span>Speed Up Your Deployment Using Docker Compose<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+        <span class='screen-reader-text'>Previous post: </span>漫谈时间(一)——时间、历法和时区</a>
+    </div><div class='next-entry sep-before'>
+      <a href='/posts/speed-up-your-deployment-using-docker-compose/'>
+        <span class='screen-reader-text'>Next post: </span>Speed Up Your Deployment Using Docker Compose<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <line x1="4" y1="12" x2="20" y2="12"/>
   <polyline points="14 6 20 12 14 18"/>
@@ -400,51 +388,42 @@ hello world v2</code></pre></div>
 </nav>
 
 
-  
 
-  
-    <div class='comments-container'>
-</div>
 
-  
-</main>
+      </main>
 
-    <footer id='footer' class='footer-container'>
-      <div class='footer'>
-        <div class='social'>
-  <nav aria-label='Social Menu'>
-    <ul class='social-menu'><li>
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
         <a href='https://github.com/Excited-ccccly' target='_blank' rel='noopener'>
-          <span class='screen-reader'>Open Github account in new tab</span>
-          <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
   
 </svg>
-
-        </a>
+</a>
+      </li><li>
+        <a href='mailto:geekchenlingyun@outlook.com' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Contact via Email</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+  <polyline points="22,6 12,13 2,6"/>
+  
+</svg>
+</a>
       </li></ul>
   </nav>
+</section><div class='copyright'>
+  <p> &copy; 2017-2018 ccccly </p>
 </div>
 
-        <div class='copyright'>
-          <p>
-    
-      
-    
-  
-  &copy; 2017-2018 ccccly</p>
-
-
         </div>
-      </div>
-    </footer>
+      </footer>
 
-  </div>
+    </div>
+  </div><script>window.__public_path__='\/assets\/js\/'</script>
 
-  <script src='https://excited-ccccly.github.io/studymakesmehappy.club/js/main.af838dd5.js'></script>
-  
-
+<script src='/assets/js/main.9daad1e6.js'></script><script src='/js/custom.js'></script>
 </body>
 
 </html>

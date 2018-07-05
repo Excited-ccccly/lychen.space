@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Windows on </title>
-    <link>https://excited-ccccly.github.io/studymakesmehappy.club/tags/windows/</link>
-    <description>Recent content in Windows on </description>
+    <title>Windows on Home</title>
+    <link>https://studymakesmehappy.club/tags/windows/</link>
+    <description>Recent content in Windows on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 04 Mar 2018 15:43:15 +0800</lastBuildDate>
     
-	<atom:link href="https://excited-ccccly.github.io/studymakesmehappy.club/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://studymakesmehappy.club/tags/windows/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Set Up Development Environment on Windows</title>
-      <link>https://excited-ccccly.github.io/studymakesmehappy.club/posts/set-up-development-environment-on-windows/</link>
+      <link>https://studymakesmehappy.club/posts/set-up-development-environment-on-windows/</link>
       <pubDate>Sun, 04 Mar 2018 15:43:15 +0800</pubDate>
       
-      <guid>https://excited-ccccly.github.io/studymakesmehappy.club/posts/set-up-development-environment-on-windows/</guid>
+      <guid>https://studymakesmehappy.club/posts/set-up-development-environment-on-windows/</guid>
       <description>闲言碎语：长久以来，Windows 一直被诟病在开源领域上开发体验不好，但最近几年，微软做出了巨大的改变，全力拥抱了开源，Github 上随处可见微软开发者的 Contribution；同时，笔记本电脑领域上几乎所有的创新都来自于 Windows 阵营，Windows 电脑变得越来越酷。这两点促使我专门为 Windows 开发社区做出自己的一份贡献。希望大家保持开放与沟通，避免无意义的争吵，塑造良好的社区氛围。
  这篇博客会介绍一些加快开发效率的工具，会安利以下(类别的)产品:
  Package Manager(包管理器) Linux Toolkit(Linux 工具包) Terminal Emulator(终端模拟器) Windows Subsystem for Linux(Windows 上的 Linux 子系统) Oh-My-Zsh Editor&amp;amp;IDE(编辑器和集成开发环境) Font(字体)  Package Manager scoop 是 Windows 上一个很友好的包管理器，类似于 Ubuntu 上的 apt，macos 上的 homebrew。
