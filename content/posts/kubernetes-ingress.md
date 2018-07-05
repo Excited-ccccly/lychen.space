@@ -1,6 +1,7 @@
 ---
 title: "Kubernetes Ingress"
 date: 2018-03-27T15:27:27+08:00
+authors: ["ccccly"]
 categories: ["DevOps"]
 tags: ["Kubernetes", "Ingress", "nginx", "Loadbalancer"]
 ---

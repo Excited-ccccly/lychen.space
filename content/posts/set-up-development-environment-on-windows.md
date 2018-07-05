@@ -1,6 +1,7 @@
 ---
 title: "Set Up Development Environment on Windows"
 date: 2018-03-04T15:43:15+08:00
+authors: ["ccccly"]
 categories: ["DevOps", "Tools"]
 tags: ["Windows", "Package Manager", "Linux", "WSL", "Terminal Emulator", "Editor", "Font"]
 ---

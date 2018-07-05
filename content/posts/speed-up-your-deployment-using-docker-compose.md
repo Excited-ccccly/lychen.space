@@ -1,6 +1,7 @@
 ---
 title: "Speed Up Your Deployment Using Docker Compose"
 date: 2018-02-14T01:05:40+08:00
+authors: ["ccccly"]
 categories: ["DevOps"]
 tags: ["Docker", "Compose", "Deployment"]
 ---

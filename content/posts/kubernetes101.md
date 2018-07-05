@@ -1,6 +1,7 @@
 ---
 title: "Kubernetes101"
 date: 2018-01-07T23:31:08+08:00
+authors: ["ccccly"]
 categories: ["DevOps"]
 tags: ["Kubernetes", "Docker", "Deployment"]
 ---

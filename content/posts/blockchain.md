@@ -1,6 +1,7 @@
 ---
 title: "Blockchain"
 date: 2018-05-28T11:19:19+08:00
+authors: ["ccccly"]
 draft: true
 ---
 
