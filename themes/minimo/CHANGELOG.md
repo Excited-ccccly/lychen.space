@@ -2,11 +2,41 @@
 
 ## [Unreleased]
 
+- ...
+
+## [2.6.0] - 2018-07-24
+
+### Added
+
+- French translation improvements
+- "extra" placeholder partial for `head` and `footer`
+- Italian translation
+
+### Changed
+
+- Minimum Hugo version requirement: `v0.45`
+
+### Fixed
+
+- "Search: Fuse.js" documentation
+
+## [2.5.0] - 2018-07-06
+
 ### Added
 
 - Add `.alternate` text param for cover image
 - YouTube icon in Social Menu
+- German translation improvements
 - Utterances comment system support
+- Search Support: Algolia, Fuse.js, Lunr.js
+
+### Changed
+
+- Refactor Widget Area
+
+### Fixed
+
+- Issue #150
 
 ## [2.4.0] - 2018-05-30
 
@@ -220,8 +250,10 @@
 
 - Initial stable release
 
-[Unreleased]: https://github.com/MunifTanjim/minimo/compare/v2.4.0...HEAD
-[2.4.0]: https://github.com/MunifTanjim/minimo/compare/v2.3.0...v2.4.0
+[Unreleased]: https://github.com/MunifTanjim/minimo/compare/2.6.0...HEAD
+[2.6.0]: https://github.com/MunifTanjim/minimo/compare/2.5.0...2.6.0
+[2.5.0]: https://github.com/MunifTanjim/minimo/compare/2.4.0...2.5.0
+[2.4.0]: https://github.com/MunifTanjim/minimo/compare/v2.3.0...2.4.0
 [2.3.0]: https://github.com/MunifTanjim/minimo/compare/v2.2.0...v2.3.0
 [2.2.0]: https://github.com/MunifTanjim/minimo/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/MunifTanjim/minimo/compare/v2.0.0...v2.1.0

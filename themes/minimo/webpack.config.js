@@ -33,7 +33,10 @@ const node_env = process.env.NODE_ENV
 const config = {
   mode: node_env === 'production' ? 'production' : 'development',
   entry: {
-    main: path.join(__dirname, 'src/scripts', 'main.js')
+    main: path.join(__dirname, 'src/scripts', 'main.js'),
+    algolia_search: path.join(__dirname, 'src/scripts/search', 'algolia.js'),
+    fuse_search: path.join(__dirname, 'src/scripts/search', 'fuse.js'),
+    lunr_search: path.join(__dirname, 'src/scripts/search', 'lunr.js')
   },
   output: {
     filename: '[name].[chunkhash:8].js',
