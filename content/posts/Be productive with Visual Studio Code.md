@@ -62,7 +62,7 @@ JVM 上的语言, PHP | Intellij Idea
 配合 `Ctrl`，`Home` 键可以将光标移到文件头，`End` 键可以移到文件尾；`Page Up` 可以顺序切换到前一个 tab，`Page Down` 可以顺序切换到下一个 tab. `Ctrl`, `Home`, `End`, `Shift` 可以搭配起来用。
 
 以上的快捷键在 Linux（桌面为 Gnome）和 Windows 上都是通用的，macOS 我想不起来了，应该差不多的。这些快捷键也可以在 Intellij Idea, Firefox, Chrome, Terminal. Firefox(自带) 和 Chrome（装插件）建议开启光标浏览。
-
+`
 ![](/images/Be productive with Visual Studio Code/Firefox.gif)
 
 ### VSCode Favored
@@ -72,6 +72,7 @@ JVM 上的语言, PHP | Intellij Idea
 * *Add Selection To Next Find Match* 会选中下一个相同的字符串，在拼写错误等需要同时编辑一个字符串的时候很好用。
 
 * *Add Cursor Above* 和 *Add Cursor Below* 适合同时编辑多行。`Esc` 可以退出多行编辑的状态，*Soft undo* 可以 undo 上一次选择。
+* *Move Line Up* 和 *Move Line Down* 可以上下移动当前（选中）的代码行
 
 ![](/images/Be productive with Visual Studio Code/Editing.gif)
 
@@ -99,6 +100,37 @@ JVM 上的语言, PHP | Intellij Idea
 
 除了编辑代码的快捷键，VSCode 还有一些其它提高生产力的快捷键。
 
+### Debugging
+
+![](/images/Be productive with Visual Studio Code/Python Debugging.gif)
+
+* *Toggle Breakpoint* 设置断点
+* *Start Debugging* 开始调试
+* *Step Into* 跳进
+* *Step Out* 跳出
+* *Debug: Restart* 重新开始调试
+* *Debug: Continue* 恢复
+
+### Sidebar
+
+![](/images/Be productive with Visual Studio Code/Sidebar.gif)
+
+* *View: Show Explorer* 打开文件资源管理器 Sidebar，可以通过方向键浏览文件树
+* *Search: Find in Files* 打开搜索 Sidebar，速度超快。多次按 `Tab` 键可以聚焦到搜索结果，**Sidebar 里的内容都可以通过 `Tab` 来切换聚焦**
+* *View: Show SCM* 打开源代码管理器 Sidebar
+* *View: Show Debug* 打开调试 Sidebar
+* *View: Show Extensions* 打开扩展 Sidebar
+* *View: Focus First Editor Group* 重新回到编辑文件的状态
+* *View: Toggle Sidebar Visibility* 是否显示 Sidebar
+
+### Others
+
+* *View: Toggle Integrated Terminal* 在终端和编辑窗口切换
+* *File: Open Recent..* 打开最近的项目，`Enter` 在当前目录打开，`Ctrl Enter` 在新窗口打开
+* *Gitlens: Compare Commit With Previous* 对比修改的代码（需安装 Gitlens 插件）
+* *Preferences: Open User Settings* 打开用户设置 settings.json
+* *Preferences: Open Keyboard Shortcuts* 打开键盘快捷键设置
+* *Notifications: Clear All Notifications* 清楚消息通知
 
 ## Personalization Makes You Different
 
@@ -133,13 +165,29 @@ Fira Code 字体安装请参考[官方 wiki](https://github.com/tonsky/FiraCode/
 
 Fira Code 也支持 Intellij Idea, Visual Studio 等其它编辑器，感兴趣的话不妨去 wiki 看看。
 
+### Custom Settings
+
+建议配置以下选项
+
+```json
+// 自动保存
+"files.autoSave": "afterDelay"
+// 自动格式化
+"editor.formatOnSave": true,
+"editor.formatOnPaste": true
+// 用空格不用 Tab 
+"editor.insertSpaces": true
+// 渲染空格
+"editor.renderWhitespace": "all"
+```
+
 ## Extensions Make You Coding Life Easy and Cool
 
 推荐3个扩展
 
 * Gitlens
-* Wakatime
 * Settings Sync
+* Wakatime
 
 Gitlens 可以大幅增强 VSCode 上的 Git 使用体验。直接安装试试吧
 
@@ -151,6 +199,15 @@ Settings Sync 可以同步你的扩展、设置、主题、快捷键、代码片
 
 ## Tricks Make You Proud of VSCode
 
+### Zen Mode
+
+### File Diff
+
+### Markdown Editor
+
+### Snippets
+
+### Add Files to VSCode Project(Maybe not Proud of It)
 
 ## Comparing With Jetbrains Family Products
 
