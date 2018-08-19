@@ -5,6 +5,8 @@ categories: ["Working Style"]
 tags: ["VSCode", "Intellij Idea", "Productivity"]
 ---
 
+> 本文由 [vilicvane](https://github.com/vilic) 过目并提供修改意见
+
 曾经有一位 Code Ninja 教导我，“在软件工程领域中，厉害的人都有一款用得很溜的 IDE/Editor”。虽说不完全同意，毕竟比起写代码，思想更重要，但熟练掌握一款编辑器确实能大幅提高软件工程师的工作效率。
 
 我用的最多的 Editor 是 [Visual Studio Code](https://code.visualstudio.com/), 其次是 [Intellij Idea](https://www.jetbrains.com/idea/), 最后是 [Vim](www.vim.org). 根据场景，我会使用不同编辑器。
@@ -33,7 +35,7 @@ JVM 上的语言, PHP | Intellij Idea
 
 ![](/images/Be productive with Visual Studio Code/Go Back.gif)
 
-比如我不知道 **后退** 的快捷键是什么，只要 `Ctrl Shift P`, 然后输入 *Back*, VSCode 就会让我选择 *Go Back* 。哦，原来 **后退** 的快捷键是 `Ctrl Alt -`，我记下了。
+比如我不知道 **后退** 的快捷键是什么，只要 `Ctrl Shift P`, 然后输入 *Back*, VSCode 就会让我选择 *Go Back* 。哦，原来 Linux 上 **后退** 的快捷键是 `Ctrl Alt -` (Windows 下是 `Alt Left`，不同平台不一样)，我记下了。
 
 *Command Palette* 让我彻底喜欢上 VSCode 和 Atom 这类 Modern Editor, 以至于所有项目都尽可能用 VSCode 写。
 
@@ -279,3 +281,7 @@ Decompiler | ✯✯✯✰✰ | ✯✯✯✯✯ | Jetbrains 可以很方便地查
 快捷键即生产力，VSCode 提供了一个很优雅的快捷键学习的解决方案。我们只需记住一些 Universal 的快捷键，以及伟大的 *Command Palette* 😀。剩下的就边用边学吧。
 
 在写这篇文章时，我也没有 100% 完全地用这些快捷键来工作，有时候还是抵御不了鼠标的诱惑。但自从我下意识要完全用快捷键工作时，效率提高了很多，完全只用快捷键工作只是时间问题罢了。相信你们也可以的😁
+
+# Reference
+
+* [Visual Studio Code Tips and Tricks](https://code.visualstudio.com/docs/getstarted/tips-and-tricks#vscode)
