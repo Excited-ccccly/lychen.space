@@ -1,7 +1,8 @@
 ---
 title: "Be productive with Visual Studio Code"
 date: 2018-08-11T13:14:54+08:00
-draft: true
+categories: ["Working Style"]
+tags: ["VSCode", "Intellij Idea", "Productivity"]
 ---
 
 曾经有一位 Code Ninja 教导我，“在软件工程领域中，厉害的人都有一款用得很溜的 IDE/Editor”。虽说不完全同意，毕竟比起写代码，思想更重要，但熟练掌握一款编辑器确实能大幅提高软件工程师的工作效率。

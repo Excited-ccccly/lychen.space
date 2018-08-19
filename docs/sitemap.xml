@@ -4,16 +4,21 @@
   
   <url>
     <loc>https://studymakesmehappy.club/</loc>
-    <lastmod>2018-07-26T23:54:29+08:00</lastmod>
+    <lastmod>2018-08-11T13:14:54+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://studymakesmehappy.club/posts/</loc>
-    <lastmod>2018-07-26T23:54:29+08:00</lastmod>
+    <lastmod>2018-08-11T13:14:54+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://studymakesmehappy.club/about/</loc>
+  </url>
+  
+  <url>
+    <loc>https://studymakesmehappy.club/posts/be-productive-with-visual-studio-code/</loc>
+    <lastmod>2018-08-11T13:14:54+08:00</lastmod>
   </url>
   
   <url>
@@ -167,6 +172,12 @@
   </url>
   
   <url>
+    <loc>https://studymakesmehappy.club/tags/intellij-idea/</loc>
+    <lastmod>2018-08-11T13:14:54+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://studymakesmehappy.club/tags/kubernetes/</loc>
     <lastmod>2018-03-27T15:27:27+08:00</lastmod>
     <priority>0</priority>
@@ -222,6 +233,12 @@
   
   <url>
     <loc>https://studymakesmehappy.club/page/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://studymakesmehappy.club/tags/productivity/</loc>
+    <lastmod>2018-08-11T13:14:54+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -285,6 +302,12 @@
   </url>
   
   <url>
+    <loc>https://studymakesmehappy.club/tags/vscode/</loc>
+    <lastmod>2018-08-11T13:14:54+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://studymakesmehappy.club/tags/wsl/</loc>
     <lastmod>2018-03-04T15:43:15+08:00</lastmod>
     <priority>0</priority>
@@ -305,6 +328,12 @@
   <url>
     <loc>https://studymakesmehappy.club/tags/windows/</loc>
     <lastmod>2018-03-04T15:43:15+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://studymakesmehappy.club/categories/working-style/</loc>
+    <lastmod>2018-08-11T13:14:54+08:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -5,10 +5,22 @@
     <link>https://studymakesmehappy.club/posts/</link>
     <description>Recent content in Posts on Home</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 26 Jul 2018 23:54:29 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 11 Aug 2018 13:14:54 +0800</lastBuildDate>
     
 	<atom:link href="https://studymakesmehappy.club/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Be productive with Visual Studio Code</title>
+      <link>https://studymakesmehappy.club/posts/be-productive-with-visual-studio-code/</link>
+      <pubDate>Sat, 11 Aug 2018 13:14:54 +0800</pubDate>
+      
+      <guid>https://studymakesmehappy.club/posts/be-productive-with-visual-studio-code/</guid>
+      <description>曾经有一位 Code Ninja 教导我，“在软件工程领域中，厉害的人都有一款用得很溜的 IDE/Editor”。虽说不完全同意，毕竟比起写代码，思想更重要，但熟练掌握一款编辑器确实能大幅提高软件工程师的工作效率。
+我用的最多的 Editor 是 Visual Studio Code, 其次是 Intellij Idea, 最后是 Vim. 根据场景，我会使用不同编辑器。
+   场景 Editor     JVM 上的语言, PHP Intellij Idea   服务端代码的小修改，配置文件的修改 Vim   其它所有场景 VSCode    本文主要关注如何使用 VSCode 提高编码效率，最后会说一下和 Intellij Idea 的对比。不会具体到语言，即如何使用 VSCode 编写和调试 XXX 语言不在本文的讨论范围之内，更多的关注在 VSCode 本身上。希望看过本文的同学们，多多实践。
+Basic  Being able to keep your hands on the keyboard when writing code is crucial for high productivity.</description>
+    </item>
     
     <item>
       <title>在数字游民边缘试探</title>
