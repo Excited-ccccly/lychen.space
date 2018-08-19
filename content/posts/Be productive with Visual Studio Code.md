@@ -63,8 +63,8 @@ JVM 上的语言, PHP | Intellij Idea
 
 按住 `Ctrl`，再按 `Home` 键可以将光标移到文件头，`End` 键可以移到文件尾，`Page Up` 可以顺序切换到前一个 tab，`Page Down` 可以顺序切换到下一个 tab. `Ctrl`, `Home`, `End`, `Shift` 可以搭配起来用。
 
-以上的快捷键在 Linux（桌面为 Gnome）和 Windows 上都是通用的，macOS 我想不起来了，应该差不多的。这些快捷键也可以在 Intellij Idea, Firefox, Chrome, Terminal. Firefox(自带) 和 Chrome（装插件）建议开启光标浏览。
-`
+以上的快捷键在 Linux（桌面为 Gnome）和 Windows 上都是通用的，macOS 我想不起来了，应该差不多的。这些快捷键也可以在 Intellij Idea, Firefox, Chrome, Edge, Terminal 等许多软件中使用。 Firefox(自带) 和 Chrome（装插件）建议开启光标浏览。
+
 ![](/images/Be productive with Visual Studio Code/Firefox.gif)
 
 ### VSCode Favored
