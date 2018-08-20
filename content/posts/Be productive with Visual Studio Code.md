@@ -115,6 +115,14 @@ JVM 上的语言, PHP | Intellij Idea
 * *Debug: Restart* 重新开始调试
 * *Debug: Continue* 恢复
 
+### Code Navigation
+
+![](/images/Be productive with Visual Studio Code/Code Navigation.gif)
+
+* *Go to Definition* 定位到 Symbol 定义的位置
+* *Peek Definition* 速览 Symbol 的定义，`Esc` 可以关闭速览窗口
+* *Find All References* 找到所有对 Symbol 的引用，可以使用方向键浏览结果，`Enter` 键跳转到结果，`Esc` 关闭查找引用的窗口
+
 ### Sidebar
 
 ![](/images/Be productive with Visual Studio Code/Sidebar.gif)
