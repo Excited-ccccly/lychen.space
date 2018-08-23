@@ -106,12 +106,14 @@ JVM 上的语言, PHP | Intellij Idea
 
 ### Debugging
 
-![](/images/Be productive with Visual Studio Code/Python Debugging.gif)
+![](/images/Be productive with Visual Studio Code/Debugging and Resize Panel.gif)
 
 * *Toggle Breakpoint* 设置断点
 * *Start Debugging* 开始调试
 * *Step Into* 跳进
 * *Step Out* 跳出
+* *View: Show Debug* 聚焦到调试 Sidebar, 多次按 `Tab` 键可以聚焦到变量列表，**Sidebar 里的内容都可以通过 `Tab` 来切换聚焦**
+* *View: Increase Current View Size* 增大当前 panel(调试 Sidebar), *View: Decrease Current View Size* 减小当前 panel(调试 Sidebar)
 * *Debug: Restart* 重新开始调试
 * *Debug: Continue* 恢复
 
@@ -278,9 +280,12 @@ License | ✯✯✯✯✯ | ✯✯✯✰✰ | VSCode 基于 MIT 协议开源，J
 语言框架支持 | ✯✯✯✯✯ | ✯✯✯✯✯ | VSCode 对新语言的支持基于 [Language Server](http://langserver.org/)，为 VSCode 开发的语言插件，可以很方便地移植到其他平台上去; Jetbrains 的插件是基于 [Intellij Platform](http://www.jetbrains.org/intellij/sdk/docs/welcome.html) 用 JVM 语言写的。Idea 装个 Android 插件就是 Android Studio, 装个 Python 插件就是 PyCharm, 装个 PHP 插件就是 PhPStorm. 两种不同的理念，VSCode 开放很多; Jetbrains 就有点 Evil 了，把一个个插件分出新的 SKU 来卖...
 快捷键 | ✯✯✯✯✯ | ✯✯✯✰✰ | 没有 Command Palette 的都是反人类，而且 VSCode 的快捷键自定义友好程度大幅领先 Jetbrains
 Version control | ✯✯✯✯✯ | ✯✯✯✯✰ | 配上 Gitlens 的 VSCode 进行源代码管理很方便
-Terminal | ✯✯✯✯✯ | ✯✯✯✰✰ | VSCode 支持 Tabs 和 Split，有朝一日可以替代掉一众 Terminal Emulator
+Integrated Terminal | ✯✯✯✯✯ | ✯✯✯✰✰ | VSCode 内置的 terminal 支持 Tabs 和 Split，有朝一日可以替代掉一众 Terminal Emulator
 Decompiler | ✯✯✯✰✰ | ✯✯✯✯✯ | Jetbrains 可以很方便地查看类库的源码
 测试 | ✯✯✯✰✰ | ✯✯✯✯✯ | 目前 VScode 对 Test Runner 的支持还不够好，Jetbrains 完美
+命令行工具 | ✯✯✯✯✯ | ✯✰✰✰✰ | VSCode 的命令行工具 `code` 很友好, 支持 file diff, trouble shooting 等； Intellij Idea 的命令行工具 `idea` 只能用户启动 idea, 相当于没有
+工作区及项目配置 | ✯✯✯✯✯ | ✯✯✯✰✰ | VSCode 的配置基于 JSON(非标准)，简单易读，完全可以只使用键盘来配置; Jetbrains 的配置基于 XML，基本只能通过 UI 界面来配置（比如配置 JDK)，不可避免要用到鼠标，很难自动化，效率很低，而且令人困惑
+
 
 由于 VSCode 简单、轻便、快捷键友好，所以我一般会在 VSCode 写代码；由于 Intellij Idea 的代码分析和重构很强，我会用它来大面积重构，也会用它来查看一些类库(JDK)的源码
 
