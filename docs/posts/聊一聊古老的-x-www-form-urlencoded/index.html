@@ -33,7 +33,7 @@ https://host/path/to/api?title=t&amp;author=a 看上去没什么问题，so easy
 <meta property='og:site_name' content='Home'>
 <meta property='og:type' content='article'><meta property='og:image' content='https://www.gravatar.com/avatar/374150c4ee619dfed2491b9bb5bcd476?s=256'><meta property='article:section' content='Posts'><meta property='article:tag' content='Python'><meta property='article:tag' content='Flask'><meta property='article:tag' content='x-www-form-urlencoded'><meta property='article:tag' content='Research'><meta property='article:published_time' content='2018-06-02T13:42:07&#43;08:00'/><meta property='article:modified_time' content='2018-06-02T13:42:07&#43;08:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.46" />
+<meta name="generator" content="Hugo 0.49" />
 
   <title>聊一聊古老的 x-www-form-urlencoded • ccccly</title>
   <link rel='canonical' href='https://studymakesmehappy.club/posts/%E8%81%8A%E4%B8%80%E8%81%8A%E5%8F%A4%E8%80%81%E7%9A%84-x-www-form-urlencoded/'>
@@ -186,7 +186,7 @@ https://host/path/to/api?title=t&amp;author=a&amp;categories=%5B%22c1%22,%20%22c
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">url_decode_stream</span>(stream, charset=<span style="color:#ed9d13">&#39;utf-8&#39;</span>, decode_keys=False,
                       include_empty=True, errors=<span style="color:#ed9d13">&#39;replace&#39;</span>, separator=<span style="color:#ed9d13">&#39;&amp;&#39;</span>,
                       cls=None, limit=None, return_iterator=False):
-    <span style="color:#6ab825;font-weight:bold">from</span> <span style="color:#447fcf">werkzeug.wsgi</span> <span style="color:#6ab825;font-weight:bold">import</span> make_chunk_iter
+    <span style="color:#6ab825;font-weight:bold">from</span> <span style="color:#447fcf;text-decoration:underline">werkzeug.wsgi</span> <span style="color:#6ab825;font-weight:bold">import</span> make_chunk_iter
     <span style="color:#6ab825;font-weight:bold">if</span> return_iterator:
         cls = <span style="color:#6ab825;font-weight:bold">lambda</span> x: x
     <span style="color:#6ab825;font-weight:bold">elif</span> cls <span style="color:#6ab825;font-weight:bold">is</span> None:
@@ -351,7 +351,7 @@ https://host/path/to/api?title=t&amp;author=a&amp;categories=%5B%22c1%22,%20%22c
   
 </svg>
 </span>
-  <span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/python/'>Python</a>, <a class='tag' href='/tags/flask/'>Flask</a>, <a class='tag' href='/tags/x-www-form-urlencoded/'>X-www-form-urlencoded</a>, <a class='tag' href='/tags/research/'>Research</a></div>
+  <span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/python/'>Python</a>, <a class='tag' href='/tags/flask/'>Flask</a>, <a class='tag' href='/tags/x-www-form-urlencoded/'>x-www-form-urlencoded</a>, <a class='tag' href='/tags/research/'>Research</a></div>
 
   </div>
 </footer>

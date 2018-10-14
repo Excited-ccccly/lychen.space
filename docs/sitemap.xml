@@ -100,12 +100,6 @@
   </url>
   
   <url>
-    <loc>https://studymakesmehappy.club/authors/ccccly/</loc>
-    <lastmod>2018-07-01T12:21:44+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://studymakesmehappy.club/tags/compose/</loc>
     <lastmod>2018-02-14T01:05:40+08:00</lastmod>
     <priority>0</priority>
@@ -204,12 +198,6 @@
   <url>
     <loc>https://studymakesmehappy.club/tags/modern-progarmming/</loc>
     <lastmod>2017-07-25T00:50:18+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://studymakesmehappy.club/tags/nginx/</loc>
-    <lastmod>2018-03-27T15:27:27+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -334,6 +322,18 @@
   <url>
     <loc>https://studymakesmehappy.club/categories/working-style/</loc>
     <lastmod>2018-08-11T13:14:54+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://studymakesmehappy.club/authors/ccccly/</loc>
+    <lastmod>2018-07-01T12:21:44+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://studymakesmehappy.club/tags/nginx/</loc>
+    <lastmod>2018-03-27T15:27:27+08:00</lastmod>
     <priority>0</priority>
   </url>
   
