@@ -22,7 +22,6 @@ pygmentsCodefencesGuessSyntax = true
 enableEmoji = true
 
 # Missing translations will default to this content language
-defaultContentLanguage = "en"
 
 [params.info]
 description = "Study makes me happy"
@@ -68,10 +67,6 @@ titleSeparator = "•"
 email = "geekchenlingyun@outlook.com"
 github = "Excited-ccccly"
 
-[params.comments]
-enable = false
-
-
 [taxonomies]
 author = "authors"
 category = "categories"
@@ -90,9 +85,27 @@ url = "https://github.com/Excited-ccccly/studymakesmehappy.club"
 [blackfriday]
 hrefTargetBlank = true
 
+defaultContentLanguage="zh"
 [languages]
 # edit this block for your own language
 [languages.en]
 lang = "en"
 languageName = "English"
 weight = 1
+[languages.zh]
+lang = "zh"
+languageName = "Chinese"
+weight = 1
+
+[params.comments]
+enable = true
+
+[params.comments.utterances]
+enable = true
+issueTerm = "title" # pathname / url / title
+
+[params.comments.utterances.github]
+username = "Excited-ccccly"
+repository = "studymakesmehappy.club"
+
+hasCJKLanguage = true

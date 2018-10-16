@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://studymakesmehappy.club/zh/authors/</loc>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://studymakesmehappy.club/authors/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://studymakesmehappy.club/zh/authors/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://studymakesmehappy.club/zh/categories/</loc>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://studymakesmehappy.club/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://studymakesmehappy.club/zh/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://studymakesmehappy.club/zh/</loc>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://studymakesmehappy.club/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://studymakesmehappy.club/zh/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://studymakesmehappy.club/zh/series/</loc>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://studymakesmehappy.club/series/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://studymakesmehappy.club/zh/series/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://studymakesmehappy.club/zh/tags/</loc>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://studymakesmehappy.club/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://studymakesmehappy.club/zh/tags/"
+                />
+  </url>
+  
+</urlset>

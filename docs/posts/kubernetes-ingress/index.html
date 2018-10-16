@@ -19,16 +19,16 @@ nginx.conf
 http { upstream my-api { server 127.0.0.1:8080; } server { listen 80; server_name api.domain.com; location / { proxy_pass http://my-api; } } } 启用 nginx 后，就可以通过访问 http://api.'>
 <meta property='og:url' content='https://studymakesmehappy.club/posts/kubernetes-ingress/'>
 <meta property='og:site_name' content='Home'>
-<meta property='og:type' content='article'><meta property='og:image' content='https://www.gravatar.com/avatar/374150c4ee619dfed2491b9bb5bcd476?s=256'><meta property='article:section' content='Posts'><meta property='article:tag' content='Kubernetes'><meta property='article:tag' content='Ingress'><meta property='article:tag' content='nginx'><meta property='article:tag' content='Loadbalancer'><meta property='article:published_time' content='2018-03-27T15:27:27&#43;08:00'/><meta property='article:modified_time' content='2018-03-27T15:27:27&#43;08:00'/><meta name='twitter:card' content='summary'>
+<meta property='og:type' content='article'><meta property='og:image' content='https://www.gravatar.com/avatar/374150c4ee619dfed2491b9bb5bcd476?s=256'><meta property='article:section' content='posts'><meta property='article:tag' content='Kubernetes'><meta property='article:tag' content='Ingress'><meta property='article:tag' content='nginx'><meta property='article:tag' content='Loadbalancer'><meta property='article:published_time' content='2018-03-27T15:27:27&#43;08:00'/><meta property='article:modified_time' content='2018-03-27T15:27:27&#43;08:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.49" />
+<meta name="generator" content="Hugo 0.49.2" />
 
   <title>Kubernetes Ingress • ccccly</title>
   <link rel='canonical' href='https://studymakesmehappy.club/posts/kubernetes-ingress/'>
   
   
   <link rel='icon' href='/favicon.ico'>
-<link rel='stylesheet' href='/assets/css/main.809149b6.css'><link rel='stylesheet' href='/css/custom.css'><style>
+<link rel='stylesheet' href='/assets/css/main.4267b3fa.css'><link rel='stylesheet' href='/css/custom.css'><style>
 :root{--color-accent:#ffcd00;}
 </style>
 
@@ -317,24 +317,19 @@ Adding password <span style="color:#6ab825;font-weight:bold">for</span> user foo
 
   
 <footer class='entry-footer'>
-  <div class='container sep-before'>
-  <div class='categories'>
-  <span class='taxonomy-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  <div class='container sep-before'><div class='categories'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
   
 </svg>
-</span>
-  <span class='screen-reader-text'>Categories: </span><a class='category' href='/categories/devops/'>DevOps</a></div>
-<div class='tags'>
-  <span class='taxonomy-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+<span class='screen-reader-text'>Categories: </span><a class='category' href='/categories/devops/'>DevOps</a></div>
+<div class='tags'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
   <line x1="7" y1="7" x2="7" y2="7"/>
   
 </svg>
-</span>
-  <span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/kubernetes/'>Kubernetes</a>, <a class='tag' href='/tags/ingress/'>Ingress</a>, <a class='tag' href='/tags/nginx/'>nginx</a>, <a class='tag' href='/tags/loadbalancer/'>Loadbalancer</a></div>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/kubernetes/'>Kubernetes</a>, <a class='tag' href='/tags/ingress/'>Ingress</a>, <a class='tag' href='/tags/nginx/'>nginx</a>, <a class='tag' href='/tags/loadbalancer/'>Loadbalancer</a></div>
 
   </div>
 </footer>
@@ -367,7 +362,15 @@ Adding password <span style="color:#6ab825;font-weight:bold">for</span> user foo
 </nav>
 
 
-
+<section id='comments' class='comments'>
+  <div class='container sep-before'>
+    <div class='comments-area'><script src='https://utteranc.es/client.js'
+  repo='Excited-ccccly/studymakesmehappy.club' issue-term='title'
+  crossorigin='anonymous' async>
+</script>
+</div>
+  </div>
+</section>
 
       </main>
 
@@ -402,9 +405,7 @@ Adding password <span style="color:#6ab825;font-weight:bold">for</span> user foo
     </div>
   </div><script>window.__public_path__='\/assets\/js\/'</script>
 
-<script src='/assets/js/main.68cb493a.js'></script><script src='/js/custom.js'></script>
-
-
+<script src='/assets/js/main.59f76c44.js'></script><script src='/js/custom.js'></script>
 
 </body>
 
