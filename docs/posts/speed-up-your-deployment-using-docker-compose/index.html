@@ -25,7 +25,7 @@ Compose Up 以一个简单的 express app 为例'>
 <meta property='og:site_name' content='Home'>
 <meta property='og:type' content='article'><meta property='og:image' content='https://www.gravatar.com/avatar/374150c4ee619dfed2491b9bb5bcd476?s=256'><meta property='article:section' content='posts'><meta property='article:tag' content='Docker'><meta property='article:tag' content='Compose'><meta property='article:tag' content='Deployment'><meta property='article:published_time' content='2018-02-14T01:05:40&#43;08:00'/><meta property='article:modified_time' content='2018-02-14T01:05:40&#43;08:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.49.2" />
+<meta name="generator" content="Hugo 0.51" />
 
   <title>Speed Up Your Deployment Using Docker Compose • ccccly</title>
   <link rel='canonical' href='https://studymakesmehappy.club/posts/speed-up-your-deployment-using-docker-compose/'>
@@ -35,6 +35,17 @@ Compose Up 以一个简单的 express app 为例'>
 <link rel='stylesheet' href='/assets/css/main.4267b3fa.css'><link rel='stylesheet' href='/css/custom.css'><style>
 :root{--color-accent:#ffcd00;}
 </style>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-129765949-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   
 
@@ -173,8 +184,8 @@ Compose 多用于单主机部署，比如在本地电脑上搭建你的开发环
 <p>可以看出，app 使用的 Docker 镜像是 ccccly/express-app:docker-compose，在 3000 端口上对外提供服务，app 依赖于一个 mysql 服务，mysql 的用户名是 root，密码是 123。被依赖的 mysql 服务使用的镜像是 mysql，在 3306 端口上对外提供服务。</p>
 
 <p>这时候，使用</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#999;font-style:italic">## 默认使用当前目录下面的 docker-compose.yaml 文件，如果你的 compose 文件不是这样子命名的，你需要额外加上 compose 的文件名
-</span><span style="color:#999;font-style:italic"></span>$ docker-compose up</code></pre></div>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#999;font-style:italic">## 默认使用当前目录下面的 docker-compose.yaml 文件，如果你的 compose 文件不是这样子命名的，你需要额外加上 compose 的文件名</span>
+$ docker-compose up</code></pre></div>
 <p>就能启动这个由 express-app 和 mysql 组成的应用了。</p>
 
 <p>app 的代码是这样子的:</p>

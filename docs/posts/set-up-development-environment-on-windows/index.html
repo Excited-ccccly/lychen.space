@@ -27,7 +27,7 @@ Linux Toolkit Linux 爱好者的你一定很希望在 Windows 上也可以使用
 <meta property='og:site_name' content='Home'>
 <meta property='og:type' content='article'><meta property='og:image' content='https://www.gravatar.com/avatar/374150c4ee619dfed2491b9bb5bcd476?s=256'><meta property='article:section' content='posts'><meta property='article:tag' content='Windows'><meta property='article:tag' content='Package Manager'><meta property='article:tag' content='Linux'><meta property='article:tag' content='WSL'><meta property='article:tag' content='Terminal Emulator'><meta property='article:tag' content='Editor'><meta property='article:tag' content='Font'><meta property='article:published_time' content='2018-03-04T15:43:15&#43;08:00'/><meta property='article:modified_time' content='2018-03-04T15:43:15&#43;08:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.49.2" />
+<meta name="generator" content="Hugo 0.51" />
 
   <title>Set Up Development Environment on Windows • ccccly</title>
   <link rel='canonical' href='https://studymakesmehappy.club/posts/set-up-development-environment-on-windows/'>
@@ -37,6 +37,17 @@ Linux Toolkit Linux 爱好者的你一定很希望在 Windows 上也可以使用
 <link rel='stylesheet' href='/assets/css/main.4267b3fa.css'><link rel='stylesheet' href='/css/custom.css'><style>
 :root{--color-accent:#ffcd00;}
 </style>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-129765949-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   
 
@@ -170,8 +181,8 @@ iex (<span style="color:#24909d">new-object</span> net.webclient).downloadstring
 <h2 id="terminal-emulator">Terminal Emulator</h2>
 
 <p>Windows 上的终端很难用，有不少替代品可供选用。</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">scoop bucket add extras <span style="color:#999;font-style:italic"># conemu 在 extras 库中，关于 scoop 中的 bucket 概念，参考: https://github.com/lukesampson/scoop/wiki/Buckets
-</span><span style="color:#999;font-style:italic"></span>scoop install conemu</code></pre></div>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">scoop bucket add extras <span style="color:#999;font-style:italic"># conemu 在 extras 库中，关于 scoop 中的 bucket 概念，参考: https://github.com/lukesampson/scoop/wiki/Buckets</span>
+scoop install conemu</code></pre></div>
 <p><a href="https://github.com/Maximus5/ConEmu" target="_blank">ConEmu</a>是 Windows 上一个很优秀的 Terminal Emulator，tabs, splits 等等都提供给你。
 <img src="/images/set-up-development-environment-on-windows/ConEmu.png" alt="ConEmu" /></p>
 
@@ -244,8 +255,8 @@ iex (<span style="color:#24909d">new-object</span> net.webclient).downloadstring
 <p>在此推荐两款编辑器，<a href="https://code.visualstudio.com/" target="_blank">VScode</a> 和 <a href="https://atom.io/" target="_blank">Atom</a>。</p>
 
 <p>它们都是用 Electron 打造。VScode 适合喜欢开箱即用的人，非常方便；Atom 适合喜欢对编辑器进行 Hack 的人。你可以在官网上安装，也可以用 scoop 安装。</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">scoop bucket add extras <span style="color:#999;font-style:italic"># vscode 和 atom 都在 extras 库中，关于 scoop 中的 bucket 概念，参考: https://github.com/lukesampson/scoop/wiki/Buckets
-</span><span style="color:#999;font-style:italic"></span>scoop install vscode
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">scoop bucket add extras <span style="color:#999;font-style:italic"># vscode 和 atom 都在 extras 库中，关于 scoop 中的 bucket 概念，参考: https://github.com/lukesampson/scoop/wiki/Buckets</span>
+scoop install vscode
 scoop install atom</code></pre></div>
 <p>IDE 的话，也就 Visual Studio 和 Jetbrains 家族了吧，看你开发的语言平台了。讲真，有了 VScode，我可以很方便地获得类 IDE 的 js, ts, go, c#, python, rust 开发体验。IDE 都很少打开了。</p>
 
@@ -258,9 +269,9 @@ scoop install atom</code></pre></div>
 <p>下载安装之后，第三方软件里配置一下字体即可。</p>
 
 <p>最近发现 scoop 也可以安装字体！</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">scoop bucket add nerd-fonts <span style="color:#999;font-style:italic"># 字体在 nerd-fonts 库中，关于 scoop 中的 bucket 概念，参考: https://github.com/lukesampson/scoop/wiki/Buckets
-</span><span style="color:#999;font-style:italic"></span>scoop install sudo <span style="color:#999;font-style:italic"># 字体安装需要管理员权限
-</span><span style="color:#999;font-style:italic"></span>sudo scoop install hack-nf</code></pre></div>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">scoop bucket add nerd-fonts <span style="color:#999;font-style:italic"># 字体在 nerd-fonts 库中，关于 scoop 中的 bucket 概念，参考: https://github.com/lukesampson/scoop/wiki/Buckets</span>
+scoop install sudo <span style="color:#999;font-style:italic"># 字体安装需要管理员权限</span>
+sudo scoop install hack-nf</code></pre></div>
 <p>重启你的电脑💻</p>
 
 <h2 id="最后">最后</h2>

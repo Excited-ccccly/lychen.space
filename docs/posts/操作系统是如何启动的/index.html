@@ -21,7 +21,7 @@ Bootloader Bootloader, 顾名思义，就是启动加载器。你电脑有多个
 <meta property='og:site_name' content='Home'>
 <meta property='og:type' content='article'><meta property='og:image' content='https://www.gravatar.com/avatar/374150c4ee619dfed2491b9bb5bcd476?s=256'><meta property='article:section' content='posts'><meta property='article:tag' content='Linux'><meta property='article:tag' content='Bootloader'><meta property='article:tag' content='UEFI'><meta property='article:tag' content='Systemd'><meta property='article:tag' content='Arch'><meta property='article:published_time' content='2018-07-01T12:21:44&#43;08:00'/><meta property='article:modified_time' content='2018-07-01T12:21:44&#43;08:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.49.2" />
+<meta name="generator" content="Hugo 0.51" />
 
   <title>操作系统是如何启动的 • ccccly</title>
   <link rel='canonical' href='https://studymakesmehappy.club/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%98%AF%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8%E7%9A%84/'>
@@ -31,6 +31,17 @@ Bootloader Bootloader, 顾名思义，就是启动加载器。你电脑有多个
 <link rel='stylesheet' href='/assets/css/main.4267b3fa.css'><link rel='stylesheet' href='/css/custom.css'><style>
 :root{--color-accent:#ffcd00;}
 </style>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-129765949-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   
 
@@ -216,10 +227,10 @@ mount /dev/sda1 /mnt/boot</code></pre></div>
 <h3 id="安装-bootloader">安装 Bootloader</h3>
 
 <p>以 grub 为例</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#999;font-style:italic">## 安装 grub 和 efibootmgt 工具, pacman 是 Arch 的包管理工具，类似于 Ubuntu 下的 apt.
-</span><span style="color:#999;font-style:italic"></span>pacman -Sy grub efibootmgr
-<span style="color:#999;font-style:italic">## grub-install 将 grub 安装到 /boot 文件夹中
-</span><span style="color:#999;font-style:italic"></span>grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB</code></pre></div>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#999;font-style:italic">## 安装 grub 和 efibootmgt 工具, pacman 是 Arch 的包管理工具，类似于 Ubuntu 下的 apt.</span>
+pacman -Sy grub efibootmgr
+<span style="color:#999;font-style:italic">## grub-install 将 grub 安装到 /boot 文件夹中</span>
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB</code></pre></div>
 <p>看一下生成的文件</p>
 
 <p><img src="/images/操作系统是如何启动的/boot.png" alt="" /></p>
@@ -257,10 +268,10 @@ mount /dev/sda1 /mnt/boot</code></pre></div>
 </ul>
 
 <h3 id="完成安装">完成安装</h3>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#999;font-style:italic">## 完成 grub 的安装后，退出当前的 change root 环境
-</span><span style="color:#999;font-style:italic"></span><span style="color:#24909d">exit</span>
-<span style="color:#999;font-style:italic">## 重启电脑
-</span><span style="color:#999;font-style:italic"></span>reboot</code></pre></div>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#999;font-style:italic">## 完成 grub 的安装后，退出当前的 change root 环境</span>
+<span style="color:#24909d">exit</span>
+<span style="color:#999;font-style:italic">## 重启电脑</span>
+reboot</code></pre></div>
 <h2 id="总结">总结</h2>
 
 <p>Linux 操作系统启动流程主要分以下几步: 主板上的 UEFI 加载 ESP 分区中的 Bootloader; Bootloader 加载 Linux Kernel 和 Initrd; Kernel 初始化内存管理、CPU、中断、设备等，Initrd 加载设备驱动模块; Kernel 启动 Systemd 来初始化 User Space 的应用。</p>
@@ -268,10 +279,10 @@ mount /dev/sda1 /mnt/boot</code></pre></div>
 <p>Windows 和 macOS 也是一样的，无非是 Bootloader 的名字不一样，文件系统不一样，启动的流程略有差别而已。当然，grub 也可以引导 Windows, 只要 Windows 的 EFI 文件在 ESP 分区，同时 grub.cfg 里有配置 entry 就行。其实，若真要安装双系统，也不用手动敲这么多命令的，现在很多发行版（不包括 Arch😂）会帮你搞定一切的。只是，了解一些原理上的东西，出错的时候不容易慌。</p>
 
 <h2 id="one-more-thing">One more thing</h2>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#999;font-style:italic">## 查看启动日志
-</span><span style="color:#999;font-style:italic"></span>journalctl --boot
-<span style="color:#999;font-style:italic">## 学习一下 Systemd 的目录结构
-</span><span style="color:#999;font-style:italic"></span>systemd-path</code></pre></div>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#999;font-style:italic">## 查看启动日志</span>
+journalctl --boot
+<span style="color:#999;font-style:italic">## 学习一下 Systemd 的目录结构</span>
+systemd-path</code></pre></div>
 <p>最后， 安装好的 Arch 还要经过一系列配置之后才能使用（网络都不可用呢🤣），在此仅为阐述 Linux 启动流程。</p>
 
 <h2 id="参考">参考</h2>

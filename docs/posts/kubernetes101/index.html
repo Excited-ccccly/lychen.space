@@ -27,7 +27,7 @@
 <meta property='og:site_name' content='Home'>
 <meta property='og:type' content='article'><meta property='og:image' content='https://www.gravatar.com/avatar/374150c4ee619dfed2491b9bb5bcd476?s=256'><meta property='article:section' content='posts'><meta property='article:tag' content='Kubernetes'><meta property='article:tag' content='Docker'><meta property='article:tag' content='Deployment'><meta property='article:published_time' content='2018-01-07T23:31:08&#43;08:00'/><meta property='article:modified_time' content='2018-01-07T23:31:08&#43;08:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.49.2" />
+<meta name="generator" content="Hugo 0.51" />
 
   <title>Kubernetes101 • ccccly</title>
   <link rel='canonical' href='https://studymakesmehappy.club/posts/kubernetes101/'>
@@ -37,6 +37,17 @@
 <link rel='stylesheet' href='/assets/css/main.4267b3fa.css'><link rel='stylesheet' href='/css/custom.css'><style>
 :root{--color-accent:#ffcd00;}
 </style>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-129765949-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   
 
@@ -212,8 +223,8 @@ app.listen(<span style="color:#3677a9">3000</span>, () =&gt; {
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ docker build -t ccccly/express-app:v1 .
 $ docker push ccccly/express-app:v1</code></pre></div>
 <p>静静等待 push 好之后，我们就可以在 k8s 中通过这个镜像，创建一个 Deployment</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#999;font-style:italic">### docker.io 是 docker hub 的 registry 地址
-</span><span style="color:#999;font-style:italic"></span>$ kubectl run express-app --image=docker.io/ccccly/express-app:v1</code></pre></div>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#999;font-style:italic">### docker.io 是 docker hub 的 registry 地址</span>
+$ kubectl run express-app --image=docker.io/ccccly/express-app:v1</code></pre></div>
 <p>这条命令会做以下三件事：</p>
 
 <ul>
@@ -223,8 +234,8 @@ $ docker push ccccly/express-app:v1</code></pre></div>
 </ul>
 
 <p>创建好之后</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#999;font-style:italic">## 获取 deployment 列表
-</span><span style="color:#999;font-style:italic"></span>$ kubectl get deployment</code></pre></div>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#999;font-style:italic">## 获取 deployment 列表</span>
+$ kubectl get deployment</code></pre></div>
 <p>发现我们已经创建好了一个 Deployment</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4">NAME          DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 express-app   1         1         1            1           1h</pre></div>
@@ -240,8 +251,8 @@ express-app   1         1         1            1           1h</pre></div>
 <p>Pod 永远在 Node 上运行。在 k8s 中，Node 是一个工作机器(Worker)，它可以是虚拟机也可以是物理机。一个 Node 上可以运行多个 Pod，k8s 里的 Master 节点自动分配 Pod 到 Node 上运行</p>
 
 <p>继续刚才的 express-app 里例子</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#999;font-style:italic">## 获取 pod 列表
-</span><span style="color:#999;font-style:italic"></span>$ kubectl get pod</code></pre></div>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#999;font-style:italic">## 获取 pod 列表</span>
+$ kubectl get pod</code></pre></div>
 <p>可以看到 express-app 的 Pod 正在运行</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4">NAME                           READY     STATUS    RESTARTS   AGE
 express-app-6b588847fc-dthlr   1/1       Running   0          1d</pre></div>
@@ -251,11 +262,11 @@ express-app-6b588847fc-dthlr   1/1       Running   0          1d</pre></div>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ kubectl logs express-app-6b588847fc-dthlr</pre></div>
 <p>在 Pod 中执行 bash</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ kubectl <span style="color:#24909d">exec</span> -it express-app-6b588847fc-dthlr bash
-<span style="color:#999;font-style:italic">### 在容器中 curl 一下，可以看到「hello world」的返回
-</span><span style="color:#999;font-style:italic"></span>$ curl localhost:3000
+<span style="color:#999;font-style:italic">### 在容器中 curl 一下，可以看到「hello world」的返回</span>
+$ curl localhost:3000
 hello world
-<span style="color:#999;font-style:italic">### 退出
-</span><span style="color:#999;font-style:italic"></span>$ exit</code></pre></div>
+<span style="color:#999;font-style:italic">### 退出</span>
+$ exit</code></pre></div>
 <h2 id="service">Service</h2>
 
 <p><img src="/images/20180106/module_04_services.svg" alt="Service" /></p>
@@ -308,14 +319,14 @@ express-app   4         4         4            4           1d</pre></div>
 <p>继续 express-app 的例子</p>
 
 <p>修改 index.js，使它返回「hello world v2」</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#999;font-style:italic">### 重新 build 镜像
-</span><span style="color:#999;font-style:italic"></span>$ docker build -t ccccly/express-app:v2 .
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#999;font-style:italic">### 重新 build 镜像</span>
+$ docker build -t ccccly/express-app:v2 .
 $ docker push ccccly/express-app:v2</code></pre></div>
 <p>执行 Rolling Update</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ kubectl describe deployment express-app
-<span style="color:#999;font-style:italic">### 得知 express-app 这个 Deployment 使用的 Container 里的 Image 是 express-app:v1
-</span><span style="color:#999;font-style:italic">### 更新 Image 为 docker.io 上面的 ccccly/express-app:v2 
-</span><span style="color:#999;font-style:italic"></span>$ kubectl <span style="color:#24909d">set</span> image deployment express-app express-app:v1=docker.io/ccccly/express-app:v2
+<span style="color:#999;font-style:italic">### 得知 express-app 这个 Deployment 使用的 Container 里的 Image 是 express-app:v1</span>
+<span style="color:#999;font-style:italic">### 更新 Image 为 docker.io 上面的 ccccly/express-app:v2</span> 
+$ kubectl <span style="color:#24909d">set</span> image deployment express-app express-app:v1=docker.io/ccccly/express-app:v2
 NAME                           READY     STATUS              RESTARTS   AGE
 express-app-7b747f7cd9-2xtrm   <span style="color:#3677a9">1</span>/1       Terminating         <span style="color:#3677a9">0</span>          6m
 express-app-7b747f7cd9-4scjw   <span style="color:#3677a9">1</span>/1       Terminating         <span style="color:#3677a9">0</span>          6m
