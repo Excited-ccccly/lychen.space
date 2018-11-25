@@ -7,7 +7,7 @@ theme = "minimo"
 publishDir = "docs"
 
 disqusShortname = ""
-googleAnalytics = ""
+googleAnalytics = "UA-129765949-1"
 
 Paginate = 10
 preserveTaxonomyNames = true
