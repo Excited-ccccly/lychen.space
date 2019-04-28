@@ -4,7 +4,7 @@
   
   <url>
     <loc>https://studymakesmehappy.club/</loc>
-    <lastmod>2018-12-08T13:32:54+08:00</lastmod>
+    <lastmod>2019-04-28T22:16:50+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
@@ -19,11 +19,16 @@
   
   <url>
     <loc>https://studymakesmehappy.club/posts/</loc>
-    <lastmod>2018-12-08T13:32:54+08:00</lastmod>
+    <lastmod>2019-04-28T22:16:50+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://studymakesmehappy.club/about/</loc>
+  </url>
+  
+  <url>
+    <loc>https://studymakesmehappy.club/posts/%E4%BD%BF%E7%94%A8python%E5%8E%BB%E4%BF%AE%E6%94%B9python%E4%BB%A3%E7%A0%81/</loc>
+    <lastmod>2019-04-28T22:16:50+08:00</lastmod>
   </url>
   
   <url>
@@ -87,6 +92,12 @@
   </url>
   
   <url>
+    <loc>https://studymakesmehappy.club/tags/ast/</loc>
+    <lastmod>2019-04-28T22:16:50+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://studymakesmehappy.club/tags/arch/</loc>
     <lastmod>2018-07-01T12:21:44+08:00</lastmod>
     <priority>0</priority>
@@ -137,6 +148,12 @@
                 hreflang="en"
                 href="https://studymakesmehappy.club/categories/"
                 />
+  </url>
+  
+  <url>
+    <loc>https://studymakesmehappy.club/tags/code-generation/</loc>
+    <lastmod>2019-04-28T22:16:50+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -236,6 +253,12 @@
   </url>
   
   <url>
+    <loc>https://studymakesmehappy.club/tags/metaprogramming/</loc>
+    <lastmod>2019-04-28T22:16:50+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://studymakesmehappy.club/tags/modern-progarmming/</loc>
     <lastmod>2017-07-25T00:50:18+08:00</lastmod>
     <priority>0</priority>
@@ -271,8 +294,14 @@
   </url>
   
   <url>
+    <loc>https://studymakesmehappy.club/categories/programming-language/</loc>
+    <lastmod>2019-04-28T22:16:50+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://studymakesmehappy.club/tags/python/</loc>
-    <lastmod>2018-06-02T13:42:07+08:00</lastmod>
+    <lastmod>2019-04-28T22:16:50+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -305,7 +334,7 @@
   
   <url>
     <loc>https://studymakesmehappy.club/tags/</loc>
-    <lastmod>2018-07-01T12:21:44+08:00</lastmod>
+    <lastmod>2019-04-28T22:16:50+08:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -317,6 +346,12 @@
                 hreflang="en"
                 href="https://studymakesmehappy.club/tags/"
                 />
+  </url>
+  
+  <url>
+    <loc>https://studymakesmehappy.club/tags/template-engine/</loc>
+    <lastmod>2019-04-28T22:16:50+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>

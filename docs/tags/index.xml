@@ -5,10 +5,19 @@
     <link>https://studymakesmehappy.club/tags/</link>
     <description>Recent content in Tags on Home</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 01 Jul 2018 12:21:44 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 28 Apr 2019 22:16:50 +0800</lastBuildDate>
     
 	<atom:link href="https://studymakesmehappy.club/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>AST</title>
+      <link>https://studymakesmehappy.club/tags/ast/</link>
+      <pubDate>Sun, 28 Apr 2019 22:16:50 +0800</pubDate>
+      
+      <guid>https://studymakesmehappy.club/tags/ast/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Arch</title>
@@ -43,6 +52,15 @@
       <pubDate>Mon, 27 Nov 2017 00:01:44 +0800</pubDate>
       
       <guid>https://studymakesmehappy.club/tags/calendar/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Code Generation</title>
+      <link>https://studymakesmehappy.club/tags/code-generation/</link>
+      <pubDate>Sun, 28 Apr 2019 22:16:50 +0800</pubDate>
+      
+      <guid>https://studymakesmehappy.club/tags/code-generation/</guid>
       <description></description>
     </item>
     
@@ -164,6 +182,15 @@
     </item>
     
     <item>
+      <title>Metaprogramming</title>
+      <link>https://studymakesmehappy.club/tags/metaprogramming/</link>
+      <pubDate>Sun, 28 Apr 2019 22:16:50 +0800</pubDate>
+      
+      <guid>https://studymakesmehappy.club/tags/metaprogramming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Modern Progarmming</title>
       <link>https://studymakesmehappy.club/tags/modern-progarmming/</link>
       <pubDate>Tue, 25 Jul 2017 00:50:18 +0800</pubDate>
@@ -193,7 +220,7 @@
     <item>
       <title>Python</title>
       <link>https://studymakesmehappy.club/tags/python/</link>
-      <pubDate>Sat, 02 Jun 2018 13:42:07 +0800</pubDate>
+      <pubDate>Sun, 28 Apr 2019 22:16:50 +0800</pubDate>
       
       <guid>https://studymakesmehappy.club/tags/python/</guid>
       <description></description>
@@ -214,6 +241,15 @@
       <pubDate>Sun, 01 Jul 2018 12:21:44 +0800</pubDate>
       
       <guid>https://studymakesmehappy.club/tags/systemd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Template Engine</title>
+      <link>https://studymakesmehappy.club/tags/template-engine/</link>
+      <pubDate>Sun, 28 Apr 2019 22:16:50 +0800</pubDate>
+      
+      <guid>https://studymakesmehappy.club/tags/template-engine/</guid>
       <description></description>
     </item>
     

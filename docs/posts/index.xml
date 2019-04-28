@@ -5,10 +5,22 @@
     <link>https://studymakesmehappy.club/posts/</link>
     <description>Recent content in Posts on Home</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 08 Dec 2018 13:32:54 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 28 Apr 2019 22:16:50 +0800</lastBuildDate>
     
 	<atom:link href="https://studymakesmehappy.club/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>使用Python去修改Python代码</title>
+      <link>https://studymakesmehappy.club/posts/%E4%BD%BF%E7%94%A8python%E5%8E%BB%E4%BF%AE%E6%94%B9python%E4%BB%A3%E7%A0%81/</link>
+      <pubDate>Sun, 28 Apr 2019 22:16:50 +0800</pubDate>
+      
+      <guid>https://studymakesmehappy.club/posts/%E4%BD%BF%E7%94%A8python%E5%8E%BB%E4%BF%AE%E6%94%B9python%E4%BB%A3%E7%A0%81/</guid>
+      <description>Python 是一门很方便优雅的语言，广泛地被应用于 Web, AI 和自动化领域，受到了工程师和科学家的喜爱。我们可以使用 Python 去处理各种数据，生成我们想要的结果。有没有想过，被操作的数据也可以是 Python 代码，我们使用一段 Python 代码去修改另外一段 Python 代码，去生成一个新的 py 文件。
+我们知道，代码文件其实就是有结构的字符串，理论上我们可以直接操作源码字符串来达到我们的目的，所以可行性上完全可以。显而易见，这种方法太原始简陋了，需要面对处理很多细节，很容易出错。既然原始的数据难以操作，我们就需要用一种数据结构来抽象地表示它，只要抽象数据结构和原始的数据可以互相转化就行。这种数据结构的专业术语叫 AST(Abstract Syntax Trees).
+lexer parser code ---------&amp;gt; tokens array ----------&amp;gt; ast AST 需要经过 Lexer 将源码字符串转变成 Token 数组，然后使用 CFG(Context-free grammar) 来构造出 AST 。由于 Python 经过这么多年的发展，语法规则已经足够复杂，所以裸写一个 parser 来构造 AST 还是有难度的，虽然可以使用 Yacc 或者 Antlr 来生成一个 parser，但也略微繁琐。好在 Python 官方提供了 ast 库来让我们直接获得 Python 代码的 AST.
+In [1]: import ast In [2]: add_expr = ast.parse(&amp;#34;1+1&amp;#34;) In [3]: ast.dump(add_expr) Out[3]: &amp;#39;Module(body=[Expr(value=BinOp(left=Num(n=1), op=Add(), right=Num(n=1)))])&amp;#39; 可以看到 1+1被 parse 成了一个 Expr(Expression), 这个 Expr 的 value 是一个 BinOp(Binary Operation)，BinOp 这个二元操作的操作符 (opcode) 是 Add(), 左边的操作数 (operand) 是 Num(n=1), 右边的操作数也是 Num(n=1)</description>
+    </item>
     
     <item>
       <title>不确定性</title>
