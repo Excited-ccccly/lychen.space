@@ -65,6 +65,8 @@ class BaseNodeVisitor(ast.NodeVisitor):
         self.website: Website = website
 ```
 
+NodeVisitor 方便我们遍历 AST；还有一个 NodeTransformer 也能遍历，只不过每一个遍历方法需要 `return modified_node`. NodeVisitor 类似于在一个 void function 里修改变量；NodeTransformer 类似于将函数的返回值赋值给变量。
+
 ### 修改 settings.py
 
 ```py

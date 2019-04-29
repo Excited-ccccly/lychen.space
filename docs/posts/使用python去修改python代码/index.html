@@ -19,7 +19,7 @@ In [1]: import ast In [2]: add_expr = ast.parse(&#34;1&#43;1&#34;) In [3]: ast.d
 <meta property='og:site_name' content='Home'>
 <meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='Python'><meta property='article:tag' content='AST'><meta property='article:tag' content='Metaprogramming'><meta property='article:tag' content='Code Generation'><meta property='article:tag' content='Template Engine'><meta property='article:published_time' content='2019-04-28T22:16:50&#43;08:00'/><meta property='article:modified_time' content='2019-04-28T22:16:50&#43;08:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.55.3" />
 
   <title>使用Python去修改Python代码 • Home</title>
   <link rel='canonical' href='https://studymakesmehappy.club/posts/%E4%BD%BF%E7%94%A8python%E5%8E%BB%E4%BF%AE%E6%94%B9python%E4%BB%A3%E7%A0%81/'>
@@ -171,6 +171,8 @@ Out[3]: &#39;Module(body=[Expr(value=BinOp(left=Num(n=1), op=Add(), right=Num(n=
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#6ab825;font-weight:bold">class</span> <span style="color:#447fcf;text-decoration:underline">BaseNodeVisitor</span>(ast.NodeVisitor):
     <span style="color:#6ab825;font-weight:bold">def</span> __init__(self, website):
         self.website: Website = website</code></pre></div>
+<p>NodeVisitor 方便我们遍历 AST；还有一个 NodeTransformer 也能遍历，只不过每一个遍历方法需要 <code>return modified_node</code>. NodeVisitor 类似于在一个 void function 里修改变量；NodeTransformer 类似于将函数的返回值赋值给变量。</p>
+
 <h3 id="修改-settings-py">修改 settings.py</h3>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#6ab825;font-weight:bold">class</span> <span style="color:#447fcf;text-decoration:underline">SettingsVisitor</span>(BaseNodeVisitor):
     <span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">visit_Module</span>(self, node):
@@ -270,14 +272,14 @@ r = template.render(name_lowercase=website.name_lowercase(), name_uppercase=webs
   <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
   
 </svg>
-<span class='screen-reader-text'>Categories: </span><a class='category' href='/categories/programming-language/'>Programming Language</a></div>
+<span class='screen-reader-text'>Categories: </span></div>
 <div class='tags'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
   <line x1="7" y1="7" x2="7" y2="7"/>
   
 </svg>
-<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/python/'>Python</a>, <a class='tag' href='/tags/ast/'>AST</a>, <a class='tag' href='/tags/metaprogramming/'>Metaprogramming</a>, <a class='tag' href='/tags/code-generation/'>Code Generation</a>, <a class='tag' href='/tags/template-engine/'>Template Engine</a></div>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/python/'>Python</a>, <a class='tag' href='/tags/ast/'>AST</a>, <a class='tag' href='/tags/metaprogramming/'>Metaprogramming</a></div>
 
   </div>
 </footer>
