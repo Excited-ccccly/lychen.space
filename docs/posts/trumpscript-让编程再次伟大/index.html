@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='TrumpScript 是一门使用特朗普风格的语句来编程的脚本语言，十分的欢乐有趣。作者 Sam “认为” 当今所有的编程语言，都得不到伟大的特朗普总统的认同。在 HackRice 2016 这场 Hackthon 上，Sam 和另外两个小伙伴(Chris 和 Dan)，合力开发了 TrumpScript，一举拿下第一名，设计的图标也很有意思，像特朗普那飘逸的头发。
+在立马学习 TrumpScript(什么？又有新语言要学习了？卒&hellip;) 语言之前，我们先看看它的 feature，才能知道为什么非学不可！
+语言特性 为了得到最大份的快乐，在保留原文的基础上，简单翻译。
+ No floating point numbers, only integers. America never does anything halfway.
+TrumpScript 没有浮点数，只能用整数。美利坚永远不半途而废。
+ All numbers must be strictly greater than 1 million. The small stuff is inconsequential to us.
+所有的数字必须大于100W，其它小数字对富有的特朗普来说无关紧要。
+ There are no import statements allowed. All code has to be home-grown and American made.
+没有 import(和“进口”双关) 语句。所有的代码都必须由美国制造。'>
+<meta name='theme-color' content='#ffcd00'>
+
+<meta property='og:title' content='TrumpScript, 让编程再次伟大！ • Home'>
+<meta property='og:description' content='TrumpScript 是一门使用特朗普风格的语句来编程的脚本语言，十分的欢乐有趣。作者 Sam “认为” 当今所有的编程语言，都得不到伟大的特朗普总统的认同。在 HackRice 2016 这场 Hackthon 上，Sam 和另外两个小伙伴(Chris 和 Dan)，合力开发了 TrumpScript，一举拿下第一名，设计的图标也很有意思，像特朗普那飘逸的头发。
+在立马学习 TrumpScript(什么？又有新语言要学习了？卒&hellip;) 语言之前，我们先看看它的 feature，才能知道为什么非学不可！
+语言特性 为了得到最大份的快乐，在保留原文的基础上，简单翻译。
+ No floating point numbers, only integers. America never does anything halfway.
+TrumpScript 没有浮点数，只能用整数。美利坚永远不半途而废。
+ All numbers must be strictly greater than 1 million. The small stuff is inconsequential to us.
+所有的数字必须大于100W，其它小数字对富有的特朗普来说无关紧要。
+ There are no import statements allowed. All code has to be home-grown and American made.
+没有 import(和“进口”双关) 语句。所有的代码都必须由美国制造。'>
+<meta property='og:url' content='https://studymakesmehappy.club/posts/trumpscript-%E8%AE%A9%E7%BC%96%E7%A8%8B%E5%86%8D%E6%AC%A1%E4%BC%9F%E5%A4%A7/'>
+<meta property='og:site_name' content='Home'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='TrumpScript'><meta property='article:tag' content='Trump'><meta property='article:tag' content='America'><meta property='article:tag' content='Python'><meta property='article:tag' content='Compiler'><meta property='article:published_time' content='2019-06-23T23:34:09&#43;08:00'/><meta property='article:modified_time' content='2019-06-23T23:34:09&#43;08:00'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.55.6" />
+
+  <title>TrumpScript, 让编程再次伟大！ • Home</title>
+  <link rel='canonical' href='https://studymakesmehappy.club/posts/trumpscript-%E8%AE%A9%E7%BC%96%E7%A8%8B%E5%86%8D%E6%AC%A1%E4%BC%9F%E5%A4%A7/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.4267b3fa.css'><link rel='stylesheet' href='/css/custom.css'><style>
+:root{--color-accent:#ffcd00;}
+</style>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-129765949-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  
+
+</head>
+
+
+<body class='page type-posts'>
+
+  <div class='site'>
+
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+    <div class='main'>
+
+      <nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
+    
+    <ul><li class='item'>
+        <a href='/'>Home</a>
+      </li><li class='item'>
+        <a href='/posts/'>Posts</a>
+      </li><li class='item'>
+        <a href='/about/'>About</a>
+      </li><li class='item'>
+        <a href='https://github.com/Excited-ccccly/studymakesmehappy.club'>Repo</a>
+      </li></ul>
+  </div>
+</nav>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>Home</p><p class='desc site-desc'>Study makes me happy</p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>TrumpScript, 让编程再次伟大！</h1>
+      
+
+    </div>
+    
+<div class='entry-meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2019-06-23T23:34:09&#43;08:00'>2019, Jun 23</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+8 mins read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  
+
+<p><a href="https://github.com/samshadwell/TrumpScript" target="_blank">TrumpScript</a> 是一门使用特朗普风格的语句来编程的脚本语言，十分的欢乐有趣。作者 Sam “认为” 当今所有的编程语言，都得不到伟大的特朗普总统的认同。在 <a href="https://www.youtube.com/watch?v=qFH8nKsSwB0" target="_blank">HackRice 2016</a> 这场 Hackthon 上，Sam 和另外两个小伙伴(Chris 和 Dan)，合力开发了 <a href="https://devpost.com/software/trumpscript" target="_blank">TrumpScript，一举拿下第一名</a>，设计的图标也很有意思，像特朗普那飘逸的头发。</p>
+
+<p><img src="/images/TrumpScript/TrumpScript.jpg" alt="" /></p>
+
+<p>在立马学习 TrumpScript(什么？又有新语言要学习了？卒&hellip;) 语言之前，我们先看看它的 feature，才能知道为什么非学不可！</p>
+
+<h2 id="语言特性">语言特性</h2>
+
+<p>为了得到最大份的快乐，在保留原文的基础上，简单翻译。</p>
+
+<ul>
+<li><p>No floating point numbers, only integers. America never does anything halfway.</p>
+
+<p>TrumpScript 没有浮点数，只能用整数。美利坚永远不半途而废。</p></li>
+
+<li><p>All numbers must be strictly greater than 1 million. The small stuff is inconsequential to us.</p>
+
+<p>所有的数字必须大于100W，其它小数字对富有的特朗普来说无关紧要。</p></li>
+
+<li><p>There are no import statements allowed. All code has to be home-grown and American made.</p>
+
+<p>没有 import(和“进口”双关) 语句。所有的代码都必须由美国制造。</p></li>
+
+<li><p>Instead of True and False, we have the keywords fact and lie.</p>
+
+<p>TrumpScript 使用 fact 和 lie，而不是 True 和 False</p></li>
+
+<li><p>Only the most popular English words, Trump&rsquo;s favorite words, and current politician names can be used as variable names.</p>
+
+<p>只有最流行的、特朗普喜爱的英语单词，以及政治家的名字才能作为变量的名字。</p></li>
+
+<li><p>Error messages are mostly quotes directly taken from Trump himself.</p>
+
+<p>错误信息几乎都引用自特朗普的言论。</p></li>
+
+<li><p>All programs must end with America is great.</p>
+
+<p>所有的 TrumpScript 必须以 &ldquo;America is great&rdquo; 结尾，否则会报错。</p></li>
+
+<li><p>Our language will automatically correct Forbes&rsquo; $4.5B to $10B.</p>
+
+<p>由于福布斯错误只承认特朗普有45亿美元的身价，而不是特朗普声称的100亿美元。TrumpScript 会自动纠正这个错误，所有的 4500000000 会被修正为 10000000000，来彰显特朗普的富贵。</p></li>
+
+<li><p>In its raw form, TrumpScript is not compatible with Windows, because Trump isn&rsquo;t the type of guy to believe in PC.</p>
+
+<p>TrumpScript 不兼容 Windows, 因为特朗普对 PC 没有信心！PC 既指 Personal Computer，还指 Political Correctness, 此处为双关语。</p></li>
+
+<li><p>TrumpScript boycotts OS X and all Apple products until such time as Apple gives cellphone info to authorities regarding radical Islamic terrorist couple from Cal.</p>
+
+<p>TrumpScript 拒绝在所有的苹果设备上运行，除非苹果同意向政府提供恐怖分子的手机信息。</p></li>
+
+<li><p>If the running computer is from China, TrumpScript will not compile. We don&rsquo;t want them stealing our American technological secrets.</p>
+
+<p>TrumpScript 不会在中国的电脑上运行，特朗普不想中国来窃取美国的科技机密。</p></li>
+
+<li><p>By constructing a wall (providing the &ndash;Wall flag), TrumpScript will refuse to run on machines with Mexican locales</p>
+
+<p>如果运行带上了 &ndash;Wall 这个标记，TrumpScript 会拒绝在墨西哥的电脑上运行。&ndash;Wall 来自于 GCC，表示会打开所有的警告开关，它也是双关语，指美国单方面在美国和墨西哥边界修建围墙，来阻止墨西哥非法移民的行为。</p></li>
+
+<li><p>Warns you if you have any Communists masquerading as legitimate &ldquo;SSL Certificates&rdquo; from China on your system.</p>
+
+<p>当你的系统中有来自中国机构信任的 SSL 证书时，TrumpScript 会警告你。</p></li>
+
+<li><p>Won&rsquo;t run in root mode because America doesn&rsquo;t need your help being great. Trump is all we need.</p>
+
+<p>TrumpScript 不支持在 Root 用户下运行，因为美利坚很强大，特朗普很伟大，不需要你的支持(root 有支持的意思)。</p></li>
+
+<li><p>Easy to type with small hands</p>
+
+<p>手小也能愉快地使用 TrumpScript 编程（特朗普被嘲笑手小）。</p></li>
+</ul>
+
+<p><img src="/images/TrumpScript/trumpthumbsweb.jpg" alt="" /></p>
+
+<ul>
+<li><p>If you find you can&rsquo;t get any TrumpScript to run on your computer (probably because we disallow the two most popular operating systems), you can specify the &ndash;shut-up flag to let the interpreter know you just want your code to run, damn it.</p>
+
+<p>如果你发现你的电脑不能运行 TrumpScript（多数情况下会是如此，因为我们禁止了两大流行操作系统），你可以附加上 <code>--shut-up</code> 这个参数来绕过这个限制。</p></li>
+</ul>
+
+<h2 id="语法">语法</h2>
+
+<p>略去基本的语法不提，来看看激动人心的部分！</p>
+
+<ul>
+<li><p>Strings are denoted by double quotes (&ldquo;I love Trump&rdquo;)</p>
+
+<p>字符串使用双引号包含（这就是激动人心的部分？作者出来挨打！</p></li>
+
+<li><p>The is and are keywords are used both to check for equality, and for assignment. To use for assignment, say something like Trump is great or Democrats are dumb. To use to check for equality, do the same but append a ?. For example, you may need to ask yourself Trump is &ldquo;the best&rdquo;? (although we all know that would evaluate to fact anyway)</p>
+
+<p><strong>is</strong> 和 <strong>are</strong> 用于判断是否相等和赋值，比如 <code>Trump is great</code> 把 great 这个值赋给了 Trump 这个变量；但如果带上 <strong>?</strong>，就变成了判断是否相等，比如 <code>Trump is &quot;the best&quot;?</code> 就是在判断 Trump 这个变量是不是等于 &ldquo;the best&rdquo;，结果显而易见，这是一个 <strong>fact</strong>!</p></li>
+
+<li><p>Assignment can also be done via the make keyword. E.g. Make America great assigns the value of the variable great to America</p>
+
+<p>赋值可以通过 <strong>make</strong> 语句完成，比如 <code>Make America great</code> 就将 great 赋给了 America 这个变量。</p></li>
+
+<li><p>Printing to stdout can be done via tell or say</p>
+
+<p>使用 <strong>tell</strong> 和 <strong>say</strong> 可以向标准输出打印</p></li>
+
+<li><p>While loops are denoted via as long as. And that&rsquo;s the only type of loop you need anyway</p>
+
+<p>循环使用 <strong>as long as</strong>，这是你唯一需要使用的循环语法。</p></li>
+
+<li><p>If a &lsquo;word&rsquo; (so anything that could be a variable name) is deemed unnecessary by the compiler, it&rsquo;s simply thrown away. So you can make truly self documenting code, or code that appear to read very very similarly to real speeches by the big man himself. You can find some interesting examples in our test/test_files directory</p>
+
+<p>TrumpScript 会过滤到一些无关紧要的单词，来确保使用 TrumpScript 写出的程序有着最佳的可读性以及诗歌般的韵律</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4">What are we in this country
+Hillary speaks nothing but lies
+But look at me I came to this election to make guys
+believe again
+believe in fact
+if, all of us real lies the light; : say &#34;VOTE TRUMP&#34; !
+but I know we should be free
+else the result will be bad: all the work of George
+Washington was for nothing
+so this election say &#34;Hello World&#34; say &#34;TRUMP FOR PRESIDENT&#34;!
+America is great.</pre></div></li>
+
+<li><p>But most importantly, Trump doesn&rsquo;t like to talk about his failures. So a lot of the time your code will fail, and it will do so silently. Just think of debugging as a fun little game.</p>
+
+<p>最重要的是，伟大的特朗普总统不喜欢讨论他的失败。所以大部分时间你的代码会报错，而且这个错误不会抛出，这就好比在调试一个有趣的小游戏。</p></li>
+</ul>
+
+<h2 id="硬核-源码分析">“硬核”源码分析</h2>
+
+<p>一般的公众号文章至多到这里就收尾了，但是我不一样。TrumpScript 承包了我一晚上的欢乐，不带上源码分析有点对不住伟大的特朗普总统。事实上，阅读源码还发现了更多的梗，带来了更大更强的欢乐。</p>
+
+<p>看完了之前 TrumpScript 的语言特性和语法，人民群众普遍认为它和那些死板无趣的流行编程语言完全不一样！有部分人甚至对 TrumpScript 是如何实现的产生了极大的兴趣。那就继续往下看吧，TrumpScript 源码分析，世间仅此一篇，只有在这里，赶快收藏 studymakesmehappy.club.</p>
+
+<p>TrumpScript 是一个 Python 程序，将代码 clone 下来，然后使用编辑器打开 TrumpScript/src/ 目录。可以发现它是一个短小精悍的脚本语言解释器(interpreter)，一共只有9个 .py 文件，其中 <code>tokenizer.py</code> 和 <code>utils.py</code> 是最有意思的，不过万物生于 main, 我们先从 <code>main.py</code> 开始。</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">    <span style="color:#999;font-style:italic"># main.py</span>
+    <span style="color:#6ab825;font-weight:bold">if</span> <span style="color:#6ab825;font-weight:bold">not</span> args.shut_up:
+        Utils.verify_system(args.Wall)
+    <span style="color:#999;font-style:italic"># Compile and go</span>
+    Compiler().<span style="color:#24909d">compile</span>(sys.argv[-<span style="color:#3677a9">1</span>])</code></pre></div>
+<p><code>main.py</code> 使用 argparse 来解析参数，可以发现 shut_up 在个 flag 控制着是否校验使用者的电脑系统，<code>verify_system</code> 这个函数稍后分析，先看主要的。</p>
+
+<p><code>sys.argv[-1]</code>取最后一个参数，也就是 TrumpScript 脚本程序的路径，然后编译</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">    <span style="color:#999;font-style:italic"># compiler.py</span>
+    <span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">compile</span>(self, source):
+        modu = self.parse(self.tokenize(source))
+        fix_missing_locations(modu)
+        <span style="color:#6ab825;font-weight:bold">exec</span>(<span style="color:#24909d">compile</span>(modu, filename=<span style="color:#ed9d13">&#34;&lt;ast&gt;&#34;</span>, mode=<span style="color:#ed9d13">&#34;exec&#34;</span>))</code></pre></div>
+<p>如我们所料，词法分析(tokenize)和语法分析(parse)少不了，<code>fix_missing_locations</code> 是 python 的 ast 包里的函数，会修正 python 语法树中缺少了一些位置信息。咦？我们写的不是 TrumpScript 吗，怎么去修正 python 的语法树了，按道理要修复也是修复 TrumpScript 的语法树啊！别着急，我们做一个猜测，很有可能是 parse 这个函数直接返回了 python 格式的语法树。继续往下看，<code>exec</code> 和 <code>compile</code> 是 python 内置的函数，<code>compile</code> 可以将 ast 树编译成可以执行的 code object，<code>exec</code> 可以执行 code object. 这印证了我们的想法，TrumpScript 的作者们很好地发挥了不乱造轮子的精神，没有自己写一个 ast interpreter，而是复用了 python 的 interpreter, 所以才需要将 TrumpScript 程序转换成 python 格式的语法树。</p>
+
+<h3 id="tokenizer">Tokenizer</h3>
+
+<p>再来看看 tokenize</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">    <span style="color:#999;font-style:italic"># tokenizer.py</span>
+    <span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">tokenize</span>(filename):
+        tokens = Tokenizer._first_pass(filename)
+        tokens = Tokenizer._second_pass(tokens)
+        <span style="color:#6ab825;font-weight:bold">return</span> tokens</code></pre></div>
+<p>这里有 first_pass 和 second_pass，first_pass 将代码纯文本转化成一个个 token, second_pass 在 first_pass 的基础上做一次检查和修正的工作</p>
+
+<p>所有的 tokenizer 模式都差不多，都是逐字符解析源码文件。</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">    <span style="color:#999;font-style:italic"># tokenizer.py _first_pass</span>
+    <span style="color:#6ab825;font-weight:bold">while</span> i &lt; <span style="color:#24909d">len</span>(data):
+        <span style="color:#ed9d13">&#39;&#39;&#39;
+</span><span style="color:#ed9d13">            Facts and Lies will flip/flop depending on Trump&#39;s mood every few minutes.
+</span><span style="color:#ed9d13">            If your code fails, try again in a bit. Trump might have changed his mind.
+</span><span style="color:#ed9d13">        &#39;&#39;&#39;</span>
+        random.seed(datetime.now().time().minute)
+        flip_flop = <span style="color:#24909d">bool</span>(random.getrandbits(<span style="color:#3677a9">1</span>))
+        ......
+        <span style="color:#6ab825;font-weight:bold">if</span> c.isspace() <span style="color:#6ab825;font-weight:bold">or</span> c == <span style="color:#ed9d13">&#34;.&#34;</span>:
+            <span style="color:#6ab825;font-weight:bold">if</span> c == <span style="color:#ed9d13">&#34;</span><span style="color:#ed9d13">\n</span><span style="color:#ed9d13">&#34;</span>:
+                line += <span style="color:#3677a9">1</span>
+        <span style="color:#999;font-style:italic"># Operators (special symbol form) and punctuation</span>
+        <span style="color:#6ab825;font-weight:bold">elif</span> c == <span style="color:#ed9d13">&#34;+&#34;</span>:
+            tokens.append(Tokenizer.toke(T_Plus, None, line))
+        ......
+        <span style="color:#6ab825;font-weight:bold">elif</span> word == <span style="color:#ed9d13">&#34;true&#34;</span> <span style="color:#6ab825;font-weight:bold">or</span> word == <span style="color:#ed9d13">&#34;facts&#34;</span> <span style="color:#6ab825;font-weight:bold">or</span> word == <span style="color:#ed9d13">&#34;truth&#34;</span> <span style="color:#6ab825;font-weight:bold">or</span> word == <span style="color:#ed9d13">&#34;fact&#34;</span>:
+            <span style="color:#6ab825;font-weight:bold">if</span> (flip_flop):
+                tokens.append(Tokenizer.toke(T_False, None, line))
+            <span style="color:#6ab825;font-weight:bold">else</span>:
+                tokens.append(Tokenizer.toke(T_True, None, line))
+        <span style="color:#6ab825;font-weight:bold">elif</span> word == <span style="color:#ed9d13">&#34;false&#34;</span> <span style="color:#6ab825;font-weight:bold">or</span> word == <span style="color:#ed9d13">&#34;lies&#34;</span> <span style="color:#6ab825;font-weight:bold">or</span> word == <span style="color:#ed9d13">&#34;nonsense&#34;</span> <span style="color:#6ab825;font-weight:bold">or</span> word == <span style="color:#ed9d13">&#34;lie&#34;</span>:
+            <span style="color:#6ab825;font-weight:bold">if</span> (flip_flop):
+                tokens.append(Tokenizer.toke(T_True, None, line))
+            <span style="color:#6ab825;font-weight:bold">else</span>:
+                tokens.append(Tokenizer.toke(T_False, None, line))</code></pre></div><div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">{<span style="color:#ed9d13">&#34;type&#34;</span>: token_type, <span style="color:#ed9d13">&#34;value&#34;</span>: token_value, <span style="color:#ed9d13">&#34;line&#34;</span>: line}</code></pre></div>
+<p>一个 token 是一个 dict。type 是 token 的类型；在 <code>constants.py</code> 里定义, value 是 token 的值（比如数字类型的 token 是有值的，但是 <code>?</code> 这种 token 是没有值的，会为 None；line 记录 token 对应源代码中的行号，方便报错的时候带上行号。</p>
+
+<p>这个 flip_flop 是最骚的, 它每分钟会跟随特朗普的不稳定的情绪变化而变化（讽刺特朗普变化无常），从而决定是否将 fact 解析成 T_False 还是 T_True.  xswl😆</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">        <span style="color:#999;font-style:italic"># tokenizer.py _first_pass</span>
+        <span style="color:#999;font-style:italic"># Closures and precedence</span>
+        <span style="color:#6ab825;font-weight:bold">elif</span> c == <span style="color:#ed9d13">&#34;,&#34;</span>:
+            tokens.append(Tokenizer.toke(T_LParen, None, line))
+        <span style="color:#6ab825;font-weight:bold">elif</span> c == <span style="color:#ed9d13">&#34;;&#34;</span>:
+            tokens.append(Tokenizer.toke(T_RParen, None, line))
+        <span style="color:#6ab825;font-weight:bold">elif</span> c == <span style="color:#ed9d13">&#34;:&#34;</span>:
+            tokens.append(Tokenizer.toke(T_LBrace, None, line))
+        <span style="color:#6ab825;font-weight:bold">elif</span> c == <span style="color:#ed9d13">&#34;!&#34;</span>:
+            tokens.append(Tokenizer.toke(T_RBrace, None, line))</code></pre></div>
+<p>诗歌般韵律的 TrumpScript 不会出现 <code>(){}</code> 这些不优美的字符，所以用 <code>,;:!</code> 替代</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">      <span style="color:#999;font-style:italic"># tokenizer.py _first_pass</span>
+      <span style="color:#6ab825;font-weight:bold">elif</span> c.isdigit():
+          num = <span style="color:#ed9d13">&#34;&#34;</span>
+          <span style="color:#6ab825;font-weight:bold">while</span> data[i].isdigit():
+              num += data[i]
+              i += <span style="color:#3677a9">1</span>
+          <span style="color:#6ab825;font-weight:bold">else</span>:
+              tokens.append(Tokenizer.toke(T_Num, <span style="color:#24909d">int</span>(num), line))</code></pre></div>
+<p>常规的解析数字的操作，字符串解析也是类似的操作</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">      <span style="color:#999;font-style:italic"># tokenizer.py _first_pass</span>
+      <span style="color:#6ab825;font-weight:bold">elif</span> word == <span style="color:#ed9d13">&#34;over&#34;</span>:
+          tokens.append(Tokenizer.toke(T_Over, None, line))
+      <span style="color:#6ab825;font-weight:bold">elif</span> word == <span style="color:#ed9d13">&#34;safe&#34;</span> <span style="color:#6ab825;font-weight:bold">or</span> word == <span style="color:#ed9d13">&#34;safer&#34;</span>:
+          tokens.append(Tokenizer.toke(T_Mod, None,line))</code></pre></div>
+<p>这里提议下, T_Over 是除法运算符的 Token Type，T_Mod 是将字符串转化为 <code>int(float(variable))</code> 整形数字的操作</p>
+
+<p>first_pass 的操作比较常规，再来看看 second_pass</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">    <span style="color:#999;font-style:italic"># tokenizer.py _second_pass</span>
+    <span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">_second_pass</span>(tokens):
+        <span style="color:#999;font-style:italic"># Make sure we do &#34;America is great&#34;</span>
+        <span style="color:#6ab825;font-weight:bold">if</span> <span style="color:#6ab825;font-weight:bold">not</span> Tokenizer._check_for_freedom(tokens):
+            Tokenizer._error(tokens[-<span style="color:#3677a9">1</span>][<span style="color:#ed9d13">&#39;line&#39;</span>], <span style="color:#ed9d13">&#39;freedom&#39;</span>)
+        <span style="color:#999;font-style:italic"># Convert &#34;as long as&#34; to while</span>
+        tokens = Tokenizer._combine_whiles(tokens)
+        <span style="color:#999;font-style:italic"># Ensure words are English</span>
+        Tokenizer._ensure_freedom(tokens)
+        <span style="color:#999;font-style:italic"># Ensure all numbers are greater than 1 million, and that 4.5B is converted to 10B</span>
+        Tokenizer._fudge_the_numbers(tokens)
+        <span style="color:#999;font-style:italic"># They Say He Doesn&#39;t Like China... He Loves China</span>
+        Tokenizer._love_china(tokens)
+        <span style="color:#6ab825;font-weight:bold">return</span> tokens</code></pre></div>
+<ul>
+<li><code>_check_for_freedom</code> 确保每个程序以 America is great 结尾，否则报错。</li>
+<li><code>_combine_whiles</code> 将 as long as 这三个字符串 Token 转换成 While 类型的 Token.</li>
+<li><code>_ensure_freedom</code> 确保代码中用到的单词仅仅来自有 <code>allowed_words.py</code> 里的单词, <code>allowed_words.py</code> 通过 <code>vocabulary.py</code> 生成，不管它。同时确保不能出现 <code>disallowed_words.py</code> 中的单词。</li>
+<li><code>_fudge_the_numbers</code> 负责确保数字不小于100W，同时会把 4.5B 替换成 10B</li>
+<li><code>_love_china</code> 把 i don&rsquo;t like china 替换成 i don&rsquo;t like china. i love china</li>
+</ul>
+
+<p>tokenizer 到此结束，接下来是 parser</p>
+
+<h3 id="parser">Parser</h3>
+
+<p>parse 比较无聊，就是一个 <a href="https://en.wikipedia.org/wiki/Recursive_descent_parser" target="_blank">Recursive Descent Parser</a>，Recursive Descent Parser 可以用来解析 LL(K) 的 <a href="https://en.wikipedia.org/wiki/Context-free_grammar" target="_blank">Context Free Grammar</a>.</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">    <span style="color:#999;font-style:italic"># parser.py</span>
+    <span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">parse</span>(self, tokens) -&gt; AST:
+        filtered = self.filter_tokens(tokens)
+        <span style="color:#999;font-style:italic"># Build the entirety of the Abstract Syntax tree</span>
+        <span style="color:#6ab825;font-weight:bold">return</span> self.handle_module(filtered)</code></pre></div>
+<p>首先过滤一些，不属于任何一个语法规则、无关紧要的 token. 比如 People Make Trump great 中的 People.</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">    <span style="color:#999;font-style:italic"># parser.py</span>
+    <span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">handle_module</span>(self, tokens) -&gt; Module:
+        body_list = []
+        <span style="color:#6ab825;font-weight:bold">while</span> <span style="color:#24909d">len</span>(tokens) &gt; <span style="color:#3677a9">1</span>:
+            state, tokens = self.handle_anything(tokens)</code></pre></div>
+<p>parser 在 while 循环中逐 token 分析</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">    <span style="color:#999;font-style:italic"># parser.py</span>
+    <span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">handle_anything</span>(self, tokens):
+        start = self.peek(tokens)
+        <span style="color:#6ab825;font-weight:bold">return</span> self._token_to_function_map[start](tokens)</code></pre></div>
+<p>handle_anything 根据 token 的 Type 来 dispatch 不同的解析函数。</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">    <span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">handle_binop</span>(self, left, op, tokens):
+        valid_tokens = [T_LParen, T_Quote, T_Num, T_True, T_False]
+        tokens.pop(<span style="color:#3677a9">0</span>)
+        nxt = self.peek(tokens)
+        <span style="color:#6ab825;font-weight:bold">if</span> nxt == T_Word:
+            right = self._get_value_from_word_token(tokens)
+        <span style="color:#6ab825;font-weight:bold">elif</span> nxt <span style="color:#6ab825;font-weight:bold">in</span> valid_tokens:
+            right, tokens = self._token_to_function_map[nxt](tokens)
+        <span style="color:#6ab825;font-weight:bold">else</span>:
+            right = self._temporary_error(msg=<span style="color:#ed9d13">&#34;binop_error&#34;</span>)
+
+        <span style="color:#6ab825;font-weight:bold">return</span> BinOp(left=left, op=op, right=right), tokens</code></pre></div>
+<p>如果发现是一个 binop (二元操作), 将它转化成 python 的 ast 中的 BinOp 节点。注意，这个实现其实有 bug，忽略了操作符的优先级。比如</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4">1000000 plus 1000000 over 1000000;</pre></div>
+<p>这个会被正确地解析为 1000000+(<sup>1000000</sup>&frasl;<sub>1000000</sub>)，但</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4">1000000 over 1000000 plus 1000000;</pre></div>
+<p>会被错误地解析为 1000000/(1000000+1000000)</p>
+
+<p>(不要为什么要用这么大的数字来举例子，一点也不直观。这得去问特朗普，因为小于100W的数字无关紧要)</p>
+
+<p>Parser 的其它部分都差不多，就此打住。</p>
+
+<h3 id="utils">Utils</h3>
+
+<p>最后再回到之前提到的 Utils</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">    <span style="color:#999;font-style:italic"># utils.py</span>
+    <span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">verify_system</span>(wall) -&gt; None:
+        <span style="color:#ed9d13">&#34;&#34;&#34;
+</span><span style="color:#ed9d13">        Verifies that this system is Trump-approved, throwing
+</span><span style="color:#ed9d13">        a SystemException otherwise
+</span><span style="color:#ed9d13">        :return:
+</span><span style="color:#ed9d13">        &#34;&#34;&#34;</span>
+        Utils.no_wimps()
+        Utils.no_pc()
+        Utils.boycott_apple()
+        Utils.no_commies_mexicans_or_kenyans(wall)
+        Utils.no_commie_network()</code></pre></div>
+<ul>
+<li><code>no_wimps</code> 确保在 root 用户执行下会失败，因为强大的美国不需要 root（支持）</li>
+<li><code>no_pc</code> 确保在 Windows 下会失败，特朗普不相信 PC</li>
+<li><code>boycott_apple</code> 确保在 Apple 的产品下会失败，Apple 拒绝提供恐怖分子的手机信息给政府，公然抵抗特朗普，该打</li>
+<li><code>no_commies_mexicans_or_kenyans</code> 不能运行在共产党、墨西哥、肯尼亚（奥巴马祖籍肯尼亚）的电脑上</li>
+<li><code>no_commie_network</code> 共产党的证书机构不可信</li>
+</ul>
+
+<p>最后再看看 TrumpScript 的报错机制</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">    <span style="color:#999;font-style:italic"># utils.py</span>
+    <span style="color:#6ab825;font-weight:bold">class</span> <span style="color:#447fcf;text-decoration:underline">SystemException</span>(<span style="color:#bbb">Exception</span>):
+        <span style="color:#6ab825;font-weight:bold">def</span> __init__(self, msg_code) -&gt; <span style="color:#bbb">Exception</span>:
+            <span style="color:#6ab825;font-weight:bold">if</span> msg_code <span style="color:#6ab825;font-weight:bold">in</span> ERROR_CODES:
+                <span style="color:#6ab825;font-weight:bold">raise</span> <span style="color:#bbb">Exception</span>(random.choice(ERROR_CODES[msg_code]))
+            <span style="color:#6ab825;font-weight:bold">else</span>:
+                <span style="color:#6ab825;font-weight:bold">raise</span> <span style="color:#bbb">Exception</span>(random.choice(ERROR_CODES[<span style="color:#ed9d13">&#39;default&#39;</span>]))</code></pre></div>
+<p>自定义一个异常，异常消息根据 msg_code 而随机选，具体在 <code>constants.py</code> 中的 <code>ERROR_CODES</code> 中，截取看一段</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">ERROR_CODES = {
+    <span style="color:#999;font-style:italic"># For quotes that didn&#39;t get terminated</span>
+    <span style="color:#ed9d13">&#39;unterminated_quote&#39;</span>: [<span style="color:#ed9d13">&#34;And, believe me, if I win, if I become President, that will end.&#34;</span>, <span style="color:#ed9d13">&#34;Anyone who thinks my &#34;</span>
+                           <span style="color:#ed9d13">&#34;story is near over is sadly mistaken.&#34;</span>],
+    <span style="color:#999;font-style:italic"># If they try to use a word that isn&#39;t common English</span>
+    <span style="color:#ed9d13">&#39;nonword&#39;</span>: [<span style="color:#ed9d13">&#34;This is a country where we speak English&#34;</span>,
+                <span style="color:#ed9d13">&#34;We have a country where to assimilate you have to speak English&#34;</span>],
+    <span style="color:#999;font-style:italic"># If they try to use a word that we&#39;ve explicitly banned</span>
+    <span style="color:#ed9d13">&#39;badword&#39;</span>: [<span style="color:#ed9d13">&#34;Trump doesn&#39;t want to hear it&#34;</span>],
+    ......
+}</code></pre></div>
+<p>这就是 <code>Error messages are mostly quotes directly taken from Trump himself.</code> 这个 feature 的实现方法</p>
+
+<h2 id="结语">结语</h2>
+
+<p>TrumpScript 是一场36小时的 Hackthon 上诞生的产物，很佩服作者们的脑洞和执行力。在代码中看到这段注释</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">    <span style="color:#999;font-style:italic"># BinOp(s)</span>
+    <span style="color:#999;font-style:italic"># TODO: what the fuck is going on here? I wrote this at 9am after nigh 24 hours of wakefulness</span>
+    <span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">handle_binop</span>(self, left, op, tokens):
+        ......</code></pre></div>
+<p>也是让参与过 Hackthon 的人会心一笑。</p>
+
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='categories'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
+  
+</svg>
+<span class='screen-reader-text'>Categories: </span></div>
+<div class='tags'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+  
+</svg>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/trumpscript/'>TrumpScript</a>, <a class='tag' href='/tags/trump/'>Trump</a>, <a class='tag' href='/tags/america/'>America</a>, <a class='tag' href='/tags/python/'>Python</a>, <a class='tag' href='/tags/compiler/'>Compiler</a></div>
+
+  </div>
+</footer>
+
+
+</article>
+
+<nav class='entry-nav'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/posts/%E4%BD%BF%E7%94%A8python%E5%8E%BB%E4%BF%AE%E6%94%B9python%E4%BB%A3%E7%A0%81/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader-text'>Previous post: </span>使用Python去修改Python代码</a>
+    </div></div>
+</nav>
+
+
+<section id='comments' class='comments'>
+  <div class='container sep-before'>
+    <div class='comments-area'><script src='https://utteranc.es/client.js'
+  repo='Excited-ccccly/studymakesmehappy.club' issue-term='title'
+  crossorigin='anonymous' async>
+</script>
+</div>
+  </div>
+</section>
+
+      </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
+        <a href='https://github.com/Excited-ccccly' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='mailto:geekchenlingyun@outlook.com' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Contact via Email</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+  <polyline points="22,6 12,13 2,6"/>
+  
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</section><div class='copyright'>
+  <p> &copy; 2017-2019 ccccly </p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__public_path__='\/assets\/js\/'</script>
+
+<script src='/assets/js/main.59f76c44.js'></script><script src='/js/custom.js'></script>
+
+</body>
+
+</html>
+

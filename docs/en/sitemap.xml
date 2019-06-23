@@ -4,7 +4,7 @@
   
   <url>
     <loc>https://studymakesmehappy.club/</loc>
-    <lastmod>2019-04-28T22:16:50+08:00</lastmod>
+    <lastmod>2019-06-23T23:34:09+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
@@ -19,7 +19,7 @@
   
   <url>
     <loc>https://studymakesmehappy.club/posts/</loc>
-    <lastmod>2019-04-28T22:16:50+08:00</lastmod>
+    <lastmod>2019-06-23T23:34:09+08:00</lastmod>
   </url>
   
   <url>
@@ -27,14 +27,14 @@
   </url>
   
   <url>
-    <loc>https://studymakesmehappy.club/tags/ast/</loc>
-    <lastmod>2019-04-28T22:16:50+08:00</lastmod>
+    <loc>https://studymakesmehappy.club/tags/america/</loc>
+    <lastmod>2019-06-23T23:34:09+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://studymakesmehappy.club/categories/</loc>
-    <lastmod>2019-04-28T22:16:50+08:00</lastmod>
+    <lastmod>2019-06-23T23:34:09+08:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -49,32 +49,26 @@
   </url>
   
   <url>
-    <loc>https://studymakesmehappy.club/tags/code-generation/</loc>
-    <lastmod>2019-04-28T22:16:50+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://studymakesmehappy.club/tags/metaprogramming/</loc>
-    <lastmod>2019-04-28T22:16:50+08:00</lastmod>
+    <loc>https://studymakesmehappy.club/tags/compiler/</loc>
+    <lastmod>2019-06-23T23:34:09+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://studymakesmehappy.club/categories/programming-language/</loc>
-    <lastmod>2019-04-28T22:16:50+08:00</lastmod>
+    <lastmod>2019-06-23T23:34:09+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://studymakesmehappy.club/tags/python/</loc>
-    <lastmod>2019-04-28T22:16:50+08:00</lastmod>
+    <lastmod>2019-06-23T23:34:09+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://studymakesmehappy.club/tags/</loc>
-    <lastmod>2019-04-28T22:16:50+08:00</lastmod>
+    <lastmod>2019-06-23T23:34:09+08:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -86,6 +80,41 @@
                 hreflang="en"
                 href="https://studymakesmehappy.club/tags/"
                 />
+  </url>
+  
+  <url>
+    <loc>https://studymakesmehappy.club/tags/trump/</loc>
+    <lastmod>2019-06-23T23:34:09+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://studymakesmehappy.club/tags/trumpscript/</loc>
+    <lastmod>2019-06-23T23:34:09+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://studymakesmehappy.club/posts/trumpscript-%E8%AE%A9%E7%BC%96%E7%A8%8B%E5%86%8D%E6%AC%A1%E4%BC%9F%E5%A4%A7/</loc>
+    <lastmod>2019-06-23T23:34:09+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://studymakesmehappy.club/tags/ast/</loc>
+    <lastmod>2019-04-28T22:16:50+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://studymakesmehappy.club/tags/code-generation/</loc>
+    <lastmod>2019-04-28T22:16:50+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://studymakesmehappy.club/tags/metaprogramming/</loc>
+    <lastmod>2019-04-28T22:16:50+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
