@@ -29,12 +29,9 @@
       <description>TrumpScript 是一门使用特朗普风格的语句来编程的脚本语言，十分的欢乐有趣。作者 Sam “认为” 当今所有的编程语言，都得不到伟大的特朗普总统的认同。在 HackRice 2016 这场 Hackthon 上，Sam 和另外两个小伙伴(Chris 和 Dan)，合力开发了 TrumpScript，一举拿下第一名，设计的图标也很有意思，像特朗普那飘逸的头发。
 在立马学习 TrumpScript(什么？又有新语言要学习了？卒&amp;hellip;) 语言之前，我们先看看它的 feature，才能知道为什么非学不可！
 语言特性 为了得到最大份的快乐，在保留原文的基础上，简单翻译。
- No floating point numbers, only integers. America never does anything halfway.
-TrumpScript 没有浮点数，只能用整数。美利坚永远不半途而废。
- All numbers must be strictly greater than 1 million. The small stuff is inconsequential to us.
-所有的数字必须大于100W，其它小数字对富有的特朗普来说无关紧要。
- There are no import statements allowed. All code has to be home-grown and American made.
-没有 import(和“进口”双关) 语句。所有的代码都必须由美国制造。</description>
+ No floating point numbers, only integers. America never does anything halfway.  TrumpScript 没有浮点数，只能用整数。美利坚永远不半途而废。
+ All numbers must be strictly greater than 1 million. The small stuff is inconsequential to us.  所有的数字必须大于100W，其它小数字对富有的特朗普来说无关紧要。
+ There are no import statements allowed. All code has to be home-grown and American made.</description>
     </item>
     
     <item>

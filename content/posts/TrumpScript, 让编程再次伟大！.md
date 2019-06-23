@@ -19,74 +19,74 @@ tags: ["TrumpScript", "Trump", "America", "Python", "Compiler"]
 
 * No floating point numbers, only integers. America never does anything halfway.
 
-    TrumpScript 没有浮点数，只能用整数。美利坚永远不半途而废。
+TrumpScript 没有浮点数，只能用整数。美利坚永远不半途而废。
 
 * All numbers must be strictly greater than 1 million. The small stuff is inconsequential to us.
 
-    所有的数字必须大于100W，其它小数字对富有的特朗普来说无关紧要。
+所有的数字必须大于100W，其它小数字对富有的特朗普来说无关紧要。
 
 * There are no import statements allowed. All code has to be home-grown and American made.
 
-    没有 import(和“进口”双关) 语句。所有的代码都必须由美国制造。
+没有 import(和“进口”双关) 语句。所有的代码都必须由美国制造。
 
 * Instead of True and False, we have the keywords fact and lie.
 
-    TrumpScript 使用 fact 和 lie，而不是 True 和 False
+TrumpScript 使用 fact 和 lie，而不是 True 和 False
 
 * Only the most popular English words, Trump's favorite words, and current politician names can be used as variable names.
 
-    只有最流行的、特朗普喜爱的英语单词，以及政治家的名字才能作为变量的名字。
+只有最流行的、特朗普喜爱的英语单词，以及政治家的名字才能作为变量的名字。
 
 * Error messages are mostly quotes directly taken from Trump himself.
 
-    错误信息几乎都引用自特朗普的言论。
+错误信息几乎都引用自特朗普的言论。
 
 * All programs must end with America is great.
 
-    所有的 TrumpScript 必须以 "America is great" 结尾，否则会报错。
+所有的 TrumpScript 必须以 "America is great" 结尾，否则会报错。
 
 * Our language will automatically correct Forbes' $4.5B to $10B.
 
-    由于福布斯错误只承认特朗普有45亿美元的身价，而不是特朗普声称的100亿美元。TrumpScript 会自动纠正这个错误，所有的 4500000000 会被修正为 10000000000，来彰显特朗普的富贵。
+由于福布斯错误只承认特朗普有45亿美元的身价，而不是特朗普声称的100亿美元。TrumpScript 会自动纠正这个错误，所有的 4500000000 会被修正为 10000000000，来彰显特朗普的富贵。
 
 * In its raw form, TrumpScript is not compatible with Windows, because Trump isn't the type of guy to believe in PC.
 
-    TrumpScript 不兼容 Windows, 因为特朗普对 PC 没有信心！PC 既指 Personal Computer，还指 Political Correctness, 此处为双关语。
+TrumpScript 不兼容 Windows, 因为特朗普对 PC 没有信心！PC 既指 Personal Computer，还指 Political Correctness, 此处为双关语。
 
 * TrumpScript boycotts OS X and all Apple products until such time as Apple gives cellphone info to authorities regarding radical Islamic terrorist couple from Cal.
 
-    TrumpScript 拒绝在所有的苹果设备上运行，除非苹果同意向政府提供恐怖分子的手机信息。
+TrumpScript 拒绝在所有的苹果设备上运行，除非苹果同意向政府提供恐怖分子的手机信息。
 
 * The language is completely case insensitive.
 
-    TrumpScript 对大小写不敏感。
+TrumpScript 对大小写不敏感。
 
 * If the running computer is from China, TrumpScript will not compile. We don't want them stealing our American technological secrets.
 
-    TrumpScript 不会在中国的电脑上运行，特朗普不想中国来窃取美国的科技机密。
+TrumpScript 不会在中国的电脑上运行，特朗普不想中国来窃取美国的科技机密。
 
 * By constructing a wall (providing the --Wall flag), TrumpScript will refuse to run on machines with Mexican locales
 
-    如果运行带上了 --Wall 这个标记，TrumpScript 会拒绝在墨西哥的电脑上运行。--Wall 来自于 GCC，表示会打开所有的警告开关，它也是双关语，指美国单方面在美国和墨西哥边界修建围墙，来阻止墨西哥非法移民的行为。
+如果运行带上了 --Wall 这个标记，TrumpScript 会拒绝在墨西哥的电脑上运行。--Wall 来自于 GCC，表示会打开所有的警告开关，它也是双关语，指美国单方面在美国和墨西哥边界修建围墙，来阻止墨西哥非法移民的行为。
 
 * Warns you if you have any Communists masquerading as legitimate "SSL Certificates" from China on your system.
 
-    当你的系统中有来自中国机构信任的 SSL 证书时，TrumpScript 会警告你。
+当你的系统中有来自中国机构信任的 SSL 证书时，TrumpScript 会警告你。
 
 * Won't run in root mode because America doesn't need your help being great. Trump is all we need.
 
-    TrumpScript 不支持在 Root 用户下运行，因为美利坚很强大，特朗普很伟大，不需要你的支持(root 有支持的意思)。
+TrumpScript 不支持在 Root 用户下运行，因为美利坚很强大，特朗普很伟大，不需要你的支持(root 有支持的意思)。
 
 * Easy to type with small hands
 
-    手小也能愉快地使用 TrumpScript 编程（特朗普被嘲笑手小）。
+手小也能愉快地使用 TrumpScript 编程（特朗普被嘲笑手小）。
 
 ![](/images/TrumpScript/trumpthumbsweb.jpg)
 
 
 * If you find you can't get any TrumpScript to run on your computer (probably because we disallow the two most popular operating systems), you can specify the --shut-up flag to let the interpreter know you just want your code to run, damn it.
 
-    如果你发现你的电脑不能运行 TrumpScript（多数情况下会是如此，因为我们禁止了两大流行操作系统），你可以附加上 `--shut-up` 这个参数来绕过这个限制。
+如果你发现你的电脑不能运行 TrumpScript（多数情况下会是如此，因为我们禁止了两大流行操作系统），你可以附加上 `--shut-up` 这个参数来绕过这个限制。
 
 ## 语法
 
@@ -94,27 +94,27 @@ tags: ["TrumpScript", "Trump", "America", "Python", "Compiler"]
 
 * Strings are denoted by double quotes ("I love Trump")
 
-    字符串使用双引号包含（这就是激动人心的部分？作者出来挨打！
+字符串使用双引号包含（这就是激动人心的部分？作者出来挨打！
 
 * The is and are keywords are used both to check for equality, and for assignment. To use for assignment, say something like Trump is great or Democrats are dumb. To use to check for equality, do the same but append a ?. For example, you may need to ask yourself Trump is "the best"? (although we all know that would evaluate to fact anyway)
 
-    **is** 和 **are** 用于判断是否相等和赋值，比如 `Trump is great` 把 great 这个值赋给了 Trump 这个变量；但如果带上 **?**，就变成了判断是否相等，比如 `Trump is "the best"?` 就是在判断 Trump 这个变量是不是等于 "the best"，结果显而易见，这是一个 **fact**!
+**is** 和 **are** 用于判断是否相等和赋值，比如 `Trump is great` 把 great 这个值赋给了 Trump 这个变量；但如果带上 **?**，就变成了判断是否相等，比如 `Trump is "the best"?` 就是在判断 Trump 这个变量是不是等于 "the best"，结果显而易见，这是一个 **fact**!
 
 * Assignment can also be done via the make keyword. E.g. Make America great assigns the value of the variable great to America
 
-    赋值可以通过 **make** 语句完成，比如 `Make America great` 就将 great 赋给了 America 这个变量。
+赋值可以通过 **make** 语句完成，比如 `Make America great` 就将 great 赋给了 America 这个变量。
 
 * Printing to stdout can be done via tell or say
 
-    使用 **tell** 和 **say** 可以向标准输出打印
+使用 **tell** 和 **say** 可以向标准输出打印
 
 * While loops are denoted via as long as. And that's the only type of loop you need anyway
 
-    循环使用 **as long as**，这是你唯一需要使用的循环语法。
+循环使用 **as long as**，这是你唯一需要使用的循环语法。
 
 * If a 'word' (so anything that could be a variable name) is deemed unnecessary by the compiler, it's simply thrown away. So you can make truly self documenting code, or code that appear to read very very similarly to real speeches by the big man himself. You can find some interesting examples in our test/test_files directory
 
-    TrumpScript 会过滤到一些无关紧要的单词，来确保使用 TrumpScript 写出的程序有着最佳的可读性以及诗歌般的韵律
+TrumpScript 会过滤到一些无关紧要的单词，来确保使用 TrumpScript 写出的程序有着最佳的可读性以及诗歌般的韵律
 
 ```
 What are we in this country
@@ -132,15 +132,15 @@ America is great.
 
 * But most importantly, Trump doesn't like to talk about his failures. So a lot of the time your code will fail, and it will do so silently. Just think of debugging as a fun little game.
 
-    最重要的是，伟大的特朗普总统不喜欢讨论他的失败。所以大部分时间你的代码会报错，而且这个错误不会抛出，这就好比在调试一个有趣的小游戏。
+最重要的是，伟大的特朗普总统不喜欢讨论他的失败。所以大部分时间你的代码会报错，而且这个错误不会抛出，这就好比在调试一个有趣的小游戏。
 
 ## “硬核”源码分析
 
 一般的公众号文章至多到这里就收尾了，但是我不一样。TrumpScript 承包了我一晚上的欢乐，不带上源码分析有点对不住伟大的特朗普总统。事实上，阅读源码还发现了更多的梗，带来了更大更强的欢乐。
 
-![](/images/TrumpScript/trump-invite.jpg)
-
 看完了之前 TrumpScript 的语言特性和语法，人民群众普遍认为它和那些死板无趣的流行编程语言完全不一样！有部分人甚至对 TrumpScript 是如何实现的产生了极大的兴趣。那就继续往下看吧，TrumpScript 源码分析，世间仅此一篇，只有在这里，赶快收藏 studymakesmehappy.club.
+
+![](/images/TrumpScript/trump-invite.jpg)
 
 TrumpScript 是一个 Python 程序，将代码 clone 下来，然后使用编辑器打开 TrumpScript/src/ 目录。可以发现它是一个短小精悍的脚本语言解释器(interpreter)，一共只有9个 .py 文件，其中 `tokenizer.py` 和 `utils.py` 是最有意思的，不过万物生于 main, 我们先从 `main.py` 开始。
 
