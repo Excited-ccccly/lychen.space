@@ -57,6 +57,10 @@ tags: ["TrumpScript", "Trump", "America", "Python", "Compiler"]
 
     TrumpScript 拒绝在所有的苹果设备上运行，除非苹果同意向政府提供恐怖分子的手机信息。
 
+* The language is completely case insensitive.
+
+    TrumpScript 对大小写不敏感。
+
 * If the running computer is from China, TrumpScript will not compile. We don't want them stealing our American technological secrets.
 
     TrumpScript 不会在中国的电脑上运行，特朗普不想中国来窃取美国的科技机密。
@@ -133,6 +137,8 @@ America is great.
 ## “硬核”源码分析
 
 一般的公众号文章至多到这里就收尾了，但是我不一样。TrumpScript 承包了我一晚上的欢乐，不带上源码分析有点对不住伟大的特朗普总统。事实上，阅读源码还发现了更多的梗，带来了更大更强的欢乐。
+
+![](/images/TrumpScript/trump-invite.jpg)
 
 看完了之前 TrumpScript 的语言特性和语法，人民群众普遍认为它和那些死板无趣的流行编程语言完全不一样！有部分人甚至对 TrumpScript 是如何实现的产生了极大的兴趣。那就继续往下看吧，TrumpScript 源码分析，世间仅此一篇，只有在这里，赶快收藏 studymakesmehappy.club.
 
