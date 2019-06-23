@@ -13,6 +13,7 @@ features = [
   "accessibility",
   "algolia",
   "analytics",
+  "breadcrumbs",
   "comments",
   "cover-image",
   "disqus",
@@ -25,6 +26,7 @@ features = [
   "multi-author",
   "opengraph",
   "pagination",
+  "rtl",
   "search",
   "shortcodes",
   "sidebar",
@@ -36,7 +38,7 @@ features = [
   "utterances",
   "widgets"
 ]
-min_version = 0.45
+min_version = 0.55
 
 [author]
   name = "Munif Tanjim"

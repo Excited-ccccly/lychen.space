@@ -1,10 +1,14 @@
+body {
+  background: $color__pure-white;
+}
+
 .site {
   overflow-x: hidden;
 }
 
 .main {
   width: 100%;
-  padding-top: 2em;
+  padding: 2em 0;
 
   transition: margin-left $transition-duration;
 
@@ -17,6 +21,7 @@
 
     .has-sidebar & {
       float: left;
+      width: calc(100% - #{$sidebar__width});
       margin-left: $sidebar__width;
       padding-left: 2em;
     }
