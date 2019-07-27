@@ -13,7 +13,7 @@
 生成这个数字的公式可以表示为：
 number = f(current_datetime, secret) 总结一下：
  验证器客户端和服务器首先通过二维码，协商出一个 secret，然后各自保存 在用户登录的时候，打开验证器，验证器会根据当前时间窗口以及之前协商好的 secret，算出一个数字 用户手动输入这个数字，传输到服务器 服务器使用同样的函数，算出一个数字，判断与用户输入的数字是否匹配  这就是两步验证器的基本原理。这里提一个问题供大家思考：
-当使用验证器扫描二维码的时候，验证器有没有向服务器通信？如果没有，服务器如何确认客户端已经扫了二维码，从而开始同步计算？ 接下来我会介绍一下背后的 RFC 标准，涉及函数 f 的定义、时间窗口如何计算、安全问题等、如果不感兴趣，可以跳过。'>
+* 当使用验证器扫描二维码的时候，验证器有没有向服务器通信？如果没有，服务器如何确认客户端已经扫了二维码，从而开始同步计算？ 接下来我会介绍一下背后的 RFC 标准，涉及函数 f 的定义、时间窗口如何计算、安全问题等、如果不感兴趣，可以跳过。'>
 <meta name='theme-color' content='#ffcd00'>
 
 <meta property='og:title' content='两步验证器是如何工作的 • Home'>
@@ -28,7 +28,7 @@ number = f(current_datetime, secret) 总结一下：
 生成这个数字的公式可以表示为：
 number = f(current_datetime, secret) 总结一下：
  验证器客户端和服务器首先通过二维码，协商出一个 secret，然后各自保存 在用户登录的时候，打开验证器，验证器会根据当前时间窗口以及之前协商好的 secret，算出一个数字 用户手动输入这个数字，传输到服务器 服务器使用同样的函数，算出一个数字，判断与用户输入的数字是否匹配  这就是两步验证器的基本原理。这里提一个问题供大家思考：
-当使用验证器扫描二维码的时候，验证器有没有向服务器通信？如果没有，服务器如何确认客户端已经扫了二维码，从而开始同步计算？ 接下来我会介绍一下背后的 RFC 标准，涉及函数 f 的定义、时间窗口如何计算、安全问题等、如果不感兴趣，可以跳过。'>
+* 当使用验证器扫描二维码的时候，验证器有没有向服务器通信？如果没有，服务器如何确认客户端已经扫了二维码，从而开始同步计算？ 接下来我会介绍一下背后的 RFC 标准，涉及函数 f 的定义、时间窗口如何计算、安全问题等、如果不感兴趣，可以跳过。'>
 <meta property='og:url' content='https://studymakesmehappy.club/posts/%E4%B8%A4%E6%AD%A5%E9%AA%8C%E8%AF%81%E5%99%A8%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/'>
 <meta property='og:site_name' content='Home'>
 <meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='2FA'><meta property='article:tag' content='HMAC'><meta property='article:tag' content='Authenticator'><meta property='article:tag' content='TOTP'><meta property='article:published_time' content='2019-07-27T17:13:56&#43;08:00'/><meta property='article:modified_time' content='2019-07-27T17:13:56&#43;08:00'/><meta name='twitter:card' content='summary'>
@@ -178,14 +178,14 @@ otpauth://totp/GitHub:easy-pieces?secret=iamapseudosecret&amp;issuer=GitHub</pre
 </ul>
 
 <p>这就是两步验证器的基本原理。这里提一个问题供大家思考：</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4">当使用验证器扫描二维码的时候，验证器有没有向服务器通信？如果没有，服务器如何确认客户端已经扫了二维码，从而开始同步计算？</pre></div>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4">* 当使用验证器扫描二维码的时候，验证器有没有向服务器通信？如果没有，服务器如何确认客户端已经扫了二维码，从而开始同步计算？</pre></div>
 <p>接下来我会介绍一下背后的 RFC 标准，涉及函数 f 的定义、时间窗口如何计算、安全问题等、如果不感兴趣，可以跳过。</p>
 
 <h2 id="标准">标准</h2>
 
 <p>无论什么两步验证器，都有以上特性，那背后就很可能有一个标准来定义两步验证器怎么实现。这个标准就是 <a href="https://tools.ietf.org/html/rfc6238" target="_blank">RFC 6238：Time-Based One-Time Password(TOTP) Algorithm</a></p>
 
-<p>字面上的意思很直白，基于时间的一次性密码生成算法。TOTP 基于 HOTP <a href="https://tools.ietf.org/html/rfc4226" target="_blank">RFC4226:HMAC-based One-Time Password (HOTP) algorithm</a></p>
+<p>字面上的意思很直白，基于时间的一次性密码生成算法。TOTP 基于 <a href="https://tools.ietf.org/html/rfc4226" target="_blank">RFC4226:HMAC-based One-Time Password (HOTP) algorithm</a></p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># S 是 secret，T 是时间窗口
 TOTP(S,T) = Truncate(HMAC(S,T))</pre></div>
 <h3 id="时间窗口">时间窗口</h3>
@@ -221,6 +221,8 @@ TOTP(S,T) = Truncate(HMAC(S,T))</pre></div>
 
 <p>比如 Github 的就可以这样改</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4">otpauth://totp/GitHub:easy-pieces?digits=8&amp;period=60&amp;algorithm=SHA256&amp;secret=iamapseudosecret&amp;issuer=GitHub</pre></div>
+<p>最后有一点需要提醒一下，这个 uri 二维码<strong>绝对不能</strong>分享。经过实际测试验证，一个二维码可以被多次扫描，也没有过期时间。因为在服务器端并不知道二维码被扫描的事件。</p>
+
 <h2 id="总结">总结</h2>
 
 <p>由现象来猜想可能的实现，最后查阅标准来验证猜想，是一个很有趣的事情。但其实我是看了标准后，才有之前的猜想的。主要是为了写作考虑，莫怪。</p>
