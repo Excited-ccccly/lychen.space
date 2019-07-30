@@ -6,8 +6,10 @@ copyright = ""
 theme = "minimo"
 publishDir = "docs"
 
+defaultContentLanguage = "zh"
 disqusShortname = ""
 googleAnalytics = "UA-129765949-1"
+hasCJKLanguage = true
 
 Paginate = 10
 preserveTaxonomyNames = true
@@ -20,8 +22,6 @@ PygmentsCodeFences = true
 pygmentsCodefencesGuessSyntax = true
 
 enableEmoji = true
-
-# Missing translations will default to this content language
 
 [params.info]
 description = "Study makes me happy"
@@ -85,13 +85,12 @@ url = "https://github.com/Excited-ccccly/studymakesmehappy.club"
 [blackfriday]
 hrefTargetBlank = true
 
-defaultContentLanguage="zh"
 [languages]
 # edit this block for your own language
 [languages.en]
 lang = "en"
 languageName = "English"
-weight = 1
+weight = 2
 [languages.zh]
 lang = "zh"
 languageName = "Chinese"
@@ -107,5 +106,3 @@ issueTerm = "title" # pathname / url / title
 [params.comments.utterances.github]
 username = "Excited-ccccly"
 repository = "studymakesmehappy.club"
-
-hasCJKLanguage = true

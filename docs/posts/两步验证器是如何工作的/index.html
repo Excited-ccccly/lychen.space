@@ -1,34 +1,12 @@
 <!DOCTYPE html>
-<html lang='en'><head>
+<html lang='zh'><head>
   <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name='description' content='当今一个互联网账号，几乎包含了你所有的信息。一位 Google 的重度用户，会上传他的照片、文件、通讯录、Docs、密码、浏览记录、搜索记录等，一个账号行走天下。虽然很方便，但随之而来的安全隐患就必须引起重视了。我们已经厌烦了各种照片泄漏事件了，对吧？
-记住，密码总是不安全的，为了牢牢地保护好账号，开启两步验证(2FA)是一个好主意。两步验证开启之后，在输入正确的账号和密码之后，需要一步额外的信息验证，比如短信验证码、邮件验证码。
-可每次打开手机、邮箱查看验证码多麻烦啊，短信有延迟、邮件会进垃圾邮件，再说也不是很安全。账号服务商为了方便用户登陆，会推出相应的两步验证器，比如 Google Authenticator 和 Microsoft Authenticator 等，相信不少用户都听过或用过。两步验证器会提供给你一个神秘代码，一般是6位或者8位数字，有效期一般为30s，可以用它作为额外的安全信息。
-有趣的是，一个两步验证器，可以支持多个不同的账号。比如我的验证器里有 Microsoft, Google, Github 和 Firefox 的账号。在登陆的时候，在网页中填入相应的神秘代码就好。（注意下图中的代码和上图中并不一致，因为是在不同时间截的图啦。）
-更神奇的是，两步验证器即使在离线（断网）的情况下，也能正常工作。这就很有意思啦，好奇的同学一定会思考，“6位或8位、30s、多账号通用、断网也能用”，这冥冥之中一定意味着什么。宇宙的奥秘？人生的意义？还是那通往一切的终极答案？别瞎想啦，少年，今天我就带你揭开两步验证器的神秘面纱。
-猜想 让我们做一些猜想：
- 断网也能用，说明验证器客户端和认证服务器之间没有数据传输。没有通信的情况下，验证器产生的数字，可以通过服务器的认证，说明服务器也产生了一样的数字 有效期一般为30s，说明产生数字这个计算的一个变量是当前时间，每30s为一个窗口。 在同一个时间窗口下，不同的账号产生了不同的数字，说明这个计算还有一个变量是和账号有关的。这个账号相关的变量是什么还不确定，我们通过设置 Github 两步验证来研究一下。  使用验证器扫描 Github 服务器生成的二维码（这里做了马赛克处理），验证器立马就能产生一个6位数字，然后在下方输入这个数字，验证一下，和服务器建立同步。看来关键是，二维码中的数据是什么？我提取之后，发现它长下面这样
-# easy-pieces 是我为这篇文章注册的 Github 小号的用户名 # secret 是 Github 生成的 secret，出于安全考虑，这里用了伪 secret otpauth://totp/GitHub:easy-pieces?secret=iamapseudosecret&amp;issuer=GitHub 可以发现关键就是用户名和 secret，由于 secret 已经能唯一代表一个账号，但用户名不一定能（不同账号可以有同样的用户名）唯一代表一个账号，所以 secret 就是生成6位数字所依赖的变量。
-生成这个数字的公式可以表示为：
-number = f(current_datetime, secret) 总结一下：
- 验证器客户端和服务器首先通过二维码，协商出一个 secret，然后各自保存 在用户登录的时候，打开验证器，验证器会根据当前时间窗口以及之前协商好的 secret，算出一个数字 用户手动输入这个数字，传输到服务器 服务器使用同样的函数，算出一个数字，判断与用户输入的数字是否匹配  这就是两步验证器的基本原理。这里提一个问题供大家思考：
-* 当使用验证器扫描二维码的时候，验证器有没有向服务器通信？如果没有，服务器如何确认客户端已经扫了二维码，从而开始同步计算？ 接下来我会介绍一下背后的 RFC 标准，涉及函数 f 的定义、时间窗口如何计算、安全问题等、如果不感兴趣，可以跳过。'>
+<meta name='description' content='当今一个互联网账号，几乎包含了你所有的信息。一位 Google 的重度用户，会上传他的照片、文件、通讯录、Docs、密码、浏览记录、搜索记录等，一个账号行'>
 <meta name='theme-color' content='#ffcd00'>
 
 <meta property='og:title' content='两步验证器是如何工作的 • Home'>
-<meta property='og:description' content='当今一个互联网账号，几乎包含了你所有的信息。一位 Google 的重度用户，会上传他的照片、文件、通讯录、Docs、密码、浏览记录、搜索记录等，一个账号行走天下。虽然很方便，但随之而来的安全隐患就必须引起重视了。我们已经厌烦了各种照片泄漏事件了，对吧？
-记住，密码总是不安全的，为了牢牢地保护好账号，开启两步验证(2FA)是一个好主意。两步验证开启之后，在输入正确的账号和密码之后，需要一步额外的信息验证，比如短信验证码、邮件验证码。
-可每次打开手机、邮箱查看验证码多麻烦啊，短信有延迟、邮件会进垃圾邮件，再说也不是很安全。账号服务商为了方便用户登陆，会推出相应的两步验证器，比如 Google Authenticator 和 Microsoft Authenticator 等，相信不少用户都听过或用过。两步验证器会提供给你一个神秘代码，一般是6位或者8位数字，有效期一般为30s，可以用它作为额外的安全信息。
-有趣的是，一个两步验证器，可以支持多个不同的账号。比如我的验证器里有 Microsoft, Google, Github 和 Firefox 的账号。在登陆的时候，在网页中填入相应的神秘代码就好。（注意下图中的代码和上图中并不一致，因为是在不同时间截的图啦。）
-更神奇的是，两步验证器即使在离线（断网）的情况下，也能正常工作。这就很有意思啦，好奇的同学一定会思考，“6位或8位、30s、多账号通用、断网也能用”，这冥冥之中一定意味着什么。宇宙的奥秘？人生的意义？还是那通往一切的终极答案？别瞎想啦，少年，今天我就带你揭开两步验证器的神秘面纱。
-猜想 让我们做一些猜想：
- 断网也能用，说明验证器客户端和认证服务器之间没有数据传输。没有通信的情况下，验证器产生的数字，可以通过服务器的认证，说明服务器也产生了一样的数字 有效期一般为30s，说明产生数字这个计算的一个变量是当前时间，每30s为一个窗口。 在同一个时间窗口下，不同的账号产生了不同的数字，说明这个计算还有一个变量是和账号有关的。这个账号相关的变量是什么还不确定，我们通过设置 Github 两步验证来研究一下。  使用验证器扫描 Github 服务器生成的二维码（这里做了马赛克处理），验证器立马就能产生一个6位数字，然后在下方输入这个数字，验证一下，和服务器建立同步。看来关键是，二维码中的数据是什么？我提取之后，发现它长下面这样
-# easy-pieces 是我为这篇文章注册的 Github 小号的用户名 # secret 是 Github 生成的 secret，出于安全考虑，这里用了伪 secret otpauth://totp/GitHub:easy-pieces?secret=iamapseudosecret&amp;issuer=GitHub 可以发现关键就是用户名和 secret，由于 secret 已经能唯一代表一个账号，但用户名不一定能（不同账号可以有同样的用户名）唯一代表一个账号，所以 secret 就是生成6位数字所依赖的变量。
-生成这个数字的公式可以表示为：
-number = f(current_datetime, secret) 总结一下：
- 验证器客户端和服务器首先通过二维码，协商出一个 secret，然后各自保存 在用户登录的时候，打开验证器，验证器会根据当前时间窗口以及之前协商好的 secret，算出一个数字 用户手动输入这个数字，传输到服务器 服务器使用同样的函数，算出一个数字，判断与用户输入的数字是否匹配  这就是两步验证器的基本原理。这里提一个问题供大家思考：
-* 当使用验证器扫描二维码的时候，验证器有没有向服务器通信？如果没有，服务器如何确认客户端已经扫了二维码，从而开始同步计算？ 接下来我会介绍一下背后的 RFC 标准，涉及函数 f 的定义、时间窗口如何计算、安全问题等、如果不感兴趣，可以跳过。'>
+<meta property='og:description' content='当今一个互联网账号，几乎包含了你所有的信息。一位 Google 的重度用户，会上传他的照片、文件、通讯录、Docs、密码、浏览记录、搜索记录等，一个账号行'>
 <meta property='og:url' content='https://studymakesmehappy.club/posts/%E4%B8%A4%E6%AD%A5%E9%AA%8C%E8%AF%81%E5%99%A8%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/'>
 <meta property='og:site_name' content='Home'>
 <meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='2FA'><meta property='article:tag' content='HMAC'><meta property='article:tag' content='Authenticator'><meta property='article:tag' content='TOTP'><meta property='article:published_time' content='2019-07-27T17:13:56&#43;08:00'/><meta property='article:modified_time' content='2019-07-27T17:13:56&#43;08:00'/><meta name='twitter:card' content='summary'>
@@ -60,7 +38,7 @@ if (!doNotTrack) {
 </head>
 <body class='page type-posts'>
 
-  <div class='site'><a class='screen-reader-text' href='#content'>Skip to Content</a><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='site'><a class='screen-reader-text' href='#content'>跳到文章</a><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='主菜单'>
   <div class='container'>
     
     <ul><li class='item'>
@@ -87,7 +65,7 @@ if (!doNotTrack) {
       <main id='content'>
 
 
-<article lang='en' class='entry'>
+<article lang='zh' class='entry'>
   <header class='header entry-header'>
   <div class='container sep-after'>
     <div class='header-info'>
@@ -104,7 +82,7 @@ if (!doNotTrack) {
   <line x1="3" y1="10" x2="21" y2="10"/>
   
 </svg>
-<span class='screen-reader-text'>Posted on </span>
+<span class='screen-reader-text'>发布 </span>
   <time class='entry-date' datetime='2019-07-27T17:13:56&#43;08:00'>2019, Jul 27</time>
 </span>
 
@@ -116,7 +94,7 @@ if (!doNotTrack) {
   <polyline points="12 6 12 12 15 15"/>
   
 </svg>
-One min read
+需要5分钟读完
 </span>
 
 
@@ -227,6 +205,20 @@ TOTP(S,T) = Truncate(HMAC(S,T))</pre></div>
 
 <p>由现象来猜想可能的实现，最后查阅标准来验证猜想，是一个很有趣的事情。但其实我是看了标准后，才有之前的猜想的。主要是为了写作考虑，莫怪。</p>
 
+<h2 id="references">References</h2>
+
+<ul>
+<li><a href="https://tools.ietf.org/html/rfc6238" target="_blank">TOTP: Time-Based One-Time Password Algorithm</a></li>
+<li><a href="https://tools.ietf.org/html/rfc4226" target="_blank">HOTP: An HMAC-Based One-Time Password Algorithm</a></li>
+<li><a href="https://en.wikipedia.org/wiki/HMAC" target="_blank">HMAC</a></li>
+</ul>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+<li><a href="/files/两步验证器是如何工作的/TOTP.java">TOTP Implemented in Java</a></li>
+</ul>
+
 </div>
 
   
@@ -236,14 +228,14 @@ TOTP(S,T) = Truncate(HMAC(S,T))</pre></div>
   <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
   
 </svg>
-<span class='screen-reader-text'>Categories: </span><a class='category' href='/categories/security/'>Security</a></div>
+<span class='screen-reader-text'>分类: </span><a class='category' href='/categories/security/'>Security</a></div>
 <div class='tags'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
   <line x1="7" y1="7" x2="7" y2="7"/>
   
 </svg>
-<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/2fa/'>2FA</a>, <a class='tag' href='/tags/hmac/'>HMAC</a>, <a class='tag' href='/tags/authenticator/'>Authenticator</a>, <a class='tag' href='/tags/totp/'>TOTP</a></div>
+<span class='screen-reader-text'>标签: </span><a class='tag' href='/tags/2fa/'>2FA</a>, <a class='tag' href='/tags/hmac/'>HMAC</a>, <a class='tag' href='/tags/authenticator/'>Authenticator</a>, <a class='tag' href='/tags/totp/'>TOTP</a></div>
 
   </div>
 </footer>
@@ -260,8 +252,8 @@ TOTP(S,T) = Truncate(HMAC(S,T))</pre></div>
   <polyline points="10 18 4 12 10 6"/>
   
 </svg>
- Previous</span>
-        <span class='screen-reader-text'>Previous post: </span>TrumpScript, 让编程再次伟大！</a>
+ 上一个</span>
+        <span class='screen-reader-text'>上一篇文章: </span>TrumpScript, 让编程再次伟大！</a>
     </div></div>
 </nav>
 
@@ -279,10 +271,10 @@ TOTP(S,T) = Truncate(HMAC(S,T))</pre></div>
       </main>
 
       <footer id='footer' class='footer'>
-        <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+        <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='社交菜单'>
     <ul><li>
         <a href='https://github.com/Excited-ccccly' target='_blank' rel='noopener'>
-          <span class='screen-reader-text'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+          <span class='screen-reader-text'>在新标签打开Github的账户</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
   
@@ -290,7 +282,7 @@ TOTP(S,T) = Truncate(HMAC(S,T))</pre></div>
 </a>
       </li><li>
         <a href='mailto:geekchenlingyun@outlook.com' target='_blank' rel='noopener'>
-          <span class='screen-reader-text'>Contact via Email</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+          <span class='screen-reader-text'>通过邮件联系</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
   <polyline points="22,6 12,13 2,6"/>

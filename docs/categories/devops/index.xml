@@ -16,11 +16,7 @@
       <pubDate>Tue, 27 Mar 2018 15:27:27 +0800</pubDate>
       
       <guid>https://studymakesmehappy.club/posts/kubernetes-ingress/</guid>
-      <description>kubernetes101 介绍了 Kubernetes 的基本用法，通过 NodePort 的形式对外暴露 Service 来提供服务。
-NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE express-app NodePort 10.0.0.151 &amp;lt;none&amp;gt; 80:31530/TCP 19m kubernetes ClusterIP 10.0.0.1 &amp;lt;none&amp;gt; 443/TCP 1d 这时候可以使用 NodeIP:NodePort 来从外界访问这个服务，其中 192.168.99.100 是集群中任意一个 Node 节点的 IP
-$ curl http://192.168.99.100:31530 hello world 但每次使用 IP+Port 访问服务的方式很不方便。在单机上，可以使用 nginx 的反向代理，实现通过域名访问服务。
-nginx.conf
-http { upstream my-api { server 127.0.0.1:8080; } server { listen 80; server_name api.domain.com; location / { proxy_pass http://my-api; } } } 启用 nginx 后，就可以通过访问 http://api.</description>
+      <description>kubernetes101 介绍了 Kubernetes 的基本用法，通过 NodePort 的形式对外暴露 Service 来提供服务。 NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE express-app NodePort 10.0.0.151 &amp;lt;none&amp;gt; 80:31530/TCP 19m kubernetes ClusterIP 10.0.0.1 &amp;lt;none&amp;gt; 443/TCP 1d 这时候可以使用 NodeIP:NodePort 来从外界访问这个服务，其中 192.168.99.100 是集</description>
     </item>
     
     <item>
@@ -29,14 +25,7 @@ http { upstream my-api { server 127.0.0.1:8080; } server { listen 80; server_nam
       <pubDate>Sun, 04 Mar 2018 15:43:15 +0800</pubDate>
       
       <guid>https://studymakesmehappy.club/posts/set-up-development-environment-on-windows/</guid>
-      <description>闲言碎语：长久以来，Windows 一直被诟病在开源领域上开发体验不好，但最近几年，微软做出了巨大的改变，全力拥抱了开源，Github 上随处可见微软开发者的 Contribution；同时，笔记本电脑领域上几乎所有的创新都来自于 Windows 阵营，Windows 电脑变得越来越酷。这两点促使我专门为 Windows 开发社区做出自己的一份贡献。希望大家保持开放与沟通，避免无意义的争吵，塑造良好的社区氛围。
- 这篇博客会介绍一些加快开发效率的工具，会安利以下(类别的)产品:
- Package Manager(包管理器) Linux Toolkit(Linux 工具包) Terminal Emulator(终端模拟器) Windows Subsystem for Linux(Windows 上的 Linux 子系统) Oh-My-Zsh Editor&amp;amp;IDE(编辑器和集成开发环境) Font(字体)  Package Manager scoop 是 Windows 上一个很友好的包管理器，类似于 Ubuntu 上的 apt，macos 上的 homebrew。
-Install 打开 Powershell
-set-executionpolicy remotesigned -s currentuser iex (new-object net.webclient).downloadstring(&amp;#39;https://get.scoop.sh&amp;#39;) Usage scoop 可以简化 Windows 上的软件安装流程。
-scoop install nodejs scoop 的软件库很全，几乎你想要的都能找到，再也不用打开浏览器-&amp;gt;看文档-&amp;gt;下载-&amp;gt;配置环境变量了。
-Windows 平台上还有另外一个知名的包管理器 chocolatey，scoop 的优势在于不需管理员权限，因为所有的软件安装在用户本地，只对该用户有效，也减少了环境变量污染等问题，提高了使用体验。
-Linux Toolkit Linux 爱好者的你一定很希望在 Windows 上也可以使用 grep, sed, awk 等等工具。</description>
+      <description>闲言碎语：长久以来，Windows 一直被诟病在开源领域上开发体验不好，但最近几年，微软做出了巨大的改变，全力拥抱了开源，Github 上随处可</description>
     </item>
     
     <item>
@@ -45,13 +34,7 @@ Linux Toolkit Linux 爱好者的你一定很希望在 Windows 上也可以使用
       <pubDate>Wed, 14 Feb 2018 01:05:40 +0800</pubDate>
       
       <guid>https://studymakesmehappy.club/posts/speed-up-your-deployment-using-docker-compose/</guid>
-      <description>Docker 的出现，优秀的隔离性让我们可以将任何应用部署到任何服务器上面，不再需要关注服务器的环境配置，简化了单个应用的部署流程。但在更多的情况下，应用往往会依赖于其他服务，比如前端网页依赖于后端服务，后端服务依赖于数据库。我们可以依次部署每个服务，但每次重复的手工操作让人厌烦。我们需要一个工具，只要描述好整个应用之间的服务依赖关系，将这个描述文件交给这个工具，一条命令便能启动整个系统。这种类型的工具有很多，这篇博客里聊的是Docker Compose。
-本文假设你有基本的 Docker 使用基础，你将会学习到以下几点：
- Docker Compose 是什么？它适用于哪些场景？ 安装和使用 Docker Compose 注入环境变量来配置你的程序 挂载磁盘来持久化你的容器数据  Overview Docker Compose 用于定义和运行多容器应用，它使用 YAML 文件来描述服务之间的依赖关系，一条简单的docker compose up命令便能启动你的整个应用。 Compose 多用于单主机部署，比如在本地电脑上搭建你的开发环境，CI／CD 服务器上搭建集成测试环境等简单场景。当然 Docker 官方说 Compose 也可以用于生产环境，只要你用 Swarm 就好了。但目前的情况是，Kubernetes 大行其道，Swarm 日渐式微，就连 Docker 官方也都迫不得已拥抱了 Kubernetes。现在生产环境多用 Kubernetes 来部署管理多容器应用，如果你对 Kubernetes 感兴趣，可以参考我之前的入门文章Kubernetes101。
-我个人不是任何技术的信徒，每种技术都有它存在的道理。Docker Compose 简单方便，不需要花费精力部署调试 Kubernetes，适用于开发、测试以及个人的小应用场景；Kubernetes 成熟、自由、社区资源丰富，适用生产环境。建议大家可以亲自动手实践一下这两项技术，说实话，也花不了一晚上的时间。亲身体验之后，才能给技术恰如其分地归类，知道它们适用的场景，需要的时候顺手就用好了。
-Setup Windows 和 Mac 下的 Docker 客户端自带 Docker Compose， Ubuntu 下直接apt install docker-compose即可
-详情参考Install Docker Compose
-Compose Up 以一个简单的 express app 为例</description>
+      <description>Docker 的出现，优秀的隔离性让我们可以将任何应用部署到任何服务器上面，不再需要关注服务器的环境配置，简化了单个应用的部署流程。但在更多的情况下，应</description>
     </item>
     
     <item>
@@ -60,14 +43,7 @@ Compose Up 以一个简单的 express app 为例</description>
       <pubDate>Sun, 07 Jan 2018 23:31:08 +0800</pubDate>
       
       <guid>https://studymakesmehappy.club/posts/kubernetes101/</guid>
-      <description>这是一篇 kubernetes（简称 k8s，将中间的 8 个字母简写成“8”） 的基础教程，会使用实际例子来讲解 k8s 中的基础概念。
-在这个教程中，假设你有基本的 Docker 使用基础，你将会学习到以下几点：
- 搭建 k8s 集群 部署一个容器化的应用到集群中 通过 Service 暴露服务 通过 Replica 来伸缩服务实例 通过 Rolling Update 更新服务 Deployment, Pod, Node, Service 等相关的概念  安装 cli kubectl 是 k8s 的命令行工具，可以方便地管理集群
-安装集群 有两种方式可以安装 k8s 集群
-云上安装 k8s 如果你有多台云服务器，使用 rancher 来搭建 k8s 集群是一个方便快捷的选择。
-一般来说，国外的解决方案在中国很可能出现水土不服的情况，需要额外参考这篇文章————原生加速中国区Kubernetes安装
-额外，还需要注意以下几点:
- 云服务器的名字不能过长，超过 63 个字符之后，会导致该节点无法注册成功。 需要使用和 rancher 兼容的 docker 版本，参考这个列表  搭建好集群之后，点击 UI 界面上的 kubernetes &amp;gt; cli &amp;gt; generate config，按照说明配置 kubectl ，即可将 kubectl 连接上 rancher 搭建的 k8s 集群</description>
+      <description>这是一篇 kubernetes（简称 k8s，将中间的 8 个字母简写成“8”） 的基础教程，会使用实际例子来讲解 k8s 中的基础概念。 在这个教程中，假设你</description>
     </item>
     
   </channel>
