@@ -5,7 +5,7 @@
     <link>https://studymakesmehappy.club/</link>
     <description>Recent content on Home</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 27 Jul 2019 17:13:56 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 11 Aug 2019 15:11:10 +0800</lastBuildDate>
     
 	<atom:link href="https://studymakesmehappy.club/index.xml" rel="self" type="application/rss+xml" />
     
@@ -17,6 +17,15 @@
       
       <guid>https://studymakesmehappy.club/about/</guid>
       <description>2017 年毕业于华东师范大学软件学院，热爱技术与分享，研究实战过 Kubernetes, Java 和 Javascript，在 DevOps 和后端开发有着较丰富的经验。同时对区块链技术和 System Programming</description>
+    </item>
+    
+    <item>
+      <title>Linux Kernel 中的数据结构——泛型 LinkedList</title>
+      <link>https://studymakesmehappy.club/posts/linux-kernel-%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%B3%9B%E5%9E%8B-linkedlist/</link>
+      <pubDate>Sun, 11 Aug 2019 15:11:10 +0800</pubDate>
+      
+      <guid>https://studymakesmehappy.club/posts/linux-kernel-%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%B3%9B%E5%9E%8B-linkedlist/</guid>
+      <description>这是系列文章 「Linux Kernel 中的数据结构」的第一篇，欢迎关注 众所周知，Linux Kernel 是用 C 写的，但是 C 语言并没有像 Java 那样原生支持 Generic Program</description>
     </item>
     
     <item>

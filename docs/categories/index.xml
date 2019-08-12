@@ -5,10 +5,19 @@
     <link>https://studymakesmehappy.club/categories/</link>
     <description>Recent content in Categories on Home</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 27 Jul 2019 17:13:56 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 11 Aug 2019 15:11:10 +0800</lastBuildDate>
     
 	<atom:link href="https://studymakesmehappy.club/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Data Structures</title>
+      <link>https://studymakesmehappy.club/categories/data-structures/</link>
+      <pubDate>Sun, 11 Aug 2019 15:11:10 +0800</pubDate>
+      
+      <guid>https://studymakesmehappy.club/categories/data-structures/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Security</title>

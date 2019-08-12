@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Structures on Home</title>
+    <link>https://studymakesmehappy.club/tags/data-structures/</link>
+    <description>Recent content in Data Structures on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 11 Aug 2019 15:11:10 +0800</lastBuildDate>
+    
+	<atom:link href="https://studymakesmehappy.club/tags/data-structures/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Linux Kernel 中的数据结构——泛型 LinkedList</title>
+      <link>https://studymakesmehappy.club/posts/linux-kernel-%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%B3%9B%E5%9E%8B-linkedlist/</link>
+      <pubDate>Sun, 11 Aug 2019 15:11:10 +0800</pubDate>
+      
+      <guid>https://studymakesmehappy.club/posts/linux-kernel-%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%B3%9B%E5%9E%8B-linkedlist/</guid>
+      <description>这是系列文章 「Linux Kernel 中的数据结构」的第一篇，欢迎关注 众所周知，Linux Kernel 是用 C 写的，但是 C 语言并没有像 Java 那样原生支持 Generic Program</description>
+    </item>
+    
+  </channel>
+</rss>
