@@ -11,7 +11,7 @@
 <meta property='og:site_name' content='Home'>
 <meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='TrumpScript'><meta property='article:tag' content='Trump'><meta property='article:tag' content='America'><meta property='article:tag' content='Python'><meta property='article:tag' content='Compiler'><meta property='article:published_time' content='2019-06-23T23:34:09&#43;08:00'/><meta property='article:modified_time' content='2019-06-23T23:34:09&#43;08:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.55.6" />
+<meta name="generator" content="Hugo 0.56.3" />
 
   <title>TrumpScript, 让编程再次伟大！ • Home</title>
   <link rel='canonical' href='https://studymakesmehappy.club/posts/trumpscript-%E8%AE%A9%E7%BC%96%E7%A8%8B%E5%86%8D%E6%AC%A1%E4%BC%9F%E5%A4%A7/'>
@@ -293,7 +293,7 @@ America is great.</pre></div>
     <span style="color:#6ab825;font-weight:bold">if</span> <span style="color:#6ab825;font-weight:bold">not</span> args.shut_up:
         Utils.verify_system(args.Wall)
     <span style="color:#999;font-style:italic"># Compile and go</span>
-    Compiler().<span style="color:#24909d">compile</span>(sys.argv[-<span style="color:#3677a9">1</span>])</code></pre></div>
+    Compiler().compile(sys.argv[-<span style="color:#3677a9">1</span>])</code></pre></div>
 <p><code>main.py</code> 使用 argparse 来解析参数，可以发现 shut_up 在个 flag 控制着是否校验使用者的电脑系统，<code>verify_system</code> 这个函数稍后分析，先看主要的。</p>
 
 <p><code>sys.argv[-1]</code>取最后一个参数，也就是 TrumpScript 脚本程序的路径，然后编译</p>

@@ -11,7 +11,7 @@
 <meta property='og:site_name' content='Home'>
 <meta property='og:type' content='article'><meta property='og:image' content='https://www.gravatar.com/avatar/374150c4ee619dfed2491b9bb5bcd476?s=256'><meta property='article:section' content='posts'><meta property='article:tag' content='Kubernetes'><meta property='article:tag' content='Ingress'><meta property='article:tag' content='nginx'><meta property='article:tag' content='Loadbalancer'><meta property='article:published_time' content='2018-03-27T15:27:27&#43;08:00'/><meta property='article:modified_time' content='2018-03-27T15:27:27&#43;08:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.55.6" />
+<meta name="generator" content="Hugo 0.56.3" />
 
   <title>Kubernetes Ingress • ccccly</title>
   <link rel='canonical' href='https://studymakesmehappy.club/posts/kubernetes-ingress/'>
@@ -198,25 +198,22 @@ hello world</code></pre></div>
 <p>为了方便展示，以下所有使用到的配置文件都使用网络地址，不显示实际的内容，可以单独下载文件查看，也可以前往 <a href="https://github.com/Excited-ccccly/studymakesmehappy.club/tree/master/static/files/kubernetes/ingress" target="_blank">ingress 配置文件夹</a> 查看所有文件</p>
 
 <ul>
-<li>为了方便管理，我们为 Ingress 单独创建一个 namespace</li>
+<li><p>为了方便管理，我们为 Ingress 单独创建一个 namespace</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f  https://raw.githubusercontent.com/Excited-ccccly/studymakesmehappy.club/master/static/files/kubernetes/ingress/01-namespace.yaml</code></pre></div></li>
+
+<li><p>创建默认的 http 后端，Ingress 接收到一个 404 的地址，交给这个后端来处理</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f  https://raw.githubusercontent.com/Excited-ccccly/studymakesmehappy.club/master/static/files/kubernetes/ingress/02-default-backend.yaml</code></pre></div></li>
+
+<li><p>创建 ingress nginx 所需的配置文件。默认的配置限制 body size 为 1m，这里稍微调大一些，方便文件上传</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f  https://raw.githubusercontent.com/Excited-ccccly/studymakesmehappy.club/master/static/files/kubernetes/ingress/03-configmap.yaml</code></pre></div></li>
+
+<li><p>创建 ingress nginx 服务</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f  https://raw.githubusercontent.com/Excited-ccccly/studymakesmehappy.club/master/static/files/kubernetes/ingress/04-ingress-nginx.yaml</code></pre></div></li>
+
+<li><p>通过 LoadBalancer 的方式对外暴露 ingress nginx 服务</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f  https://raw.githubusercontent.com/Excited-ccccly/studymakesmehappy.club/master/static/files/kubernetes/ingress/05-service.yaml</code></pre></div></li>
 </ul>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f  https://raw.githubusercontent.com/Excited-ccccly/studymakesmehappy.club/master/static/files/kubernetes/ingress/01-namespace.yaml</code></pre></div>
-<ul>
-<li>创建默认的 http 后端，Ingress 接收到一个 404 的地址，交给这个后端来处理</li>
-</ul>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f  https://raw.githubusercontent.com/Excited-ccccly/studymakesmehappy.club/master/static/files/kubernetes/ingress/02-default-backend.yaml</code></pre></div>
-<ul>
-<li>创建 ingress nginx 所需的配置文件。默认的配置限制 body size 为 1m，这里稍微调大一些，方便文件上传</li>
-</ul>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f  https://raw.githubusercontent.com/Excited-ccccly/studymakesmehappy.club/master/static/files/kubernetes/ingress/03-configmap.yaml</code></pre></div>
-<ul>
-<li>创建 ingress nginx 服务</li>
-</ul>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f  https://raw.githubusercontent.com/Excited-ccccly/studymakesmehappy.club/master/static/files/kubernetes/ingress/04-ingress-nginx.yaml</code></pre></div>
-<ul>
-<li>通过 LoadBalancer 的方式对外暴露 ingress nginx 服务</li>
-</ul>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f  https://raw.githubusercontent.com/Excited-ccccly/studymakesmehappy.club/master/static/files/kubernetes/ingress/05-service.yaml</code></pre></div>
+
 <p>获取 ingress nginx 服务的外部 LoadBalancer 的地址</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  kubectl get svc --namespace ingress-nginx</code></pre></div>
 <ul>
@@ -224,9 +221,10 @@ hello world</code></pre></div>
 
 <p>*.domain.com -&gt; IngressNginxExternalLoadBalancerIP</p></li>
 
-<li><p>创建一条 Ingress 规则(暂时不带 TLS 和 Basic Auth)，将 <strong>k8s-dashboard.domain.com</strong> 转发至 kubernetes-dashboard 服务对应的 Pod 中。</p></li>
+<li><p>创建一条 Ingress 规则(暂时不带 TLS 和 Basic Auth)，将 <strong>k8s-dashboard.domain.com</strong> 转发至 kubernetes-dashboard 服务对应的 Pod 中。</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f  https://raw.githubusercontent.com/Excited-ccccly/studymakesmehappy.club/master/static/files/kubernetes/ingress/06-k8s-dashboard-ingress-without-neither-tls-or-basic-auth.yaml</code></pre></div></li>
 </ul>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f  https://raw.githubusercontent.com/Excited-ccccly/studymakesmehappy.club/master/static/files/kubernetes/ingress/06-k8s-dashboard-ingress-without-neither-tls-or-basic-auth.yaml</code></pre></div>
+
 <p>ingress-controller 会监听集群中所有 Ingress 规则的变动，保持更新。等待大约 10s，就可以尝试访问 <strong>k8s-dashboard.domain.com</strong> 了，看看是否是熟悉的 kubernetes dashboard.</p>
 
 <h2 id="ingress-的-tls-配置">Ingress 的 TLS 配置</h2>
@@ -238,13 +236,13 @@ hello world</code></pre></div>
 <p>购买的 HTTPS 证书一般会有两个文件，domain.key 和 domain.pem</p>
 
 <ul>
-<li>创建 TLS secret</li>
+<li><p>创建 TLS secret</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl create secret tls domain-tls --cert=path/to/domain.pem --key=path/to/domain.key</code></pre></div></li>
+
+<li><p>创建好 domain-tls 的 secret 后，更新 Ingress 规则，加上 TLS 配置</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f  https://raw.githubusercontent.com/Excited-ccccly/studymakesmehappy.club/master/static/files/kubernetes/ingress/06-k8s-dashboard-ingress-with-tls.yaml</code></pre></div></li>
 </ul>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl create secret tls domain-tls --cert=path/to/domain.pem --key=path/to/domain.key</code></pre></div>
-<ul>
-<li>创建好 domain-tls 的 secret 后，更新 Ingress 规则，加上 TLS 配置</li>
-</ul>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f  https://raw.githubusercontent.com/Excited-ccccly/studymakesmehappy.club/master/static/files/kubernetes/ingress/06-k8s-dashboard-ingress-with-tls.yaml</code></pre></div>
+
 <p>HTTPS 生效大概需要1分钟，之后访问 <strong>k8s-dashboard.domain.com</strong>，绿色的 HTTPS 认证就出现了。</p>
 
 <h2 id="ingress-的-basic-auth-配置">Ingress 的 basic auth 配置</h2>
@@ -254,21 +252,20 @@ hello world</code></pre></div>
 <p>简单起见，以 basic-auth 为例</p>
 
 <ul>
-<li>创建 basic auth 文件，这里创建了一个名为 auth，用户名是 foo，密码是输入的密码的 basic auth 文件。Windows 下没有 htpasswd，可以使用 Windows Subsystem for Linux 来生成，详情请参考 <a href="https://studymakesmehappy.club/posts/set-up-development-environment-on-windows/" target="_blank">Set Up Development Environment on Windows</a></li>
-</ul>
+<li><p>创建 basic auth 文件，这里创建了一个名为 auth，用户名是 foo，密码是输入的密码的 basic auth 文件。Windows 下没有 htpasswd，可以使用 Windows Subsystem for Linux 来生成，详情请参考 <a href="https://studymakesmehappy.club/posts/set-up-development-environment-on-windows/" target="_blank">Set Up Development Environment on Windows</a></p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ htpasswd -c auth foo
 New password: &lt;bar&gt;
 New password:
 Re-type new password:
-Adding password <span style="color:#6ab825;font-weight:bold">for</span> user foo</code></pre></div>
-<ul>
-<li>创建 basic auth 的 secret</li>
+Adding password <span style="color:#6ab825;font-weight:bold">for</span> user foo</code></pre></div></li>
+
+<li><p>创建 basic auth 的 secret</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl create secret generic basic-auth --from-file=auth</code></pre></div></li>
+
+<li><p>更新 Ingress，在 annotation 中加入 basic auth 的配置</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f  https://raw.githubusercontent.com/Excited-ccccly/studymakesmehappy.club/master/static/files/kubernetes/ingress/06-k8s-dashboard-ingress-with-tls-and-basic-auth.yaml</code></pre></div></li>
 </ul>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl create secret generic basic-auth --from-file=auth</code></pre></div>
-<ul>
-<li>更新 Ingress，在 annotation 中加入 basic auth 的配置</li>
-</ul>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f  https://raw.githubusercontent.com/Excited-ccccly/studymakesmehappy.club/master/static/files/kubernetes/ingress/06-k8s-dashboard-ingress-with-tls-and-basic-auth.yaml</code></pre></div>
+
 <p>也是大概需要等1分钟，之后访问 k8s-dashboard.ruffcorp.com 都需要输入密码。</p>
 
 <h2 id="ingress-的局限">Ingress 的局限</h2>

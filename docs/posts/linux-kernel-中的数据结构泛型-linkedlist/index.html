@@ -11,7 +11,7 @@
 <meta property='og:site_name' content='Home'>
 <meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='Data Structures'><meta property='article:tag' content='Generic Programming'><meta property='article:tag' content='LinkedList'><meta property='article:tag' content='Kernel'><meta property='article:published_time' content='2019-08-11T15:11:10&#43;08:00'/><meta property='article:modified_time' content='2019-08-11T15:11:10&#43;08:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.55.6" />
+<meta name="generator" content="Hugo 0.56.3" />
 
   <title>Linux Kernel 中的数据结构——泛型 LinkedList • Home</title>
   <link rel='canonical' href='https://studymakesmehappy.club/posts/linux-kernel-%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%B3%9B%E5%9E%8B-linkedlist/'>
@@ -173,14 +173,14 @@ if (!doNotTrack) {
 <span style="color:#cd2828;font-weight:bold">#define LIST_HEAD_INIT(name) { &amp;(name), &amp;(name) }
 </span><span style="color:#cd2828;font-weight:bold"></span>
 <span style="color:#cd2828;font-weight:bold">#define LIST_HEAD(name) \
-</span><span style="color:#cd2828;font-weight:bold"></span>	<span style="color:#6ab825;font-weight:bold">struct</span> list_head name = LIST_HEAD_INIT(name)
-
+</span><span style="color:#cd2828;font-weight:bold">	struct list_head name = LIST_HEAD_INIT(name)
+</span><span style="color:#cd2828;font-weight:bold"></span>
 <span style="color:#999;font-style:italic">/*
 </span><span style="color:#999;font-style:italic"> * 在 heap 中初始化
 </span><span style="color:#999;font-style:italic"> * WRITE_ONCE 大概就是防止 compiler 做指令合并、重排的优化，感兴趣的可以自己研究一下
 </span><span style="color:#999;font-style:italic"> * 这里就看成 list-&gt;next = list;
 </span><span style="color:#999;font-style:italic"> */</span>
-<span style="color:#6ab825;font-weight:bold">static</span> <span style="color:#6ab825;font-weight:bold">inline</span> <span style="color:#6ab825;font-weight:bold">void</span> INIT_LIST_HEAD(<span style="color:#6ab825;font-weight:bold">struct</span> list_head *list)
+<span style="color:#6ab825;font-weight:bold">static</span> <span style="color:#6ab825;font-weight:bold">inline</span> <span style="color:#6ab825;font-weight:bold">void</span> <span style="color:#447fcf">INIT_LIST_HEAD</span>(<span style="color:#6ab825;font-weight:bold">struct</span> list_head *list)
 {
 	WRITE_ONCE(list-&gt;next, list);
 	list-&gt;prev = list;
@@ -274,8 +274,8 @@ list_add_tail(&amp;skb-&gt;list, &amp;skb_queue)</code></pre></div>
 </span><span style="color:#999;font-style:italic"> * Note, that list is expected to be not empty.
 </span><span style="color:#999;font-style:italic"> */</span>
 <span style="color:#cd2828;font-weight:bold">#define list_first_entry(ptr, type, member) \
-</span><span style="color:#cd2828;font-weight:bold"></span>	list_entry((ptr)-&gt;next, type, member)
-
+</span><span style="color:#cd2828;font-weight:bold">	list_entry((ptr)-&gt;next, type, member)
+</span><span style="color:#cd2828;font-weight:bold"></span>
 <span style="color:#999;font-style:italic">/**
 </span><span style="color:#999;font-style:italic"> * list_entry - get the struct for this entry
 </span><span style="color:#999;font-style:italic"> * @ptr:	the &amp;struct list_head pointer.
@@ -283,7 +283,7 @@ list_add_tail(&amp;skb-&gt;list, &amp;skb_queue)</code></pre></div>
 </span><span style="color:#999;font-style:italic"> * @member:	the name of the list_head within the struct.
 </span><span style="color:#999;font-style:italic"> */</span>
 <span style="color:#cd2828;font-weight:bold">#define list_entry(ptr, type, member) \
-</span><span style="color:#cd2828;font-weight:bold"></span>	container_of(ptr, type, member)</code></pre></div>
+</span><span style="color:#cd2828;font-weight:bold">	container_of(ptr, type, member)</span></code></pre></div>
 <p>skb_queue 的第一个元素就是 ptr-&gt;next，再用 list_entry 获取相应的 entry, 最后是用 <code>container_of</code></p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#999;font-style:italic">/* https://github.com/torvalds/linux/blob/8f9fab480c7a87b10bb5440b5555f370272a5d59/include/linux/kernel.h#L969 */</span>
 
@@ -295,11 +295,11 @@ list_add_tail(&amp;skb-&gt;list, &amp;skb_queue)</code></pre></div>
 </span><span style="color:#999;font-style:italic"> *
 </span><span style="color:#999;font-style:italic"> */</span>
 <span style="color:#cd2828;font-weight:bold">#define container_of(ptr, type, member) ({				\
-</span><span style="color:#cd2828;font-weight:bold"></span>	<span style="color:#6ab825;font-weight:bold">void</span> *__mptr = (<span style="color:#6ab825;font-weight:bold">void</span> *)(ptr);					\
-	BUILD_BUG_ON_MSG(!__same_type(*(ptr), ((type *)<span style="color:#3677a9">0</span>)-&gt;member) &amp;&amp;	\
-			 !__same_type(*(ptr), <span style="color:#6ab825;font-weight:bold">void</span>),			\
-			 <span style="color:#ed9d13">&#34;pointer type mismatch in container_of()&#34;</span>);	\
-	((type *)(__mptr - offsetof(type, member))); })</code></pre></div>
+</span><span style="color:#cd2828;font-weight:bold">	void *__mptr = (void *)(ptr);					\
+</span><span style="color:#cd2828;font-weight:bold">	BUILD_BUG_ON_MSG(!__same_type(*(ptr), ((type *)0)-&gt;member) &amp;&amp;	\
+</span><span style="color:#cd2828;font-weight:bold">			 !__same_type(*(ptr), void),			\
+</span><span style="color:#cd2828;font-weight:bold">			 &#34;pointer type mismatch in container_of()&#34;);	\
+</span><span style="color:#cd2828;font-weight:bold">	((type *)(__mptr - offsetof(type, member))); })</span></code></pre></div>
 <p>这里 <code>BUILD_BUG_ON_MSG</code> 只是确保类型一致，不管。ptr 类型是 struct list_head *, type 是 struct sk_buff, member 是 list. 我们知道一个 struct 分配的<strong>内存是连续</strong>的，这里我们有 sk_buff 中 list 的地址值 ptr，只要减去 <strong>list 的位移</strong>，就能得到整个 sk_buff 的地址，然后再转换成 struct sk_buff *, 这样就拿到了 sk_buff.</p>
 
 <p>这里我不是很理解为什么要转换成 void *, 转成 char * 应该更好, 因为按照 C 语言的标准，void 指针是不能做算术运算的，但 gcc 的实现支持了 void * 的算术运算。</p>
@@ -317,10 +317,10 @@ list_add_tail(&amp;skb-&gt;list, &amp;skb_queue)</code></pre></div>
 </span><span style="color:#999;font-style:italic"> * @member:	the name of the list_head within the struct.
 </span><span style="color:#999;font-style:italic"> */</span>
 <span style="color:#cd2828;font-weight:bold">#define list_for_each_entry_safe(pos, n, head, member)			\
-</span><span style="color:#cd2828;font-weight:bold"></span>	<span style="color:#6ab825;font-weight:bold">for</span> (pos = list_first_entry(head, typeof(*pos), member),	\
-		n = list_next_entry(pos, member);			\
-	     &amp;pos-&gt;member != (head); 					\
-	     pos = n, n = list_next_entry(n, member))</code></pre></div>
+</span><span style="color:#cd2828;font-weight:bold">	for (pos = list_first_entry(head, typeof(*pos), member),	\
+</span><span style="color:#cd2828;font-weight:bold">		n = list_next_entry(pos, member);			\
+</span><span style="color:#cd2828;font-weight:bold">	     &amp;pos-&gt;member != (head); 					\
+</span><span style="color:#cd2828;font-weight:bold">	     pos = n, n = list_next_entry(n, member))</span></code></pre></div>
 <p>list_for_each_entry_safe 是这样使用的</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#999;font-style:italic">/* https://github.com/torvalds/linux/blob/6413139dfc641aaaa30580b59696a5f7ea274194/net/core/dev.c#L5208 */</span>
 

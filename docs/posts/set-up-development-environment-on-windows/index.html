@@ -11,7 +11,7 @@
 <meta property='og:site_name' content='Home'>
 <meta property='og:type' content='article'><meta property='og:image' content='https://www.gravatar.com/avatar/374150c4ee619dfed2491b9bb5bcd476?s=256'><meta property='article:section' content='posts'><meta property='article:tag' content='Windows'><meta property='article:tag' content='Package Manager'><meta property='article:tag' content='Linux'><meta property='article:tag' content='WSL'><meta property='article:tag' content='Terminal Emulator'><meta property='article:tag' content='Editor'><meta property='article:tag' content='Font'><meta property='article:published_time' content='2018-03-04T15:43:15&#43;08:00'/><meta property='article:modified_time' content='2018-03-04T15:43:15&#43;08:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.55.6" />
+<meta name="generator" content="Hugo 0.56.3" />
 
   <title>Set Up Development Environment on Windows • ccccly</title>
   <link rel='canonical' href='https://studymakesmehappy.club/posts/set-up-development-environment-on-windows/'>
@@ -209,20 +209,19 @@ scoop install conemu</code></pre></div>
 <p>以 Windows 上的 Ubuntu 为例:</p>
 
 <ul>
-<li>安装 zsh</li>
-</ul>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  sudo apt install zsh
-  vim ~/.bashrc</code></pre></div>
-<ul>
-<li>vim 打开 .bashrc 后，在最后一行加上以下代码</li>
-</ul>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#24909d">exec</span> zsh</code></pre></div>
-<ul>
+<li><p>安装 zsh</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt install zsh
+vim ~/.bashrc</code></pre></div></li>
+
+<li><p>vim 打开 .bashrc 后，在最后一行加上以下代码</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#24909d">exec</span> zsh</code></pre></div></li>
+
 <li><p>进行 zsh 的初始化，选 2 吧。</p></li>
 
-<li><p>安装 oh-my-zsh</p></li>
+<li><p>安装 oh-my-zsh</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sh -c <span style="color:#ed9d13">&#34;</span><span style="color:#6ab825;font-weight:bold">$(</span>curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span style="color:#6ab825;font-weight:bold">)</span><span style="color:#ed9d13">&#34;</span></code></pre></div></li>
 </ul>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sh -c <span style="color:#ed9d13">&#34;</span><span style="color:#6ab825;font-weight:bold">$(</span>curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span style="color:#6ab825;font-weight:bold">)</span><span style="color:#ed9d13">&#34;</span></code></pre></div>
+
 <p>你熟悉的 zsh 主题和快捷命令又回来了！</p>
 
 <p><img src="/images/set-up-development-environment-on-windows/oh-my-zsh.png" alt="oh-my-zsh" /></p>

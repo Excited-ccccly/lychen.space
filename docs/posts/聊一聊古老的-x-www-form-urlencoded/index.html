@@ -11,7 +11,7 @@
 <meta property='og:site_name' content='Home'>
 <meta property='og:type' content='article'><meta property='og:image' content='https://www.gravatar.com/avatar/374150c4ee619dfed2491b9bb5bcd476?s=256'><meta property='article:section' content='posts'><meta property='article:tag' content='Python'><meta property='article:tag' content='Flask'><meta property='article:tag' content='x-www-form-urlencoded'><meta property='article:tag' content='Research'><meta property='article:published_time' content='2018-06-02T13:42:07&#43;08:00'/><meta property='article:modified_time' content='2018-06-02T13:42:07&#43;08:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.55.6" />
+<meta name="generator" content="Hugo 0.56.3" />
 
   <title>聊一聊古老的 x-www-form-urlencoded • ccccly</title>
   <link rel='canonical' href='https://studymakesmehappy.club/posts/%E8%81%8A%E4%B8%80%E8%81%8A%E5%8F%A4%E8%80%81%E7%9A%84-x-www-form-urlencoded/'>
@@ -237,23 +237,23 @@ https://host/path/to/api?title=t&amp;author=a&amp;categories=%5B%22c1%22,%20%22c
 <p>等等，这个只是 python 中的 Flask 实现，万一其它的 web frameworks 不是这样处理的，怎么办？万一 Flask 的作者放飞了自我，写了一个不一样的烟火, 怎么办?</p>
 
 <p>别着急，走过路过不要错过 <a href="https://spring.io/projects/spring-framework" target="_blank">Spring Framework</a> 的实现。</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">	<span style="color:#6ab825;font-weight:bold">private</span> MultiValueMap&lt;String, String&gt; <span style="color:#447fcf">parseFormData</span>(Charset charset, String body) {
-		String[] pairs = StringUtils.<span style="color:#bbb">tokenizeToStringArray</span>(body, <span style="color:#ed9d13">&#34;&amp;&#34;</span>);
-		MultiValueMap&lt;String, String&gt; result = <span style="color:#6ab825;font-weight:bold">new</span> LinkedMultiValueMap&lt;&gt;(pairs.<span style="color:#bbb">length</span>);
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">	<span style="color:#6ab825;font-weight:bold">private</span> <span style="color:#447fcf">MultiValueMap</span>&lt;String, String&gt; <span style="color:#447fcf">parseFormData</span>(Charset <span style="color:#447fcf">charset</span>, String <span style="color:#447fcf">body</span>) {
+		String[] <span style="color:#447fcf">pairs</span> = StringUtils.<span style="color:#bbb">tokenizeToStringArray</span>(body, <span style="color:#ed9d13">&#34;&amp;&#34;</span>);
+		MultiValueMap&lt;String, String&gt; <span style="color:#447fcf">result</span> = <span style="color:#6ab825;font-weight:bold">new</span> LinkedMultiValueMap&lt;&gt;(pairs.<span style="color:#bbb">length</span>);
 		<span style="color:#6ab825;font-weight:bold">try</span> {
-			<span style="color:#6ab825;font-weight:bold">for</span> (String pair : pairs) {
-				<span style="color:#6ab825;font-weight:bold">int</span> idx = pair.<span style="color:#bbb">indexOf</span>(<span style="color:#ed9d13">&#39;=&#39;</span>);
+			<span style="color:#6ab825;font-weight:bold">for</span> (String <span style="color:#447fcf">pair</span> : pairs) {
+				<span style="color:#6ab825;font-weight:bold">int</span> <span style="color:#447fcf">idx</span> = pair.<span style="color:#bbb">indexOf</span>(<span style="color:#ed9d13">&#39;=&#39;</span>);
 				<span style="color:#6ab825;font-weight:bold">if</span> (idx == -1) {
 					result.<span style="color:#bbb">add</span>(URLDecoder.<span style="color:#bbb">decode</span>(pair, charset.<span style="color:#bbb">name</span>()), <span style="color:#6ab825;font-weight:bold">null</span>);
 				}
 				<span style="color:#6ab825;font-weight:bold">else</span> {
-					String name = URLDecoder.<span style="color:#bbb">decode</span>(pair.<span style="color:#bbb">substring</span>(0, idx),  charset.<span style="color:#bbb">name</span>());
-					String value = URLDecoder.<span style="color:#bbb">decode</span>(pair.<span style="color:#bbb">substring</span>(idx + 1), charset.<span style="color:#bbb">name</span>());
+					String <span style="color:#447fcf">name</span> = URLDecoder.<span style="color:#bbb">decode</span>(pair.<span style="color:#bbb">substring</span>(0, idx),  charset.<span style="color:#bbb">name</span>());
+					String <span style="color:#447fcf">value</span> = URLDecoder.<span style="color:#bbb">decode</span>(pair.<span style="color:#bbb">substring</span>(idx + 1), charset.<span style="color:#bbb">name</span>());
 					result.<span style="color:#bbb">add</span>(name, value);
 				}
 			}
 		}
-		<span style="color:#6ab825;font-weight:bold">catch</span> (UnsupportedEncodingException ex) {
+		<span style="color:#6ab825;font-weight:bold">catch</span> (UnsupportedEncodingException <span style="color:#447fcf">ex</span>) {
 			<span style="color:#6ab825;font-weight:bold">throw</span> <span style="color:#6ab825;font-weight:bold">new</span> IllegalStateException(ex);
 		}
 		<span style="color:#6ab825;font-weight:bold">return</span> result;
