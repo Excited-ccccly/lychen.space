@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang='zh'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='这是系列文章 「Linux Kernel 中的数据结构」的第一篇，欢迎关注 众所周知，Linux Kernel 是用 C 写的，但是 C 语言并没有像 Java 那样原生支持 Generic Program'>
+<meta name='theme-color' content='#ffcd00'>
+
+<meta property='og:title' content='Linux Kernel 中的数据结构——泛型 LinkedList • Home'>
+<meta property='og:description' content='这是系列文章 「Linux Kernel 中的数据结构」的第一篇，欢迎关注 众所周知，Linux Kernel 是用 C 写的，但是 C 语言并没有像 Java 那样原生支持 Generic Program'>
+<meta property='og:url' content='https://studymakesmehappy.club/posts/linux-kernel-%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%B3%9B%E5%9E%8B-linkedlist/'>
+<meta property='og:site_name' content='Home'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='Data Structures'><meta property='article:tag' content='Generic Programming'><meta property='article:tag' content='LinkedList'><meta property='article:tag' content='Kernel'><meta property='article:published_time' content='2019-08-11T15:11:10&#43;08:00'/><meta property='article:modified_time' content='2019-08-11T15:11:10&#43;08:00'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.55.6" />
+
+  <title>Linux Kernel 中的数据结构——泛型 LinkedList • Home</title>
+  <link rel='canonical' href='https://studymakesmehappy.club/posts/linux-kernel-%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%B3%9B%E5%9E%8B-linkedlist/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.6a060eb7.css'><link rel='stylesheet' href='/css/custom.css'><style>
+:root{--color-accent:#ffcd00;}
+</style>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-129765949-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  
+
+</head>
+<body class='page type-posts'>
+
+  <div class='site'><a class='screen-reader-text' href='#content'>跳到文章</a><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='主菜单'>
+  <div class='container'>
+    
+    <ul><li class='item'>
+        <a href='/'>Home</a>
+      </li><li class='item'>
+        <a href='/posts/'>Posts</a>
+      </li><li class='item'>
+        <a href='/about/'>About</a>
+      </li><li class='item'>
+        <a href='https://github.com/Excited-ccccly/studymakesmehappy.club'>Repo</a>
+      </li></ul>
+  </div>
+</nav><div class='header-widgets'>
+        <div class='container'></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>Home</p><p class='desc site-desc'>Study makes me happy</p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='zh' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>Linux Kernel 中的数据结构——泛型 LinkedList</h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader-text'>发布 </span>
+  <time class='entry-date' datetime='2019-08-11T15:11:10&#43;08:00'>2019, Aug 11</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+需要5分钟读完
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  
+
+<blockquote>
+<p>这是系列文章 「Linux Kernel 中的数据结构」的第一篇，欢迎关注</p>
+</blockquote>
+
+<p>众所周知，Linux Kernel 是用 C 写的，但是 C 语言并没有像 Java 那样原生支持 Generic Programming，那要如何用 C 实现泛型数据结构呢？</p>
+
+<p>了解 C 的同学这时候会喊，可以用 void pointer 啊</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#999;font-style:italic">/* A doubly linked list node */</span>
+<span style="color:#6ab825;font-weight:bold">struct</span> Node
+{
+    <span style="color:#999;font-style:italic">// Any data type can be stored in this node
+</span><span style="color:#999;font-style:italic"></span>    <span style="color:#6ab825;font-weight:bold">void</span>  *data;
+
+    <span style="color:#6ab825;font-weight:bold">struct</span> Node *prev;
+    <span style="color:#6ab825;font-weight:bold">struct</span> Node *next;
+
+};</code></pre></div>
+<p>void 指针可以指向任何数据类型，就像 Java 中的 Object 类一样。这样不仅可以实现泛型链表，甚至允许一个链表可以存储多种类型的数据。</p>
+
+<h2 id="kernel-中的-linked-list">Kernel 中的 Linked List</h2>
+
+<p>但 Kernel 中没有这么做。与之相反，它的做法是在数据的 struct 里嵌入一个 Linked List 的 node. 这种不包含数据的 Linked List 的专业术语叫 <strong>Intrusive Linked List</strong>，它使得 list 相关的操作不用关心数据的类型，从而达到泛型的目的。</p>
+
+<p>Node 节点只包含 prev 和 next 指针</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#999;font-style:italic">/* https://github.com/torvalds/linux/blob/3724921396dd1a07c93e3516b8d7c9ff570d17a9/include/linux/types.h#L181 */</span>
+
+<span style="color:#6ab825;font-weight:bold">struct</span> list_head {
+	<span style="color:#6ab825;font-weight:bold">struct</span> list_head *next, *prev;
+};</code></pre></div>
+<p>比如，Linux 网络栈最重要的数据结构 sk_buff 就嵌入了 list_head(由于 sk_buff 承担了很多职责，非常复杂，union 中的其它项不管)</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#999;font-style:italic">/* https://github.com/torvalds/linux/blob/75a56758d6390ea6db523ad26ce378f34b907b0c/include/linux/skbuff.h#L690 */</span>
+
+<span style="color:#6ab825;font-weight:bold">struct</span> sk_buff {
+	<span style="color:#6ab825;font-weight:bold">union</span> {
+		<span style="color:#6ab825;font-weight:bold">struct</span> {
+			<span style="color:#6ab825;font-weight:bold">struct</span> sk_buff		*next;
+			<span style="color:#6ab825;font-weight:bold">struct</span> sk_buff		*prev;
+			...
+		};
+		<span style="color:#6ab825;font-weight:bold">struct</span> rb_node		rbnode; <span style="color:#999;font-style:italic">/* used in netem, ip4 defrag, and tcp stack*/</span>
+		<span style="color:#6ab825;font-weight:bold">struct</span> list_head	list;
+	};
+	...
+}</code></pre></div>
+<p>可以通过 sk_buff-&gt;list.prev 访问前一个 sk_buff，sk_buff-&gt;list.next 访问下一个 sk_buff</p>
+
+<h2 id="list-相关的操作">List 相关的操作</h2>
+
+<h3 id="init">Init</h3>
+
+<p>list 的变量有两种初始化方式，一种是在 stack 中初始化，函数调用结束后会自动销毁；另外一种是在 heap 中初始化，需要自己手动 malloc 和 free. 注意初始化的 head 不含数据，是一个 dummy 指针。</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#999;font-style:italic">/* https://github.com/torvalds/linux/blob/c8af5cd75e2411d5a5aacf115f59a5ff6b87f3fa/include/linux/list.h#L21 */</span>
+
+<span style="color:#999;font-style:italic">/*
+</span><span style="color:#999;font-style:italic"> * 在 stack 中初始化
+</span><span style="color:#999;font-style:italic"> * 宏展开之后就是 struct list_head name = { &amp;(name), &amp;(name) };
+</span><span style="color:#999;font-style:italic"> * 分成两步来看
+</span><span style="color:#999;font-style:italic"> * struct list_head name; // stack 上已经分配好了内存地址
+</span><span style="color:#999;font-style:italic"> * name = { &amp;(name), &amp;(name) }; // 因此可以取 name 的地址，并赋值给 name
+</span><span style="color:#999;font-style:italic"> */</span>
+<span style="color:#cd2828;font-weight:bold">#define LIST_HEAD_INIT(name) { &amp;(name), &amp;(name) }
+</span><span style="color:#cd2828;font-weight:bold"></span>
+<span style="color:#cd2828;font-weight:bold">#define LIST_HEAD(name) \
+</span><span style="color:#cd2828;font-weight:bold"></span>	<span style="color:#6ab825;font-weight:bold">struct</span> list_head name = LIST_HEAD_INIT(name)
+
+<span style="color:#999;font-style:italic">/*
+</span><span style="color:#999;font-style:italic"> * 在 heap 中初始化
+</span><span style="color:#999;font-style:italic"> * WRITE_ONCE 大概就是防止 compiler 做指令合并、重排的优化，感兴趣的可以自己研究一下
+</span><span style="color:#999;font-style:italic"> * 这里就看成 list-&gt;next = list;
+</span><span style="color:#999;font-style:italic"> */</span>
+<span style="color:#6ab825;font-weight:bold">static</span> <span style="color:#6ab825;font-weight:bold">inline</span> <span style="color:#6ab825;font-weight:bold">void</span> INIT_LIST_HEAD(<span style="color:#6ab825;font-weight:bold">struct</span> list_head *list)
+{
+	WRITE_ONCE(list-&gt;next, list);
+	list-&gt;prev = list;
+}</code></pre></div>
+<p><img src="/images/linked-list-in-linux-kernel/list_init.png" alt="" /></p>
+
+<h3 id="add">Add</h3>
+
+<p>add 操作有两种</p>
+
+<ul>
+<li><code>list_add</code>, 它把 new_entry 插入到 head 的后面</li>
+<li><code>list_add_tail</code>，它把 new_entry 插入到 head 的前面</li>
+</ul>
+
+<p>它们都调用 <code>__list_add</code>。由于 head-&gt;next 是 list 的第一个元素，因此 <code>list_add</code> 实现了数据结构中的 stack, 而 <code>list_add_tail</code> 实现了 queue.</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#999;font-style:italic">/* https://github.com/torvalds/linux/blob/c8af5cd75e2411d5a5aacf115f59a5ff6b87f3fa/include/linux/list.h#L77 */</span>
+
+<span style="color:#999;font-style:italic">/**
+</span><span style="color:#999;font-style:italic"> * list_add - add a new entry
+</span><span style="color:#999;font-style:italic"> * @new: new entry to be added
+</span><span style="color:#999;font-style:italic"> * @head: list head to add it after
+</span><span style="color:#999;font-style:italic"> *
+</span><span style="color:#999;font-style:italic"> * Insert a new entry after the specified head.
+</span><span style="color:#999;font-style:italic"> * This is good for implementing stacks.
+</span><span style="color:#999;font-style:italic"> */</span>
+<span style="color:#6ab825;font-weight:bold">static</span> <span style="color:#6ab825;font-weight:bold">inline</span> <span style="color:#6ab825;font-weight:bold">void</span> <span style="color:#447fcf">list_add</span>(<span style="color:#6ab825;font-weight:bold">struct</span> list_head *new, <span style="color:#6ab825;font-weight:bold">struct</span> list_head *head)
+{
+	__list_add(new, head, head-&gt;next);
+}
+
+<span style="color:#999;font-style:italic">/* https://github.com/torvalds/linux/blob/c8af5cd75e2411d5a5aacf115f59a5ff6b87f3fa/include/linux/list.h#L91 */</span>
+
+<span style="color:#999;font-style:italic">/**
+</span><span style="color:#999;font-style:italic"> * list_add_tail - add a new entry
+</span><span style="color:#999;font-style:italic"> * @new: new entry to be added
+</span><span style="color:#999;font-style:italic"> * @head: list head to add it before
+</span><span style="color:#999;font-style:italic"> *
+</span><span style="color:#999;font-style:italic"> * Insert a new entry before the specified head.
+</span><span style="color:#999;font-style:italic"> * This is useful for implementing queues.
+</span><span style="color:#999;font-style:italic"> */</span>
+<span style="color:#6ab825;font-weight:bold">static</span> <span style="color:#6ab825;font-weight:bold">inline</span> <span style="color:#6ab825;font-weight:bold">void</span> <span style="color:#447fcf">list_add_tail</span>(<span style="color:#6ab825;font-weight:bold">struct</span> list_head *new, <span style="color:#6ab825;font-weight:bold">struct</span> list_head *head)
+{
+	__list_add(new, head-&gt;prev, head);
+}
+
+<span style="color:#999;font-style:italic">/* https://github.com/torvalds/linux/blob/c8af5cd75e2411d5a5aacf115f59a5ff6b87f3fa/include/linux/list.h#L56 */</span>
+
+<span style="color:#999;font-style:italic">/*
+</span><span style="color:#999;font-style:italic"> * Insert a new entry between two known consecutive entries.
+</span><span style="color:#999;font-style:italic"> *
+</span><span style="color:#999;font-style:italic"> * This is only for internal list manipulation where we know
+</span><span style="color:#999;font-style:italic"> * the prev/next entries already!
+</span><span style="color:#999;font-style:italic"> */</span>
+<span style="color:#6ab825;font-weight:bold">static</span> <span style="color:#6ab825;font-weight:bold">inline</span> <span style="color:#6ab825;font-weight:bold">void</span> <span style="color:#447fcf">__list_add</span>(<span style="color:#6ab825;font-weight:bold">struct</span> list_head *new,
+			      <span style="color:#6ab825;font-weight:bold">struct</span> list_head *prev,
+			      <span style="color:#6ab825;font-weight:bold">struct</span> list_head *next)
+{
+	<span style="color:#6ab825;font-weight:bold">if</span> (!__list_add_valid(new, prev, next))
+		<span style="color:#6ab825;font-weight:bold">return</span>;
+
+	next-&gt;prev = new;
+	new-&gt;next = next;
+	new-&gt;prev = prev;
+	WRITE_ONCE(prev-&gt;next, new);
+}</code></pre></div>
+<p><img src="/images/linked-list-in-linux-kernel/list_add.png" alt="" /></p>
+
+<p><img src="/images/linked-list-in-linux-kernel/list_add_tail.png" alt="" /></p>
+
+<h3 id="get-entry">Get Entry</h3>
+
+<p>del, replace, move, is_empty, rotate, cut, splice 只是一些指针操作，就不罗列了。现在来看看怎么从 list 中获取到 entry 的数据</p>
+
+<p>假设我们已经做了以下操作，初始化了一个 skb_queue，并把一个 skb 中的 list 添加进了这个 queue. 注意这里并没有把 skb 加进去。</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#6ab825;font-weight:bold">struct</span> list_head skb_queue;
+INIT_LIST_HEAD(&amp;skb_queue);
+
+list_add_tail(&amp;skb-&gt;list, &amp;skb_queue)</code></pre></div>
+<p>现在我想从这个 list 中取出这个（第一个） skb，获取 skb 内部的数据。</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">skb = list_first_entry(&amp;skb_queue, <span style="color:#6ab825;font-weight:bold">struct</span> sk_buff, list)</code></pre></div>
+<p>来看看 <code>list_first_entry</code> 的实现. ptr 就是 skb_queue 的指针；由于我们是在 sk_buff 嵌入了 list_head，所以 type 是 struct sk_buff; 这个 list_head 在 sk_buff 叫 list, 所以 member 是 list.</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#999;font-style:italic">/* https://github.com/torvalds/linux/blob/c8af5cd75e2411d5a5aacf115f59a5ff6b87f3fa/include/linux/list.h#L489 */</span>
+
+<span style="color:#999;font-style:italic">/**
+</span><span style="color:#999;font-style:italic"> * list_first_entry - get the first element from a list
+</span><span style="color:#999;font-style:italic"> * @ptr:	the list head to take the element from.
+</span><span style="color:#999;font-style:italic"> * @type:	the type of the struct this is embedded in.
+</span><span style="color:#999;font-style:italic"> * @member:	the name of the list_head within the struct.
+</span><span style="color:#999;font-style:italic"> *
+</span><span style="color:#999;font-style:italic"> * Note, that list is expected to be not empty.
+</span><span style="color:#999;font-style:italic"> */</span>
+<span style="color:#cd2828;font-weight:bold">#define list_first_entry(ptr, type, member) \
+</span><span style="color:#cd2828;font-weight:bold"></span>	list_entry((ptr)-&gt;next, type, member)
+
+<span style="color:#999;font-style:italic">/**
+</span><span style="color:#999;font-style:italic"> * list_entry - get the struct for this entry
+</span><span style="color:#999;font-style:italic"> * @ptr:	the &amp;struct list_head pointer.
+</span><span style="color:#999;font-style:italic"> * @type:	the type of the struct this is embedded in.
+</span><span style="color:#999;font-style:italic"> * @member:	the name of the list_head within the struct.
+</span><span style="color:#999;font-style:italic"> */</span>
+<span style="color:#cd2828;font-weight:bold">#define list_entry(ptr, type, member) \
+</span><span style="color:#cd2828;font-weight:bold"></span>	container_of(ptr, type, member)</code></pre></div>
+<p>skb_queue 的第一个元素就是 ptr-&gt;next，再用 list_entry 获取相应的 entry, 最后是用 <code>container_of</code></p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#999;font-style:italic">/* https://github.com/torvalds/linux/blob/8f9fab480c7a87b10bb5440b5555f370272a5d59/include/linux/kernel.h#L969 */</span>
+
+<span style="color:#999;font-style:italic">/**
+</span><span style="color:#999;font-style:italic"> * container_of - cast a member of a structure out to the containing structure
+</span><span style="color:#999;font-style:italic"> * @ptr:	the pointer to the member.
+</span><span style="color:#999;font-style:italic"> * @type:	the type of the container struct this is embedded in.
+</span><span style="color:#999;font-style:italic"> * @member:	the name of the member within the struct.
+</span><span style="color:#999;font-style:italic"> *
+</span><span style="color:#999;font-style:italic"> */</span>
+<span style="color:#cd2828;font-weight:bold">#define container_of(ptr, type, member) ({				\
+</span><span style="color:#cd2828;font-weight:bold"></span>	<span style="color:#6ab825;font-weight:bold">void</span> *__mptr = (<span style="color:#6ab825;font-weight:bold">void</span> *)(ptr);					\
+	BUILD_BUG_ON_MSG(!__same_type(*(ptr), ((type *)<span style="color:#3677a9">0</span>)-&gt;member) &amp;&amp;	\
+			 !__same_type(*(ptr), <span style="color:#6ab825;font-weight:bold">void</span>),			\
+			 <span style="color:#ed9d13">&#34;pointer type mismatch in container_of()&#34;</span>);	\
+	((type *)(__mptr - offsetof(type, member))); })</code></pre></div>
+<p>这里 <code>BUILD_BUG_ON_MSG</code> 只是确保类型一致，不管。ptr 类型是 struct list_head *, type 是 struct sk_buff, member 是 list. 我们知道一个 struct 分配的<strong>内存是连续</strong>的，这里我们有 sk_buff 中 list 的地址值 ptr，只要减去 <strong>list 的位移</strong>，就能得到整个 sk_buff 的地址，然后再转换成 struct sk_buff *, 这样就拿到了 sk_buff.</p>
+
+<p>这里我不是很理解为什么要转换成 void *, 转成 char * 应该更好, 因为按照 C 语言的标准，void 指针是不能做算术运算的，但 gcc 的实现支持了 void * 的算术运算。</p>
+
+<h3 id="iterator">Iterator</h3>
+
+<p>通过 container_of，我们能够从一个 struct list_head 获得嵌入它的宿主 struct. 在此基础之上，加入 iterator 支持也很简单。</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#999;font-style:italic">/* https://github.com/torvalds/linux/blob/c8af5cd75e2411d5a5aacf115f59a5ff6b87f3fa/include/linux/list.h#L663 */</span>
+
+<span style="color:#999;font-style:italic">/**
+</span><span style="color:#999;font-style:italic"> * list_for_each_entry_safe - iterate over list of given type safe against removal of list entry
+</span><span style="color:#999;font-style:italic"> * @pos:	the type * to use as a loop cursor.
+</span><span style="color:#999;font-style:italic"> * @n:		another type * to use as temporary storage
+</span><span style="color:#999;font-style:italic"> * @head:	the head for your list.
+</span><span style="color:#999;font-style:italic"> * @member:	the name of the list_head within the struct.
+</span><span style="color:#999;font-style:italic"> */</span>
+<span style="color:#cd2828;font-weight:bold">#define list_for_each_entry_safe(pos, n, head, member)			\
+</span><span style="color:#cd2828;font-weight:bold"></span>	<span style="color:#6ab825;font-weight:bold">for</span> (pos = list_first_entry(head, typeof(*pos), member),	\
+		n = list_next_entry(pos, member);			\
+	     &amp;pos-&gt;member != (head); 					\
+	     pos = n, n = list_next_entry(n, member))</code></pre></div>
+<p>list_for_each_entry_safe 是这样使用的</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#999;font-style:italic">/* https://github.com/torvalds/linux/blob/6413139dfc641aaaa30580b59696a5f7ea274194/net/core/dev.c#L5208 */</span>
+
+<span style="color:#6ab825;font-weight:bold">static</span> <span style="color:#6ab825;font-weight:bold">void</span> <span style="color:#447fcf">netif_receive_skb_list_internal</span>(<span style="color:#6ab825;font-weight:bold">struct</span> list_head *head)
+{
+	<span style="color:#6ab825;font-weight:bold">struct</span> sk_buff *skb, *next;
+	<span style="color:#6ab825;font-weight:bold">struct</span> list_head sublist;
+
+	INIT_LIST_HEAD(&amp;sublist);
+	list_for_each_entry_safe(skb, next, head, list) {
+		net_timestamp_check(netdev_tstamp_prequeue, skb);
+		skb_list_del_init(skb);
+		<span style="color:#6ab825;font-weight:bold">if</span> (!skb_defer_rx_timestamp(skb))
+			list_add_tail(&amp;skb-&gt;list, &amp;sublist);
+	}
+	...
+}</code></pre></div>
+<p>熟悉 Java 的同学都知道不能在 forEach 中删除元素。这里也是要删除元素, <code>skb_list_del_init</code>， 所以使用了 <code>list_for_each_entry_safe</code>. skb 是当前 entry, next 是下一个 entry. <code>skb_list_del_init</code> 清除当前 skb 的指针，但接下来又把 next 赋值给了 skb, 所以是删除安全的。</p>
+
+<h2 id="对比">对比</h2>
+
+<p>void 指针和 Intrusive Linked List 各有优缺点。从 Intrusive Linked List 角度来看。</p>
+
+<h3 id="pros">Pros</h3>
+
+<ul>
+<li>只需要一次 malloc 就能分配内存；而 void pointer 需要两次，一次是分配 data，还有一次是分配 node 节点。</li>
+<li>能直接定位到在 list 中的位置，比如 sk_buff-&gt;list 就能得到 prev 和 next 指针，因此可以快速操作指针；而 void pointer 方式中的 data 没有到 list 位置的映射</li>
+<li>更安全，因为 void pointer 太自由了</li>
+</ul>
+
+<h3 id="cons">Cons</h3>
+
+<ul>
+<li>具有侵入性，需要修改目标 struct，比如在 sk_buff 加入 list_head</li>
+<li>每一个 node 节点只能是同一种类型，而 void pointer 可以指向不同的数据类型</li>
+</ul>
+
+<h2 id="总结">总结</h2>
+
+<p>C 不具备泛型原语，但仍有方法达到泛型的目的；就像 C 不具备 OOP 原语，但同样能用 struct 达到封装，用 function pointer 达到多态的目的。</p>
+
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='categories'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
+  
+</svg>
+<span class='screen-reader-text'>分类: </span><a class='category' href='/categories/data-structures/'>Data Structures</a></div>
+<div class='tags'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+  
+</svg>
+<span class='screen-reader-text'>标签: </span><a class='tag' href='/tags/data-structures/'>Data Structures</a>, <a class='tag' href='/tags/generic-programming/'>Generic Programming</a>, <a class='tag' href='/tags/linkedlist/'>LinkedList</a>, <a class='tag' href='/tags/kernel/'>Kernel</a></div>
+
+  </div>
+</footer>
+
+
+</article>
+
+<nav class='entry-nav'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/posts/%E4%B8%A4%E6%AD%A5%E9%AA%8C%E8%AF%81%E5%99%A8%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ 上一个</span>
+        <span class='screen-reader-text'>上一篇文章: </span>两步验证器是如何工作的</a>
+    </div></div>
+</nav>
+
+
+<section id='comments' class='comments'>
+  <div class='container sep-before'>
+    <div class='comments-area'><script src='https://utteranc.es/client.js'
+  repo='Excited-ccccly/studymakesmehappy.club' issue-term='title'
+  crossorigin='anonymous' async>
+</script>
+</div>
+  </div>
+</section>
+
+      </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='社交菜单'>
+    <ul><li>
+        <a href='https://github.com/Excited-ccccly' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>在新标签打开Github的账户</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='mailto:geekchenlingyun@outlook.com' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>通过邮件联系</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+  <polyline points="22,6 12,13 2,6"/>
+  
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</section><div class='copyright'>
+  <p> &copy; 2017-2019 ccccly </p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__assets_js_src="/assets/js/"</script>
+
+<script src='/assets/js/main.67d669ac.js'></script><script src='/js/custom.js'></script>
+
+</body>
+
+</html>
+

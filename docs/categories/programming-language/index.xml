@@ -16,12 +16,7 @@
       <pubDate>Sun, 23 Jun 2019 23:34:09 +0800</pubDate>
       
       <guid>https://studymakesmehappy.club/posts/trumpscript-%E8%AE%A9%E7%BC%96%E7%A8%8B%E5%86%8D%E6%AC%A1%E4%BC%9F%E5%A4%A7/</guid>
-      <description>TrumpScript 是一门使用特朗普风格的语句来编程的脚本语言，十分的欢乐有趣。作者 Sam “认为” 当今所有的编程语言，都得不到伟大的特朗普总统的认同。在 HackRice 2016 这场 Hackthon 上，Sam 和另外两个小伙伴(Chris 和 Dan)，合力开发了 TrumpScript，一举拿下第一名，设计的图标也很有意思，像特朗普那飘逸的头发。
-在立马学习 TrumpScript(什么？又有新语言要学习了？卒&amp;hellip;) 语言之前，我们先看看它的 feature，才能知道为什么非学不可！
-语言特性 为了得到最大份的快乐，在保留原文的基础上，简单翻译。
- No floating point numbers, only integers. America never does anything halfway.  TrumpScript 没有浮点数，只能用整数。美利坚永远不半途而废。
- All numbers must be strictly greater than 1 million. The small stuff is inconsequential to us.  所有的数字必须大于100W，其它小数字对富有的特朗普来说无关紧要。
- There are no import statements allowed. All code has to be home-grown and American made.</description>
+      <description>TrumpScript 是一门使用特朗普风格的语句来编程的脚本语言，十分的欢乐有趣。作者 Sam “认为” 当今所有的编程语言，都得不到伟大的特朗普总统的认同。在 HackRice 2016 这场 Hackthon</description>
     </item>
     
     <item>
@@ -30,10 +25,7 @@
       <pubDate>Sun, 28 Apr 2019 22:16:50 +0800</pubDate>
       
       <guid>https://studymakesmehappy.club/posts/%E4%BD%BF%E7%94%A8python%E5%8E%BB%E4%BF%AE%E6%94%B9python%E4%BB%A3%E7%A0%81/</guid>
-      <description>Python 是一门很方便优雅的语言，广泛地被应用于 Web, AI 和自动化领域，受到了工程师和科学家的喜爱。我们可以使用 Python 去处理各种数据，生成我们想要的结果。有没有想过，被操作的数据也可以是 Python 代码，我们使用一段 Python 代码去修改另外一段 Python 代码，去生成一个新的 py 文件。
-我们知道，代码文件其实就是有结构的字符串，理论上我们可以直接操作源码字符串来达到我们的目的，所以可行性上完全可以。显而易见，这种方法太原始简陋了，需要面对处理很多细节，很容易出错。既然原始的数据难以操作，我们就需要用一种数据结构来抽象地表示它，只要抽象数据结构和原始的数据可以互相转化就行。这种数据结构的专业术语叫 AST(Abstract Syntax Trees).
-lexer parser code ---------&amp;gt; tokens array ----------&amp;gt; ast AST 需要经过 Lexer 将源码字符串转变成 Token 数组，然后使用 CFG(Context-free grammar) 来构造出 AST 。由于 Python 经过这么多年的发展，语法规则已经足够复杂，所以裸写一个 parser 来构造 AST 还是有难度的，虽然可以使用 Yacc 或者 Antlr 来生成一个 parser，但也略微繁琐。好在 Python 官方提供了 ast 库来让我们直接获得 Python 代码的 AST.
-In [1]: import ast In [2]: add_expr = ast.parse(&amp;#34;1+1&amp;#34;) In [3]: ast.dump(add_expr) Out[3]: &amp;#39;Module(body=[Expr(value=BinOp(left=Num(n=1), op=Add(), right=Num(n=1)))])&amp;#39; 可以看到 1+1被 parse 成了一个 Expr(Expression), 这个 Expr 的 value 是一个 BinOp(Binary Operation)，BinOp 这个二元操作的操作符 (opcode) 是 Add(), 左边的操作数 (operand) 是 Num(n=1), 右边的操作数也是 Num(n=1)</description>
+      <description>Python 是一门很方便优雅的语言，广泛地被应用于 Web, AI 和自动化领域，受到了工程师和科学家的喜爱。我们可以使用 Python 去处理各种数据，生成我们想要的结果。有没</description>
     </item>
     
   </channel>

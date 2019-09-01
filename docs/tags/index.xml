@@ -5,10 +5,46 @@
     <link>https://studymakesmehappy.club/tags/</link>
     <description>Recent content in Tags on Home</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 27 Jul 2019 17:13:56 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 11 Aug 2019 15:11:10 +0800</lastBuildDate>
     
 	<atom:link href="https://studymakesmehappy.club/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Data Structures</title>
+      <link>https://studymakesmehappy.club/tags/data-structures/</link>
+      <pubDate>Sun, 11 Aug 2019 15:11:10 +0800</pubDate>
+      
+      <guid>https://studymakesmehappy.club/tags/data-structures/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Generic Programming</title>
+      <link>https://studymakesmehappy.club/tags/generic-programming/</link>
+      <pubDate>Sun, 11 Aug 2019 15:11:10 +0800</pubDate>
+      
+      <guid>https://studymakesmehappy.club/tags/generic-programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kernel</title>
+      <link>https://studymakesmehappy.club/tags/kernel/</link>
+      <pubDate>Sun, 11 Aug 2019 15:11:10 +0800</pubDate>
+      
+      <guid>https://studymakesmehappy.club/tags/kernel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>LinkedList</title>
+      <link>https://studymakesmehappy.club/tags/linkedlist/</link>
+      <pubDate>Sun, 11 Aug 2019 15:11:10 +0800</pubDate>
+      
+      <guid>https://studymakesmehappy.club/tags/linkedlist/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>2FA</title>
