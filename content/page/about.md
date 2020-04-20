@@ -6,18 +6,8 @@ menu: main
 weight: -170
 ---
 
-From Frontend to Backend, from application layer to OS layer, I have built a knowledge graph for various technologies, which helps me to learn new technologies very quickly.
+最近半年，我一度怀疑是否还要继续写博客。因为内容说白了，大多都是一些拾人牙慧的东西。明明自己不怎么阅读中文资料，却还在生产中文资料，这种矛盾感让我感到有点奇怪。
 
-When I was a frontend intern, I grasped React, EventLoop and built a Functional Programming mindset, which help me a lot when comes into Java NIO and Java Stream API. I also built a strong OOP mindset after I programmed in Java for a year and a half.
+但人为地抑制表达欲其实是很不符合人性的，我真的需要一个地方表达一下自己的想法，展示自己的专业知识，锻炼自己的表达能力。这些理由就足够了。
 
-Having a FP and OOP mindset, plus a good understanding of EventLoop, Python is really easy and fun to master. I love decorator and coroutine in Python.
-
-I am the tech guy who is willing to dive into the foundation of various technologies. Currently, I am obsessed with learning xv6 operating system and TCP/IP networking stack.
-
-[resume](/files/resumes/resume_chenlingyun_en_US.pdf)
-
-
-我的成长历程,是从前端到后端,从上层到底层的,建立了一个技术体系框架。实习从前端开始,
-掌握了 React, EventLoop 和函数式编程思想之后,考虑到自己没有美感,又想实践 OOP, 就做了一年半的 Java 后端。熟悉了 Java 和 JVM 的同时,接触到了 Kubernetes, 重燃了对计算机网络和操作系统的兴趣,目前正在研究 xv6 操作系统实现和一个简单的用户态 TCP/IP 栈。
-
-[简历](/files/resumes/resume_chenlingyun_zh_CN.pdf)
+能看到这个博客的人并不多，来了就是朋友！

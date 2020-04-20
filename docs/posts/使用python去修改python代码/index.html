@@ -11,14 +11,14 @@
 <meta property='og:site_name' content='Home'>
 <meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='Python'><meta property='article:tag' content='AST'><meta property='article:tag' content='Metaprogramming'><meta property='article:tag' content='Code Generation'><meta property='article:tag' content='Template Engine'><meta property='article:published_time' content='2019-04-28T22:16:50&#43;08:00'/><meta property='article:modified_time' content='2019-04-28T22:16:50&#43;08:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.56.3" />
+<meta name="generator" content="Hugo 0.68.3" />
 
   <title>使用Python去修改Python代码 • Home</title>
   <link rel='canonical' href='https://studymakesmehappy.club/posts/%E4%BD%BF%E7%94%A8python%E5%8E%BB%E4%BF%AE%E6%94%B9python%E4%BB%A3%E7%A0%81/'>
   
   
   <link rel='icon' href='/favicon.ico'>
-<link rel='stylesheet' href='/assets/css/main.6a060eb7.css'><link rel='stylesheet' href='/css/custom.css'><style>
+<link rel='stylesheet' href='/assets/css/main.ab98e12b.css'><link rel='stylesheet' href='/css/custom.css'><style>
 :root{--color-accent:#ffcd00;}
 </style>
 
@@ -108,73 +108,56 @@ if (!doNotTrack) {
   
 
   <div class='container entry-content'>
-  
-
-<p>Python 是一门很方便优雅的语言，广泛地被应用于 Web, AI 和自动化领域，受到了工程师和科学家的喜爱。我们可以使用 Python 去处理各种数据，生成我们想要的结果。有没有想过，被操作的数据也可以是 Python 代码，我们使用一段 Python 代码去修改另外一段 Python 代码，去生成一个新的 py 文件。</p>
-
-<p>我们知道，代码文件其实就是有结构的字符串，理论上我们可以直接操作源码字符串来达到我们的目的，所以可行性上完全可以。显而易见，这种方法太原始简陋了，需要面对处理很多细节，很容易出错。既然原始的数据难以操作，我们就需要用一种数据结构来抽象地表示它，只要抽象数据结构和原始的数据可以互相转化就行。这种数据结构的专业术语叫 <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree" target="_blank">AST(Abstract Syntax Trees)</a>.</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4">       lexer                   parser
-code ---------&gt; tokens array ----------&gt; ast</pre></div>
-<p>AST 需要经过 <a href="https://en.wikipedia.org/wiki/Lexical_analysis" target="_blank">Lexer</a> 将源码字符串转变成 Token 数组，然后使用 <a href="https://en.wikipedia.org/wiki/Context-free_grammar" target="_blank">CFG(Context-free grammar)</a> 来构造出 AST 。由于 Python 经过这么多年的发展，语法规则已经足够复杂，所以裸写一个 parser 来构造 AST 还是有难度的，虽然可以使用 <a href="http://dinosaur.compilertools.net/yacc/" target="_blank">Yacc</a> 或者 <a href="https://www.antlr.org/" target="_blank">Antlr</a> 来生成一个 parser，但也略微繁琐。好在 Python 官方提供了 <a href="https://docs.python.org/3/library/ast.html" target="_blank">ast</a> 库来让我们直接获得 Python 代码的 AST.</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4">In [1]: import ast
+  <p>Python 是一门很方便优雅的语言，广泛地被应用于 Web, AI 和自动化领域，受到了工程师和科学家的喜爱。我们可以使用 Python 去处理各种数据，生成我们想要的结果。有没有想过，被操作的数据也可以是 Python 代码，我们使用一段 Python 代码去修改另外一段 Python 代码，去生成一个新的 py 文件。</p>
+<p>我们知道，代码文件其实就是有结构的字符串，理论上我们可以直接操作源码字符串来达到我们的目的，所以可行性上完全可以。显而易见，这种方法太原始简陋了，需要面对处理很多细节，很容易出错。既然原始的数据难以操作，我们就需要用一种数据结构来抽象地表示它，只要抽象数据结构和原始的数据可以互相转化就行。这种数据结构的专业术语叫 <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">AST(Abstract Syntax Trees)</a>.</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">       lexer                   parser
+code ---------&gt; tokens array ----------&gt; ast
+</code></pre></div><p>AST 需要经过 <a href="https://en.wikipedia.org/wiki/Lexical_analysis">Lexer</a> 将源码字符串转变成 Token 数组，然后使用 <a href="https://en.wikipedia.org/wiki/Context-free_grammar">CFG(Context-free grammar)</a> 来构造出 AST 。由于 Python 经过这么多年的发展，语法规则已经足够复杂，所以裸写一个 parser 来构造 AST 还是有难度的，虽然可以使用 <a href="http://dinosaur.compilertools.net/yacc/">Yacc</a> 或者 <a href="https://www.antlr.org/">Antlr</a> 来生成一个 parser，但也略微繁琐。好在 Python 官方提供了 <a href="https://docs.python.org/3/library/ast.html">ast</a> 库来让我们直接获得 Python 代码的 AST.</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">In [1]: import ast
 
 In [2]: add_expr = ast.parse(&#34;1+1&#34;)
 
 In [3]: ast.dump(add_expr)
-Out[3]: &#39;Module(body=[Expr(value=BinOp(left=Num(n=1), op=Add(), right=Num(n=1)))])&#39;</pre></div>
-<p>可以看到 <code>1+1</code>被 parse 成了一个 Expr(Expression), 这个 Expr 的 <em>value</em> 是一个 BinOp(Binary Operation)，BinOp 这个二元操作的操作符 (<em>opcode</em>) 是 Add(), 左边的操作数 (<em>operand</em>) 是 Num(n=1), 右边的操作数也是 Num(n=1)</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4">                  Add
+Out[3]: &#39;Module(body=[Expr(value=BinOp(left=Num(n=1), op=Add(), right=Num(n=1)))])&#39;
+</code></pre></div><p>可以看到 <code>1+1</code>被 parse 成了一个 Expr(Expression), 这个 Expr 的 <em>value</em> 是一个 BinOp(Binary Operation)，BinOp 这个二元操作的操作符 (<em>opcode</em>) 是 Add(), 左边的操作数 (<em>operand</em>) 是 Num(n=1), 右边的操作数也是 Num(n=1)</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">                  Add
                 /     \
                /       \
-           Num(n=1)  Num(n=1)</pre></div>
-<p>在 AST 上，使用 ast 库内置的方法，我们可以大胆地修改，裁剪，新增树中的每一个元素。</p>
-
+           Num(n=1)  Num(n=1)
+</code></pre></div><p>在 AST 上，使用 ast 库内置的方法，我们可以大胆地修改，裁剪，新增树中的每一个元素。</p>
 <h2 id="适用场景">适用场景</h2>
-
-<p>很明显，当你需要修改 Python 的源码文件时，你可能需要使用 <code>ast</code>. 为什么说可能？因为如果修改的量不大，也不繁琐的时候，直接就去改更简单高效。而我很不幸，遇到了一个设计不好，抽象不足的第三方项目，一点也不 <a href="https://en.wikipedia.org/wiki/SOLID" target="_blank">SOLID</a>。我需要为这个项目添加插件来完成我的工作，但是它没有提供一个良好的插件接口让我去实现，而是让我去修改它的源代码。添加一个插件需要改动3个源代码文件，生成一个新文件，一共是4个文件操作。在可预见的未来里，我需要为重复做十几个这样的操作，50多个相似的文件操作足以使人崩溃。内心是拒绝的，但工作还是要完成。短时间内我不可能为这个第三方项目设计一个插件架构，来向作者提 PR，还可能被拒绝。既然操作很类似，那么用代码来自动化进行这些操作是个不错的选择，这时候就轮到 <code>ast</code> 上场了。</p>
-
+<p>很明显，当你需要修改 Python 的源码文件时，你可能需要使用 <code>ast</code>. 为什么说可能？因为如果修改的量不大，也不繁琐的时候，直接就去改更简单高效。而我很不幸，遇到了一个设计不好，抽象不足的第三方项目，一点也不 <a href="https://en.wikipedia.org/wiki/SOLID">SOLID</a>。我需要为这个项目添加插件来完成我的工作，但是它没有提供一个良好的插件接口让我去实现，而是让我去修改它的源代码。添加一个插件需要改动3个源代码文件，生成一个新文件，一共是4个文件操作。在可预见的未来里，我需要为重复做十几个这样的操作，50多个相似的文件操作足以使人崩溃。内心是拒绝的，但工作还是要完成。短时间内我不可能为这个第三方项目设计一个插件架构，来向作者提 PR，还可能被拒绝。既然操作很类似，那么用代码来自动化进行这些操作是个不错的选择，这时候就轮到 <code>ast</code> 上场了。</p>
 <blockquote>
-<p>并没有说 AST 只适用以上场景，所有的编译器、解释器的前端部分都会用到 AST。 IDE, Editor 里提供的丰富重构、代码静态检查等功能就是基于 AST 操作的。前端领域中常用的 <a href="https://babeljs.io/" target="_blank">Babel</a> 和 <a href="https://www.typescriptlang.org/" target="_blank">tsc</a> 这类 code transformer 基本上就是基于 AST 操作的。</p>
+<p>并没有说 AST 只适用以上场景，所有的编译器、解释器的前端部分都会用到 AST。 IDE, Editor 里提供的丰富重构、代码静态检查等功能就是基于 AST 操作的。前端领域中常用的 <a href="https://babeljs.io/">Babel</a> 和 <a href="https://www.typescriptlang.org/">tsc</a> 这类 code transformer 基本上就是基于 AST 操作的。</p>
 </blockquote>
-
 <h2 id="具体问题">具体问题</h2>
-
 <p>前面提到，我需要修改3个源代码文件，生成一个新文件。它们分别是</p>
-
 <ul>
 <li>在 settings.py 里添加一些字符串常量定义</li>
 <li>在 rules.py 里将刚刚定义的常量填充到一些 dict 和 list 中去</li>
 <li>生成一个 validator</li>
 <li>将生成的 validator 添加到一个 list 中去</li>
 </ul>
-
 <p>撇开第三个操作，可以发现其实就是需要修改或新增一些 AST 中特定的 Assign 节点和 Import 节点。Assign 节点的 value 可能是 dict 或者 list.</p>
-
 <h2 id="实现">实现</h2>
-
 <p>由于要写的插件是针对一个 website 的，所以我们先定义一个基类</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#6ab825;font-weight:bold">class</span> <span style="color:#447fcf;text-decoration:underline">BaseNodeVisitor</span>(ast.NodeVisitor):
     <span style="color:#6ab825;font-weight:bold">def</span> __init__(self, website):
-        self.website: Website = website</code></pre></div>
-<p>NodeVisitor 方便我们遍历 AST；还有一个 NodeTransformer 也能遍历，只不过每一个遍历方法需要 <code>return modified_node</code>. NodeVisitor 类似于在一个 void function 里修改变量；NodeTransformer 类似于将函数的返回值赋值给变量。</p>
-
-<h3 id="修改-settings-py">修改 settings.py</h3>
+        self.website: Website = website
+</code></pre></div><p>NodeVisitor 方便我们遍历 AST；还有一个 NodeTransformer 也能遍历，只不过每一个遍历方法需要 <code>return modified_node</code>. NodeVisitor 类似于在一个 void function 里修改变量；NodeTransformer 类似于将函数的返回值赋值给变量。</p>
+<h3 id="修改-settingspy">修改 settings.py</h3>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#6ab825;font-weight:bold">class</span> <span style="color:#447fcf;text-decoration:underline">SettingsVisitor</span>(BaseNodeVisitor):
     <span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">visit_Module</span>(self, node):
         name = self.website.name
         temp_assign = Assign(targets=[Name(<span style="color:#24909d">id</span>=self.website.temp_queue(), ctx=Store())],
                              value=Str(s=f<span style="color:#ed9d13">&#39;haipproxy:{name}:temp&#39;</span>))
         node.body.extend([temp_assign])
-        self.generic_visit(node)</code></pre></div>
-<p><code>visit_Module</code> 方法会去修改 AST 中的 Module 节点。Module 就是 Python 中的模块，它的 <em>body</em> 属性是它的 children 节点们。我们往这个 <em>body</em> 添加了一个 Assign 节点，这个 Assign 节点是一条 Statement（有别于 Expression），它有 <em>targets</em> 和 <em>value</em> 属性，为什么是 <em>targets</em> ？因为可能有 <code>a=b=1</code> 这种语句，会有 a,b 两个 targets. 这里的 target 只有一个，是一个变量，使用 Name 表示。Name 的 <em>id</em> 是它的字面量，比如 <code>a=1</code> 中的 a； ctx=Store() 表示这个一个存值操作，类似的还有 Load() 表示取值操作。这里的 Assign 中的 <em>value</em> 是一个字符串。</p>
-
+        self.generic_visit(node)
+</code></pre></div><p><code>visit_Module</code> 方法会去修改 AST 中的 Module 节点。Module 就是 Python 中的模块，它的 <em>body</em> 属性是它的 children 节点们。我们往这个 <em>body</em> 添加了一个 Assign 节点，这个 Assign 节点是一条 Statement（有别于 Expression），它有 <em>targets</em> 和 <em>value</em> 属性，为什么是 <em>targets</em> ？因为可能有 <code>a=b=1</code> 这种语句，会有 a,b 两个 targets. 这里的 target 只有一个，是一个变量，使用 Name 表示。Name 的 <em>id</em> 是它的字面量，比如 <code>a=1</code> 中的 a； ctx=Store() 表示这个一个存值操作，类似的还有 Load() 表示取值操作。这里的 Assign 中的 <em>value</em> 是一个字符串。</p>
 <p><code>generic_visit</code> 方法是为了能够继续遍历当前 node 节点的 children. 具体可以查看 ast 库中的 NodeVisitor 源码理解。源码足够简单短小，这里不过多解释。</p>
-
 <p>如果把 settings.py 的 AST 转化为源码，可以发现最后一行会新增了一条 <code>TEMP_WEBSITENAME_QUEUE = 'haipproxy:websitename:temp'</code></p>
-
-<p>Python AST 中所有的 Node 类型可以参考 <a href="https://greentreesnakes.readthedocs.io/en/latest/nodes.html" target="_blank">Meet the Nodes</a></p>
-
-<h3 id="修改-rules-py">修改 rules.py</h3>
+<p>Python AST 中所有的 Node 类型可以参考 <a href="https://greentreesnakes.readthedocs.io/en/latest/nodes.html">Meet the Nodes</a></p>
+<h3 id="修改-rulespy">修改 rules.py</h3>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#6ab825;font-weight:bold">class</span> <span style="color:#447fcf;text-decoration:underline">RulesVisitor</span>(BaseNodeVisitor):
     <span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">visit_ImportFrom</span>(self, node):
         module = node.module
@@ -189,34 +172,26 @@ Out[3]: &#39;Module(body=[Expr(value=BinOp(left=Num(n=1), op=Add(), right=Num(n=
             node.value.values.append(
                 Name(<span style="color:#24909d">id</span>=self.website.speed_queue(), ctx=Load()))
         <span style="color:#6ab825;font-weight:bold">if</span> <span style="color:#ed9d13">&#39;HTTPS_TASKS&#39;</span> == node.targets[<span style="color:#3677a9">0</span>].id <span style="color:#6ab825;font-weight:bold">and</span> self.website.is_https():
-            node.value.elts.append(Str(s=name))</code></pre></div>
-<p><code>visit_ImportFrom</code> 给 <code>from ..config.settings import XXX</code> 这句 Statement 加了一个新被 imported 的 alias， alias 的 <em>name</em> 是被引入的项的名字，<em>asname</em> 可以为它取一个别名，这里不需要别名，设为 None.</p>
-
+            node.value.elts.append(Str(s=name))
+</code></pre></div><p><code>visit_ImportFrom</code> 给 <code>from ..config.settings import XXX</code> 这句 Statement 加了一个新被 imported 的 alias， alias 的 <em>name</em> 是被引入的项的名字，<em>asname</em> 可以为它取一个别名，这里不需要别名，设为 None.</p>
 <p><code>visit_Assign</code> 给 <code>SPEED_MAPS</code> 这个 dict 变量新增了一个 key-value pair. 同时也给 <code>HTTPS_TASKS</code> 这个 list 新增了一个字符串。</p>
-
 <h3 id="ast-转化回源代码">AST 转化回源代码</h3>
-
 <p>第四步和第二步中的 <code>HTTPS_TASKS</code> 类似，所以不再讨论。</p>
-
 <p>使用 SettingsVisitor, RulesVisitor 和 遍历 AST 树，修改新增节点</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">self.settings_tree = ast.parse(settings_sourcecode)
 self.rule_tree = ast.parse(rules_sourcecode)
 SettingsVisitor(website).visit(self.settings_tree)
-RulesVisitor(website).visit(self.rule_tree)</code></pre></div>
-<p>现在考虑怎么把 AST 中的修改 flush 到源代码中。</p>
-
+RulesVisitor(website).visit(self.rule_tree)
+</code></pre></div><p>现在考虑怎么把 AST 中的修改 flush 到源代码中。</p>
 <p><code>astor</code> 这个库可以帮我们做到这个</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#6ab825;font-weight:bold">import</span> <span style="color:#447fcf;text-decoration:underline">astor</span>
 ast.fix_missing_locations(self.settings_tree)
-settings_source = astor.to_source(self.settings_tree)</code></pre></div>
-<p>这里的 <code>fix_missing_locations</code> 是为了给 settings_tree 里新增的节点填充一些源代码行号和列位移信息。使用 <code>astor.to_source</code> 来将 AST 转化回源代码</p>
-
+settings_source = astor.to_source(self.settings_tree)
+</code></pre></div><p>这里的 <code>fix_missing_locations</code> 是为了给 settings_tree 里新增的节点填充一些源代码行号和列位移信息。使用 <code>astor.to_source</code> 来将 AST 转化回源代码</p>
 <h3 id="生成一个-validator">生成一个 validator</h3>
-
 <p>之前略过了第三步，是因为它需要写一个 validator class. 使用 AST 来构造出一个 class，还是很繁琐的。考虑到手写 <code>1+1</code> 的 AST 就已经很麻烦了，想象一下一个 class 需要手动构造多少 AST 节点，哈哈，害怕！</p>
-
 <p>可以使用模板引擎来帮我们生成这个 class，首先定义这个模板</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4">from haipproxy.config.settings import (
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">from haipproxy.config.settings import (
     TEMP_{{name_uppercase}}_QUEUE)
 from ..redis_spiders import ValidatorRedisSpider
 from .base import BaseValidator
@@ -226,26 +201,21 @@ class {{validator_classname}}(BaseValidator, ValidatorRedisSpider):
     name = &#39;{{name_lowercase}}&#39;
     urls = [&#39;{{url}}&#39;]
     task_queue = TEMP_{{name_uppercase}}_QUEUE
-    success_key = &#39;{{success_key}}&#39;</pre></div>
-<p>然后替换其中被 <code>{{}}</code> 包裹的模板变量</p>
+    success_key = &#39;{{success_key}}&#39;
+</code></pre></div><p>然后替换其中被 <code>{{}}</code> 包裹的模板变量</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#6ab825;font-weight:bold">from</span> <span style="color:#447fcf;text-decoration:underline">jinja2</span> <span style="color:#6ab825;font-weight:bold">import</span> Template
 template = Template(f.read())
 r = template.render(name_lowercase=website.name_lowercase(), name_uppercase=website.name_uppercase(),
-            validator_classname=website.validator_classname(), url=website.url, success_key=website.success_key)</code></pre></div>
-<p>这里模板引擎使用 jinja2，其实用其它模板引擎也无所谓，只要 Python 支持就好，甚至可以直接粗暴地用字符串替换。最后把替换好的 r 写入到期望中的 py 文件路径就好了。</p>
-
+            validator_classname=website.validator_classname(), url=website.url, success_key=website.success_key)
+</code></pre></div><p>这里模板引擎使用 jinja2，其实用其它模板引擎也无所谓，只要 Python 支持就好，甚至可以直接粗暴地用字符串替换。最后把替换好的 r 写入到期望中的 py 文件路径就好了。</p>
 <h2 id="总结">总结</h2>
-
 <p>使用Python去修改Python代码，听上去很厉害，实际上还是挺容易的。我们使用了 ast 库去准确地修改某一处的代码，使用 jinja2 模板引擎去生成一个 py 代码文件。</p>
-
-<p>这种使用代码来写代码的编程模式，专业术语叫 <a href="https://en.wikipedia.org/wiki/Metaprogramming" target="_blank">Metaprogramming</a>. Python 里的 decorator, metaclass 都属于 Metaprogramming. decorator 和 metaclass 都是程序运行时修改自己的代码，和这里离线修改不同。</p>
-
+<p>这种使用代码来写代码的编程模式，专业术语叫 <a href="https://en.wikipedia.org/wiki/Metaprogramming">Metaprogramming</a>. Python 里的 decorator, metaclass 都属于 Metaprogramming. decorator 和 metaclass 都是程序运行时修改自己的代码，和这里离线修改不同。</p>
 <h2 id="更多">更多</h2>
-
 <ul>
-<li><a href="https://en.wikipedia.org/wiki/Compiler" target="_blank">Compiler</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Reflection_(computer_programming)" target="_blank">Reflection</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Template_metaprogramming" target="_blank">Template metaprogramming</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Compiler">Compiler</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Reflection_(computer_programming)">Reflection</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Template_metaprogramming">Template metaprogramming</a></li>
 </ul>
 
 </div>
@@ -264,7 +234,7 @@ r = template.render(name_lowercase=website.name_lowercase(), name_uppercase=webs
   <line x1="7" y1="7" x2="7" y2="7"/>
   
 </svg>
-<span class='screen-reader-text'>标签: </span><a class='tag' href='/tags/python/'>Python</a>, <a class='tag' href='/tags/ast/'>AST</a>, <a class='tag' href='/tags/metaprogramming/'>Metaprogramming</a>, <a class='tag' href='/tags/code-generation/'>Code Generation</a>, <a class='tag' href='/tags/template-engine/'>Template Engine</a></div>
+<span class='screen-reader-text'>标签: </span><a class='tag' href='/tags/python/'>Python</a>, <a class='tag' href='/tags/ast/'>AST</a>, <a class='tag' href='/tags/code-generation/'>Code Generation</a>, <a class='tag' href='/tags/metaprogramming/'>Metaprogramming</a>, <a class='tag' href='/tags/template-engine/'>Template Engine</a></div>
 
   </div>
 </footer>
@@ -331,7 +301,7 @@ r = template.render(name_lowercase=website.name_lowercase(), name_uppercase=webs
       </li></ul>
   </nav>
 </section><div class='copyright'>
-  <p> &copy; 2017-2019 ccccly </p>
+  <p> &copy; 2017-2020 ccccly </p>
 </div>
 
         </div>
@@ -340,7 +310,7 @@ r = template.render(name_lowercase=website.name_lowercase(), name_uppercase=webs
     </div>
   </div><script>window.__assets_js_src="/assets/js/"</script>
 
-<script src='/assets/js/main.67d669ac.js'></script><script src='/js/custom.js'></script>
+<script src='/assets/js/main.c3bcf2df.js'></script><script src='/js/custom.js'></script>
 
 </body>
 

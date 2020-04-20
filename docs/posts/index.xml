@@ -1,14 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Home</title>
     <link>https://studymakesmehappy.club/posts/</link>
     <description>Recent content in Posts on Home</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 11 Aug 2019 15:11:10 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 20 Apr 2020 21:48:27 +0800</lastBuildDate>
     
 	<atom:link href="https://studymakesmehappy.club/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>我是一名工程师，我即将失去视力，我该如何做好准备?</title>
+      <link>https://studymakesmehappy.club/posts/%E6%88%91%E6%98%AF%E4%B8%80%E5%90%8D%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%88%91%E5%8D%B3%E5%B0%86%E5%A4%B1%E5%8E%BB%E8%A7%86%E5%8A%9B%E6%88%91%E8%AF%A5%E5%A6%82%E4%BD%95%E5%81%9A%E5%A5%BD%E5%87%86%E5%A4%87/</link>
+      <pubDate>Mon, 20 Apr 2020 21:48:27 +0800</pubDate>
+      
+      <guid>https://studymakesmehappy.club/posts/%E6%88%91%E6%98%AF%E4%B8%80%E5%90%8D%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%88%91%E5%8D%B3%E5%B0%86%E5%A4%B1%E5%8E%BB%E8%A7%86%E5%8A%9B%E6%88%91%E8%AF%A5%E5%A6%82%E4%BD%95%E5%81%9A%E5%A5%BD%E5%87%86%E5%A4%87/</guid>
+      <description>午休的时候，在 HN 上看到这么一个帖子，Ask HN: I&amp;rsquo;m a software engineer going blind, how should I prepare? 我触动于工程师之间的友好互助，在此摘取一些评论，翻译出来。 主要是想引起大家的</description>
+    </item>
     
     <item>
       <title>Linux Kernel 中的数据结构——泛型 LinkedList</title>
@@ -61,7 +70,7 @@
       <pubDate>Sat, 13 Oct 2018 22:01:32 +0800</pubDate>
       
       <guid>https://studymakesmehappy.club/posts/%E4%B8%80%E4%B8%AA%E6%9C%88%E7%9A%84%E8%BE%B9%E6%97%85%E8%A1%8C%E8%BE%B9%E5%B7%A5%E4%BD%9C%E4%B8%8A/</guid>
-      <description>&lt;p&gt;大概在3个月前，我听到了一档博客——&lt;a href=&#34;https://www.lizhi.fm/1728291/2678595859765578246&#34; target=&#34;_blank&#34;&gt;关于「只工作不上班」的讨论&lt;/a&gt;，那时候觉得自己可以试试&lt;strong&gt;边旅行边工作&lt;/strong&gt;这种工作方式。就在工作日下班的时候去找了老板，跟他约个时间聊一聊，没想到老板很畅快地同意了！过了老板这关，第二天晚上我就初步定了一个旅行方案——&lt;a href=&#34;https://studymakesmehappy.club/posts/%E5%9C%A8%E6%95%B0%E5%AD%97%E6%B8%B8%E6%B0%91%E8%BE%B9%E7%BC%98%E8%AF%95%E6%8E%A2/&#34; target=&#34;_blank&#34;&gt;数字游民计划&lt;/a&gt;。时间是从9月1号开始，到10月7号国庆节结束，一共36天。背着电脑包，带着我的小拉杆箱，肩负我的工作任务，就这么离开了上海。&lt;/p&gt;</description>
+      <description>&lt;p&gt;大概在3个月前，我听到了一档博客——&lt;a href=&#34;https://www.lizhi.fm/1728291/2678595859765578246&#34;&gt;关于「只工作不上班」的讨论&lt;/a&gt;，那时候觉得自己可以试试&lt;strong&gt;边旅行边工作&lt;/strong&gt;这种工作方式。就在工作日下班的时候去找了老板，跟他约个时间聊一聊，没想到老板很畅快地同意了！过了老板这关，第二天晚上我就初步定了一个旅行方案——&lt;a href=&#34;https://studymakesmehappy.club/posts/%E5%9C%A8%E6%95%B0%E5%AD%97%E6%B8%B8%E6%B0%91%E8%BE%B9%E7%BC%98%E8%AF%95%E6%8E%A2/&#34;&gt;数字游民计划&lt;/a&gt;。时间是从9月1号开始，到10月7号国庆节结束，一共36天。背着电脑包，带着我的小拉杆箱，肩负我的工作任务，就这么离开了上海。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -88,7 +97,7 @@
       <pubDate>Sun, 01 Jul 2018 12:21:44 +0800</pubDate>
       
       <guid>https://studymakesmehappy.club/posts/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%98%AF%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8%E7%9A%84/</guid>
-      <description>花了一下午时间，成功安装了 Arch Linux, 收获颇丰。在此以 Arch Linux 的安装为例来聊一聊&amp;rdquo;操作系统是如何启动的&amp;rdquo;。虽然是以 Arch 为例，但其实</description>
+      <description>花了一下午时间，成功安装了 Arch Linux, 收获颇丰。在此以 Arch Linux 的安装为例来聊一聊&amp;quot;操作系统是如何启动的&amp;rdquo;。虽然是以 Arch 为例，但其实所</description>
     </item>
     
     <item>

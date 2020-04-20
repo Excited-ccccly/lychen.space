@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pages on Home</title>
@@ -15,7 +15,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://studymakesmehappy.club/about/</guid>
-      <description>From Frontend to Backend, from application layer to OS layer, I have built a knowledge graph for various technologies, which helps me to learn new technologies very quickly. When I was a frontend intern, I grasped React, EventLoop and built a Functional Programming mindset, which help me a lot when comes into Java NIO and Java Stream API. I also built a strong OOP mindset after I programmed in Java</description>
+      <description>最近半年，我一度怀疑是否还要继续写博客。因为内容说白了，大多都是一些拾人牙慧的东西。明明自己不怎么阅读中文资料，却还在生产中文资料，这种矛盾</description>
     </item>
     
   </channel>

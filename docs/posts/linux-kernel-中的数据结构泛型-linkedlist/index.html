@@ -11,14 +11,14 @@
 <meta property='og:site_name' content='Home'>
 <meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='Data Structures'><meta property='article:tag' content='Generic Programming'><meta property='article:tag' content='LinkedList'><meta property='article:tag' content='Kernel'><meta property='article:published_time' content='2019-08-11T15:11:10&#43;08:00'/><meta property='article:modified_time' content='2019-08-11T15:11:10&#43;08:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.56.3" />
+<meta name="generator" content="Hugo 0.68.3" />
 
   <title>Linux Kernel 中的数据结构——泛型 LinkedList • Home</title>
   <link rel='canonical' href='https://studymakesmehappy.club/posts/linux-kernel-%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%B3%9B%E5%9E%8B-linkedlist/'>
   
   
   <link rel='icon' href='/favicon.ico'>
-<link rel='stylesheet' href='/assets/css/main.6a060eb7.css'><link rel='stylesheet' href='/css/custom.css'><style>
+<link rel='stylesheet' href='/assets/css/main.ab98e12b.css'><link rel='stylesheet' href='/css/custom.css'><style>
 :root{--color-accent:#ffcd00;}
 </style>
 
@@ -108,14 +108,10 @@ if (!doNotTrack) {
   
 
   <div class='container entry-content'>
-  
-
-<blockquote>
+  <blockquote>
 <p>这是系列文章 「Linux Kernel 中的数据结构」的第一篇，欢迎关注</p>
 </blockquote>
-
 <p>众所周知，Linux Kernel 是用 C 写的，但是 C 语言并没有像 Java 那样原生支持 Generic Programming，那要如何用 C 实现泛型数据结构呢？</p>
-
 <p>了解 C 的同学这时候会喊，可以用 void pointer 啊</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#999;font-style:italic">/* A doubly linked list node */</span>
 <span style="color:#6ab825;font-weight:bold">struct</span> Node
@@ -126,20 +122,17 @@ if (!doNotTrack) {
     <span style="color:#6ab825;font-weight:bold">struct</span> Node *prev;
     <span style="color:#6ab825;font-weight:bold">struct</span> Node *next;
 
-};</code></pre></div>
-<p>void 指针可以指向任何数据类型，就像 Java 中的 Object 类一样。这样不仅可以实现泛型链表，甚至允许一个链表可以存储多种类型的数据。</p>
-
+};
+</code></pre></div><p>void 指针可以指向任何数据类型，就像 Java 中的 Object 类一样。这样不仅可以实现泛型链表，甚至允许一个链表可以存储多种类型的数据。</p>
 <h2 id="kernel-中的-linked-list">Kernel 中的 Linked List</h2>
-
 <p>但 Kernel 中没有这么做。与之相反，它的做法是在数据的 struct 里嵌入一个 Linked List 的 node. 这种不包含数据的 Linked List 的专业术语叫 <strong>Intrusive Linked List</strong>，它使得 list 相关的操作不用关心数据的类型，从而达到泛型的目的。</p>
-
 <p>Node 节点只包含 prev 和 next 指针</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#999;font-style:italic">/* https://github.com/torvalds/linux/blob/3724921396dd1a07c93e3516b8d7c9ff570d17a9/include/linux/types.h#L181 */</span>
 
 <span style="color:#6ab825;font-weight:bold">struct</span> list_head {
 	<span style="color:#6ab825;font-weight:bold">struct</span> list_head *next, *prev;
-};</code></pre></div>
-<p>比如，Linux 网络栈最重要的数据结构 sk_buff 就嵌入了 list_head(由于 sk_buff 承担了很多职责，非常复杂，union 中的其它项不管)</p>
+};
+</code></pre></div><p>比如，Linux 网络栈最重要的数据结构 sk_buff 就嵌入了 list_head(由于 sk_buff 承担了很多职责，非常复杂，union 中的其它项不管)</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#999;font-style:italic">/* https://github.com/torvalds/linux/blob/75a56758d6390ea6db523ad26ce378f34b907b0c/include/linux/skbuff.h#L690 */</span>
 
 <span style="color:#6ab825;font-weight:bold">struct</span> sk_buff {
@@ -153,13 +146,10 @@ if (!doNotTrack) {
 		<span style="color:#6ab825;font-weight:bold">struct</span> list_head	list;
 	};
 	...
-}</code></pre></div>
-<p>可以通过 sk_buff-&gt;list.prev 访问前一个 sk_buff，sk_buff-&gt;list.next 访问下一个 sk_buff</p>
-
+}
+</code></pre></div><p>可以通过 sk_buff-&gt;list.prev 访问前一个 sk_buff，sk_buff-&gt;list.next 访问下一个 sk_buff</p>
 <h2 id="list-相关的操作">List 相关的操作</h2>
-
 <h3 id="init">Init</h3>
-
 <p>list 的变量有两种初始化方式，一种是在 stack 中初始化，函数调用结束后会自动销毁；另外一种是在 heap 中初始化，需要自己手动 malloc 和 free. 注意初始化的 head 不含数据，是一个 dummy 指针。</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#999;font-style:italic">/* https://github.com/torvalds/linux/blob/c8af5cd75e2411d5a5aacf115f59a5ff6b87f3fa/include/linux/list.h#L21 */</span>
 
@@ -184,18 +174,14 @@ if (!doNotTrack) {
 {
 	WRITE_ONCE(list-&gt;next, list);
 	list-&gt;prev = list;
-}</code></pre></div>
-<p><img src="/images/linked-list-in-linux-kernel/list_init.png" alt="" /></p>
-
+}
+</code></pre></div><p><img src="/images/linked-list-in-linux-kernel/list_init.png" alt=""></p>
 <h3 id="add">Add</h3>
-
 <p>add 操作有两种</p>
-
 <ul>
 <li><code>list_add</code>, 它把 new_entry 插入到 head 的后面</li>
 <li><code>list_add_tail</code>，它把 new_entry 插入到 head 的前面</li>
 </ul>
-
 <p>它们都调用 <code>__list_add</code>。由于 head-&gt;next 是 list 的第一个元素，因此 <code>list_add</code> 实现了数据结构中的 stack, 而 <code>list_add_tail</code> 实现了 queue.</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#999;font-style:italic">/* https://github.com/torvalds/linux/blob/c8af5cd75e2411d5a5aacf115f59a5ff6b87f3fa/include/linux/list.h#L77 */</span>
 
@@ -246,23 +232,20 @@ if (!doNotTrack) {
 	new-&gt;next = next;
 	new-&gt;prev = prev;
 	WRITE_ONCE(prev-&gt;next, new);
-}</code></pre></div>
-<p><img src="/images/linked-list-in-linux-kernel/list_add.png" alt="" /></p>
+}
 
-<p><img src="/images/linked-list-in-linux-kernel/list_add_tail.png" alt="" /></p>
-
+</code></pre></div><p><img src="/images/linked-list-in-linux-kernel/list_add.png" alt=""></p>
+<p><img src="/images/linked-list-in-linux-kernel/list_add_tail.png" alt=""></p>
 <h3 id="get-entry">Get Entry</h3>
-
 <p>del, replace, move, is_empty, rotate, cut, splice 只是一些指针操作，就不罗列了。现在来看看怎么从 list 中获取到 entry 的数据</p>
-
 <p>假设我们已经做了以下操作，初始化了一个 skb_queue，并把一个 skb 中的 list 添加进了这个 queue. 注意这里并没有把 skb 加进去。</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#6ab825;font-weight:bold">struct</span> list_head skb_queue;
 INIT_LIST_HEAD(&amp;skb_queue);
 
-list_add_tail(&amp;skb-&gt;list, &amp;skb_queue)</code></pre></div>
-<p>现在我想从这个 list 中取出这个（第一个） skb，获取 skb 内部的数据。</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">skb = list_first_entry(&amp;skb_queue, <span style="color:#6ab825;font-weight:bold">struct</span> sk_buff, list)</code></pre></div>
-<p>来看看 <code>list_first_entry</code> 的实现. ptr 就是 skb_queue 的指针；由于我们是在 sk_buff 嵌入了 list_head，所以 type 是 struct sk_buff; 这个 list_head 在 sk_buff 叫 list, 所以 member 是 list.</p>
+list_add_tail(&amp;skb-&gt;list, &amp;skb_queue)
+</code></pre></div><p>现在我想从这个 list 中取出这个（第一个） skb，获取 skb 内部的数据。</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">skb = list_first_entry(&amp;skb_queue, <span style="color:#6ab825;font-weight:bold">struct</span> sk_buff, list)
+</code></pre></div><p>来看看 <code>list_first_entry</code> 的实现. ptr 就是 skb_queue 的指针；由于我们是在 sk_buff 嵌入了 list_head，所以 type 是 struct sk_buff; 这个 list_head 在 sk_buff 叫 list, 所以 member 是 list.</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#999;font-style:italic">/* https://github.com/torvalds/linux/blob/c8af5cd75e2411d5a5aacf115f59a5ff6b87f3fa/include/linux/list.h#L489 */</span>
 
 <span style="color:#999;font-style:italic">/**
@@ -283,8 +266,8 @@ list_add_tail(&amp;skb-&gt;list, &amp;skb_queue)</code></pre></div>
 </span><span style="color:#999;font-style:italic"> * @member:	the name of the list_head within the struct.
 </span><span style="color:#999;font-style:italic"> */</span>
 <span style="color:#cd2828;font-weight:bold">#define list_entry(ptr, type, member) \
-</span><span style="color:#cd2828;font-weight:bold">	container_of(ptr, type, member)</span></code></pre></div>
-<p>skb_queue 的第一个元素就是 ptr-&gt;next，再用 list_entry 获取相应的 entry, 最后是用 <code>container_of</code></p>
+</span><span style="color:#cd2828;font-weight:bold">	container_of(ptr, type, member)
+</span></code></pre></div><p>skb_queue 的第一个元素就是 ptr-&gt;next，再用 list_entry 获取相应的 entry, 最后是用 <code>container_of</code></p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#999;font-style:italic">/* https://github.com/torvalds/linux/blob/8f9fab480c7a87b10bb5440b5555f370272a5d59/include/linux/kernel.h#L969 */</span>
 
 <span style="color:#999;font-style:italic">/**
@@ -299,13 +282,10 @@ list_add_tail(&amp;skb-&gt;list, &amp;skb_queue)</code></pre></div>
 </span><span style="color:#cd2828;font-weight:bold">	BUILD_BUG_ON_MSG(!__same_type(*(ptr), ((type *)0)-&gt;member) &amp;&amp;	\
 </span><span style="color:#cd2828;font-weight:bold">			 !__same_type(*(ptr), void),			\
 </span><span style="color:#cd2828;font-weight:bold">			 &#34;pointer type mismatch in container_of()&#34;);	\
-</span><span style="color:#cd2828;font-weight:bold">	((type *)(__mptr - offsetof(type, member))); })</span></code></pre></div>
-<p>这里 <code>BUILD_BUG_ON_MSG</code> 只是确保类型一致，不管。ptr 类型是 struct list_head *, type 是 struct sk_buff, member 是 list. 我们知道一个 struct 分配的<strong>内存是连续</strong>的，这里我们有 sk_buff 中 list 的地址值 ptr，只要减去 <strong>list 的位移</strong>，就能得到整个 sk_buff 的地址，然后再转换成 struct sk_buff *, 这样就拿到了 sk_buff.</p>
-
+</span><span style="color:#cd2828;font-weight:bold">	((type *)(__mptr - offsetof(type, member))); })
+</span></code></pre></div><p>这里 <code>BUILD_BUG_ON_MSG</code> 只是确保类型一致，不管。ptr 类型是 struct list_head *, type 是 struct sk_buff, member 是 list. 我们知道一个 struct 分配的<strong>内存是连续</strong>的，这里我们有 sk_buff 中 list 的地址值 ptr，只要减去 <strong>list 的位移</strong>，就能得到整个 sk_buff 的地址，然后再转换成 struct sk_buff *, 这样就拿到了 sk_buff.</p>
 <p>这里我不是很理解为什么要转换成 void *, 转成 char * 应该更好, 因为按照 C 语言的标准，void 指针是不能做算术运算的，但 gcc 的实现支持了 void * 的算术运算。</p>
-
 <h3 id="iterator">Iterator</h3>
-
 <p>通过 container_of，我们能够从一个 struct list_head 获得嵌入它的宿主 struct. 在此基础之上，加入 iterator 支持也很简单。</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#999;font-style:italic">/* https://github.com/torvalds/linux/blob/c8af5cd75e2411d5a5aacf115f59a5ff6b87f3fa/include/linux/list.h#L663 */</span>
 
@@ -320,8 +300,8 @@ list_add_tail(&amp;skb-&gt;list, &amp;skb_queue)</code></pre></div>
 </span><span style="color:#cd2828;font-weight:bold">	for (pos = list_first_entry(head, typeof(*pos), member),	\
 </span><span style="color:#cd2828;font-weight:bold">		n = list_next_entry(pos, member);			\
 </span><span style="color:#cd2828;font-weight:bold">	     &amp;pos-&gt;member != (head); 					\
-</span><span style="color:#cd2828;font-weight:bold">	     pos = n, n = list_next_entry(n, member))</span></code></pre></div>
-<p>list_for_each_entry_safe 是这样使用的</p>
+</span><span style="color:#cd2828;font-weight:bold">	     pos = n, n = list_next_entry(n, member))
+</span></code></pre></div><p>list_for_each_entry_safe 是这样使用的</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#999;font-style:italic">/* https://github.com/torvalds/linux/blob/6413139dfc641aaaa30580b59696a5f7ea274194/net/core/dev.c#L5208 */</span>
 
 <span style="color:#6ab825;font-weight:bold">static</span> <span style="color:#6ab825;font-weight:bold">void</span> <span style="color:#447fcf">netif_receive_skb_list_internal</span>(<span style="color:#6ab825;font-weight:bold">struct</span> list_head *head)
@@ -337,30 +317,22 @@ list_add_tail(&amp;skb-&gt;list, &amp;skb_queue)</code></pre></div>
 			list_add_tail(&amp;skb-&gt;list, &amp;sublist);
 	}
 	...
-}</code></pre></div>
-<p>熟悉 Java 的同学都知道不能在 forEach 中删除元素。这里也是要删除元素, <code>skb_list_del_init</code>， 所以使用了 <code>list_for_each_entry_safe</code>. skb 是当前 entry, next 是下一个 entry. <code>skb_list_del_init</code> 清除当前 skb 的指针，但接下来又把 next 赋值给了 skb, 所以是删除安全的。</p>
-
+}
+</code></pre></div><p>熟悉 Java 的同学都知道不能在 forEach 中删除元素。这里也是要删除元素, <code>skb_list_del_init</code>， 所以使用了 <code>list_for_each_entry_safe</code>. skb 是当前 entry, next 是下一个 entry. <code>skb_list_del_init</code> 清除当前 skb 的指针，但接下来又把 next 赋值给了 skb, 所以是删除安全的。</p>
 <h2 id="对比">对比</h2>
-
 <p>void 指针和 Intrusive Linked List 各有优缺点。从 Intrusive Linked List 角度来看。</p>
-
 <h3 id="pros">Pros</h3>
-
 <ul>
 <li>只需要一次 malloc 就能分配内存；而 void pointer 需要两次，一次是分配 data，还有一次是分配 node 节点。</li>
 <li>能直接定位到在 list 中的位置，比如 sk_buff-&gt;list 就能得到 prev 和 next 指针，因此可以快速操作指针；而 void pointer 方式中的 data 没有到 list 位置的映射</li>
 <li>更安全，因为 void pointer 太自由了</li>
 </ul>
-
 <h3 id="cons">Cons</h3>
-
 <ul>
 <li>具有侵入性，需要修改目标 struct，比如在 sk_buff 加入 list_head</li>
 <li>每一个 node 节点只能是同一种类型，而 void pointer 可以指向不同的数据类型</li>
 </ul>
-
 <h2 id="总结">总结</h2>
-
 <p>C 不具备泛型原语，但仍有方法达到泛型的目的；就像 C 不具备 OOP 原语，但同样能用 struct 达到封装，用 function pointer 达到多态的目的。</p>
 
 </div>
@@ -379,7 +351,7 @@ list_add_tail(&amp;skb-&gt;list, &amp;skb_queue)</code></pre></div>
   <line x1="7" y1="7" x2="7" y2="7"/>
   
 </svg>
-<span class='screen-reader-text'>标签: </span><a class='tag' href='/tags/data-structures/'>Data Structures</a>, <a class='tag' href='/tags/generic-programming/'>Generic Programming</a>, <a class='tag' href='/tags/linkedlist/'>LinkedList</a>, <a class='tag' href='/tags/kernel/'>Kernel</a></div>
+<span class='screen-reader-text'>标签: </span><a class='tag' href='/tags/data-structures/'>Data Structures</a>, <a class='tag' href='/tags/generic-programming/'>Generic Programming</a>, <a class='tag' href='/tags/kernel/'>Kernel</a>, <a class='tag' href='/tags/linkedlist/'>LinkedList</a></div>
 
   </div>
 </footer>
@@ -398,6 +370,16 @@ list_add_tail(&amp;skb-&gt;list, &amp;skb_queue)</code></pre></div>
 </svg>
  上一个</span>
         <span class='screen-reader-text'>上一篇文章: </span>两步验证器是如何工作的</a>
+    </div><div class='next-entry sep-before'>
+      <a href='/posts/%E6%88%91%E6%98%AF%E4%B8%80%E5%90%8D%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%88%91%E5%8D%B3%E5%B0%86%E5%A4%B1%E5%8E%BB%E8%A7%86%E5%8A%9B%E6%88%91%E8%AF%A5%E5%A6%82%E4%BD%95%E5%81%9A%E5%A5%BD%E5%87%86%E5%A4%87/'>
+        <span class='screen-reader-text'>下一篇文章: </span>我是一名工程师，我即将失去视力，我该如何做好准备?<span aria-hidden='true'>下一个 <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="4" y1="12" x2="20" y2="12"/>
+  <polyline points="14 6 20 12 14 18"/>
+  
+</svg>
+</span>
+      </a>
     </div></div>
 </nav>
 
@@ -436,7 +418,7 @@ list_add_tail(&amp;skb-&gt;list, &amp;skb_queue)</code></pre></div>
       </li></ul>
   </nav>
 </section><div class='copyright'>
-  <p> &copy; 2017-2019 ccccly </p>
+  <p> &copy; 2017-2020 ccccly </p>
 </div>
 
         </div>
@@ -445,7 +427,7 @@ list_add_tail(&amp;skb-&gt;list, &amp;skb_queue)</code></pre></div>
     </div>
   </div><script>window.__assets_js_src="/assets/js/"</script>
 
-<script src='/assets/js/main.67d669ac.js'></script><script src='/js/custom.js'></script>
+<script src='/assets/js/main.c3bcf2df.js'></script><script src='/js/custom.js'></script>
 
 </body>
 

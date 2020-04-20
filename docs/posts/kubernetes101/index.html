@@ -11,14 +11,14 @@
 <meta property='og:site_name' content='Home'>
 <meta property='og:type' content='article'><meta property='og:image' content='https://www.gravatar.com/avatar/374150c4ee619dfed2491b9bb5bcd476?s=256'><meta property='article:section' content='posts'><meta property='article:tag' content='Kubernetes'><meta property='article:tag' content='Docker'><meta property='article:tag' content='Deployment'><meta property='article:published_time' content='2018-01-07T23:31:08&#43;08:00'/><meta property='article:modified_time' content='2018-01-07T23:31:08&#43;08:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.56.3" />
+<meta name="generator" content="Hugo 0.68.3" />
 
   <title>Kubernetes101 • ccccly</title>
   <link rel='canonical' href='https://studymakesmehappy.club/posts/kubernetes101/'>
   
   
   <link rel='icon' href='/favicon.ico'>
-<link rel='stylesheet' href='/assets/css/main.6a060eb7.css'><link rel='stylesheet' href='/css/custom.css'><style>
+<link rel='stylesheet' href='/assets/css/main.ab98e12b.css'><link rel='stylesheet' href='/css/custom.css'><style>
 :root{--color-accent:#ffcd00;}
 </style>
 
@@ -114,12 +114,8 @@ if (!doNotTrack) {
   
 
   <div class='container entry-content'>
-  
-
-<p>这是一篇 kubernetes（简称 k8s，将中间的 8 个字母简写成“8”） 的基础教程，会使用实际例子来讲解 k8s 中的基础概念。</p>
-
+  <p>这是一篇 kubernetes（简称 k8s，将中间的 8 个字母简写成“8”） 的基础教程，会使用实际例子来讲解 k8s 中的基础概念。</p>
 <p>在这个教程中，假设你有基本的 Docker 使用基础，你将会学习到以下几点：</p>
-
 <ul>
 <li>搭建 k8s 集群</li>
 <li>部署一个容器化的应用到集群中</li>
@@ -128,49 +124,31 @@ if (!doNotTrack) {
 <li>通过 Rolling Update 更新服务</li>
 <li>Deployment, Pod, Node, Service 等相关的概念</li>
 </ul>
-
 <h2 id="安装-cli">安装 cli</h2>
-
-<p><a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/" target="_blank">kubectl</a> 是 k8s 的命令行工具，可以方便地管理集群</p>
-
+<p><a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">kubectl</a> 是 k8s 的命令行工具，可以方便地管理集群</p>
 <h2 id="安装集群">安装集群</h2>
-
 <p>有两种方式可以安装 k8s 集群</p>
-
 <h3 id="云上安装-k8s">云上安装 k8s</h3>
-
-<p>如果你有多台云服务器，使用 <a href="http://rancher.com/" target="_blank">rancher</a> 来搭建 k8s 集群是一个方便快捷的选择。</p>
-
-<p>一般来说，国外的解决方案在中国很可能出现水土不服的情况，需要额外参考这篇文章————<a href="https://www.cnrancher.com/kubernetes-installation/" target="_blank">原生加速中国区Kubernetes安装</a></p>
-
+<p>如果你有多台云服务器，使用 <a href="http://rancher.com/">rancher</a> 来搭建 k8s 集群是一个方便快捷的选择。</p>
+<p>一般来说，国外的解决方案在中国很可能出现水土不服的情况，需要额外参考这篇文章————<a href="https://www.cnrancher.com/kubernetes-installation/">原生加速中国区Kubernetes安装</a></p>
 <p>额外，还需要注意以下几点:</p>
-
 <ul>
 <li>云服务器的名字不能过长，超过 63 个字符之后，会导致该节点无法注册成功。</li>
-<li>需要使用和 rancher 兼容的 docker 版本，参考这个<a href="http://rancher.com/docs/rancher/v1.6/en/hosts/#supported-docker-versions" target="_blank">列表</a></li>
+<li>需要使用和 rancher 兼容的 docker 版本，参考这个<a href="http://rancher.com/docs/rancher/v1.6/en/hosts/#supported-docker-versions">列表</a></li>
 </ul>
-
 <p>搭建好集群之后，点击 UI 界面上的 <strong>kubernetes &gt; cli &gt; generate config</strong>，按照说明配置 kubectl ，即可将 kubectl 连接上 rancher 搭建的 k8s 集群</p>
-
 <h3 id="本机安装-k8s">本机安装 k8s</h3>
-
-<p>本机使用 <a href="https://github.com/kubernetes/minikube" target="_blank">minikube</a> 来安装 k8s 集群</p>
-
-<p>同样由于水土不服, 请参考这篇文章————<a href="https://yq.aliyun.com/articles/221687" target="_blank">Minikube - Kubernetes本地实验环境</a></p>
-
+<p>本机使用 <a href="https://github.com/kubernetes/minikube">minikube</a> 来安装 k8s 集群</p>
+<p>同样由于水土不服, 请参考这篇文章————<a href="https://yq.aliyun.com/articles/221687">Minikube - Kubernetes本地实验环境</a></p>
 <p>安装好之后，</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ kubectl version</code></pre></div>
-<p>可以看到客户端和服务器的版本:</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ kubectl version
+</code></pre></div><p>可以看到客户端和服务器的版本:</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Client Version: version.Info{Major:<span style="color:#ed9d13">&#34;1&#34;</span>, Minor:<span style="color:#ed9d13">&#34;9&#34;</span>, GitVersion:<span style="color:#ed9d13">&#34;v1.9.0&#34;</span>, GitCommit:<span style="color:#ed9d13">&#34;925c127ec6b946659ad0fd596fa959be43f0cc05&#34;</span>, GitTreeState:<span style="color:#ed9d13">&#34;clean&#34;</span>, BuildDate:<span style="color:#ed9d13">&#34;2017-12-15T21:07:38Z&#34;</span>, GoVersion:<span style="color:#ed9d13">&#34;go1.9.2&#34;</span>, Compiler:<span style="color:#ed9d13">&#34;gc&#34;</span>, Platform:<span style="color:#ed9d13">&#34;windows/amd64&#34;</span>}
-Server Version: version.Info{Major:<span style="color:#ed9d13">&#34;1&#34;</span>, Minor:<span style="color:#ed9d13">&#34;8&#34;</span>, GitVersion:<span style="color:#ed9d13">&#34;v1.8.0&#34;</span>, GitCommit:<span style="color:#ed9d13">&#34;0b9efaeb34a2fc51ff8e4d34ad9bc6375459c4a4&#34;</span>, GitTreeState:<span style="color:#ed9d13">&#34;clean&#34;</span>, BuildDate:<span style="color:#ed9d13">&#34;2017-12-27T05:32:18Z&#34;</span>, GoVersion:<span style="color:#ed9d13">&#34;go1.9.1&#34;</span>, Compiler:<span style="color:#ed9d13">&#34;gc&#34;</span>, Platform:<span style="color:#ed9d13">&#34;linux/amd64&#34;</span>}</code></pre></div>
-<p>这说明 k8s 集群已经成功启动，并且 kubectl 已经连接至 k8s 集群</p>
-
+Server Version: version.Info{Major:<span style="color:#ed9d13">&#34;1&#34;</span>, Minor:<span style="color:#ed9d13">&#34;8&#34;</span>, GitVersion:<span style="color:#ed9d13">&#34;v1.8.0&#34;</span>, GitCommit:<span style="color:#ed9d13">&#34;0b9efaeb34a2fc51ff8e4d34ad9bc6375459c4a4&#34;</span>, GitTreeState:<span style="color:#ed9d13">&#34;clean&#34;</span>, BuildDate:<span style="color:#ed9d13">&#34;2017-12-27T05:32:18Z&#34;</span>, GoVersion:<span style="color:#ed9d13">&#34;go1.9.1&#34;</span>, Compiler:<span style="color:#ed9d13">&#34;gc&#34;</span>, Platform:<span style="color:#ed9d13">&#34;linux/amd64&#34;</span>}
+</code></pre></div><p>这说明 k8s 集群已经成功启动，并且 kubectl 已经连接至 k8s 集群</p>
 <h2 id="deployment">Deployment</h2>
-
-<p><img src="/images/20180106/module_02_first_app.png" alt="Deployment" /></p>
-
-<p>集群成功启动之后，为了让容器化(containerized)的应用（比如，一个打好 docker 镜像的 node.js web server）运行在 k8s 中，我们需要创建一个 Deployment。这个 Deployment 会告诉 k8s 如何去创建和更新应用的实例，k8s 会选择节点(Node)并在之上启动应用，同时还有持续监控我们应用的健康状况，一旦应用挂掉了，k8s 会自动重建这个应用的实例。这个<strong>自我修复机制(Self-healing Mechanism)</strong>用来应对节点的失效以及更新维护。</p>
-
+<p><img src="/images/20180106/module_02_first_app.png" alt="Deployment"></p>
+<p>集群成功启动之后，为了让容器化(containerized)的应用（比如，一个打好 docker 镜像的 node.js web server）运行在 k8s 中，我们需要创建一个 Deployment。这个 Deployment 会告诉 k8s 如何去创建和更新应用的实例，k8s 会选择节点(Node)并在之上启动应用，同时还有持续监控我们应用的健康状况，一旦应用挂掉了，k8s 会自动重建这个应用的实例。这个**自我修复机制(Self-healing Mechanism)**用来应对节点的失效以及更新维护。</p>
 <p>以一个简单的 express hello world 应用为例</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#999;font-style:italic">// index.js: 
 </span><span style="color:#999;font-style:italic"></span><span style="color:#6ab825;font-weight:bold">const</span> app = require(<span style="color:#ed9d13">&#39;express&#39;</span>)()
@@ -182,146 +160,120 @@ app.get(<span style="color:#ed9d13">&#39;/&#39;</span>, (req, res) =&gt; {
 app.listen(<span style="color:#3677a9">3000</span>, () =&gt; {
     console.log(<span style="color:#ed9d13">&#39;Server listening at port 3000&#39;</span>);
 });
-</code></pre></div>
-<p>上面的代码启动了一个 express 服务器，监听 3000 端口。</p>
+</code></pre></div><p>上面的代码启动了一个 express 服务器，监听 3000 端口。</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#999;font-style:italic">## Dockerfile:</span><span style="color:#a61717;background-color:#e3d2d2">
 </span><span style="color:#a61717;background-color:#e3d2d2"></span><span style="color:#6ab825;font-weight:bold">FROM</span><span style="color:#ed9d13"> node</span><span style="color:#a61717;background-color:#e3d2d2">
 </span><span style="color:#a61717;background-color:#e3d2d2"></span><span style="color:#6ab825;font-weight:bold">RUN</span> mkdir /usr/app/<span style="color:#a61717;background-color:#e3d2d2">
 </span><span style="color:#a61717;background-color:#e3d2d2"></span><span style="color:#6ab825;font-weight:bold">WORKDIR</span><span style="color:#ed9d13"> /usr/app/</span><span style="color:#a61717;background-color:#e3d2d2">
-</span><span style="color:#a61717;background-color:#e3d2d2"></span>COPY package.json package.json<span style="color:#a61717;background-color:#e3d2d2">
-</span><span style="color:#a61717;background-color:#e3d2d2"></span>COPY package-lock.json package-lock.json<span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span><span style="color:#6ab825;font-weight:bold">COPY</span> package.json package.json<span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span><span style="color:#6ab825;font-weight:bold">COPY</span> package-lock.json package-lock.json<span style="color:#a61717;background-color:#e3d2d2">
 </span><span style="color:#a61717;background-color:#e3d2d2"></span><span style="color:#6ab825;font-weight:bold">RUN</span> npm install<span style="color:#a61717;background-color:#e3d2d2">
-</span><span style="color:#a61717;background-color:#e3d2d2"></span>COPY index.js index.js<span style="color:#a61717;background-color:#e3d2d2">
-</span><span style="color:#a61717;background-color:#e3d2d2"></span><span style="color:#6ab825;font-weight:bold">CMD</span><span style="color:#ed9d13"> [&#34;node&#34;, &#34;index.js&#34;]</span><span style="color:#a61717;background-color:#e3d2d2">
-</span><span style="color:#a61717;background-color:#e3d2d2"></span><span style="color:#6ab825;font-weight:bold">EXPOSE</span><span style="color:#ed9d13"> 3000</span></code></pre></div>
-<p>上面的 Dockerfile 声明在 node.js 这个基础镜像上构建，启动命令是 <strong>node index.js</strong>，声明对外暴露 3000 端口(这里的 EXPOSE 只是声明，不一定要和应用实际的监听的端口一样。比如一个应用可以同时监听 3000、4000、5000 端口, 虽然它只声明暴露 3000 端口，但其实 4000、5000 端口仍然是对外暴露的😂)</p>
-
+</span><span style="color:#a61717;background-color:#e3d2d2"></span><span style="color:#6ab825;font-weight:bold">COPY</span> index.js index.js<span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span><span style="color:#6ab825;font-weight:bold">CMD</span> [<span style="color:#ed9d13">&#34;node&#34;</span>, <span style="color:#ed9d13">&#34;index.js&#34;</span>]<span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span><span style="color:#6ab825;font-weight:bold">EXPOSE</span><span style="color:#ed9d13"> 3000</span><span style="color:#a61717;background-color:#e3d2d2">
+</span></code></pre></div><p>上面的 Dockerfile 声明在 node.js 这个基础镜像上构建，启动命令是 <strong>node index.js</strong>，声明对外暴露 3000 端口(这里的 EXPOSE 只是声明，不一定要和应用实际的监听的端口一样。比如一个应用可以同时监听 3000、4000、5000 端口, 虽然它只声明暴露 3000 端口，但其实 4000、5000 端口仍然是对外暴露的😂)</p>
 <p>构建 docker 镜像，并 push 到 docker hub 中（需要登陆 docker id）</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ docker build -t ccccly/express-app:v1 .
-$ docker push ccccly/express-app:v1</code></pre></div>
-<p>静静等待 push 好之后，我们就可以在 k8s 中通过这个镜像，创建一个 Deployment</p>
+$ docker push ccccly/express-app:v1
+</code></pre></div><p>静静等待 push 好之后，我们就可以在 k8s 中通过这个镜像，创建一个 Deployment</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#999;font-style:italic">### docker.io 是 docker hub 的 registry 地址</span>
-$ kubectl run express-app --image=docker.io/ccccly/express-app:v1</code></pre></div>
-<p>这条命令会做以下三件事：</p>
-
+$ kubectl run express-app --image=docker.io/ccccly/express-app:v1
+</code></pre></div><p>这条命令会做以下三件事：</p>
 <ul>
 <li>寻找合适的节点来运行 express-app</li>
 <li>拉取镜像，让它在节点上跑起来</li>
 <li>配置监控 express-app，确保服务的高可用性</li>
 </ul>
-
 <p>创建好之后</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#999;font-style:italic">## 获取 deployment 列表</span>
-$ kubectl get deployment</code></pre></div>
-<p>发现我们已经创建好了一个 Deployment</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4">NAME          DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-express-app   1         1         1            1           1h</pre></div>
-<h2 id="pod-和-node">Pod 和 Node</h2>
-
-<p><img src="/images/20180106/module_03_pods.svg" alt="Pod" /></p>
-
+$ kubectl get deployment
+</code></pre></div><p>发现我们已经创建好了一个 Deployment</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">NAME          DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+express-app   1         1         1            1           1h
+</code></pre></div><h2 id="pod-和-node">Pod 和 Node</h2>
+<p><img src="/images/20180106/module_03_pods.svg" alt="Pod"></p>
 <p>一个 Deployment 会创建 Pod 来启动应用。在 k8s 中，Pod 是一组（一个或多个）容器以及这些容器公用的存储、网络等资源。它是 k8s 的最小单元。
 一个 Pod 中可以有多个容器，这些容器共用一个 IP 和端口，一起被调度，在相同的 Node 上的同一个 Context 下运行。</p>
-
-<p><img src="/images/20180106/module_03_nodes.svg" alt="Node" /></p>
-
+<p><img src="/images/20180106/module_03_nodes.svg" alt="Node"></p>
 <p>Pod 永远在 Node 上运行。在 k8s 中，Node 是一个工作机器(Worker)，它可以是虚拟机也可以是物理机。一个 Node 上可以运行多个 Pod，k8s 里的 Master 节点自动分配 Pod 到 Node 上运行</p>
-
 <p>继续刚才的 express-app 里例子</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#999;font-style:italic">## 获取 pod 列表</span>
-$ kubectl get pod</code></pre></div>
-<p>可以看到 express-app 的 Pod 正在运行</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4">NAME                           READY     STATUS    RESTARTS   AGE
-express-app-6b588847fc-dthlr   1/1       Running   0          1d</pre></div>
-<p>看一下这个 Pod 中的详细信息</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ kubectl describe pod express-app-6b588847fc-dthlr</pre></div>
-<p>查看这个 Pod 的日志</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ kubectl logs express-app-6b588847fc-dthlr</pre></div>
-<p>在 Pod 中执行 bash</p>
+$ kubectl get pod
+</code></pre></div><p>可以看到 express-app 的 Pod 正在运行</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">NAME                           READY     STATUS    RESTARTS   AGE
+express-app-6b588847fc-dthlr   1/1       Running   0          1d
+</code></pre></div><p>看一下这个 Pod 中的详细信息</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ kubectl describe pod express-app-6b588847fc-dthlr
+</code></pre></div><p>查看这个 Pod 的日志</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ kubectl logs express-app-6b588847fc-dthlr
+</code></pre></div><p>在 Pod 中执行 bash</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ kubectl <span style="color:#24909d">exec</span> -it express-app-6b588847fc-dthlr bash
 <span style="color:#999;font-style:italic">### 在容器中 curl 一下，可以看到「hello world」的返回</span>
 $ curl localhost:3000
 hello world
 <span style="color:#999;font-style:italic">### 退出</span>
-$ exit</code></pre></div>
-<h2 id="service">Service</h2>
-
-<p><img src="/images/20180106/module_04_services.svg" alt="Service" /></p>
-
+$ <span style="color:#24909d">exit</span>
+</code></pre></div><h2 id="service">Service</h2>
+<p><img src="/images/20180106/module_04_services.svg" alt="Service"></p>
 <p>Pod 有自己的生命周期，当一个 Node 死亡之后，Node 上的 Pod 也就消失了。为了容灾和负载均衡，通常会在 k8s 中运行多个应用的实例，也就有了多个 Pod。
 每一个 Pod 都有自己的唯一的 IP 地址，一个 Pod 死亡重建之后就有了一个新的 IP 地址，所以 Pod 的 IP 地址是不确定的。然而服务的消费者只会使用固定的 IP 地址，所以需要有一种机制，来掩盖掉这些底层 IP 地址的变化，消除消费者和 Pod 的耦合。</p>
-
 <p>Service 就是这样一种抽象机制，它定义了一组 Pod 和相应的访问机制。Pod 的 IP 不对集群外暴露，Service 则可以对外暴露。Service 内置 LoadBalancer 来将请求转发到不同的 Pod 上。</p>
-
 <p>Service 一共有四种暴露机制：</p>
-
 <ul>
 <li>ClusterIP（默认）：通过集群的内部 IP （例如，10.0.0.151）暴露 Service，只能被集群内部的消费者访问</li>
-<li>NodePort：使用 <a href="https://en.wikipedia.org/wiki/Network_address_translation" target="_blank">NAT</a> 机制在 Node 上开启相同的 Port 来暴露服务，可以用 <strong>NodeIP:NodePort</strong> （例如，<a href="http://192.168.99.100:31530" target="_blank">http://192.168.99.100:31530</a> ）来访问</li>
+<li>NodePort：使用 <a href="https://en.wikipedia.org/wiki/Network_address_translation">NAT</a> 机制在 Node 上开启相同的 Port 来暴露服务，可以用 <strong>NodeIP:NodePort</strong> （例如，http://192.168.99.100:31530 ）来访问</li>
 <li>LoadBalancer：使用云服务厂商提供的外部负载均衡器来暴露服务，会是一个固定的外部 IP</li>
-<li>ExternalName：通过 <a href="https://en.wikipedia.org/wiki/CNAME_record" target="_blank">CNAME</a> 来暴露服务</li>
+<li>ExternalName：通过 <a href="https://en.wikipedia.org/wiki/CNAME_record">CNAME</a> 来暴露服务</li>
 </ul>
-
 <p>继续刚才的 express-app 的例子</p>
-
 <p>使用 NodePort 来暴露 express-app，Service 的端口是 80，目标端口是容器对外暴露的端口 3000</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ kubectl expose deployment express-app --type NodePort --port <span style="color:#3677a9">80</span> --target-port <span style="color:#3677a9">3000</span>
 $ kubectl get service
 NAME          TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
-express-app   NodePort    <span style="color:#3677a9">10</span>.0.0.151   &lt;none&gt;        <span style="color:#3677a9">80</span>:31530/TCP   19m
-kubernetes    ClusterIP   <span style="color:#3677a9">10</span>.0.0.1     &lt;none&gt;        <span style="color:#3677a9">443</span>/TCP        1d</code></pre></div>
-<p>这时候可以使用 <strong>NodeIP:NodePort</strong> 来从外界访问这个服务</p>
+express-app   NodePort    10.0.0.151   &lt;none&gt;        80:31530/TCP   19m
+kubernetes    ClusterIP   10.0.0.1     &lt;none&gt;        443/TCP        1d
+</code></pre></div><p>这时候可以使用 <strong>NodeIP:NodePort</strong> 来从外界访问这个服务</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ curl http://192.168.99.100:31530
-hello world</code></pre></div>
-<h2 id="scaling">Scaling</h2>
-
-<p>为了保持 <a href="https://en.wikipedia.org/wiki/Service-level_agreement" target="_blank">SLA</a>（比如其中的一种 SLA，服务可用性达到 99.999%，内业经常说你的服务能达到几个 9，哈哈），通常会部署多份相同的应用，运行在多个 Pod 上。在 k8s 中，通过修改 Deployment 的 Replica（副本） 数量来达到 Scaling 的目的。</p>
-
+hello world
+</code></pre></div><h2 id="scaling">Scaling</h2>
+<p>为了保持 <a href="https://en.wikipedia.org/wiki/Service-level_agreement">SLA</a>（比如其中的一种 SLA，服务可用性达到 99.999%，内业经常说你的服务能达到几个 9，哈哈），通常会部署多份相同的应用，运行在多个 Pod 上。在 k8s 中，通过修改 Deployment 的 Replica（副本） 数量来达到 Scaling 的目的。</p>
 <p>将 express-app 从 1 个 Replica, scale 到 4 个 Replicas
-<img src="/images/20180106/module_05_scaling1.svg" alt="Befor Scaling" /></p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ kubectl scale deployment express-app --replicas <span style="color:#3677a9">4</span></code></pre></div>
-<p>查看 scale 后的 Deployment
-<img src="/images/20180106/module_05_scaling2.svg" alt="After Scaling" /></p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ kubectl get deployment
+<img src="/images/20180106/module_05_scaling1.svg" alt="Befor Scaling"></p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ kubectl scale deployment express-app --replicas <span style="color:#3677a9">4</span>
+</code></pre></div><p>查看 scale 后的 Deployment
+<img src="/images/20180106/module_05_scaling2.svg" alt="After Scaling"></p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ kubectl get deployment
 NAME          DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-express-app   4         4         4            4           1d</pre></div>
-<h2 id="rolling-update">Rolling Update</h2>
-
+express-app   4         4         4            4           1d
+</code></pre></div><h2 id="rolling-update">Rolling Update</h2>
 <p>消费者希望服务不间断，开发者需要频繁地更新应用。在 k8s 中，使用 Rolling Update 机制来更新应用，同时确保服务的高可用性。</p>
-
 <p>在更新应用时，Rolling Update 先创建好更新之后的 Pod，再替换掉老的 Pod，以此来满足服务的连续性。</p>
-
 <p>Rolling Update 根据 max-unavailable（一次更新中，最多有几个 Pod 不可用） 和 max-surge （一次更新中，最多可以额外创建几个 Pod）这两个参数来执行更新策略。</p>
-
 <p>继续 express-app 的例子</p>
-
 <p>修改 index.js，使它返回「hello world v2」</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#999;font-style:italic">### 重新 build 镜像</span>
 $ docker build -t ccccly/express-app:v2 .
-$ docker push ccccly/express-app:v2</code></pre></div>
-<p>执行 Rolling Update</p>
+$ docker push ccccly/express-app:v2
+</code></pre></div><p>执行 Rolling Update</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ kubectl describe deployment express-app
 <span style="color:#999;font-style:italic">### 得知 express-app 这个 Deployment 使用的 Container 里的 Image 是 express-app:v1</span>
 <span style="color:#999;font-style:italic">### 更新 Image 为 docker.io 上面的 ccccly/express-app:v2</span> 
 $ kubectl <span style="color:#24909d">set</span> image deployment express-app express-app:v1=docker.io/ccccly/express-app:v2
 NAME                           READY     STATUS              RESTARTS   AGE
-express-app-7b747f7cd9-2xtrm   <span style="color:#3677a9">1</span>/1       Terminating         <span style="color:#3677a9">0</span>          6m
-express-app-7b747f7cd9-4scjw   <span style="color:#3677a9">1</span>/1       Terminating         <span style="color:#3677a9">0</span>          6m
-express-app-7b747f7cd9-kwsqx   <span style="color:#3677a9">1</span>/1       Running             <span style="color:#3677a9">0</span>          6m
-express-app-7b747f7cd9-rk7hm   <span style="color:#3677a9">1</span>/1       Terminating         <span style="color:#3677a9">0</span>          6m
-express-app-7d5b96f8b-cvx85    <span style="color:#3677a9">1</span>/1       Running             <span style="color:#3677a9">0</span>          7s
-express-app-7d5b96f8b-gpqsw    <span style="color:#3677a9">1</span>/1       Running             <span style="color:#3677a9">0</span>          8s
-express-app-7d5b96f8b-h4mxt    <span style="color:#3677a9">0</span>/1       ContainerCreating   <span style="color:#3677a9">0</span>          0s
-express-app-7d5b96f8b-wp4db    <span style="color:#3677a9">0</span>/1       ContainerCreating   <span style="color:#3677a9">0</span>          1s</code></pre></div>
-<p>发现这次更新时，Pod 有三种状态，Running, ContainerCreating 和 Terminating</p>
-
+express-app-7b747f7cd9-2xtrm   1/1       Terminating         <span style="color:#3677a9">0</span>          6m
+express-app-7b747f7cd9-4scjw   1/1       Terminating         <span style="color:#3677a9">0</span>          6m
+express-app-7b747f7cd9-kwsqx   1/1       Running             <span style="color:#3677a9">0</span>          6m
+express-app-7b747f7cd9-rk7hm   1/1       Terminating         <span style="color:#3677a9">0</span>          6m
+express-app-7d5b96f8b-cvx85    1/1       Running             <span style="color:#3677a9">0</span>          7s
+express-app-7d5b96f8b-gpqsw    1/1       Running             <span style="color:#3677a9">0</span>          8s
+express-app-7d5b96f8b-h4mxt    0/1       ContainerCreating   <span style="color:#3677a9">0</span>          0s
+express-app-7d5b96f8b-wp4db    0/1       ContainerCreating   <span style="color:#3677a9">0</span>          1s
+</code></pre></div><p>发现这次更新时，Pod 有三种状态，Running, ContainerCreating 和 Terminating</p>
 <p>Update 完之后，测试一下</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ curl http://192.168.99.100:31530
-hello world v2</code></pre></div>
-<p>发现应用已经更新😘</p>
-
+hello world v2
+</code></pre></div><p>发现应用已经更新😘</p>
 <h2 id="结语">结语</h2>
-
 <p>至此，这篇教程已经结束，大家欢快地去玩耍 k8s 吧😄 如果在搭建和使用集群时，遇到任何困难，欢迎 ping 我。</p>
 
 </div>
@@ -340,7 +292,7 @@ hello world v2</code></pre></div>
   <line x1="7" y1="7" x2="7" y2="7"/>
   
 </svg>
-<span class='screen-reader-text'>标签: </span><a class='tag' href='/tags/kubernetes/'>Kubernetes</a>, <a class='tag' href='/tags/docker/'>Docker</a>, <a class='tag' href='/tags/deployment/'>Deployment</a></div>
+<span class='screen-reader-text'>标签: </span><a class='tag' href='/tags/kubernetes/'>Kubernetes</a>, <a class='tag' href='/tags/deployment/'>Deployment</a>, <a class='tag' href='/tags/docker/'>Docker</a></div>
 
   </div>
 </footer>
@@ -407,7 +359,7 @@ hello world v2</code></pre></div>
       </li></ul>
   </nav>
 </section><div class='copyright'>
-  <p> &copy; 2017-2019 ccccly </p>
+  <p> &copy; 2017-2020 ccccly </p>
 </div>
 
         </div>
@@ -416,7 +368,7 @@ hello world v2</code></pre></div>
     </div>
   </div><script>window.__assets_js_src="/assets/js/"</script>
 
-<script src='/assets/js/main.67d669ac.js'></script><script src='/js/custom.js'></script>
+<script src='/assets/js/main.c3bcf2df.js'></script><script src='/js/custom.js'></script>
 
 </body>
 

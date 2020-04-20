@@ -11,14 +11,14 @@
 <meta property='og:site_name' content='Home'>
 <meta property='og:type' content='article'><meta property='og:image' content='https://www.gravatar.com/avatar/374150c4ee619dfed2491b9bb5bcd476?s=256'><meta property='article:section' content='posts'><meta property='article:tag' content='Time'><meta property='article:tag' content='Calendar'><meta property='article:tag' content='Time Zone'><meta property='article:tag' content='ISO 8061'><meta property='article:published_time' content='2017-11-27T00:01:44&#43;08:00'/><meta property='article:modified_time' content='2017-11-27T00:01:44&#43;08:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.56.3" />
+<meta name="generator" content="Hugo 0.68.3" />
 
   <title>漫谈时间(一)——时间、历法和时区 • ccccly</title>
   <link rel='canonical' href='https://studymakesmehappy.club/posts/%E6%BC%AB%E8%B0%88%E6%97%B6%E9%97%B4%E4%B8%80%E6%97%B6%E9%97%B4%E5%8E%86%E6%B3%95%E5%92%8C%E6%97%B6%E5%8C%BA/'>
   
   
   <link rel='icon' href='/favicon.ico'>
-<link rel='stylesheet' href='/assets/css/main.6a060eb7.css'><link rel='stylesheet' href='/css/custom.css'><style>
+<link rel='stylesheet' href='/assets/css/main.ab98e12b.css'><link rel='stylesheet' href='/css/custom.css'><style>
 :root{--color-accent:#ffcd00;}
 </style>
 
@@ -114,85 +114,57 @@ if (!doNotTrack) {
   
 
   <div class='container entry-content'>
-  
-
-<p>由于做的项目经常要和“时间”打交道，零零碎碎地了解了一些相关知识，今天整理一下，分享给大家😁本篇文章主要介绍时间、历法、时区等背景知识，不会有代码。后续的文章我会使用 Java, Javascript, C# 来说明在编程活动中如何处理时间， comming soon&hellip;</p>
-
+  <p>由于做的项目经常要和“时间”打交道，零零碎碎地了解了一些相关知识，今天整理一下，分享给大家😁本篇文章主要介绍时间、历法、时区等背景知识，不会有代码。后续的文章我会使用 Java, Javascript, C# 来说明在编程活动中如何处理时间， comming soon&hellip;</p>
 <h2 id="背景">背景</h2>
-
 <p>古代人们为了可以对事件排先后顺序及进行比较，需要一种度量方式来描述，以便更好地思考宇宙。俗话说，当一无所知时，观察、探索是最好的方式。于是人们发现头顶上的太阳有规律地从东边升起，西边落下；月亮有阴晴圆缺的周期变化；季节有节奏地变化。人们记录每个事物变化的周期，相应地有了“日”，“月”，“年”的概念。</p>
-
-<h3 id="历法-calendar">历法(Calendar)</h3>
-
+<h3 id="历法calendar">历法(Calendar)</h3>
 <p>有了概念，就需要给出这些概念的基本定义以及相应的操作（是不是很 OOP 啊，哈哈哈），于是就有了历法。历法是用年、月、日等时间单位计算时间的方法。</p>
-
 <p>历法主要分为阳历(Solar Calendar)、阴历(Lunar Calendar)和阴阳历(Lunisolar Calendar)三种。</p>
-
 <ul>
-<li><p>阳历是根据地球上所呈现出太阳直射点的周期性变化，所制定的历法，这个周期为365.2422日，称为回归年。阳历有多种，比如我们熟知的公历(Gregorian Calendar)，公历把一年定为365日，划分成12个月，每个月从28日到31日不等。由于一个回归年比公历中的历年多出了0.2422日，这剩下的时间每4年累计一天，所以我们就有了闰年的概念。还记得我们小学时都做过的算数吗？“1700年是不是闰年？那2000年呢？”，答案是1700年不是闰年，2000年是闰年。那时候我的数学老师只是简单地和我解释，“像1700年这种能被100整除的年份，还需要被400整除才是闰年。”那时候我懂得少，也就默默接受了，并没有进一步深入了解。不过，现在看到这篇文章的读者只要进行一个简单的计算(0.2422*400=96.88)，应该就能明白为什么1700不是闰年了。</p></li>
-
-<li><p>阴历与阳历相对，主要根据月亮绕地球运行一周时间为一个月，称为朔望月（朔，新月，定为每月的初一；望，满月，定为每月的十五），大约29.5306日，分为大月30日、小月29日。一年有12个朔望月，约354或355日。值得注意的是，我们国家传统上使用的农历并不是阴历，实际上农历是一种阴阳历。</p></li>
-
-<li><p>阴阳历综合了阳历和阴历，是兼顾月相周期和太阳周期运动所安排的历法。阴阳历既保证“年”与地球绕日周期的一致，又保证“月”与月亮周期的一致。比如我国的农历，在阴历的基础上，引入二十四节气，作为农历的阳历部分。农历广泛应用于生日标记、各种民俗活动等方面。比如中秋节(农历八月十五)就是八月的“望”，是阴历的体现；而清明节(每年4月5号左右)就是二十四节气之一，是阳历的体现。农历是我们中华文化的象征之一。</p></li>
+<li>
+<p>阳历是根据地球上所呈现出太阳直射点的周期性变化，所制定的历法，这个周期为365.2422日，称为回归年。阳历有多种，比如我们熟知的公历(Gregorian Calendar)，公历把一年定为365日，划分成12个月，每个月从28日到31日不等。由于一个回归年比公历中的历年多出了0.2422日，这剩下的时间每4年累计一天，所以我们就有了闰年的概念。还记得我们小学时都做过的算数吗？“1700年是不是闰年？那2000年呢？”，答案是1700年不是闰年，2000年是闰年。那时候我的数学老师只是简单地和我解释，“像1700年这种能被100整除的年份，还需要被400整除才是闰年。”那时候我懂得少，也就默默接受了，并没有进一步深入了解。不过，现在看到这篇文章的读者只要进行一个简单的计算(0.2422*400=96.88)，应该就能明白为什么1700不是闰年了。</p>
+</li>
+<li>
+<p>阴历与阳历相对，主要根据月亮绕地球运行一周时间为一个月，称为朔望月（朔，新月，定为每月的初一；望，满月，定为每月的十五），大约29.5306日，分为大月30日、小月29日。一年有12个朔望月，约354或355日。值得注意的是，我们国家传统上使用的农历并不是阴历，实际上农历是一种阴阳历。</p>
+</li>
+<li>
+<p>阴阳历综合了阳历和阴历，是兼顾月相周期和太阳周期运动所安排的历法。阴阳历既保证“年”与地球绕日周期的一致，又保证“月”与月亮周期的一致。比如我国的农历，在阴历的基础上，引入二十四节气，作为农历的阳历部分。农历广泛应用于生日标记、各种民俗活动等方面。比如中秋节(农历八月十五)就是八月的“望”，是阴历的体现；而清明节(每年4月5号左右)就是二十四节气之一，是阳历的体现。农历是我们中华文化的象征之一。</p>
+</li>
 </ul>
-
 <h3 id="取法自然与人为规定">取法自然与人为规定</h3>
-
 <p>一开始古代人们使用日落日出的周期来作为一日的时长，古埃及发明了24小时制，古巴比伦发明了60分和60秒的用法。现在人们发现地球自转并不够稳定，而且在逐渐变慢。于是，我们不再以日为作为标准计时单位，转为定义更小更精确的单位，即是“秒”。“秒”使用原子钟来定义，稳定性、精确性毋庸置疑。将一天定为24小时，1440分，86400秒。</p>
-
 <p>年、月、日取法自然，时、分、秒人为规定。</p>
-
-<h3 id="时区-time-zone">时区(Time Zone)</h3>
-
+<h3 id="时区time-zone">时区(Time Zone)</h3>
 <p>我们作为太阳的子民，“日出而作，日落而息。”但不同经度的地方的日出、日落时间必定有所偏差，为了照顾大家的生活习惯，出现了时区的概念。世界按统一标准划分时区，每个地区有着自己的时间（地方时）。</p>
-
 <p>一开始时区以格林威治时间为基准，往东增加，往西减少，中间有一条国际日期变更线。后来由原子钟报时的、更精确的 UTC (协调世界时)时间出现了，UTC 尽量接近格林威治时间。由于 GMT 时间不够准确，GMT 现在已经不被科学界所确定。所以，说到北京时间的时区，现在我们更多说的是 “UTC+8” ，而不是 “GMT+8” 。</p>
-
 <h3 id="iso-8601">ISO 8601</h3>
-
 <p>好了，现在我们有了公历这一套通用的历法，又有了时区，那么如何准确地表示时间呢？国际标准 ISO 8601 应运而生。</p>
-
-<p>标准说明起来比较麻烦，举例说明一下，详情参考<a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a></p>
-
+<p>标准说明起来比较麻烦，举例说明一下，详情参考<a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a></p>
 <ul>
 <li>2017-11-26T14:00:02Z</li>
 </ul>
-
-<p>表示UTC时间2017年11月26号14点0分2秒，其中 &ldquo;T&rdquo; 是日期和时间的分界，&rdquo;Z&rdquo; 代表时间是 UTC 时间。也可以表示成&rdquo;2017-11-26T14:00:02+00:00&rdquo;</p>
-
+<p>表示UTC时间2017年11月26号14点0分2秒，其中 &ldquo;T&rdquo; 是日期和时间的分界，&ldquo;Z&rdquo; 代表时间是 UTC 时间。也可以表示成&quot;2017-11-26T14:00:02+00:00&rdquo;</p>
 <ul>
 <li>2004-05-03T17:30:08+08:00</li>
 </ul>
-
 <p>表示 &ldquo;UTC+8&rdquo; 时区的2004年5月3号17点30分8秒。</p>
-
 <ul>
 <li>P1Y3M5DT6H7M30S</li>
 </ul>
-
 <p>时间间隔的表示法，这里表示间隔为1年3月5天6小时7分30秒。时间间隔有正负之分，如果为负，则在前面加负号表示。例如 -P1Y3M5DT6H7M30S</p>
-
 <h3 id="unix-time">Unix Time</h3>
-
 <p>编程的各位经常会接触到 Unix 时间戳这个概念，它的标准定义为：从1970-01-01T00:00:00Z起至现在的总秒数。由于 Unix Time 是相对于 UTC 时间的，所以同一个 Unix Time 在不同时区的地方时是不同的，比如说：</p>
-
 <p>对于 1511708653 来说：</p>
-
 <ul>
 <li>在 UTC 时间是 &ldquo;2017-11-26T15:04:13Z&rdquo;</li>
 <li>UTC+8 时区的地方时是 &ldquo;2017-11-26T23:04:13+08:00&rdquo;</li>
 <li>UTC-8 时区的地方时是 &ldquo;2017-11-26T07:04:13-08:00&rdquo;</li>
 </ul>
-
 <p>但它们指的都是同一时刻，比如双十一剁手的时候，中国时0点开始，日本那边就是1点开始。</p>
-
 <p>这也就是为什么程序中喜欢使用 Unix Time 来作为基本时间的原因，程序关注是否在同一个时刻，而地方时只是一个 UI 展现层而已。</p>
-
-<p>有趣的是，Unix Time 在程序中广泛使用，带来了一个历史遗留问题，著名的 <a href="https://zh.wikipedia.org/wiki/2038年问题" target="_blank">&ldquo;Year 2038 problem(2038年问题)&rdquo; ，有时也被称作 &ldquo;Unix Millennium Bug(千年虫)&rdquo;</a>，</p>
-
+<p>有趣的是，Unix Time 在程序中广泛使用，带来了一个历史遗留问题，著名的 <a href="https://zh.wikipedia.org/wiki/2038%E5%B9%B4%E9%97%AE%E9%A2%98">&ldquo;Year 2038 problem(2038年问题)&rdquo; ，有时也被称作 &ldquo;Unix Millennium Bug(千年虫)&quot;</a>，</p>
 <p>最后值得注意的是, Unix Time 的单位是秒，而不是毫秒，部分人（包括我在内）可能误以为 Unix Time 的单位是毫秒。可能是由于 Javascript 中并没有现成的获取当前时区对应的 Unix Time 的方法，只有获取 1970-01-01T00:00:00Z 到现在的毫秒数的方法吧，哈哈哈哈。</p>
-
-<p>注：博客中所有文章都开源，本篇文章在<a href="https://github.com/Excited-ccccly/studymakesmehappy.club/blob/master/content/posts/%E6%BC%AB%E8%B0%88%E6%97%B6%E9%97%B4(%E4%B8%80)%E2%80%94%E2%80%94%E6%97%B6%E9%97%B4%E3%80%81%E5%8E%86%E6%B3%95%E5%92%8C%E6%97%B6%E5%8C%BA.md" target="_blank">这里</a>，如果大家发现文章哪里写的不好、不对的，欢迎提 pull request。（啊，我真的是懒到家了&hellip;</p>
+<p>注：博客中所有文章都开源，本篇文章在<a href="https://github.com/Excited-ccccly/studymakesmehappy.club/blob/master/content/posts/%E6%BC%AB%E8%B0%88%E6%97%B6%E9%97%B4(%E4%B8%80)%E2%80%94%E2%80%94%E6%97%B6%E9%97%B4%E3%80%81%E5%8E%86%E6%B3%95%E5%92%8C%E6%97%B6%E5%8C%BA.md">这里</a>，如果大家发现文章哪里写的不好、不对的，欢迎提 pull request。（啊，我真的是懒到家了&hellip;</p>
 
 </div>
 
@@ -210,7 +182,7 @@ if (!doNotTrack) {
   <line x1="7" y1="7" x2="7" y2="7"/>
   
 </svg>
-<span class='screen-reader-text'>标签: </span><a class='tag' href='/tags/time/'>Time</a>, <a class='tag' href='/tags/calendar/'>Calendar</a>, <a class='tag' href='/tags/time-zone/'>Time Zone</a>, <a class='tag' href='/tags/iso-8061/'>ISO 8061</a></div>
+<span class='screen-reader-text'>标签: </span><a class='tag' href='/tags/calendar/'>Calendar</a>, <a class='tag' href='/tags/iso-8061/'>ISO 8061</a>, <a class='tag' href='/tags/time/'>Time</a>, <a class='tag' href='/tags/time-zone/'>Time Zone</a></div>
 
   </div>
 </footer>
@@ -277,7 +249,7 @@ if (!doNotTrack) {
       </li></ul>
   </nav>
 </section><div class='copyright'>
-  <p> &copy; 2017-2019 ccccly </p>
+  <p> &copy; 2017-2020 ccccly </p>
 </div>
 
         </div>
@@ -286,7 +258,7 @@ if (!doNotTrack) {
     </div>
   </div><script>window.__assets_js_src="/assets/js/"</script>
 
-<script src='/assets/js/main.67d669ac.js'></script><script src='/js/custom.js'></script>
+<script src='/assets/js/main.c3bcf2df.js'></script><script src='/js/custom.js'></script>
 
 </body>
 

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang='zh'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='比特币(Bitcoin) 交易(Transaction) 区块(Block) Merkle Tree 比特币的区块链(Bitcoin&rsquo;s Blockchain) 挖矿(Minin'>
+<meta name='theme-color' content='#ffcd00'>
+
+<meta property='og:title' content='Blockchain • ccccly'>
+<meta property='og:description' content='比特币(Bitcoin) 交易(Transaction) 区块(Block) Merkle Tree 比特币的区块链(Bitcoin&rsquo;s Blockchain) 挖矿(Minin'>
+<meta property='og:url' content='https://studymakesmehappy.club/posts/blockchain/'>
+<meta property='og:site_name' content='Home'>
+<meta property='og:type' content='article'><meta property='og:image' content='https://www.gravatar.com/avatar/374150c4ee619dfed2491b9bb5bcd476?s=256'><meta property='article:section' content='posts'><meta property='article:published_time' content='2018-05-28T11:19:19&#43;08:00'/><meta property='article:modified_time' content='2018-05-28T11:19:19&#43;08:00'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.68.3" />
+
+  <title>Blockchain • ccccly</title>
+  <link rel='canonical' href='https://studymakesmehappy.club/posts/blockchain/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.ab98e12b.css'><link rel='stylesheet' href='/css/custom.css'><style>
+:root{--color-accent:#ffcd00;}
+</style>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-129765949-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  
+
+</head>
+<body class='page type-posts'>
+
+  <div class='site'><a class='screen-reader-text' href='#content'>跳到文章</a><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='主菜单'>
+  <div class='container'>
+    
+    <ul><li class='item'>
+        <a href='/'>Home</a>
+      </li><li class='item'>
+        <a href='/posts/'>Posts</a>
+      </li><li class='item'>
+        <a href='/about/'>About</a>
+      </li><li class='item'>
+        <a href='https://github.com/Excited-ccccly/studymakesmehappy.club'>Repo</a>
+      </li></ul>
+  </div>
+</nav><div class='header-widgets'>
+        <div class='container'></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>Home</p><p class='desc site-desc'>Study makes me happy</p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='zh' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>Blockchain</h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader-text'>发布 </span>
+  <time class='entry-date' datetime='2018-05-28T11:19:19&#43;08:00'>2018, May 28</time>
+</span>
+
+  <span class='byline'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M21,21V20c0-2.76-4-5-9-5s-9,2.24-9,5v1"/>
+  <path d="M16,6.37A4,4,0,1,1,12.63,3,4,4,0,0,1,16,6.37Z"/>
+  
+</svg>
+<span class='screen-reader-text'> by </span><a href='/authors/ccccly'>ccccly</a></span>
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+需要1分钟读完
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  <h2 id="比特币bitcoin">比特币(Bitcoin)</h2>
+<h2 id="交易transaction">交易(Transaction)</h2>
+<h2 id="区块block">区块(Block)</h2>
+<h3 id="merkle-tree">Merkle Tree</h3>
+<h2 id="比特币的区块链bitcoins-blockchain">比特币的区块链(Bitcoin&rsquo;s Blockchain)</h2>
+<h2 id="挖矿mining">挖矿(Mining)</h2>
+<h2 id="设计原则design-rational">设计原则(Design Rational)</h2>
+<h2 id="比特币钱包bitcoins-wallet">比特币钱包(Bitcoin&rsquo;s Wallet)</h2>
+<h2 id="分叉fork">分叉(Fork)</h2>
+<h2 id="比特币的局限limitations-of-bitcoin">比特币的局限(Limitations of Bitcoin)</h2>
+<h2 id="以太坊ethereum">以太坊(Ethereum)</h2>
+<h2 id="以太坊和比特币的差异differences-between-bitcoin-and-ethereum">以太坊和比特币的差异(Differences Between Bitcoin and Ethereum)</h2>
+<h2 id="以太坊钱包ethereums-wallet">以太坊钱包(Ethereum&rsquo;s Wallet)</h2>
+<h2 id="以太坊的区块ethereums-block">以太坊的区块(Ethereum&rsquo;s Block)</h2>
+<h3 id="merkle-patricia-tree">Merkle Patricia Tree</h3>
+<h2 id="以太坊的挖矿mining-in-ethereum">以太坊的挖矿(Mining in Ethereum)</h2>
+<h2 id="以太坊的智能合约smart-contract-in-ethereum">以太坊的智能合约(Smart Contract in Ethereum)</h2>
+<h2 id="以太坊虚拟机evm-ethereum-virtual-machine">以太坊虚拟机(EVM, Ethereum Virtual Machine)</h2>
+<h2 id="以太坊智能合约开发语言-soliditysolidity">以太坊智能合约开发语言 Solidity(Solidity)</h2>
+
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'>
+  </div>
+</footer>
+
+
+</article>
+
+<nav class='entry-nav'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/posts/%E5%9C%A8-ruff-%E7%9A%84%E4%B8%A4%E5%B9%B4/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ 上一个</span>
+        <span class='screen-reader-text'>上一篇文章: </span>在 Ruff 的两年</a>
+    </div><div class='next-entry sep-before'>
+      <a href='/posts/%E8%81%8A%E4%B8%80%E8%81%8A%E5%8F%A4%E8%80%81%E7%9A%84-x-www-form-urlencoded/'>
+        <span class='screen-reader-text'>下一篇文章: </span>聊一聊古老的 x-www-form-urlencoded<span aria-hidden='true'>下一个 <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="4" y1="12" x2="20" y2="12"/>
+  <polyline points="14 6 20 12 14 18"/>
+  
+</svg>
+</span>
+      </a>
+    </div></div>
+</nav>
+
+
+<section id='comments' class='comments'>
+  <div class='container sep-before'>
+    <div class='comments-area'><script src='https://utteranc.es/client.js'
+  repo='Excited-ccccly/studymakesmehappy.club' issue-term='title'
+  crossorigin='anonymous' async>
+</script>
+</div>
+  </div>
+</section>
+
+      </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='社交菜单'>
+    <ul><li>
+        <a href='https://github.com/Excited-ccccly' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>在新标签打开Github的账户</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='mailto:geekchenlingyun@outlook.com' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>通过邮件联系</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+  <polyline points="22,6 12,13 2,6"/>
+  
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</section><div class='copyright'>
+  <p> &copy; 2017-2020 ccccly </p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__assets_js_src="/assets/js/"</script>
+
+<script src='/assets/js/main.c3bcf2df.js'></script><script src='/js/custom.js'></script>
+
+</body>
+
+</html>
+

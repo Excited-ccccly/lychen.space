@@ -11,14 +11,14 @@
 <meta property='og:site_name' content='Home'>
 <meta property='og:type' content='article'><meta property='og:image' content='https://www.gravatar.com/avatar/374150c4ee619dfed2491b9bb5bcd476?s=256'><meta property='article:section' content='posts'><meta property='article:tag' content='Python'><meta property='article:tag' content='Flask'><meta property='article:tag' content='x-www-form-urlencoded'><meta property='article:tag' content='Research'><meta property='article:published_time' content='2018-06-02T13:42:07&#43;08:00'/><meta property='article:modified_time' content='2018-06-02T13:42:07&#43;08:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.56.3" />
+<meta name="generator" content="Hugo 0.68.3" />
 
   <title>聊一聊古老的 x-www-form-urlencoded • ccccly</title>
   <link rel='canonical' href='https://studymakesmehappy.club/posts/%E8%81%8A%E4%B8%80%E8%81%8A%E5%8F%A4%E8%80%81%E7%9A%84-x-www-form-urlencoded/'>
   
   
   <link rel='icon' href='/favicon.ico'>
-<link rel='stylesheet' href='/assets/css/main.6a060eb7.css'><link rel='stylesheet' href='/css/custom.css'><style>
+<link rel='stylesheet' href='/assets/css/main.ab98e12b.css'><link rel='stylesheet' href='/css/custom.css'><style>
 :root{--color-accent:#ffcd00;}
 </style>
 
@@ -114,56 +114,36 @@ if (!doNotTrack) {
   
 
   <div class='container entry-content'>
-  
-
-<p>在为一个服务写 API 接口, 它是这样子发数据的</p>
-
+  <p>在为一个服务写 API 接口, 它是这样子发数据的</p>
 <blockquote>
 <p>HTTP发布接口以POST表单的方式将数据发送到用户服务器，<em>Content-Type</em> 为<em>application/x-www-form-urlencoded</em>; <em>HTTP request body</em> 格式形如 <strong>a=b&amp;c=d</strong></p>
 </blockquote>
-
-<p>第一反应, &ldquo;这是啥, 为什么不用 json?&ldquo;。抱怨归抱怨，事情还是要做的。举个例子：</p>
-
+<p>第一反应, &ldquo;这是啥, 为什么不用 json?&quot;。抱怨归抱怨，事情还是要做的。举个例子：</p>
 <p>针对这样的数据</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
     <span style="color:#6ab825;font-weight:bold">&#34;title&#34;</span>: <span style="color:#ed9d13">&#34;t&#34;</span>,
     <span style="color:#6ab825;font-weight:bold">&#34;author&#34;</span>: <span style="color:#ed9d13">&#34;a&#34;</span>
-}</code></pre></div>
-<p>会以这样的形式发送到服务器:</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4">https://host/path/to/api?title=t&amp;author=a</pre></div>
-<p>看上去没什么问题，so easy.</p>
-
+}
+</code></pre></div><p>会以这样的形式发送到服务器:</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">https://host/path/to/api?title=t&amp;author=a
+</code></pre></div><p>看上去没什么问题，so easy.</p>
 <p>但如果数据是这样子呢? 里面含有 list</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
     <span style="color:#6ab825;font-weight:bold">&#34;title&#34;</span>: <span style="color:#ed9d13">&#34;t&#34;</span>,
     <span style="color:#6ab825;font-weight:bold">&#34;author&#34;</span>: <span style="color:#ed9d13">&#34;a&#34;</span>,
     <span style="color:#6ab825;font-weight:bold">&#34;categories&#34;</span>: [<span style="color:#ed9d13">&#34;c1&#34;</span>, <span style="color:#ed9d13">&#34;c2&#34;</span>]
-}</code></pre></div>
-<p>怎么处理 categories 这种 list 类型?</p>
-
+}
+</code></pre></div><p>怎么处理 categories 这种 list 类型?</p>
 <p>这样？</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># Percent-encoding 之前
-https://host/path/to/api?title=t&amp;author=a&amp;categories=[&#34;c1&#34;, &#34;c2&#34;]</pre></div>
-<p>注意， 其实在 url 中，一些字符会进行 <a href="https://en.wikipedia.org/wiki/Percent-encoding" target="_blank">Percent-encoding</a> 处理，再发送给服务端。</p>
-
-<p><center>
-    <table>
-        <tr>
-            <td>原始</td> <td>[</td><td>&ldquo;</td> <td>空格</td><td>]</td>
-        </tr>
-        <tr>
-            <td>Percent encoding 后</td> <td>%5B</td><td>%22</td> <td>%20</td><td>5D</td>
-        </tr>
-    </table>
-</center></p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># percent-encoding 之后
-https://host/path/to/api?title=t&amp;author=a&amp;categories=%5B%22c1%22,%20%22c2%22%5D</pre></div>
-<p>还是其它什么形式？我把能想到的都尝试了一次，但都无果。我用的 python web 框架 <a href="http://flask.pocoo.org/" target="_blank">Flask</a> 的文档又那么糟糕，难受。</p>
-
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Percent-encoding 之前
+https://host/path/to/api?title=t&amp;author=a&amp;categories=[&#34;c1&#34;, &#34;c2&#34;]
+</code></pre></div><p>注意， 其实在 url 中，一些字符会进行 <a href="https://en.wikipedia.org/wiki/Percent-encoding">Percent-encoding</a> 处理，再发送给服务端。</p>
+<!-- raw HTML omitted -->
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># percent-encoding 之后
+https://host/path/to/api?title=t&amp;author=a&amp;categories=%5B%22c1%22,%20%22c2%22%5D
+</code></pre></div><p>还是其它什么形式？我把能想到的都尝试了一次，但都无果。我用的 python web 框架 <a href="http://flask.pocoo.org/">Flask</a> 的文档又那么糟糕，难受。</p>
 <h2 id="源码">源码</h2>
-
 <p>Code Ninja 曾说过，“看不透的话，就看源码吧！源码是最真实的”。</p>
-
 <p>谨遵大师教诲，我翻了一下 python 上的 Flask 源码(对应的 url decode 代码）。</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">url_decode_stream</span>(stream, charset=<span style="color:#ed9d13">&#39;utf-8&#39;</span>, decode_keys=False,
                       include_empty=True, errors=<span style="color:#ed9d13">&#39;replace&#39;</span>, separator=<span style="color:#ed9d13">&#39;&amp;&#39;</span>,
@@ -175,9 +155,10 @@ https://host/path/to/api?title=t&amp;author=a&amp;categories=%5B%22c1%22,%20%22c
         cls = MultiDict
     pair_iter = make_chunk_iter(stream, separator, limit)
     <span style="color:#6ab825;font-weight:bold">return</span> cls(_url_decode_impl(pair_iter, charset, decode_keys,
-                                include_empty, errors))</code></pre></div>
-<p>return_iterator 默认是 false, 那么 cls 默认就是 MultiDict。把 _url_decode_impl 的结果喂给 MultiDict. MultiDict 是个什么东西？从名字上可以猜测一下，Dict 就是 Key-value pairs， 一个 key 对应一个 value. 那么 Multi 是什么? 是指一个 key 可以有多个 value 吗？</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-doc" data-lang="doc">    `MultiDict` is a dictionary subclass customized to deal with
+                                include_empty, errors))
+
+</code></pre></div><p>return_iterator 默认是 false, 那么 cls 默认就是 MultiDict。把 _url_decode_impl 的结果喂给 MultiDict. MultiDict 是个什么东西？从名字上可以猜测一下，Dict 就是 Key-value pairs， 一个 key 对应一个 value. 那么 Multi 是什么? 是指一个 key 可以有多个 value 吗？</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">    `MultiDict` is a dictionary subclass customized to deal with
     multiple values for the same key which is for example used by the parsing
     functions in the wrappers.  This is necessary because some HTML form
     elements pass multiple values for the same key.
@@ -196,10 +177,9 @@ https://host/path/to/api?title=t&amp;author=a&amp;categories=%5B%22c1%22,%20%22c
     &gt;&gt;&gt; d[&#39;a&#39;]
     &#39;b&#39;
     &gt;&gt;&gt; d.getlist(&#39;a&#39;)
-    [&#39;b&#39;, &#39;c&#39;]</code></pre></div>
-<p>还真是如此。MultiDict 中一个 key 可以有多个 value 。dict[key] 默认取第一个 value, dict.getlist(key) 可以得到所有的 value. 而且还特意强调了 &ldquo;This is necessary because some HTML form
-    elements pass multiple values for the same key&rdquo;, 感觉 MultiDict 就是为 form 而生的，哈哈。</p>
-
+    [&#39;b&#39;, &#39;c&#39;]
+</code></pre></div><p>还真是如此。MultiDict 中一个 key 可以有多个 value 。dict[key] 默认取第一个 value, dict.getlist(key) 可以得到所有的 value. 而且还特意强调了 &ldquo;This is necessary because some HTML form
+elements pass multiple values for the same key&rdquo;, 感觉 MultiDict 就是为 form 而生的，哈哈。</p>
 <p>那么 _url_decode_impl 是怎样的? 它有一个参数是 pair_iter, pair_iter 是从请求中的 querystring(这里就是 title=t&amp;author=a)解析出来的[&lsquo;title=t&rsquo;, &lsquo;author=a&rsquo;] 这样的 list。我们看看 _url_decode_impl 是怎么处理这个 list 的</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">_url_decode_impl</span>(pair_iter, charset, decode_keys, include_empty, errors):
     <span style="color:#6ab825;font-weight:bold">for</span> pair <span style="color:#6ab825;font-weight:bold">in</span> pair_iter:
@@ -217,67 +197,54 @@ https://host/path/to/api?title=t&amp;author=a&amp;categories=%5B%22c1%22,%20%22c
         key = url_unquote_plus(key, charset, errors)
         <span style="color:#6ab825;font-weight:bold">if</span> charset <span style="color:#6ab825;font-weight:bold">is</span> <span style="color:#6ab825;font-weight:bold">not</span> None <span style="color:#6ab825;font-weight:bold">and</span> PY2 <span style="color:#6ab825;font-weight:bold">and</span> <span style="color:#6ab825;font-weight:bold">not</span> decode_keys:
             key = try_coerce_native(key)
-        <span style="color:#6ab825;font-weight:bold">yield</span> key, url_unquote_plus(value, charset, errors)</code></pre></div>
-<p>很简单， 就是 split 一下，然后对 value 进行一下一些编码上的处理。有 yield 的函数是一个 generator, 调用方(这里是 MultiDict 构造函数里的 iterator) 每次要 nextValue 的时候， 生成一个中间值（这里是 key, value 的 tuple)，抛给调用方。</p>
-
+        <span style="color:#6ab825;font-weight:bold">yield</span> key, url_unquote_plus(value, charset, errors)
+</code></pre></div><p>很简单， 就是 split 一下，然后对 value 进行一下一些编码上的处理。有 yield 的函数是一个 generator, 调用方(这里是 MultiDict 构造函数里的 iterator) 每次要 nextValue 的时候， 生成一个中间值（这里是 key, value 的 tuple)，抛给调用方。</p>
 <p>小结一下， 根据 querystring 得到一个 list, 然后用这个 list 构造 MultiDict. MultiDict 允许一个 key 有多个 value.</p>
-
 <p>回到我们最初的问题</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
     <span style="color:#6ab825;font-weight:bold">&#34;title&#34;</span>: <span style="color:#ed9d13">&#34;t&#34;</span>,
     <span style="color:#6ab825;font-weight:bold">&#34;author&#34;</span>: <span style="color:#ed9d13">&#34;a&#34;</span>,
     <span style="color:#6ab825;font-weight:bold">&#34;categories&#34;</span>: [<span style="color:#ed9d13">&#34;c1&#34;</span>, <span style="color:#ed9d13">&#34;c2&#34;</span>]
-}</code></pre></div>
-<p>就需要以这样的请求发送到服务器:</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4">https://host/path/to/api?title=t&amp;author=a&amp;categories=c1&amp;categories=c2</pre></div>
-<p>使用 Postman 等模拟 API 请求的工具时，就会是这样:</p>
-
-<p><img src="/images/聊一聊古老的 x-www-form-urlencoded/Postman x-www-form-urlencoded.png" alt="" /></p>
-
+}
+</code></pre></div><p>就需要以这样的请求发送到服务器:</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">https://host/path/to/api?title=t&amp;author=a&amp;categories=c1&amp;categories=c2
+</code></pre></div><p>使用 Postman 等模拟 API 请求的工具时，就会是这样:</p>
+<p>![](/images/聊一聊古老的 x-www-form-urlencoded/Postman x-www-form-urlencoded.png)</p>
 <p>等等，这个只是 python 中的 Flask 实现，万一其它的 web frameworks 不是这样处理的，怎么办？万一 Flask 的作者放飞了自我，写了一个不一样的烟火, 怎么办?</p>
-
-<p>别着急，走过路过不要错过 <a href="https://spring.io/projects/spring-framework" target="_blank">Spring Framework</a> 的实现。</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">	<span style="color:#6ab825;font-weight:bold">private</span> <span style="color:#447fcf">MultiValueMap</span>&lt;String, String&gt; <span style="color:#447fcf">parseFormData</span>(Charset <span style="color:#447fcf">charset</span>, String <span style="color:#447fcf">body</span>) {
-		String[] <span style="color:#447fcf">pairs</span> = StringUtils.<span style="color:#bbb">tokenizeToStringArray</span>(body, <span style="color:#ed9d13">&#34;&amp;&#34;</span>);
-		MultiValueMap&lt;String, String&gt; <span style="color:#447fcf">result</span> = <span style="color:#6ab825;font-weight:bold">new</span> LinkedMultiValueMap&lt;&gt;(pairs.<span style="color:#bbb">length</span>);
+<p>别着急，走过路过不要错过 <a href="https://spring.io/projects/spring-framework">Spring Framework</a> 的实现。</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">	<span style="color:#6ab825;font-weight:bold">private</span> MultiValueMap&lt;String, String&gt; <span style="color:#447fcf">parseFormData</span>(Charset charset, String body) {
+		String[] pairs = StringUtils.<span style="color:#bbb">tokenizeToStringArray</span>(body, <span style="color:#ed9d13">&#34;&amp;&#34;</span>);
+		MultiValueMap&lt;String, String&gt; result = <span style="color:#6ab825;font-weight:bold">new</span> LinkedMultiValueMap&lt;&gt;(pairs.<span style="color:#bbb">length</span>);
 		<span style="color:#6ab825;font-weight:bold">try</span> {
-			<span style="color:#6ab825;font-weight:bold">for</span> (String <span style="color:#447fcf">pair</span> : pairs) {
-				<span style="color:#6ab825;font-weight:bold">int</span> <span style="color:#447fcf">idx</span> = pair.<span style="color:#bbb">indexOf</span>(<span style="color:#ed9d13">&#39;=&#39;</span>);
+			<span style="color:#6ab825;font-weight:bold">for</span> (String pair : pairs) {
+				<span style="color:#6ab825;font-weight:bold">int</span> idx = pair.<span style="color:#bbb">indexOf</span>(<span style="color:#ed9d13">&#39;=&#39;</span>);
 				<span style="color:#6ab825;font-weight:bold">if</span> (idx == -1) {
 					result.<span style="color:#bbb">add</span>(URLDecoder.<span style="color:#bbb">decode</span>(pair, charset.<span style="color:#bbb">name</span>()), <span style="color:#6ab825;font-weight:bold">null</span>);
 				}
 				<span style="color:#6ab825;font-weight:bold">else</span> {
-					String <span style="color:#447fcf">name</span> = URLDecoder.<span style="color:#bbb">decode</span>(pair.<span style="color:#bbb">substring</span>(0, idx),  charset.<span style="color:#bbb">name</span>());
-					String <span style="color:#447fcf">value</span> = URLDecoder.<span style="color:#bbb">decode</span>(pair.<span style="color:#bbb">substring</span>(idx + 1), charset.<span style="color:#bbb">name</span>());
+					String name = URLDecoder.<span style="color:#bbb">decode</span>(pair.<span style="color:#bbb">substring</span>(0, idx),  charset.<span style="color:#bbb">name</span>());
+					String value = URLDecoder.<span style="color:#bbb">decode</span>(pair.<span style="color:#bbb">substring</span>(idx + 1), charset.<span style="color:#bbb">name</span>());
 					result.<span style="color:#bbb">add</span>(name, value);
 				}
 			}
 		}
-		<span style="color:#6ab825;font-weight:bold">catch</span> (UnsupportedEncodingException <span style="color:#447fcf">ex</span>) {
+		<span style="color:#6ab825;font-weight:bold">catch</span> (UnsupportedEncodingException ex) {
 			<span style="color:#6ab825;font-weight:bold">throw</span> <span style="color:#6ab825;font-weight:bold">new</span> IllegalStateException(ex);
 		}
 		<span style="color:#6ab825;font-weight:bold">return</span> result;
-	}</code></pre></div>
-<p>MultiValueMap 和 python 中的 MultiDict 是一样的，允许一个 key 有多个 value. 可以看出，本质上和 Flask 中的处理是一样的。看来这些 framework 的作者是相通（互相借鉴）的。</p>
-
+	}
+</code></pre></div><p>MultiValueMap 和 python 中的 MultiDict 是一样的，允许一个 key 有多个 value. 可以看出，本质上和 Flask 中的处理是一样的。看来这些 framework 的作者是相通（互相借鉴）的。</p>
 <h2 id="标准">标准</h2>
-
 <p>可我还是不能确定，web framework 千千万万, 我们怎么能确定所有的 web framworks 都是这样处理 x-www-form-urlencoded 的呢。</p>
-
-<p>Code Ninja 又发话了，&rdquo;如果单一的实现不能让你满足，那么就去看标准 (Specification) 吧。跟着标准走，不会吃亏。</p>
-
-<p>看，这是<a href="https://url.spec.whatwg.org/#application/x-www-form-urlencoded" target="_blank">标准</a></p>
-
+<p>Code Ninja 又发话了，&ldquo;如果单一的实现不能让你满足，那么就去看标准 (Specification) 吧。跟着标准走，不会吃亏。</p>
+<p>看，这是<a href="https://url.spec.whatwg.org/#application/x-www-form-urlencoded">标准</a></p>
 <p>先来看看标准里对 x-www-form-urlencoded 的评价</p>
-
 <blockquote>
 <p>The application/x-www-form-urlencoded format is <strong>in many ways an aberrant monstrosity</strong>, the result of many years of implementation accidents and compromises leading to a set of requirements necessary for interoperability, <strong>but in no way representing good design practices</strong>. In particular, readers are cautioned to pay close attention to the twisted details involving repeated (and in some cases nested) conversions between character encodings and byte sequences. Unfortunately the format is in widespread use due to the prevalence of HTML forms.</p>
 </blockquote>
-
 <p>心疼 x-www-form-urlencoded 一秒钟。</p>
-
 <p>标准中对 <strong>application/x-www-form-urlencoded parsing</strong> 的描述</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4">The application/x-www-form-urlencoded parser takes a byte sequence input, and then runs these steps:
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">The application/x-www-form-urlencoded parser takes a byte sequence input, and then runs these steps:
 
     Let sequences be the result of splitting input on 0x26 (&amp;).
 
@@ -297,19 +264,15 @@ https://host/path/to/api?title=t&amp;author=a&amp;categories=%5B%22c1%22,%20%22c
 
         Append (nameString, valueString) to output.
 
-    Return output.</pre></div>
-<p>其实是一样的，正因为有标准的存在，所有的 framework 都殊途同归。作为开发者，要感谢为标准做出贡献的人。</p>
-
+    Return output.
+</code></pre></div><p>其实是一样的，正因为有标准的存在，所有的 framework 都殊途同归。作为开发者，要感谢为标准做出贡献的人。</p>
 <h2 id="感慨">感慨</h2>
-
 <p>这是我第一次从一个小问题，追踪到源码，最后再看标准规定。整个过程很短，45分钟在找源码、看源码，一个半小时在找标准、读标准上。感觉挺爽的，很有成就感，特写此文记录一下，希望之后有更多的机会参与这样的探索。当然，如果哪天我能参与标准的制定过程中，那么我在技术上的追求也就圆满了。</p>
-
 <h2 id="参考">参考</h2>
-
 <ol>
-<li>python 的源码位于 <a href="https://github.com/pallets/werkzeug/blob/0.14.1/werkzeug/urls.py#L737:5" target="_blank">https://github.com/pallets/werkzeug/blob/0.14.1/werkzeug/urls.py#L737:5</a></li>
-<li>spring 的源码位于 <a href="https://github.com/spring-projects/spring-framework/blob/356bfe6e2ec38fdf2d8a85c4d5cef8cfd386d5db/spring-web/src/main/java/org/springframework/http/codec/FormHttpMessageReader.java#L117:10" target="_blank">https://github.com/spring-projects/spring-framework/blob/356bfe6e2ec38fdf2d8a85c4d5cef8cfd386d5db/spring-web/src/main/java/org/springframework/http/codec/FormHttpMessageReader.java#L117:10</a></li>
-<li>Url Standard 位于 <a href="https://url.spec.whatwg.org/#application/x-www-form-urlencoded" target="_blank">https://url.spec.whatwg.org/#application/x-www-form-urlencoded</a></li>
+<li>python 的源码位于 <a href="https://github.com/pallets/werkzeug/blob/0.14.1/werkzeug/urls.py#L737:5">https://github.com/pallets/werkzeug/blob/0.14.1/werkzeug/urls.py#L737:5</a></li>
+<li>spring 的源码位于 <a href="https://github.com/spring-projects/spring-framework/blob/356bfe6e2ec38fdf2d8a85c4d5cef8cfd386d5db/spring-web/src/main/java/org/springframework/http/codec/FormHttpMessageReader.java#L117:10">https://github.com/spring-projects/spring-framework/blob/356bfe6e2ec38fdf2d8a85c4d5cef8cfd386d5db/spring-web/src/main/java/org/springframework/http/codec/FormHttpMessageReader.java#L117:10</a></li>
+<li>Url Standard 位于 <a href="https://url.spec.whatwg.org/#application/x-www-form-urlencoded">https://url.spec.whatwg.org/#application/x-www-form-urlencoded</a></li>
 </ol>
 
 </div>
@@ -328,7 +291,7 @@ https://host/path/to/api?title=t&amp;author=a&amp;categories=%5B%22c1%22,%20%22c
   <line x1="7" y1="7" x2="7" y2="7"/>
   
 </svg>
-<span class='screen-reader-text'>标签: </span><a class='tag' href='/tags/python/'>Python</a>, <a class='tag' href='/tags/flask/'>Flask</a>, <a class='tag' href='/tags/x-www-form-urlencoded/'>x-www-form-urlencoded</a>, <a class='tag' href='/tags/research/'>Research</a></div>
+<span class='screen-reader-text'>标签: </span><a class='tag' href='/tags/python/'>Python</a>, <a class='tag' href='/tags/flask/'>Flask</a>, <a class='tag' href='/tags/research/'>Research</a>, <a class='tag' href='/tags/x-www-form-urlencoded/'>x-www-form-urlencoded</a></div>
 
   </div>
 </footer>
@@ -395,7 +358,7 @@ https://host/path/to/api?title=t&amp;author=a&amp;categories=%5B%22c1%22,%20%22c
       </li></ul>
   </nav>
 </section><div class='copyright'>
-  <p> &copy; 2017-2019 ccccly </p>
+  <p> &copy; 2017-2020 ccccly </p>
 </div>
 
         </div>
@@ -404,7 +367,7 @@ https://host/path/to/api?title=t&amp;author=a&amp;categories=%5B%22c1%22,%20%22c
     </div>
   </div><script>window.__assets_js_src="/assets/js/"</script>
 
-<script src='/assets/js/main.67d669ac.js'></script><script src='/js/custom.js'></script>
+<script src='/assets/js/main.c3bcf2df.js'></script><script src='/js/custom.js'></script>
 
 </body>
 
