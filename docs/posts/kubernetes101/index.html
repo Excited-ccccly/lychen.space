@@ -5,15 +5,15 @@
 <meta name='description' content='这是一篇 kubernetes（简称 k8s，将中间的 8 个字母简写成“8”） 的基础教程，会使用实际例子来讲解 k8s 中的基础概念。 在这个教程中，假设你'>
 <meta name='theme-color' content='#ffcd00'>
 
-<meta property='og:title' content='Kubernetes101 • ccccly'>
+<meta property='og:title' content='Kubernetes101 • '>
 <meta property='og:description' content='这是一篇 kubernetes（简称 k8s，将中间的 8 个字母简写成“8”） 的基础教程，会使用实际例子来讲解 k8s 中的基础概念。 在这个教程中，假设你'>
 <meta property='og:url' content='https://studymakesmehappy.club/posts/kubernetes101/'>
 <meta property='og:site_name' content='Home'>
 <meta property='og:type' content='article'><meta property='og:image' content='https://www.gravatar.com/avatar/374150c4ee619dfed2491b9bb5bcd476?s=256'><meta property='article:section' content='posts'><meta property='article:tag' content='Kubernetes'><meta property='article:tag' content='Docker'><meta property='article:tag' content='Deployment'><meta property='article:published_time' content='2018-01-07T23:31:08&#43;08:00'/><meta property='article:modified_time' content='2018-01-07T23:31:08&#43;08:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.68.3" />
+<meta name="generator" content="Hugo 0.82.0" />
 
-  <title>Kubernetes101 • ccccly</title>
+  <title>Kubernetes101 • </title>
   <link rel='canonical' href='https://studymakesmehappy.club/posts/kubernetes101/'>
   
   
@@ -257,7 +257,7 @@ $ docker push ccccly/express-app:v2
 </code></pre></div><p>执行 Rolling Update</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ kubectl describe deployment express-app
 <span style="color:#999;font-style:italic">### 得知 express-app 这个 Deployment 使用的 Container 里的 Image 是 express-app:v1</span>
-<span style="color:#999;font-style:italic">### 更新 Image 为 docker.io 上面的 ccccly/express-app:v2</span> 
+<span style="color:#999;font-style:italic">### 更新 Image 为 docker.io 上面的 ccccly/express-app:v2 </span>
 $ kubectl <span style="color:#24909d">set</span> image deployment express-app express-app:v1=docker.io/ccccly/express-app:v2
 NAME                           READY     STATUS              RESTARTS   AGE
 express-app-7b747f7cd9-2xtrm   1/1       Terminating         <span style="color:#3677a9">0</span>          6m
@@ -292,7 +292,7 @@ hello world v2
   <line x1="7" y1="7" x2="7" y2="7"/>
   
 </svg>
-<span class='screen-reader-text'>标签: </span><a class='tag' href='/tags/kubernetes/'>Kubernetes</a>, <a class='tag' href='/tags/deployment/'>Deployment</a>, <a class='tag' href='/tags/docker/'>Docker</a></div>
+<span class='screen-reader-text'>标签: </span><a class='tag' href='/tags/kubernetes/'>Kubernetes</a>, <a class='tag' href='/tags/docker/'>Docker</a>, <a class='tag' href='/tags/deployment/'>Deployment</a></div>
 
   </div>
 </footer>
@@ -359,7 +359,7 @@ hello world v2
       </li></ul>
   </nav>
 </section><div class='copyright'>
-  <p> &copy; 2017-2020 ccccly </p>
+  <p> &copy; 2017-2021 ccccly </p>
 </div>
 
         </div>

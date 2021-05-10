@@ -4,11 +4,7 @@
     <title>Pages on Home</title>
     <link>https://studymakesmehappy.club/page/</link>
     <description>Recent content in Pages on Home</description>
-    <generator>Hugo -- gohugo.io</generator>
-    
-	<atom:link href="https://studymakesmehappy.club/page/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://studymakesmehappy.club/page/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
       <link>https://studymakesmehappy.club/about/</link>

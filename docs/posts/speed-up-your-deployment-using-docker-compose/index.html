@@ -5,15 +5,15 @@
 <meta name='description' content='Docker 的出现，优秀的隔离性让我们可以将任何应用部署到任何服务器上面，不再需要关注服务器的环境配置，简化了单个应用的部署流程。但在更多的情况下，应'>
 <meta name='theme-color' content='#ffcd00'>
 
-<meta property='og:title' content='Speed Up Your Deployment Using Docker Compose • ccccly'>
+<meta property='og:title' content='Speed Up Your Deployment Using Docker Compose • '>
 <meta property='og:description' content='Docker 的出现，优秀的隔离性让我们可以将任何应用部署到任何服务器上面，不再需要关注服务器的环境配置，简化了单个应用的部署流程。但在更多的情况下，应'>
 <meta property='og:url' content='https://studymakesmehappy.club/posts/speed-up-your-deployment-using-docker-compose/'>
 <meta property='og:site_name' content='Home'>
 <meta property='og:type' content='article'><meta property='og:image' content='https://www.gravatar.com/avatar/374150c4ee619dfed2491b9bb5bcd476?s=256'><meta property='article:section' content='posts'><meta property='article:tag' content='Docker'><meta property='article:tag' content='Compose'><meta property='article:tag' content='Deployment'><meta property='article:published_time' content='2018-02-14T01:05:40&#43;08:00'/><meta property='article:modified_time' content='2018-02-14T01:05:40&#43;08:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.68.3" />
+<meta name="generator" content="Hugo 0.82.0" />
 
-  <title>Speed Up Your Deployment Using Docker Compose • ccccly</title>
+  <title>Speed Up Your Deployment Using Docker Compose • </title>
   <link rel='canonical' href='https://studymakesmehappy.club/posts/speed-up-your-deployment-using-docker-compose/'>
   
   
@@ -100,7 +100,7 @@ if (!doNotTrack) {
   <polyline points="12 6 12 12 15 15"/>
   
 </svg>
-需要8分钟读完
+需要6分钟读完
 </span>
 
 
@@ -208,38 +208,38 @@ app.listen(<span style="color:#3677a9">3000</span>);
 <p>最后，提供一份前两天写的一个 Compose 文件，供大家参考。</p>
 <div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#6ab825;font-weight:bold">version</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#39;2&#39;</span><span style="color:#666">                                    
 </span><span style="color:#666"></span><span style="color:#6ab825;font-weight:bold">services</span>:<span style="color:#666">                                     
-</span><span style="color:#666">  </span><span style="color:#6ab825;font-weight:bold">rabbitmq</span>:<span style="color:#666"> </span>//<span style="color:#666"> </span>mqtt<span style="color:#666"> </span>broker<span style="color:#666">                          
-</span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">image</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;cyrilix/rabbitmq-mqtt&#34;</span><span style="color:#666"> </span>//<span style="color:#666"> </span>Docker<span style="color:#666"> </span>镜像<span style="color:#666">     
-</span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">container_name</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;rabbitmq&#34;</span><span style="color:#666"> </span>//<span style="color:#666"> </span>启动后的容器的名字<span style="color:#666">
-</span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">restart</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;always&#34;</span><span style="color:#666">  </span>//<span style="color:#666"> </span>失败后自动重启<span style="color:#666">                   
-</span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">hostname</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;rabbitmq-hostname&#34;</span><span style="color:#666"> </span>//<span style="color:#666"> </span>rabbitmq<span style="color:#666"> </span>需要知道主机的名字<span style="color:#666">                        
+</span><span style="color:#666">  </span><span style="color:#6ab825;font-weight:bold">rabbitmq</span>:<span style="color:#666"> </span>// mqtt broker                          <span style="color:#666">
+</span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">image</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;cyrilix/rabbitmq-mqtt&#34;</span><span style="color:#666"> </span>// Docker 镜像     <span style="color:#666">
+</span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">container_name</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;rabbitmq&#34;</span><span style="color:#666"> </span>// 启动后的容器的名字<span style="color:#666">
+</span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">restart</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;always&#34;</span><span style="color:#666">  </span>// 失败后自动重启                   <span style="color:#666">
+</span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">hostname</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;rabbitmq-hostname&#34;</span><span style="color:#666"> </span>// rabbitmq 需要知道主机的名字                        <span style="color:#666">
 </span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">ports</span>:<span style="color:#666">                                      
-</span><span style="color:#666">      </span>- <span style="color:#ed9d13">&#34;1883:1883&#34;</span><span style="color:#666"> </span>//<span style="color:#666"> </span>声明开放的端口<span style="color:#666">                             
+</span><span style="color:#666">      </span>- <span style="color:#ed9d13">&#34;1883:1883&#34;</span><span style="color:#666"> </span>// 声明开放的端口                             <span style="color:#666">
 </span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">environment</span>:<span style="color:#666">                                
-</span><span style="color:#666">      </span><span style="color:#6ab825;font-weight:bold">RABBITMQ_DEFAULT_USER</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;rabbitmq-user&#34;</span><span style="color:#666"> </span>//<span style="color:#666"> </span>用户名<span style="color:#666">         
-</span><span style="color:#666">      </span><span style="color:#6ab825;font-weight:bold">RABBITMQ_DEFAULT_PASS</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;rabbitmq-password&#34;</span><span style="color:#666"> </span>//<span style="color:#666"> </span>密码<span style="color:#666">   
+</span><span style="color:#666">      </span><span style="color:#6ab825;font-weight:bold">RABBITMQ_DEFAULT_USER</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;rabbitmq-user&#34;</span><span style="color:#666"> </span>// 用户名         <span style="color:#666">
+</span><span style="color:#666">      </span><span style="color:#6ab825;font-weight:bold">RABBITMQ_DEFAULT_PASS</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;rabbitmq-password&#34;</span><span style="color:#666"> </span>// 密码   <span style="color:#666">
 </span><span style="color:#666">  </span><span style="color:#6ab825;font-weight:bold">influxdb</span>:<span style="color:#666">                                     
-</span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">image</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;influxdb&#34;</span><span style="color:#666"> </span>//<span style="color:#666"> </span>时序数据库<span style="color:#666">                       
+</span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">image</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;influxdb&#34;</span><span style="color:#666"> </span>// 时序数据库                       <span style="color:#666">
 </span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">container_name</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;influxdb&#34;</span><span style="color:#666">                  
 </span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">restart</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;always&#34;</span><span style="color:#666">                           
 </span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">ports</span>:<span style="color:#666">                                      
 </span><span style="color:#666">      </span>- <span style="color:#ed9d13">&#34;8086:8086&#34;</span><span style="color:#666">                             
 </span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">volumes</span>:<span style="color:#666">                                    
-</span><span style="color:#666">      </span>- ~/docker-data/influxdb:/var/lib/influxdb<span style="color:#666"> </span>//<span style="color:#666"> </span>时序数据库的数据持久化在主机的<span style="color:#666"> </span>~/docker-data/influxdb<span style="color:#666"> </span>目录<span style="color:#666">
+</span><span style="color:#666">      </span>- ~/docker-data/influxdb:/var/lib/influxdb // 时序数据库的数据持久化在主机的 ~/docker-data/influxdb 目录<span style="color:#666">
 </span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">environment</span>:<span style="color:#666">                                
 </span><span style="color:#666">      </span><span style="color:#6ab825;font-weight:bold">INFLUXDB_DB</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;influxdb-database&#34;</span><span style="color:#666">                   
 </span><span style="color:#666">      </span><span style="color:#6ab825;font-weight:bold">INFLUXDB_HTTP_AUTH_ENABLED</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;true&#34;</span><span style="color:#666">        
 </span><span style="color:#666">      </span><span style="color:#6ab825;font-weight:bold">INFLUXDB_ADMIN_USER</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;influx-admin-user&#34;</span><span style="color:#666">            
 </span><span style="color:#666">      </span><span style="color:#6ab825;font-weight:bold">INFLUXDB_ADMIN_PASSWORD</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;influxdb-admin-password&#34;</span><span style="color:#666">   
-</span><span style="color:#666">      </span><span style="color:#6ab825;font-weight:bold">INFLUXDB_USER</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;influxdb-user&#34;</span><span style="color:#666"> </span>//<span style="color:#666"> </span>数据库访问的用户名<span style="color:#666">
-</span><span style="color:#666">      </span><span style="color:#6ab825;font-weight:bold">INFLUXDB_USER_PASSWORD</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;influxdb-user-password&#34;</span><span style="color:#666"> </span>//<span style="color:#666"> </span>数据库访问的密码<span style="color:#666">     
+</span><span style="color:#666">      </span><span style="color:#6ab825;font-weight:bold">INFLUXDB_USER</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;influxdb-user&#34;</span><span style="color:#666"> </span>// 数据库访问的用户名<span style="color:#666">
+</span><span style="color:#666">      </span><span style="color:#6ab825;font-weight:bold">INFLUXDB_USER_PASSWORD</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;influxdb-user-password&#34;</span><span style="color:#666"> </span>// 数据库访问的密码     <span style="color:#666">
 </span><span style="color:#666">  </span><span style="color:#6ab825;font-weight:bold">forwarder</span>:<span style="color:#666">                                    
-</span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">image</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;mqtt-influxdb-forward&#34;</span><span style="color:#666"> </span>//<span style="color:#666"> </span>自己写的消息转发服务，将<span style="color:#666"> </span>mqtt<span style="color:#666"> </span>消息经过处理之后，转发到<span style="color:#666"> </span>influxdb<span style="color:#666">
+</span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">image</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;mqtt-influxdb-forward&#34;</span><span style="color:#666"> </span>// 自己写的消息转发服务，将 mqtt 消息经过处理之后，转发到 influxdb<span style="color:#666">
 </span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">container_name</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;mqtt-influxdb-forward&#34;</span><span style="color:#666">     
 </span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">restart</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;always&#34;</span><span style="color:#666">                           
-</span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">depends_on</span>:<span style="color:#666"> </span>//<span style="color:#666"> </span>声明该服务依赖<span style="color:#666">  </span>rabbitmq<span style="color:#666"> </span>和<span style="color:#666"> </span>influxdb<span style="color:#666"> </span>服务<span style="color:#666">                                 
-</span><span style="color:#666">      </span>- rabbitmq<span style="color:#666">                                
-</span><span style="color:#666">      </span>- influxdb<span style="color:#666">                                
+</span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">depends_on</span>:<span style="color:#666"> </span>// 声明该服务依赖  rabbitmq 和 influxdb 服务                                 <span style="color:#666">
+</span><span style="color:#666">      </span>- rabbitmq                                <span style="color:#666">
+</span><span style="color:#666">      </span>- influxdb                                <span style="color:#666">
 </span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">environment</span>:<span style="color:#666">                                
 </span><span style="color:#666">      </span><span style="color:#6ab825;font-weight:bold">MQTT_ENDPOINT</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;mqtt://rabbitmq&#34;</span><span style="color:#666">          
 </span><span style="color:#666">      </span><span style="color:#6ab825;font-weight:bold">MQTT_USERNAME</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;rabbitmq-user&#34;</span><span style="color:#666">                 
@@ -250,7 +250,7 @@ app.listen(<span style="color:#3677a9">3000</span>);
 </span><span style="color:#666">      </span><span style="color:#6ab825;font-weight:bold">INFLUX_USERNAME</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;influxdb-user&#34;</span><span style="color:#666">               
 </span><span style="color:#666">      </span><span style="color:#6ab825;font-weight:bold">INFLUX_PASSWORD</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;influxdb-user-password&#34;</span><span style="color:#666">            
 </span><span style="color:#666">      </span><span style="color:#6ab825;font-weight:bold">INFLUX_WRITE_THRESHOLD</span>:<span style="color:#666"> </span><span style="color:#3677a9">10</span><span style="color:#666">                
-</span><span style="color:#666">  </span><span style="color:#6ab825;font-weight:bold">grafana</span>:<span style="color:#666"> </span>//<span style="color:#666"> </span>数据可视化框架，从<span style="color:#666"> </span>influxdb<span style="color:#666"> </span>取数据，使用图表的方式展示出来<span style="color:#666">
+</span><span style="color:#666">  </span><span style="color:#6ab825;font-weight:bold">grafana</span>:<span style="color:#666"> </span>// 数据可视化框架，从 influxdb 取数据，使用图表的方式展示出来<span style="color:#666">
 </span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">image</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;grafana/grafana&#34;</span><span style="color:#666">                    
 </span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">container_name</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;grafana&#34;</span><span style="color:#666">                   
 </span><span style="color:#666">    </span><span style="color:#6ab825;font-weight:bold">restart</span>:<span style="color:#666"> </span><span style="color:#ed9d13">&#34;always&#34;</span><span style="color:#666">                           
@@ -276,7 +276,7 @@ app.listen(<span style="color:#3677a9">3000</span>);
   <line x1="7" y1="7" x2="7" y2="7"/>
   
 </svg>
-<span class='screen-reader-text'>标签: </span><a class='tag' href='/tags/compose/'>Compose</a>, <a class='tag' href='/tags/deployment/'>Deployment</a>, <a class='tag' href='/tags/docker/'>Docker</a></div>
+<span class='screen-reader-text'>标签: </span><a class='tag' href='/tags/docker/'>Docker</a>, <a class='tag' href='/tags/compose/'>Compose</a>, <a class='tag' href='/tags/deployment/'>Deployment</a></div>
 
   </div>
 </footer>
@@ -343,7 +343,7 @@ app.listen(<span style="color:#3677a9">3000</span>);
       </li></ul>
   </nav>
 </section><div class='copyright'>
-  <p> &copy; 2017-2020 ccccly </p>
+  <p> &copy; 2017-2021 ccccly </p>
 </div>
 
         </div>

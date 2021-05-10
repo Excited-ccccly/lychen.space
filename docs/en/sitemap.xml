@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://studymakesmehappy.club/en/authors/</loc>
     <xhtml:link
@@ -14,9 +13,7 @@
                 hreflang="en"
                 href="https://studymakesmehappy.club/en/authors/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://studymakesmehappy.club/en/categories/</loc>
     <xhtml:link
                 rel="alternate"
@@ -28,9 +25,7 @@
                 hreflang="en"
                 href="https://studymakesmehappy.club/en/categories/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://studymakesmehappy.club/en/</loc>
     <xhtml:link
                 rel="alternate"
@@ -42,9 +37,7 @@
                 hreflang="en"
                 href="https://studymakesmehappy.club/en/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://studymakesmehappy.club/en/series/</loc>
     <xhtml:link
                 rel="alternate"
@@ -56,9 +49,7 @@
                 hreflang="en"
                 href="https://studymakesmehappy.club/en/series/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://studymakesmehappy.club/en/tags/</loc>
     <xhtml:link
                 rel="alternate"
@@ -71,5 +62,4 @@
                 href="https://studymakesmehappy.club/en/tags/"
                 />
   </url>
-  
 </urlset>
