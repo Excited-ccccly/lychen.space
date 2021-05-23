@@ -11,7 +11,7 @@
 <meta property='og:site_name' content='Home'>
 <meta property='og:type' content='article'><meta property='og:image' content='https://www.gravatar.com/avatar/374150c4ee619dfed2491b9bb5bcd476?s=256'><meta property='article:section' content='posts'><meta property='article:tag' content='Windows'><meta property='article:tag' content='Package Manager'><meta property='article:tag' content='Linux'><meta property='article:tag' content='WSL'><meta property='article:tag' content='Terminal Emulator'><meta property='article:tag' content='Editor'><meta property='article:tag' content='Font'><meta property='article:published_time' content='2018-03-04T15:43:15&#43;08:00'/><meta property='article:modified_time' content='2018-03-04T15:43:15&#43;08:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.82.0" />
+<meta name="generator" content="Hugo 0.83.1" />
 
   <title>Set Up Development Environment on Windows • </title>
   <link rel='canonical' href='https://studymakesmehappy.club/posts/set-up-development-environment-on-windows/'>
@@ -154,7 +154,7 @@ scoop install conemu
 <p>有没有想象过将 Linux 原生应用跑在 Windows 上? 由于 Windows 优秀的内核架构，这个不成问题，Windows Subsystem for Linux(WSL) 就是这么一种实现，你可以在 Windows 上安装 Ubuntu, Opensuse, Centos 等等，并且随意地在它们之间切换。</p>
 <h4 id="install-1">Install</h4>
 <p>管理员身份打开 Powershell</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Powershell" data-lang="Powershell"><span style="color:#24909d">Enable-WindowsOptionalFeature</span> -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Powershell" data-lang="Powershell"><span style="color:#24909d">Enable-WindowsOptionalFeature</span> -Online -FeatureName <span style="color:#24909d">Microsoft-Windows</span>-Subsystem-Linux
 </code></pre></div><ul>
 <li>如果是最新的 Win10 系统，到应用商店里就能直接安装 Ubuntu, Opensuse 等</li>
 <li>如果是老版本的 Win10 系统，建议升级到最新的 Win10，没理由停留在老版本的 Win10。如果暂时不想升级:
